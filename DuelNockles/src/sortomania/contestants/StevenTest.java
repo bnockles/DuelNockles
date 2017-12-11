@@ -1,11 +1,13 @@
 package sortomania.contestants;
 
+import java.util.Arrays;
+
 public class StevenTest {
 	
-	int[] numbers=new int[10000];
+	static int[] numbers=new int[10000];
 	private int number;
 	
-	public int[] getNumbers() {
+	public static int[] getNumbers() {
 		return numbers;
 	}
 
@@ -14,16 +16,35 @@ public class StevenTest {
 	}
 
 	public StevenTest() {
+		
+	}
+
+	public void makeNums()
+	{
 		for(int i=0;i<numbers.length;i++) {
 			numbers[i]=(int)(Math.random()*10000);
 		}
 	}
-
 	public static void main(String[] args) {
 		StevenTest a=new StevenTest();
-		a.sort(a.getNumbers());
-		System.out.print(a.getNumbers().toString());
+		a.makeNums();
+		long avg = 0;
+		for (int i = 0; i < 200; i++)
+		{
+		long startTime = System.nanoTime();
+		
+		a.sort(getNumbers());
+		
+		long endTime = System.nanoTime();
+		long b = endTime - startTime;
+		avg += b;
+		a.makeNums();
+		}
+		avg = avg/200;
+		System.out.println("That took " + avg + " nanoTime");
+	//	System.out.print(a.getNumbers().toString());
 
+	//	System.out.println(Arrays.toString(getNumbers()));
 	}
 	public void sort(int[] values) {
         // check for empty or null array
