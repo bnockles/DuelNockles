@@ -7,17 +7,29 @@ import sortomania.Contestant;
 public class JustinSunny {
 
 	public static void main(String[] args) {
-		int[] arr = new int[9999];
+		int[] arr = new int[10000];
 		populate(arr);
+		
 		long startTime =  System.currentTimeMillis();
 		sortAndGetMedian(arr);
 		long endTime =  System.currentTimeMillis();
 
 		long duration = (endTime - startTime);
-		System.out.println(duration + " " + sortAndGetMedian(arr));
+		System.out.println(duration + " " + mostlySortAndGetMedian(arr));
 	}
 	
 	public static void populate(int[] arr) {
+		/*
+		for(int i = 0; i < arr.length; i++) {
+			if(Math.random() > 0.75)
+			{
+				arr[i] = i;
+			}
+			else {
+				arr[i] = (int) (Math.random() * 9999);
+			}
+		}
+		*/
 		for(int i = 0; i < arr.length; i++) {
 			arr[i] = (int) (Math.random() * 9999);
 		}
@@ -44,7 +56,7 @@ public class JustinSunny {
 		return binarySearch(strings, 0, strings.length - 1, toFind);
 	}
 
-	public double mostlySortAndGetMedian(int[] mostlySorted) {
+	public static double mostlySortAndGetMedian(int[] mostlySorted) {
 		insertionSort(mostlySorted, mostlySorted.length);
 		int halfWayMarker = (int) mostlySorted.length/2;
 		return (mostlySorted.length % 2 != 0)?((mostlySorted[halfWayMarker] + mostlySorted[halfWayMarker + 1])/2):mostlySorted[halfWayMarker];
@@ -86,7 +98,7 @@ public class JustinSunny {
     }
 	
 	/* Function to sort an array using insertion sort*/
-	void insertionSort(int A[], int size)
+	public static void insertionSort(int A[], int size)
 	{
 	   int i, key, j;
 	   for (i = 1; i < size; i++)
@@ -106,7 +118,7 @@ public class JustinSunny {
 	   }
 	}
 	
-	public void sort(String arr[])
+	public static void sort(String arr[])
     {
         int n = arr.length;
  
@@ -155,7 +167,7 @@ public class JustinSunny {
         }
     }
     
-    public void heapify(String arr[], int n, int i)
+    public static void heapify(String arr[], int n, int i)
     {
         int largest = i;  // Initialize largest as root
         int l = 2*i + 1;  // left = 2*i + 1
@@ -181,7 +193,7 @@ public class JustinSunny {
         }
     }
 	
-    public int binarySearch(int arr[], int l, int r, int x)
+    public static int binarySearch(int arr[], int l, int r, int x)
     {
         if (r>=l)
         {
@@ -205,7 +217,7 @@ public class JustinSunny {
         return -1;
     }
     
-    public int binarySearch(String arr[], int l, int r, String x)
+    public static int binarySearch(String arr[], int l, int r, String x)
     {
         if (r>=l)
         {
