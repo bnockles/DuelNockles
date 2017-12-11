@@ -11,7 +11,7 @@ public class YonathanDavid extends Contestant{
 	public static void main(String[] args) {
 		int[] a = {2, 6, 3, 6};
 		YonathanDavid test = new YonathanDavid();
-		//double x = test.mostlySortAndGetMedian(a);
+		double x = test.mostlySortAndGetMedian(a);
 		System.out.println(Arrays.toString(a));
 		System.out.println(x);
 	}
@@ -31,8 +31,6 @@ public class YonathanDavid extends Contestant{
 	@Override
 	public double sortAndGetMedian(int[] arr) {
 		//Yonathan
-		Comparable[] tmp = new Comparable[arr.length];
-		mergeSort(arr, tmp,  0,  arr.length - 1);
 		return 0;
 	}
 
