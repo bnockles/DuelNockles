@@ -1,9 +1,13 @@
 package sortomania.contestants;
 
 public class StevenTest {
-
+	
+	int[] arr=new int[10000];
+	
 	public StevenTest() {
-		// TODO Auto-generated constructor stub
+		for(int i=0;i<arr.length;i++) {
+			arr[i]=(int)(Math.random()*10000);
+		}
 	}
 
 	public static void main(String[] args) {
