@@ -19,6 +19,7 @@ public class FahadDavidSorter extends Contestant {
 	}
 
 	public double sortAndGetMedian(int[] random) {
+		radixSort(random);
 		if(random.length %2 == 1) {
 			return random[(random.length-1)/2];
 		}
