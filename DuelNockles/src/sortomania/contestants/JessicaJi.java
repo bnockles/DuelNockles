@@ -12,19 +12,16 @@ public class JessicaJi extends Contestant {
 
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Color(174, 198, 208);
 	}
 
 	@Override
 	public String getSpriteName() {
-		// TODO Auto-generated method stub
-		return null;
+		return RYU;
 	}
 
 	@Override
 	public double sortAndGetMedian(int[] random) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -55,6 +52,11 @@ public class JessicaJi extends Contestant {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@Override
+	public String toString(){
+		return "JessicaJi";
 	}
 
 }
