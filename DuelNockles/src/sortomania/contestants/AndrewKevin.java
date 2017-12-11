@@ -6,6 +6,16 @@ import sortomania.Contestant;
 
 public class AndrewKevin extends Contestant{
 
+	private static long startTime = System.currentTimeMillis();
+	public static void main(String[] args) {
+		int[] test = new int [10000];
+		for(int i = 0; i < test.length; i++) {
+			test[i] = (int)(Math.random()*10000);
+			sortAndGetMedian(test);
+			long endTime = System.currentTimeMillis();
+	        System.out.println("It took " + (endTime - startTime) + " milliseconds");
+		}
+	}
 	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub
@@ -19,7 +29,7 @@ public class AndrewKevin extends Contestant{
 	}
 
 	@Override
-	public double sortAndGetMedian(int[] random) {
+	public   double sortAndGetMedian(int[] random) {
 		int n = random.length;
         char output[] = new char[n];
         int count[] = new int[256];
