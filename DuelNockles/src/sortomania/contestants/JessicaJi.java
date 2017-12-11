@@ -85,7 +85,12 @@ public class JessicaJi extends Contestant {
 
 	@Override
 	public double sortAndGetMedian(int[] random) {
-		return 0;
+		random = mergeSort(random, 0, random.length - 1);
+		if((random.length - 1)%2 == 0)
+		{
+			
+		}
+		
 	}
 
 	@Override
