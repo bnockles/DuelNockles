@@ -33,8 +33,9 @@ public class JustinSunny extends Contestant {
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
-		return 0;
+		insertionSort(mostlySorted, mostlySorted.length);
+		int halfWayMarker = (int) mostlySorted.length/2;
+		return (mostlySorted.length % 2 != 0)?((mostlySorted[halfWayMarker] + mostlySorted[halfWayMarker + 1])/2):mostlySorted[halfWayMarker];
 	}
 
 	@Override
@@ -73,6 +74,27 @@ public class JustinSunny extends Contestant {
             heapify(arr, i, 0);
         }
     }
+	
+	/* Function to sort an array using insertion sort*/
+	void insertionSort(int A[], int size)
+	{
+	   int i, key, j;
+	   for (i = 1; i < size; i++)
+	   {
+	       key = A[i];
+	       j = i-1;
+	 
+	       /* Move elements of A[0..i-1], that are greater than key, to one 
+	          position ahead of their current position.
+	          This loop will run at most k times */
+	       while (j >= 0 && A[j] > key)
+	       {
+	           A[j+1] = A[j];
+	           j = j-1;
+	       }
+	       A[j+1] = key;
+	   }
+	}
 	
 	public void sort(String arr[])
     {
