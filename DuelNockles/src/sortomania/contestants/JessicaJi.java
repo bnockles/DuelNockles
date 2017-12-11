@@ -65,7 +65,7 @@ public class JessicaJi extends Contestant {
 	
 	}
 	
-	public static String[] insertionSortString(String[] arr) {
+	public static String[] mergeSortString(String[] arr) {
 		// TODO Auto-generated method stub
 		return arr;
 	}
