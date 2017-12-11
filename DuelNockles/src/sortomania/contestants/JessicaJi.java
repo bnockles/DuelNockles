@@ -10,7 +10,7 @@ public class JessicaJi extends Contestant {
 		JessicaJi test = new JessicaJi();
 		int[] arr = {4, 7, 10, 2, 8, 12, 100, 34, 42, 23, 40, 56, 31, 8};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
-		System.out.println("And the sorted array is: \n" + mergeSort(arr));
+		System.out.println("And the sorted array is: \n" + mergeSort(arr, 0, arr.length-1));
 	}
 	public static int[] insertionSort(int[] arr) {
         for (int i=1; i<arr.length; i++)
