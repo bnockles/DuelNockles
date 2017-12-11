@@ -73,14 +73,16 @@ public class EthanDavidContestant extends Contestant {
 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		int index = 0;
+		
+		return index;
 	}
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
-		return 0;
+		double median = 0;
+		//insertion is the quickest
+		return median;
 	}
 
 	@Override
