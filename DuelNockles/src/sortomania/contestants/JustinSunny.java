@@ -22,7 +22,7 @@ public class JustinSunny extends Contestant {
 	public double sortAndGetMedian(int[] random) {
 		sort(random);
 		int halfWayMarker = (int) random.length/2;
-		return (random.length % 2 != 0)?(random[halfWayMarker] + random[halfWayMarker + 1])/2:random[halfWayMarker];
+		return (random.length % 2 != 0)?((random[halfWayMarker] + random[halfWayMarker + 1])/2):random[halfWayMarker];
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class JustinSunny extends Contestant {
 			newArr[i] = sortAndGetMedian(grid[i]);
 		}
 		int halfWayMarker = (int) newArr.length/2;
-		return (newArr.length % 2 != 0)?(newArr[halfWayMarker] + newArr[halfWayMarker + 1])/2:newArr[halfWayMarker];
+		return (newArr.length % 2 != 0)?((newArr[halfWayMarker] + newArr[halfWayMarker + 1])/2):newArr[halfWayMarker];
 	}
 
 	@Override
