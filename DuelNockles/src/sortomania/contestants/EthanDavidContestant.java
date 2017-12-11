@@ -59,8 +59,15 @@ public class EthanDavidContestant extends Contestant {
 	@Override
 	public double sortAndGetMedian(int[] random) {
 		double median = 0;
+		System.out.println(random + " non-sorted");
 		sort(random,0,random.length);
-		System.out.println(random);
+		System.out.println(random + " sorted");
+		if(random.length%2 != 0) {
+			median += random[(int)(random.length/2) - 1];
+		}
+		else {
+			median += (random[0 + (random.length/2)] + random[(random.length - random.length/2)])/2;
+		}
 		return median;
 	}
 
