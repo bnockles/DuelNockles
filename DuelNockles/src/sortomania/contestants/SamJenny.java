@@ -10,6 +10,7 @@ public class SamJenny extends Contestant{
 		//int[] test = {3,5,1,4,2,6,10};
 		int[][] test = {{1,6,4,3,2},{7,12,5,70,8}, {1,2,3,4,5}, {6,7,8,9,10}};
 		System.out.println(sortMultiDim(test));
+		System.out.println("".compareTo("b"));
 	}
 	
 	public Color getColor() {
@@ -142,7 +143,7 @@ public class SamJenny extends Contestant{
 
 
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		return 0;
+		
 	}
 
 
