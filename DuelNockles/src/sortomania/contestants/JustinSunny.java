@@ -9,13 +9,13 @@ public class JustinSunny extends Contestant {
 	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Color(153, 255, 153);
 	}
 
 	@Override
 	public String getSpriteName() {
 		// TODO Auto-generated method stub
-		return null;
+		return "RYU";
 	}
 
 	@Override
