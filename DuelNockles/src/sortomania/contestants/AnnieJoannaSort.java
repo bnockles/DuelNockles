@@ -6,6 +6,11 @@ import sortomania.Contestant;
 
 public class AnnieJoannaSort extends Contestant {
 
+	public static void main(String[] args){
+		
+		
+	}
+	
 	public AnnieJoannaSort() {
 		// TODO Auto-generated constructor stub
 	}
