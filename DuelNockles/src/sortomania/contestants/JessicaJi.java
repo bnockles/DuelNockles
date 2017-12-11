@@ -66,8 +66,24 @@ public class JessicaJi extends Contestant {
 	}
 	
 	public static String[] mergeSortString(String[] arr) {
-		// TODO Auto-generated method stub
-		return arr;
+		int i,j;
+		  String idx;
+		  //System.out.println(Arrays.toString(arr));
+		  for (j = 1; j < arr.length; j++) {
+			  idx = arr[j];
+		    i = j - 1;
+		    while (i >= 0) {
+		      if (idx.compareTo(arr[i]) > 0) {
+		        break;
+		      }
+		      arr[i + 1] = arr[i];
+		      i--;
+		    }
+		    arr[i + 1] = idx;
+		    //System.out.println(Arrays.toString(arr));
+		  }
+		  //System.out.println(Arrays.toString(arr))		
+		  return arr;
 	}
 	public JessicaJi() {
 		// TODO Auto-generated constructor stub
