@@ -6,11 +6,23 @@ import sortomania.Contestant;
 
 public class DerekDavid extends Contestant {
 
-	static int[] asdf = { 1, 2, 3, 4, 5, 6 };
+	
 
 	public static void main(String[] args) {
-		DerekDavid asd = new DerekDavid();
-		System.out.print();
+		
+		
+
+
+		DerekDavid test = new DerekDavid();
+		int[] arr = {1,2,3,4,5,6};
+		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+		
+		
+		System.out.println("And the sorted array is: \n" + test.sort(arr));
+		
+	
+		
+		
 	}
 
 	@Override
@@ -23,7 +35,7 @@ public class DerekDavid extends Contestant {
 		return RYU;
 	}
 
-	public int sortAndGetMedian(int[] random) {
+	public double sortAndGetMedian(int[] random) {
 		int[] numArray = sort(random);
 		double median;
 		if (numArray.length % 2 == 0)
@@ -57,7 +69,7 @@ public class DerekDavid extends Contestant {
 		return 0;
 	}
 
-	public static int[] sort(int arr[]) {
+	public int[] sort(int arr[]) {
 		int n = arr.length;
 
 		// The output character array that will have sorted arr
