@@ -2,17 +2,80 @@ package sortomania.contestants;
 
 public class StevenTest {
 	
-	int[] arr=new int[10000];
+	int[] numbers=new int[10000];
+	private int number;
 	
+	public int[] getNumbers() {
+		return numbers;
+	}
+
+	public void setNumbers(int[] numbers) {
+		this.numbers = numbers;
+	}
+
 	public StevenTest() {
-		for(int i=0;i<arr.length;i++) {
-			arr[i]=(int)(Math.random()*10000);
+		for(int i=0;i<numbers.length;i++) {
+			numbers[i]=(int)(Math.random()*10000);
 		}
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		StevenTest a=new StevenTest();
+		a.sort(a.getNumbers());
+		System.out.print(a.getNumbers().toString());
 
 	}
+	public void sort(int[] values) {
+        // check for empty or null array
+        if (values ==null || values.length==0){
+            return;
+        }
+        this.numbers = values;
+        number = values.length;
+        quicksort(0, number - 1);
+    }
 
+    private void quicksort(int low, int high) {
+        int i = low, j = high;
+        // Get the pivot element from the middle of the list
+        int pivot = numbers[low + (high-low)/2];
+
+        // Divide into two lists
+        while (i <= j) {
+            // If the current value from the left list is smaller than the pivot
+            // element then get the next element from the left list
+            while (numbers[i] < pivot) {
+                i++;
+            }
+            // If the current value from the right list is larger than the pivot
+            // element then get the next element from the right list
+            while (numbers[j] > pivot) {
+                j--;
+            }
+
+            // If we have found a value in the left list which is larger than
+            // the pivot element and if we have found a value in the right list
+            // which is smaller than the pivot element then we exchange the
+            // values.
+            // As we are done we can increase i and j
+            if (i <= j) {
+                exchange(i, j);
+                i++;
+                j--;
+            }
+        }
+        // Recursion
+        if (low < j)
+            quicksort(low, j);
+        if (i < high)
+            quicksort(i, high);
+    }
+
+    private void exchange(int i, int j) {
+        int temp = numbers[i];
+        numbers[i] = numbers[j];
+        numbers[j] = temp;
+    }
 }
+
+
