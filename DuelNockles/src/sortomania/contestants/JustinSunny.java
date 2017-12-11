@@ -11,13 +11,30 @@ public class JustinSunny {
 		int[] arr = new int[10000];
 		populate(arr);
 		
+		/*
+		timSort(arr, arr.length);
+		System.out.println(Arrays.toString(arr));
+		*/
+
 		long startTime =  System.currentTimeMillis();
+		
 		sortAndGetMedian(arr);
 		long endTime =  System.currentTimeMillis();
 
 		long duration = (endTime - startTime);
+		System.out.println(duration + " " + sortAndGetMedian(arr));
+		System.out.println(Arrays.toString(arr));
+		
+		/*
+		long startTime =  System.currentTimeMillis();
+		
+		mostlySortAndGetMedian(arr);
+		long endTime =  System.currentTimeMillis();
+
+		long duration = (endTime - startTime);
 		System.out.println(duration + " " + mostlySortAndGetMedian(arr));
-		// System.out.println(Arrays.toString(arr));
+		System.out.println(Arrays.toString(arr));
+		*/
 	}
 	
 	public static void populate(int[] arr) {
@@ -37,33 +54,42 @@ public class JustinSunny {
 		}
 	}
 	
+	//@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub
 		return new Color(153, 255, 153);
 	}
-
+	
+	//@Override
 	public String getSpriteName() {
 		// TODO Auto-generated method stub
 		return "RYU";
 	}
 
+	//@Override
 	public static double sortAndGetMedian(int[] random) {
-		sort(random, 0, random.length - 1);
-		int halfWayMarker = (int) random.length/2;
-		return (random.length % 2 != 0)?((random[halfWayMarker] + random[halfWayMarker + 1])/2):random[halfWayMarker];
+		//sort(random, 0, random.length - 1); //Heap Sort 2-6ms
+		OptimizedQuickSort(random, 0, random.length - 1); //1-4ms
+		int halfWayMarker = (int) random.length/2 - 1;
+		return (random.length % 2 == 0)?((double) random[halfWayMarker] + random[halfWayMarker + 1])/2:random[halfWayMarker];
 	}
 
+	//@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		sort(strings);
 		return binarySearch(strings, 0, strings.length - 1, toFind);
 	}
 
+	//@Override
 	public static double mostlySortAndGetMedian(int[] mostlySorted) {
-		insertionSort(mostlySorted, mostlySorted.length);
+		//insertionSort(mostlySorted); //10-14ms
+		//timSort(mostlySorted, mostlySorted.length); //10-12ms
+		//OptimizedQuickSort(mostlySorted, 0, mostlySorted.length - 1);
 		int halfWayMarker = (int) mostlySorted.length/2;
 		return (mostlySorted.length % 2 != 0)?((mostlySorted[halfWayMarker] + mostlySorted[halfWayMarker + 1])/2):mostlySorted[halfWayMarker];
 	}
 
+	//@Override
 	public double sortMultiDim(int[][] grid) {
 		double[] newArr = new double[grid.length];
 		for(int i = 0; i < newArr.length; i++) {
@@ -73,6 +99,7 @@ public class JustinSunny {
 		return (newArr.length % 2 != 0)?((newArr[halfWayMarker] + newArr[halfWayMarker + 1])/2):newArr[halfWayMarker];
 	}
 
+	//@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -100,26 +127,28 @@ public class JustinSunny {
     }
 	
 	/* Function to sort an array using insertion sort*/
-	public static void insertionSort(int A[], int size)
-	{
-	   int i, key, j;
-	   for (i = 1; i < size; i++)
-	   {
-	       key = A[i];
-	       j = i-1;
-	 
-	       /* Move elements of A[0..i-1], that are greater than key, to one 
-	          position ahead of their current position.
-	          This loop will run at most k times */
-	       while (j >= 0 && A[j] > key)
-	       {
-	           A[j+1] = A[j];
-	           j = j-1;
-	       }
-	       A[j+1] = key;
-	   }
-	}
+    public static void insertionSort(int[] arr) {
+        for(int i = 1; i < arr.length; i++) {
+            int temp = arr[i];
+            int j;
+            for(j = i; j > 0 && arr[j-1] > temp; j--)
+                arr[j] = arr[j-1];
+            arr[j] = temp;
+        }
+    }
 	
+    public static void insertionSort(int arr[], int left, int right)
+    {
+        for (int i = left; i <= right; i++)
+        {
+            int temp = arr[i];
+            int j;
+            for(j = i; j > 0 && arr[j-1] > temp; j--)
+                arr[j] = arr[j-1];
+            arr[j] = temp;
+        }
+    }
+    
 	public static void sort(String arr[])
     {
         int n = arr.length;
@@ -318,4 +347,90 @@ public class JustinSunny {
         }
     }
     
+    public static void OptimizedQuickSort(int[] Arr, int Left, int Right)
+    {
+        int Pivot;
+        Pivot = Q_Sort(Arr, Left, Right);
+        if(Left < Pivot - 1)
+        {
+            OptimizedQuickSort(Arr, Left, Pivot - 1);
+        }
+        if(Right > Pivot + 1)
+        {
+            OptimizedQuickSort(Arr, Pivot + 1, Right);
+        }
+    }  
+
+    public static int Q_Sort(int[] Arr, int Left, int Right)
+    {
+        int Pivot;
+        Pivot = Arr[Left];
+        while(Left < Right)
+        {
+            while((Arr[Right] >= Pivot) && (Left < Right))
+            {
+                Right--;
+            }
+            if(Left != Right)
+            {
+                Arr[Left] = Arr[Right];
+                Left++;
+            }
+            while((Arr[Left] <= Pivot) && (Left < Right))
+            {
+                Left++;
+            }
+            if(Left != Right)
+            {
+                Arr[Right] = Arr[Left];
+                Right--;
+            }
+        }   
+        Arr[Left] = Pivot;
+        return Left;
+    } 
+    
+    // iterative Timsort function to sort the
+    // array[0...n-1] (similar to merge sort)
+    public static void timSort(int arr[], int n)
+    {
+    	int RUN = getMinRun(arr.length);
+        // Sort individual subarrays of size RUN
+        for (int i = 0; i < n; i+=RUN)
+        	 insertionSort(arr, i, min((i+(RUN - 1)), (n-1)));
+     
+        // start merging from size RUN (or 32). It will merge
+        // to form size 64, then 128, 256 and so on ....
+        for (int size = RUN; size < n; size = 2*size)
+        {
+            // pick starting point of left sub array. We
+            // are going to merge arr[left..left+size-1]
+            // and arr[left+size, left+2*size-1]
+            // After every merge, we increase left by 2*size
+            for (int left = 0; left < n; left += 2*size)
+            {
+                // find ending point of left sub array
+                // mid+1 is starting point of right sub array
+                int mid = min(left + size - 1, (n-1));
+                int right = min((left + 2*size - 1), (n-1));
+                // merge sub array arr[left.....mid] &
+                // arr[mid+1....right]
+                merge(arr, left, mid, right);
+            }
+        }
+    }
+    
+    public static int min(int num, int num1) {
+    	return (num>num1)?num1:num;
+    }
+    
+    public static int getMinRun(int n)
+    {
+        int r = 0;  /* becomes 1 if the least significant bits contain at least one off bit */
+        while (n >= 64) {
+            r |= n & 1;
+            n >>= 1;
+        }
+        return n + r;
+    }
 }
