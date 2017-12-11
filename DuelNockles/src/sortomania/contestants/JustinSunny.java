@@ -10,7 +10,7 @@ public class JustinSunny {
 	public static void main(String[] args) {
 		int[] arr = new int[10000];
 		populate(arr);
-		
+		System.out.println(Arrays.toString(arr));
 		/*
 		timSort(arr, arr.length);
 		System.out.println(Arrays.toString(arr));
@@ -49,9 +49,11 @@ public class JustinSunny {
 			}
 		}
 		*/
+
 		for(int i = 0; i < arr.length; i++) {
 			arr[i] = (int) (Math.random() * 9999);
 		}
+
 	}
 	
 	//@Override
@@ -85,8 +87,9 @@ public class JustinSunny {
 		//insertionSort(mostlySorted); //10-14ms
 		//timSort(mostlySorted, mostlySorted.length); //10-12ms
 		//OptimizedQuickSort(mostlySorted, 0, mostlySorted.length - 1);
-		int halfWayMarker = (int) mostlySorted.length/2;
-		return (mostlySorted.length % 2 != 0)?((mostlySorted[halfWayMarker] + mostlySorted[halfWayMarker + 1])/2):mostlySorted[halfWayMarker];
+		insertionSortR(mostlySorted); //2-3ms
+		int halfWayMarker = (int) mostlySorted.length/2 - 1;
+		return (mostlySorted.length % 2 == 0)?((mostlySorted[halfWayMarker] + mostlySorted[halfWayMarker + 1])/2):mostlySorted[halfWayMarker];
 	}
 
 	//@Override
@@ -95,8 +98,8 @@ public class JustinSunny {
 		for(int i = 0; i < newArr.length; i++) {
 			newArr[i] = sortAndGetMedian(grid[i]);
 		}
-		int halfWayMarker = (int) newArr.length/2;
-		return (newArr.length % 2 != 0)?((newArr[halfWayMarker] + newArr[halfWayMarker + 1])/2):newArr[halfWayMarker];
+		int halfWayMarker = (int) newArr.length/2 - 1;
+		return (newArr.length % 2 == 0)?((newArr[halfWayMarker] + newArr[halfWayMarker + 1])/2):newArr[halfWayMarker];
 	}
 
 	//@Override
@@ -129,6 +132,17 @@ public class JustinSunny {
 	/* Function to sort an array using insertion sort*/
     public static void insertionSort(int[] arr) {
         for(int i = 1; i < arr.length; i++) {
+            int temp = arr[i];
+            int j;
+            for(j = i; j > 0 && arr[j-1] > temp; j--)
+                arr[j] = arr[j-1];
+            arr[j] = temp;
+        }
+    }
+    
+	/* Function to sort an array using insertion sort*/
+    public static void insertionSortR(int[] arr) {
+        for(int i = arr.length - 1; i >= 0; i--) {
             int temp = arr[i];
             int j;
             for(j = i; j > 0 && arr[j-1] > temp; j--)
