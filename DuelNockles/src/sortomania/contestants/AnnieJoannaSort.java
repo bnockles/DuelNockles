@@ -7,8 +7,10 @@ import sortomania.Contestant;
 public class AnnieJoannaSort extends Contestant {
 
 	public static void main(String[] args){
-		
-		
+		AnnieJoannaSort test = new AnnieJoannaSort();
+		int[] arr = {4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8};
+		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+		System.out.println("And the sorted array is: \n" + arr);
 	}
 	
 	public AnnieJoannaSort() {
