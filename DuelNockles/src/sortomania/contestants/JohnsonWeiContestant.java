@@ -1,6 +1,8 @@
-package sortomania;
+package sortomania.contestants;
 
 import java.awt.Color;
+
+import sortomania.Contestant;
 
 public class JohnsonWeiContestant extends Contestant {
 
