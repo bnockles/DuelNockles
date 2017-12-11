@@ -44,7 +44,7 @@ public class KevinStephContestant extends Contestant {
 	        if (random.length % 2 == 1) {
 	        	m = random[(random.length+1)/2];
 	        } else if (random.length % 2 == 0){
-	        	m = (random[random.length/2]);
+	        	m = (random[random.length/2] + random[(random.length/2)+1])/2;
 	        }
 	      
 	        return m;
