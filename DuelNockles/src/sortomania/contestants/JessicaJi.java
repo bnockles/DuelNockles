@@ -26,10 +26,41 @@ public class JessicaJi extends Contestant {
         }
 		return arr;
 	}
-	
-	public static int[] mergeSort(int[] arr) {
-		// TODO Auto-generated method stub
+
+	public static int[] mergeSort(int[] arr, int lower, int higher) {
+		int[] tempMergArr = new int[arr.length];
+		if (lower < higher) {
+	            int middle = lower + (higher - lower) / 2;
+	            // Below step sorts the left side of the array
+	            mergeSort(arr, lower, middle);
+	            // Below step sorts the right side of the array
+	            mergeSort(arr, middle + 1, higher);
+				//mergeParts(lowerIndex, middle, higherIndex);
+	            
+	            for (int i = lower; i <= higher; i++) {
+		        tempMergArr[i] = arr[i];
+		        }
+		        int i = lower;
+		        int j = middle + 1;
+		        int k = lower;
+		        while (i <= middle && j <= higher) {
+		            if (tempMergArr[i] <= tempMergArr[j]) {
+		                arr[k] = tempMergArr[i];
+		                i++;
+		            } else {
+		                arr[k] = tempMergArr[j];
+		                j++;
+		            }
+		            k++;
+		        }
+		        while (i <= middle) {
+		            arr[k] = tempMergArr[i];
+		            k++;
+		            i++;
+		        }
+	        }
 		return arr;
+	
 	}
 	
 	public static String[] insertionSortString(String[] arr) {
