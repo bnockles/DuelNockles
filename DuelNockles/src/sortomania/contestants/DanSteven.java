@@ -40,5 +40,10 @@ public class DanSteven extends Contestant{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	@Override
+	public double sortAndGetMedian(int[] random) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }
