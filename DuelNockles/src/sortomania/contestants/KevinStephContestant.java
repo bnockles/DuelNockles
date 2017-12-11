@@ -7,22 +7,22 @@ import sortomania.Contestant;
 public class KevinStephContestant extends Contestant {
 
 	public KevinStephContestant() {
-		// TODO Auto-generated constructor stub
+		KevinStephContestant test = new KevinStephContestant();
+		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+		System.out.println("And the sorted array is: \n" + arr);
 	}
 
-	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String getSpriteName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public double sortAndGetMedian(int[] random) {
 		int m = 0;
 		int n = random.length;
@@ -50,16 +50,23 @@ public class KevinStephContestant extends Contestant {
 	        return m;
 	}
 
-	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	@Override
+	
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp;
+        for (int i = 1; i < mostlySorted.length; i++) {
+            for(int j = i ; j > 0 ; j--){
+                if(mostlySorted[j] < mostlySorted[j-1]){
+                    temp = mostlySorted[j];
+                    mostlySorted[j] = mostlySorted[j-1];
+                    mostlySorted[j-1] = temp;
+                }
+            }
+        }
+        return 0;
 	}
 
 	@Override
@@ -68,14 +75,13 @@ public class KevinStephContestant extends Contestant {
 		return 0;
 	}
 
-	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
+		//sort comparable and return index of comparable.
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 
