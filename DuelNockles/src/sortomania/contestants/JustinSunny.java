@@ -21,7 +21,8 @@ public class JustinSunny extends Contestant {
 	@Override
 	public double sortAndGetMedian(int[] random) {
 		sort(random);
-		return 0;
+		int halfWayMarker = (int) random.length/2;
+		return (random.length % 2 != 0)?(random[halfWayMarker] + random[halfWayMarker + 1])/2:random[halfWayMarker];
 	}
 
 	@Override
@@ -37,8 +38,12 @@ public class JustinSunny extends Contestant {
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		double[] newArr = new double[grid.length];
+		for(int i = 0; i < newArr.length; i++) {
+			newArr[i] = sortAndGetMedian(grid[i]);
+		}
+		int halfWayMarker = (int) newArr.length/2;
+		return (newArr.length % 2 != 0)?(newArr[halfWayMarker] + newArr[halfWayMarker + 1])/2:newArr[halfWayMarker];
 	}
 
 	@Override
