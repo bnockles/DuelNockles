@@ -17,14 +17,12 @@ public class AnnieJoannaSort extends Contestant {
 
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Color(211, 233, 248);
 	}
 
 	@Override
 	public String getSpriteName() {
-		// TODO Auto-generated method stub
-		return null;
+		return CHUN_LI ;
 	}
 
 	@Override
