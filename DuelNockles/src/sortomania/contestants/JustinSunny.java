@@ -4,41 +4,52 @@ import java.awt.Color;
 
 import sortomania.Contestant;
 
-public class JustinSunny extends Contestant {
+public class JustinSunny {
 
-	@Override
+	public static void main(String[] args) {
+		int[] arr = new int[9999];
+		populate(arr);
+		long startTime =  System.currentTimeMillis();
+		sortAndGetMedian(arr);
+		long endTime =  System.currentTimeMillis();
+
+		long duration = (endTime - startTime);
+		System.out.println(duration + " " + sortAndGetMedian(arr));
+	}
+	
+	public static void populate(int[] arr) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] = (int) (Math.random() * 9999);
+		}
+	}
+	
 	public Color getColor() {
 		// TODO Auto-generated method stub
 		return new Color(153, 255, 153);
 	}
 
-	@Override
 	public String getSpriteName() {
 		// TODO Auto-generated method stub
 		return "RYU";
 	}
 
-	@Override
-	public double sortAndGetMedian(int[] random) {
+	public static double sortAndGetMedian(int[] random) {
 		sort(random);
 		int halfWayMarker = (int) random.length/2;
 		return (random.length % 2 != 0)?((random[halfWayMarker] + random[halfWayMarker + 1])/2):random[halfWayMarker];
 	}
 
-	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		sort(strings);
 		return binarySearch(strings, 0, strings.length - 1, toFind);
 	}
 
-	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		insertionSort(mostlySorted, mostlySorted.length);
 		int halfWayMarker = (int) mostlySorted.length/2;
 		return (mostlySorted.length % 2 != 0)?((mostlySorted[halfWayMarker] + mostlySorted[halfWayMarker + 1])/2):mostlySorted[halfWayMarker];
 	}
 
-	@Override
 	public double sortMultiDim(int[][] grid) {
 		double[] newArr = new double[grid.length];
 		for(int i = 0; i < newArr.length; i++) {
@@ -48,13 +59,12 @@ public class JustinSunny extends Contestant {
 		return (newArr.length % 2 != 0)?((newArr[halfWayMarker] + newArr[halfWayMarker + 1])/2):newArr[halfWayMarker];
 	}
 
-	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public void sort(int arr[])
+	public static void sort(int arr[])
     {
         int n = arr.length;
  
@@ -119,7 +129,7 @@ public class JustinSunny extends Contestant {
 	
     // To heapify a subtree rooted with node i which is
     // an index in arr[]. n is size of heap
-    public void heapify(int arr[], int n, int i)
+    public static void heapify(int arr[], int n, int i)
     {
         int largest = i;  // Initialize largest as root
         int l = 2*i + 1;  // left = 2*i + 1
