@@ -98,8 +98,8 @@ public class EthanDavidContestant extends Contestant {
 	}
 
 	public static void main(String[] args) {
-		EthanDavidContestant test = new EthanDavidContestant();
 		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		EthanDavidContestant test = new EthanDavidContestant();
 		
 	}
 
