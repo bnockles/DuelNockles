@@ -1,6 +1,10 @@
 package sortomania.contestants;
 
-public class DoubleJasons {
+import java.awt.Color;
+
+import sortomania.Contestant;
+
+public class DoubleJasons extends Contestant{
 	
 	private int[] ISSeq;
 	
@@ -18,13 +22,53 @@ public class DoubleJasons {
 	}
 	
 	private void shellSort(int[] random) {
-		// TODO Auto-generated method stub
+		int index = 0;
+		while() {
+			
+		}
 		
 	}
-		
-	public int taskOne(int[] random) {
+
+	@Override
+	public Color getColor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getSpriteName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double sortAndGetMedian(int[] random) {	
 		shellSort(random);
 		return random[random.length/2];
+	}
+
+	@Override
+	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double mostlySortAndGetMedian(int[] mostlySorted) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double sortMultiDim(int[][] grid) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 
