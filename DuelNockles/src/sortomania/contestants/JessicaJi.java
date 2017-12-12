@@ -18,8 +18,8 @@ public class JessicaJi extends Contestant {
 	//	System.out.println("The sorted string array is: \n" + Arrays.toString(mergeSortString(arr2)));
 	//	System.out.println("The sorted string array is: \n" + Arrays.toString(insertionSortString(arr2)));
 		System.out.println("The sorted 2D array is: \n" + Arrays.deepToString(sortMultiInt(arr3)));
-		System.out.println("The index of the sorted string array is: \n" + Integer.toString(test.sortAndGetResultingIndexOf(arr2,"Bob")));
-		System.out.println("The sorted 2D array is: \n" + Double.toString( test.sortMultiDim(arr3)));
+		System.out.println("The index of the sorted string array is: \n" + Integer.toString(test.sortAndGetResultingIndexOf(arr2,"Ji")));
+		System.out.println("The sorted 2D array's median is: \n" + Double.toString( test.sortMultiDim(arr3)));
 	}
 	public static int[] insertionSort(int[] arr) {
         for (int i=1; i<arr.length; i++)
@@ -206,7 +206,7 @@ public class JessicaJi extends Contestant {
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		grid = sortMultiInt(grid);
-		return medianMulti(grid);
+		return medianMulti(grid); //give wrong answer
 		
 	}
 	public double medianMulti(int[][] grid)
@@ -216,20 +216,13 @@ public class JessicaJi extends Contestant {
 	    int listPos = 0;
 	    for (int i = 0; i < grid.length; i++) 
 	    {
-	      for (int j = 0; j < grid.length; j++) 
+	      for (int j = 0; j < grid[0].length; j++) 
 	      {
 	        list[listPos++] = grid[i][j];
 	      }
 	    }
-	    
-	    int middle = list.length / 2;
-	    if (list.length % 2 == 1) {
-	      return list[middle];
-	    } 
-	    else 
-	    {
-	      return (list[middle - 1] + list[middle]) / 2;
-	    }
+	    return getMedian(list);
+	  
 	  
 	}
 	public static int[][] sortMultiInt(int[][] grid)
