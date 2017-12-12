@@ -3,7 +3,7 @@ package sortomania;
 import java.awt.Color;
 import java.util.Arrays;
 
-public class GarrettRicky extends Contestant {
+public class GarrettRicky extends Contestant{
 
 	public static void main(String[] args) {
 		GarrettRicky test = new GarrettRicky();
@@ -12,13 +12,16 @@ public class GarrettRicky extends Contestant {
 		//System.out.println(Arrays.toString(nintendo));
 		//System.out.println(test.sortAndGetResultingIndexOf(nintendo,"much"));
 		//System.out.println(Arrays.toString(nintendo));
-		int[][] example = {{1,3,5,4,2},{5,3,4,2,1}};
-		System.out.println(Arrays.toString(example[0]) + Arrays.toString(example[1]));
-		System.out.println(test.sortMultiDim(example));
-		System.out.println(Arrays.toString(example[0]) + Arrays.toString(example[1]));
+		//int[][] example = {{1,3,5,4,2},{5,3,4,2,1}};
+		//System.out.println(Arrays.toString(example[0]) + Arrays.toString(example[1]));
+		//System.out.println(test.sortMultiDim(example));
+		//System.out.println(Arrays.toString(example[0]) + Arrays.toString(example[1]));
 		//System.out.println(test.mostlySortAndGetMedian(mostlySorted));
 		//System.out.println(Arrays.toString(mostlySorted));
-		
+		Comparable[] compare = {"hello", "World", " bye", "no", "Yes"};
+		System.out.println(Arrays.toString(compare));
+		System.out.println(test.sortAndSearch(compare, "no"));
+		System.out.println(Arrays.toString(compare));
 	}
 
 	@Override
@@ -51,7 +54,7 @@ public class GarrettRicky extends Contestant {
 		}
 		return (double)random[(random.length-1)/2];
 	}
-	
+
 	public static int[] leftHalf(int[] array) {
 		int size1 = array.length / 2;
 		int[] left = new int[size1];
@@ -88,17 +91,17 @@ public class GarrettRicky extends Contestant {
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		for (int j=0; j<strings.length;j++)
-		   {
-		       for (int i=j+1 ; i<strings.length; i++)
-		       {
-		           if (strings[i].compareTo(strings[j])<0)
-		           {
-		               String temp = strings[j];
-		               strings[j] = strings[i];
-		               strings[i] = temp;
-		           }
-		       }
-		   }
+		{
+			for (int i=j+1 ; i<strings.length; i++)
+			{
+				if (strings[i].compareTo(strings[j])<0)
+				{
+					String temp = strings[j];
+					strings[j] = strings[i];
+					strings[i] = temp;
+				}
+			}
+		}
 		for(int k = 0; k < strings.length; k++) {
 			if(toFind.equals(strings[k])) {
 				return k;
@@ -160,7 +163,7 @@ public class GarrettRicky extends Contestant {
 		}
 		return (double)medians[(medians.length-1)/2];
 	}
-	
+
 	public static double[] leftHalf(double[] array) {
 		int size1 = array.length / 2;
 		double[] left = new double[size1];
@@ -196,8 +199,24 @@ public class GarrettRicky extends Contestant {
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		for (int j=0; j<arr.length;j++)
+		{
+			for (int i=j+1 ; i<arr.length; i++)
+			{
+				if (arr[i].compareTo(arr[j])<0)
+				{
+					Comparable temp = arr[j];
+					arr[j] = arr[i];
+					arr[i] = temp;
+				}
+			}
+		}
+		for(int k = 0; k < arr.length; k++) {
+			if(toFind.compareTo(arr[k]) == 0) {
+				return k;
+			}
+		}
+		return -1;
 	}
 
 }
