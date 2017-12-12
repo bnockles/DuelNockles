@@ -1,10 +1,18 @@
 package sortomania.contestants;
 
 import java.awt.Color;
+import java.util.Arrays;
 
 import sortomania.Contestant;
 
 public class JaneVictorContestant extends Contestant{
+	public static void main(String[] args) {
+		JaneVictorContestant test= new JaneVictorContestant();
+		int[] arr = {4, 5,6, 7,8, 12, 34, 35, 8, 40, 56, 61, 8, 68};
+		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
+		
+	}
 
 	@Override
 	public Color getColor() {
@@ -13,12 +21,12 @@ public class JaneVictorContestant extends Contestant{
 
 	@Override
 	public String getSpriteName() {
-		return "DEE_JAY";
+		return DEE_JAY;
 	}
 
 	@Override
 	public double sortAndGetMedian(int[] random) {
-		sortM(random, 0, random.length);
+		sortM(random, 0, random.length-1);
 		if(random.length % 2 == 0) {
 			return (random[random.length/2] + random[random.length/2-1])/2;
 		}else {
