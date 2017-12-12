@@ -6,9 +6,16 @@ import sortomania.Contestant;
 
 public class EthanDavidContestant extends Contestant {
 	
-	private static int[] arr;
+	public static void main(String[] args) {
+		EthanDavidContestant test = new EthanDavidContestant();
+	}
 
 	public EthanDavidContestant() {
+		testSort();
+	}
+
+	private void testSort() {
+		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
 		sortAndGetMedian(arr);
 	}
 
@@ -97,26 +104,31 @@ public class EthanDavidContestant extends Contestant {
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		double median = 0;
-		//insertion is the quickest
+		insertionSort(mostlySorted);
+		if(mostlySorted.length%2 != 0) {
+			median += mostlySorted[(int)(mostlySorted.length/2) - 1];
+		}
+		else {
+			median += (mostlySorted[0 + (mostlySorted.length/2)] + mostlySorted[(mostlySorted.length - mostlySorted.length/2)])/2;
+		}
 		return median;
 	}
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		double median = 0;
+		//sort through the grid
+		//get the median of each row
+		//add to new array
+		//find median of that array 
+		//return 
+		return median;
 	}
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	public static void main(String[] args) {
-		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
-		EthanDavidContestant test = new EthanDavidContestant();
-		
 	}
 
 }
