@@ -101,8 +101,24 @@ public class JaneVictorContestant extends Contestant{
 	
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		char[][] charArr = new char[strings.length][];
+		for(int i = 0; i < strings.length; i++) {
+			char[] arr = strings[i].toCharArray();
+			charArr[i] = arr;
+		}
+		//use radix sort?
+		//go through each char array in the 2d arr. 
+		//compare first letters anbd sorrt acordingly into seperate arrays. 
+		//Sort those arrays.
+		//keep going until a certain point. Then merge array.
+		//turn string into charArr. Find index where it is equal.
+		char[] selArr = toFind.toCharArray();
+		for(int i = 0; i < charArr.length; i++) {
+			if(charArr[i] == selArr) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	@Override
@@ -135,14 +151,16 @@ public class JaneVictorContestant extends Contestant{
 	  
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		int[] medians = new int[grid.length];
+		for(int i = 0; i < grid.length; i++) {
+			medians[i] = (int)sortAndGetMedian(grid[i]);
+		}
+		return sortAndGetMedian(medians);
 	}
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+	
 	}
 
 	
