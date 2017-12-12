@@ -56,16 +56,74 @@ public class TheoDevinBeepBoop extends Contestant {
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
-		return 0;
+		int numCounts[] = new int[mostlySorted.length];
+
+	    // populate numCounts
+	    for (int num : mostlySorted) {
+	        numCounts[num]++;
+	    }
+
+	    // populate the final sorted array
+	    int[] sortedArray = new int[mostlySorted.length];
+	    int currentSortedIndex = 0;
+
+	    // for each num in numCounts
+	    for (int num = 0; num < numCounts.length; num++) {
+	        int count = numCounts[num];
+
+	        // for the number of times the item occurs
+	        for (int i = 0; i < count; i++) {
+
+	            // add it to the sorted array
+	            sortedArray[currentSortedIndex] = num;
+	            currentSortedIndex++;
+	        }
+	    }
+	    mostlySorted = sortedArray;
+		if(mostlySorted.length%2==1) {
+			return (double)sortedArray[mostlySorted.length/2];
+		}else {
+			return (double)(sortedArray[mostlySorted.length/2]+sortedArray[(mostlySorted.length/2)-1])/2;
+		}
 	}
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
+		for(int i =0;i<grid.length;i++) {
+			grid[i]= countingSort(grid[i]);
+		}
+		
 		return 0;
 	}
+	  public int[] countingSort(int[] theArray) {
 
+		    // array of 0's at indices 0...maxValue
+		    int numCounts[] = new int[theArray.length];
+
+		    // populate numCounts
+		    for (int num : theArray) {
+		        numCounts[num]++;
+		    }
+
+		    // populate the final sorted array
+		    int[] sortedArray = new int[theArray.length];
+		    int currentSortedIndex = 0;
+
+		    // for each num in numCounts
+		    for (int num = 0; num < numCounts.length; num++) {
+		        int count = numCounts[num];
+
+		        // for the number of times the item occurs
+		        for (int i = 0; i < count; i++) {
+
+		            // add it to the sorted array
+		            sortedArray[currentSortedIndex] = num;
+		            currentSortedIndex++;
+		        }
+		    }
+
+		    return sortedArray;
+		}
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		// TODO Auto-generated method stub
