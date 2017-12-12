@@ -9,18 +9,22 @@ public class AnnieJoannaSort extends Contestant {
 
 	public static void main(String[] args){
 		AnnieJoannaSort test = new AnnieJoannaSort();
-		int[] arr = {4, 7, 10, 18, 12, 34, 42, 23, 40, 56, 31, 8};
-		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+		int[] arr = {2, 2, 4, 7, 9, 8, 10, 12, 18, 23, 31, 34, 40, 42, 56};
+		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
 		String[] arrS = {"cat", "dog", "hi", "boy", "girl", "apple juice", "bee", "cathair", "cat hair"};
-		System.out.println("The median is: " + test.sortAndGetResultingIndexOf(arrS, "cat"));
+		System.out.println("The index is: " + test.sortAndGetResultingIndexOf(arrS, "cat"));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arrS));
+		int[][] arrD = {{2, 4, 3}, {3, 5, 2}, {7, 2, 1, 2},};
+		System.out.println("The median of medians is: " + test.sortMultiDim(arrD));
+		String twoD = "[";
+		for(int i = 0; i < arrD.length - 1; i++)
+			twoD += Arrays.toString(arrD[i]) + ", ";
+		twoD += Arrays.toString(arrD[arrD.length - 1]) + "]";
+		System.out.println("And the sorted array is: \n" + twoD);
+		
 	}
 	
-	public AnnieJoannaSort() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Color getColor() {
 		return new Color(211, 233, 248);
@@ -33,9 +37,7 @@ public class AnnieJoannaSort extends Contestant {
 
 	@Override
 	public double sortAndGetMedian(int[] random) {
-
 		doMergeSort(random, 0, random.length -1);
-		
 		return getMedian(random);
 	}
 	
@@ -125,8 +127,59 @@ public class AnnieJoannaSort extends Contestant {
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		double[] medians = new double[grid.length];
+		for(int i = 0; i < grid.length; i++)
+			medians[i] = sortAndGetMedian(grid[i]);
+		return sortAndGetMedian(medians);
+	}
+	
+	public double sortAndGetMedian(double[] random) {
+		doMergeSort(random, 0, random.length -1);
+		return getMedian(random);
+	}
+	
+	public void doMergeSort(double[] arr, int lowerIndex, int higherIndex) {
+        if (lowerIndex < higherIndex) {
+            int middle = lowerIndex + (higherIndex - lowerIndex) / 2;
+            doMergeSort(arr, lowerIndex, middle);
+            doMergeSort(arr, middle + 1, higherIndex);
+            mergeParts(arr, lowerIndex, middle, higherIndex);
+        }
+    }
+ 
+    public void mergeParts(double[] arr, int lowerIndex, int middle, int higherIndex) {
+    	double[] tempMergArr = new double[arr.length];
+        for (int i = lowerIndex; i <= higherIndex; i++) {
+            tempMergArr[i] = arr[i];
+        }
+        int i = lowerIndex;
+        int j = middle + 1;
+        int k = lowerIndex;
+        while (i <= middle && j <= higherIndex) {
+            if (tempMergArr[i] <= tempMergArr[j]) {
+                arr[k] = tempMergArr[i];
+                i++;
+            } else {
+                arr[k] = tempMergArr[j];
+                j++;
+            }
+            k++;
+        }
+        while (i <= middle) {
+            arr[k] = tempMergArr[i];
+            k++;
+            i++;
+        }
+ 
+    }
+
+    public double getMedian(double[] sorted) {
+		double median;
+		if (sorted.length % 2 == 0)
+		    median = ((double)sorted[sorted.length/2] + (double)sorted[sorted.length/2 - 1])/2;
+		else
+		    median = (double) sorted[sorted.length/2];
+		return median;
 	}
 
 	@Override
