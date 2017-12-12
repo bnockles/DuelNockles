@@ -17,8 +17,13 @@ public class EthanDavidContestant extends Contestant {
 	}
 
 	private void testSort() {
-		int[] arr = {1,5,3,4};
-		sortAndGetMedian(arr);
+		int[][] arr = new int[2][2];
+		//int[] arr = {1,4,5,8,11,7};
+		arr[0][0] = 5;
+		arr[0][1] = 1;
+		arr[1][0] = 19;
+		arr[1][1] = 14;
+		sortMultiDim(arr);
 	}
 
 	@Override
@@ -83,10 +88,8 @@ public class EthanDavidContestant extends Contestant {
 	public double sortAndGetMedian(int[] random) {
 		quickSort(random,0,random.length-1);
 		if(random.length % 2 == 0) {
-			System.out.println((double)(random[random.length/2] + random[random.length/2-1])/2);
 			return (double)(random[random.length/2] + random[random.length/2-1])/2;
 		}else {
-			System.out.println(random[random.length/2]);
 			return random[random.length/2];
 		}
 	}
@@ -132,15 +135,14 @@ public class EthanDavidContestant extends Contestant {
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		double median = 0;
 		insertionSort(mostlySorted);
-		if(mostlySorted.length%2 != 0) {
-			median += mostlySorted[(int)(mostlySorted.length/2) - 1];
+		if(mostlySorted.length % 2 == 0) {
+			System.out.println((double)(mostlySorted[mostlySorted.length/2] + mostlySorted[mostlySorted.length/2-1])/2);
+			return (double)(mostlySorted[mostlySorted.length/2] + mostlySorted[mostlySorted.length/2-1])/2;
+		}else {
+			System.out.println(mostlySorted[mostlySorted.length/2]);
+			return mostlySorted[mostlySorted.length/2];
 		}
-		else {
-			median += (mostlySorted[0 + (mostlySorted.length/2)] + mostlySorted[(mostlySorted.length - mostlySorted.length/2)])/2;
-		}
-		return median;
 	}
 
 	@Override
@@ -156,6 +158,7 @@ public class EthanDavidContestant extends Contestant {
 		else {
 			median += (medianOfMedians[0 + (medianOfMedians.length/2)] + medianOfMedians[(medianOfMedians.length - medianOfMedians.length/2)])/2;
 		}
+		System.out.println(median);
 		return median;
 	}
 
