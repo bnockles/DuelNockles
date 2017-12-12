@@ -1,6 +1,7 @@
 package sortomania.contestants;
 
 import java.awt.Color;
+import java.util.Arrays;
 
 import sortomania.Contestant;
 
@@ -8,27 +9,26 @@ public class EthanDavidContestant extends Contestant {
 	
 	public static void main(String[] args) {
 		EthanDavidContestant test = new EthanDavidContestant();
+		test.testSort();
 	}
 
 	public EthanDavidContestant() {
-		testSort();
+
 	}
 
 	private void testSort() {
-		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		int[] arr = {1,5,3};
 		sortAndGetMedian(arr);
 	}
 
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Color(0,0,0);
 	}
 
 	@Override
 	public String getSpriteName() {
-		// TODO Auto-generated method stub
-		return null;
+		return KEN;
 	}
 	
 	public int partition(int arr[], int low, int high)
@@ -81,24 +81,54 @@ public class EthanDavidContestant extends Contestant {
 
 	@Override
 	public double sortAndGetMedian(int[] random) {
-		double median = 0;
-		System.out.println(random + " non-sorted");
-		quickSort(random,0,random.length);
-		System.out.println(random + " sorted");
-		if(random.length%2 != 0) {
-			median += random[(int)(random.length/2) - 1];
+		quickSort(random,0,random.length-1);
+		if(random.length%2 == 0) {
+			System.out.println((random[random.length/2] + random[(random.length - random.length/2)])/2);
+			return (random[random.length/2] + random[(random.length - random.length/2)])/2;
 		}
 		else {
-			median += (random[0 + (random.length/2)] + random[(random.length - random.length/2)])/2;
+			System.out.println(random[(int)(random.length/2) - 1]);
+			return random[(int)(random.length/2) - 1];
 		}
-		return median;
 	}
+	
+	public static int myStrCmp(String a,String b){
+		int i=0;
+		int l=0;
+		int s=0;
+		int r=0;
+		if(b.length()<=a.length()) 
+		l=b.length();
+		else
+		l=a.length(); 
+		for(i=0;i<l;i++){
+		if(a.charAt(i)>b.charAt(i)){
+		r=1;        
+		}
+		if(a.charAt(i)<b.charAt(i)){
+		r=-1;        
+		}
+		}            
+		return r;   
+		}
 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		int index = 0;
-		
-		return index;
+		for(int i=0;i<strings.length;i++){
+			for(int j=0;j<(strings.length-1);j++)  { 
+			if(myStrCmp(strings[j],strings[j+1])==1) {
+			String temp=strings[j];
+			strings[j]=strings[j+1];
+			strings[j+1]=temp;    
+			}
+			}
+			} 
+			for(int i=0;i<strings.length;i++){
+				if(strings[i].equals(toFind)) {
+					return i;
+				}
+			} 
+			return -1;
 	}
 
 	@Override
