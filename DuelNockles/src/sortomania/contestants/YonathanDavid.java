@@ -13,7 +13,7 @@ public class YonathanDavid extends Contestant{
 		int[] b = {1,3,5,7,9,11,13,15,17};
 		int[] c = {2,8,5,3,0,10,13,14,21};
 		int[] d= {5,4,7,0,12,15,17,11,20};
-		String[] z = {"kjgae","aergre","dnreiugnge","xroigner","xae","d386fggeg"};
+		String[] z = {"kjgae","aergre","aaf","abc","asfff","dnreiugnge","xroigner","xae","d386fggeg"};
 		int[][] x = {a,b,c,d};
 		YonathanDavid test = new YonathanDavid();
 		//double x = test.mostlySortAndGetMedian(a);
