@@ -12,6 +12,9 @@ public class AnnieJoannaSort extends Contestant {
 		int[] arr = {4, 7, 10, 18, 12, 34, 42, 23, 40, 56, 31, 8};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
+		String[] arrS = {"cat", "dog", "hi", "boy", "girl", "apple juice", "bee", "cathair", "cat hair"};
+		System.out.println("The median is: " + test.sortAndGetResultingIndexOf(arrS, "cat"));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arrS));
 	}
 	
 	public AnnieJoannaSort() {
@@ -87,14 +90,7 @@ public class AnnieJoannaSort extends Contestant {
                 }
             }
         }
-      
-        for (int i = 0; i < strings.length - 1; i++) 
-        {
-            System.out.print(strings[i] + ",");
-        }
-        System.out.print(strings[n - 1]);
-		
-        findIndex(strings,toFind);
+        return findIndex(strings,toFind);
 	}
 	
 
@@ -110,7 +106,7 @@ public class AnnieJoannaSort extends Contestant {
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		doInsertionSort(mostlySorted);
-		return 0;
+		return getMedian(mostlySorted);
 	}
 	
 	public int[] doInsertionSort(int[] input){
