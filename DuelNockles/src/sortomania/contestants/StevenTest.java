@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class StevenTest {
 	
 	static int[] numbers=new int[10000];
-	private int number;
+	private static int number;
 	
 	public static int[] getNumbers() {
 		return numbers;
@@ -33,7 +33,7 @@ public class StevenTest {
 		{
 		long startTime = System.nanoTime();
 		
-		a.sort(getNumbers());
+		System.out.println(sortAndGetMedian(getNumbers()));
 		
 		long endTime = System.nanoTime();
 		long b = endTime - startTime;
@@ -45,18 +45,20 @@ public class StevenTest {
 	//	System.out.print(a.getNumbers().toString());
 
 	//	System.out.println(Arrays.toString(getNumbers()));
+		
+		
 	}
-	public void sort(int[] values) {
+	public static void sort(int[] values) {
         // check for empty or null array
         if (values ==null || values.length==0){
             return;
         }
-        this.numbers = values;
+        numbers = values;
         number = values.length;
         quicksort(0, number - 1);
     }
 
-    private void quicksort(int low, int high) {
+    private static void quicksort(int low, int high) {
         int i = low, j = high;
         // Get the pivot element from the middle of the list
         int pivot = numbers[low + (high-low)/2];
@@ -92,11 +94,20 @@ public class StevenTest {
             quicksort(i, high);
     }
 
-    private void exchange(int i, int j) {
+    private static void exchange(int i, int j) {
         int temp = numbers[i];
         numbers[i] = numbers[j];
         numbers[j] = temp;
     }
+    
+    ////////TEST METHODS
+    
+    // quick sort
+    public static double sortAndGetMedian(int[] random) {
+    	sort(random);
+    	
+    	return (random[4999]+random[5000])/2;
+	}
 }
 
 
