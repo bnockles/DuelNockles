@@ -204,7 +204,7 @@ public class JessicaJi extends Contestant {
 	    }
 	  
 	}
-	public int[][] sortMultiInt(int[][] grid)
+	public static int[][] sortMultiInt(int[][] grid)
 	{
 		int m = grid.length;
 		int n = grid[0].length;
