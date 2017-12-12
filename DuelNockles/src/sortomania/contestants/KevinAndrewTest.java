@@ -21,7 +21,7 @@ public static void main(String a[]){
         System.out.println ("\n" + duration + " nanoseconds");
         System.out.println(sorter.mostlySortAndGetMedian(input));
         
-        String[] fruits = {"Apple","Mango","Peach","Banana","Orange","aaaaa","Grapes","Watermelon","Tomato"};
+        String[] fruits = {"Apple","Mango","Peach","Banana","Orange","aaaaa","Grapes","Watermelon","Tomato","an","abbn"};
         final long startTime2 = System.nanoTime();
         sorter.sortAndGetResultingIndexOf(fruits, "Peach");
         final long duration2 = System.nanoTime() - startTime2;
@@ -29,7 +29,7 @@ public static void main(String a[]){
             System.out.println(i);
         }
         System.out.println ("\n" + duration2 + " nanoseconds");
-        System.out.println(sorter.sortAndGetResultingIndexOf(fruits,"Apple"));
+        System.out.println(sorter.sortAndGetResultingIndexOf(fruits,"aaaaa"));
     }
 
 }
