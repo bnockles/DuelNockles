@@ -1,6 +1,7 @@
 package sortomania.contestants;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import sortomania.Contestant;
@@ -173,9 +174,24 @@ public class VincentNRaymond extends Contestant {
 		return getMedian(mostlySorted);
 	}
 
+
+	
+	
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		// TODO Auto-generated method stub
+		int count = 0;
+		double[] medianHolder = new double[(grid.length - 1 )]; 
+		for(int r = 0; r < grid.length - 1; r++) {
+			int[] medianHolder2 = new int[grid.length-1];
+			int counter2 = 0;
+			for(int c = 0; c < grid[r].length - 1; c ++) {
+				medianHolder2[counter2] = grid[r][c];
+				counter2++;
+			}
+			medianHolder[count] = sortAndGetMedian(medianHolder2);
+			count++;
+		}
 		
 		return 0;
 	}
