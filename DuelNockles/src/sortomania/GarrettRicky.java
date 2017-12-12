@@ -4,26 +4,6 @@ import java.awt.Color;
 import java.util.Arrays;
 
 public class GarrettRicky extends Contestant{
-
-	public static void main(String[] args) {
-		GarrettRicky test = new GarrettRicky();
-		//int[] mostlySorted = {0,1,2,3,6,5,7,8,4,9,11,10,12,13,14,15};
-		//String[] nintendo = {" Nintendo", "Switch", " costs", "way.....", " 2", "much", " nowadays "};
-		//System.out.println(Arrays.toString(nintendo));
-		//System.out.println(test.sortAndGetResultingIndexOf(nintendo,"much"));
-		//System.out.println(Arrays.toString(nintendo));
-		//int[][] example = {{1,3,5,4,2},{5,3,4,2,1}};
-		//System.out.println(Arrays.toString(example[0]) + Arrays.toString(example[1]));
-		//System.out.println(test.sortMultiDim(example));
-		//System.out.println(Arrays.toString(example[0]) + Arrays.toString(example[1]));
-		//System.out.println(test.mostlySortAndGetMedian(mostlySorted));
-		//System.out.println(Arrays.toString(mostlySorted));
-		Comparable[] compare = {"hello", "World", " bye", "no", "Yes"};
-		System.out.println(Arrays.toString(compare));
-		System.out.println(test.sortAndSearch(compare, "no"));
-		System.out.println(Arrays.toString(compare));
-	}
-
 	@Override
 	public Color getColor() {
 		return new Color(51, 204, 51);
@@ -37,18 +17,17 @@ public class GarrettRicky extends Contestant{
 	@Override
 	public double sortAndGetMedian(int[] random) {
 		if (random.length > 1) {
-			// split array into two halves
+
 			int[] left = leftHalf(random);
 			int[] right = rightHalf(random);
 
-			// recursively sort the two halves
 			sortAndGetMedian(left);
 			sortAndGetMedian(right);
 
 			// merge the sorted halves into a sorted whole
 			merge(random, left, right);
 		}
-		//INSERT GETMEDIAN METHOD//
+
 		if(random.length % 2 == 0) {
 			return (double)(random[random.length/2] + random[random.length/2 - 1])/2;
 		}
@@ -74,8 +53,8 @@ public class GarrettRicky extends Contestant{
 	}
 
 	public static void merge(int[] result, int[] left, int[] right) {
-		int i1 = 0;   // index into left array
-		int i2 = 0;   // index into right array
+		int i1 = 0;  
+		int i2 = 0;  
 
 		for (int i = 0; i < result.length; i++) {
 			if (i2 >= right.length || (i1 < left.length && left[i1] <= right[i2])) {
@@ -118,9 +97,6 @@ public class GarrettRicky extends Contestant{
 			int key = mostlySorted[i];
 			int j = i-1;
 
-			/* Move elements of arr[0..i-1], that are
-	               greater than key, to one position ahead
-	               of their current position */
 			while (j>=0 && mostlySorted[j] > key)
 			{
 				mostlySorted[j+1] = mostlySorted[j];
@@ -128,7 +104,8 @@ public class GarrettRicky extends Contestant{
 			}
 			mostlySorted[j+1] = key;
 		}
-		//INSERT GETMEDIAN METHOD//
+
+		
 		if(mostlySorted.length % 2 == 0) {
 			return (double)(mostlySorted[mostlySorted.length/2] + mostlySorted[mostlySorted.length/2 - 1])/2;
 		}
@@ -146,18 +123,17 @@ public class GarrettRicky extends Contestant{
 
 	public double sortAndGetMedian(double[] medians) {
 		if (medians.length > 1) {
-			// split array into two halves
+
 			double[] left = leftHalf(medians);
 			double[] right = rightHalf(medians);
 
-			// recursively sort the two halves
+
 			sortAndGetMedian(left);
 			sortAndGetMedian(right);
 
-			// merge the sorted halves into a sorted whole
 			merge(medians, left, right);
 		}
-		//INSERT GETMEDIAN METHOD//
+
 		if(medians.length % 2 == 0) {
 			return (double)(medians[medians.length/2] + medians[medians.length/2 - 1])/2;
 		}
@@ -183,15 +159,15 @@ public class GarrettRicky extends Contestant{
 	}
 
 	public static void merge(double[] result, double[] left, double[] right) {
-		int i1 = 0;   // index into left array
-		int i2 = 0;   // index into right array
+		int i1 = 0; 
+		int i2 = 0;  
 
 		for (int i = 0; i < result.length; i++) {
 			if (i2 >= right.length || (i1 < left.length && left[i1] <= right[i2])) {
-				result[i] = left[i1];    // take from left
+				result[i] = left[i1];  
 				i1++;
 			} else {
-				result[i] = right[i2];   // take from right
+				result[i] = right[i2]; 
 				i2++;
 			}
 		}
