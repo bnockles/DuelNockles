@@ -65,7 +65,7 @@ class Radix {
  static void print(int arr[], int n)
  {
      for (int i=0; i<n; i++)
-         System.out.print(arr[i]+" ");
+         System.out.println(arr[i]+" ");
  }
 
 
@@ -81,13 +81,15 @@ class Radix {
     	 long startTime = System.nanoTime();
     	 radixsort(arr, 10000);
     	 long endTime = System.nanoTime();
-    	 avg+=(endTime+startTime);
+    	 avg+=(endTime-startTime);
     	 for(int j=0;j<arr.length;j++) {
         	 arr[j]=(int)(Math.random()*10000);
          }
      }
-     avg=avg/500;
+     radixsort(arr, 10000);
      print(arr, 10000);
+     avg=avg/500;
+     //print(arr, 10000);
      System.out.println(avg);
  }
 }
