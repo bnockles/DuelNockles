@@ -1,6 +1,7 @@
 package sortomania.contestants;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class StevenTest {
 	
@@ -25,30 +26,41 @@ public class StevenTest {
 			numbers[i]=(int)(Math.random()*10000);
 		}
 	}
-	public static String[] generateArray(int size){
-
-	    String[] arr= new String[size];
-	    int[] val = new int[size];
-
-	    for (int i=0; i<arr.length; i++) {
-	        val[i] = (int)(100 * Math.random());
-	        arr[i] = String.valueOf(val[i]);
+	
+	/************************************************************************************************************************/
+	
+	public static String[] generateRandomWords(int numberOfWords)
+	{
+	    String[] randomStrings = new String[numberOfWords];
+	    Random random = new Random();
+	    for(int i = 0; i < numberOfWords; i++)
+	    {
+	        char[] word = new char[random.nextInt(8)+3]; // words of length 3 through 10. (1 and 2 letter words are boring.)
+	        for(int j = 0; j < word.length; j++)
+	        {
+	            word[j] = (char)('a' + random.nextInt(26));
+	        }
+	        randomStrings[i] = new String(word);
 	    }
-
-	    return arr;
+	    return randomStrings;
 	}
+	
+	/************************************************************************************************************************/
+	
 	public static void main(String[] args) {
+		
+		String[] strings = generateRandomWords(10000);
 		StevenTest a=new StevenTest();
 		a.makeNums();
-		//strings[] = a.generateArray(10000);
 		long avg = 0;
 		for (int i = 0; i < 200; i++)
 		{
 			long startTime = System.nanoTime();
 			
 			sortAndGetMedian(getNumbers());	
-			sortAndGetResultingIndexOf(strings ,"r");
-		
+			sortAndGetResultingIndexOf(strings , "adj");
+			mostlySortAndGetMedian(getNumbers());
+			
 		long endTime = System.nanoTime();
 		long b = endTime - startTime;
 		avg += b;
@@ -56,11 +68,11 @@ public class StevenTest {
 		}
 		avg = avg/200;
 		System.out.println("That took " + avg + " nanoTime");
-	//	System.out.print(a.getNumbers().toString());
 
 		System.out.println(sortAndGetMedian(getNumbers()));	
-		System.out.println(sortAndGetResultingIndexOf(strings ,"r"));
+		System.out.println(sortAndGetResultingIndexOf(strings , "adj"));
 		System.out.println(Arrays.toString(strings));
+		System.out.println(mostlySortAndGetMedian(getNumbers()));
 		
 		
 	}
@@ -179,14 +191,25 @@ public class StevenTest {
 		return -1;
 	}
 	
-	public double mostlySortAndGetMedian(int[] mostlySorted)
+	public static double mostlySortAndGetMedian(int[] mostlySorted)
 	{
 		for (int i = 0; i < mostlySorted.length; i++)
 		{
 			
-		//	if (mostlySorted[i] <)
+			if (i+1 < mostlySorted.length)
+			{
+				if (mostlySorted[i+1] < mostlySorted[i])
+				{
+					sort(mostlySorted);
+					return (mostlySorted[4999]+mostlySorted[5000])/2;
+				}
+			}
+			else
+			{
+				return (mostlySorted[4999]+mostlySorted[5000])/2;
+			}
 		}
-		return 0;
+		return -1;
 	}
 }
 
