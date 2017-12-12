@@ -18,12 +18,14 @@ public class EthanDavidContestant extends Contestant {
 
 	private void testSort() {
 		int[][] arr = new int[2][2];
-		//int[] arr = {1,4,5,8,11,7};
+		int[] arr1 = {1,4,5,8,11,7};
 		arr[0][0] = 5;
 		arr[0][1] = 1;
 		arr[1][0] = 19;
 		arr[1][1] = 14;
 		sortMultiDim(arr);
+		sortAndGetMedian(arr1);
+		System.out.println(Arrays.toString(arr1));
 	}
 
 	@Override
@@ -159,6 +161,8 @@ public class EthanDavidContestant extends Contestant {
 			median += (medianOfMedians[0 + (medianOfMedians.length/2)] + medianOfMedians[(medianOfMedians.length - medianOfMedians.length/2)])/2;
 		}
 		System.out.println(median);
+		//sortAndGetMedian(medianOfMedians);
+		System.out.println(Arrays.toString(medianOfMedians));
 		return median;
 	}
 
