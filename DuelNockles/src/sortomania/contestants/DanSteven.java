@@ -46,7 +46,7 @@ public class DanSteven extends Contestant{
 	}
 	@Override
 	public String getSpriteName() {
-		return "Steven";
+		return "CHUN-LI";
 	}
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind)
@@ -68,7 +68,7 @@ public class DanSteven extends Contestant{
 		for (int i = 0; i < mostlySorted.length; i++)
 		{
 			
-			if (i+1 < mostlySorted.length)
+			if (i+1 < mostlySorted.length-1)
 			{
 				if (mostlySorted[i+1] < mostlySorted[i])
 				{
@@ -96,8 +96,18 @@ public class DanSteven extends Contestant{
 		return sortAndGetMedian(median);
 	}
 	@Override
-	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		return 0;
+	public int sortAndSearch(Comparable[] arr, Comparable toFind) 
+	{
+		bubbleSort(arr);
+		
+		for (int i = 0; i < arr.length; i++)
+		{
+			if (arr[i].compareTo(toFind) == 0)
+			{
+				return i;
+			}
+		}
+		return -1;
 	}
 	@Override
 	public double sortAndGetMedian(int[] random) {
@@ -160,8 +170,10 @@ public class DanSteven extends Contestant{
 	         countSort(arr, n, exp);
 	 }
 
-	public void mergeSort(String[] a) {
-        if (a.length >= 2) {
+	public void mergeSort(String[] a) 
+	{
+        if (a.length >= 2)
+        {
             String[] left = new String[a.length / 2];
             String[] right = new String[a.length-a.length / 2];
 
@@ -173,7 +185,6 @@ public class DanSteven extends Contestant{
             {
                 right[i] = a[i + a.length / 2];
             }
-
             mergeSort(left);
             mergeSort(right);
 
@@ -181,18 +192,48 @@ public class DanSteven extends Contestant{
         }
     }
 
-    public void merge(String[] result, String[] left, String[] right) {
+    public void merge(String[] result, String[] left, String[] right)
+    {
         int i1 = 0;
         int i2 = 0;
-        for (int i = 0; i < result.length; i++) {
+        for (int i = 0; i < result.length; i++) 
+        {
         	 if (i2 >= right.length || (i1 < left.length &&
-                     left[i1].compareToIgnoreCase(right[i2])<0)) {
-                      result[i] = left[i1];
-                      i1++;
-                 } else {
-                      result[i] = right[i2];
-                      i2++;
-                 }
-            }
+                     left[i1].compareToIgnoreCase(right[i2])<0)) 
+        	 {
+        		 result[i] = left[i1];
+                 i1++;
+             } 
+        	 else 
+             {
+                 result[i] = right[i2];
+                 i2++;
+             }
+       }
     }
+    
+    public void bubbleSort(Comparable[] array)
+    {
+         boolean noChange = true; // stop when a pass causes no change
+         for(int i = array.length; i > 0; i--)
+         {
+              noChange = true;
+              for(int j = 1; j < i; j++)
+              {
+                   if(array[j].compareTo(array[j - 1]) < 0)
+                   {
+                        swap(array, j, j - 1);
+                        noChange = false;
+                   }
+              }
+              if (noChange)
+                   return; // sorted--no need to continue
+         }
+    }
+    public void swap(Object[] array, int index1, int index2)
+    {
+         Object temp = array[index1];
+         array[index1] = array[index2];
+         array[index2] = temp;
+    } 
 }
