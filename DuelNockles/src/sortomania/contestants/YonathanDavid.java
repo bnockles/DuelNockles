@@ -13,7 +13,7 @@ public class YonathanDavid extends Contestant{
 		int[] b = {1,3,5,7,9,11,13,15,17};
 		int[] c = {2,8,5,3,0,10,13,14,21};
 		int[] d= {5,4,7,0,12,15,17,11,20};
-		String[] z = {"kjgae","gergre","gnreiugnge","groigner"};
+		String[] z = {"kjgae","aergre","dnreiugnge","xroigner","xae","d386fggeg"};
 		int[][] x = {a,b,c,d};
 		YonathanDavid test = new YonathanDavid();
 		//double x = test.mostlySortAndGetMedian(a);
@@ -56,16 +56,20 @@ public class YonathanDavid extends Contestant{
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		//David
 		 int n = strings.length;
+
 	        for (int i = 0; i < n-1; i++)
 	            for (int j = 0; j < n-i-1; j++)
-	                if (check(strings[i].substring(j, j+1),strings[i+1].substring(j, j+1)))
+	          
+	                if (strings[j].compareTo(strings[j+1])>0)
 	                {
+	                	
 	                    // swap temp and arr[i]
 	                	//strings[j].compareTo(strings[j+1])>0
 	                    String temp = strings[j];
 	                    strings[j] =strings[j+1];
-	                    strings[j+1] = temp;
-	                }
+	                    strings[j+1] = temp;	                
+	                    }
+		  
 		for(int i = 0;i<strings.length-1;i++) {
 			if(strings[i]== toFind) {
 				
@@ -74,7 +78,8 @@ public class YonathanDavid extends Contestant{
 		}
 		return -1;
 	}
-
+	
+/*
 	public boolean check(String s1,String s2) {
 		//check if one is larger than the other
 		//run along each string checking each letter until it runs out.\
@@ -97,11 +102,10 @@ public class YonathanDavid extends Contestant{
 		if(s == l) {
 			return true;
 		}
-		
-		
+
 		return false;
 	}
-
+*/
 	@Override
 	public  double mostlySortAndGetMedian(int[] arr) {
 		// make sure median is returned correctly
