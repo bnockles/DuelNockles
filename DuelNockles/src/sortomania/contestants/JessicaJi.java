@@ -11,13 +11,14 @@ public class JessicaJi extends Contestant {
 		JessicaJi test = new JessicaJi();
 		int[] arr = {4, 7, 10, 2, 8, 12, 100, 34, 42, 23, 40, 56, 31, 8};
 		String[] arr2 = {"Jessica", "Ji", "Bob", "Sam", "Amanda", "Panda"};
-		int[][] arr3 = { {1,2,3,11} , {7,10,9,0} };
+		int[][] arr3 = { {1,2,5,7} , {7,5,9,0} };
 	//	System.out.println("The median is: " + test.sortAndGetMedian(arr));
 	//	System.out.println("And the sorted array is: \n" + Arrays.toString(insertionSort(arr)));
 	//	System.out.println("And the sorted array is: \n" + Arrays.toString(mergeSort(arr, 0, arr.length - 1)));
 	//	System.out.println("The sorted string array is: \n" + Arrays.toString(mergeSortString(arr2)));
 	//	System.out.println("The sorted string array is: \n" + Arrays.toString(insertionSortString(arr2)));
-	//	System.out.println("The sorted 2D array is: \n" + Arrays.deepToString(sortMultiInt(arr3)));
+		System.out.println("The sorted 2D array is: \n" + Arrays.deepToString(sortMultiInt(arr3)));
+		System.out.println("The sorted 2D array is: \n" + Double.toString( test.sortMultiDim(arr3)));
 	}
 	public static int[] insertionSort(int[] arr) {
         for (int i=1; i<arr.length; i++)
@@ -177,27 +178,50 @@ public class JessicaJi extends Contestant {
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		grid = sortMultiInt(grid);
-		return 0;
+		return medianMulti(grid);
 		
 	}
-	public static int[][] sortMultiInt(int[][] grid)
+	public double medianMulti(int[][] grid)
+	{
+	    int[] list = new int[grid.length * grid[0].length];
+
+	    int listPos = 0;
+	    for (int i = 0; i < grid.length; i++) 
+	    {
+	      for (int j = 0; j < grid.length; j++) 
+	      {
+	        list[listPos++] = grid[i][j];
+	      }
+	    }
+	    
+	    int middle = list.length / 2;
+	    if (list.length % 2 == 1) {
+	      return list[middle];
+	    } 
+	    else 
+	    {
+	      return (list[middle - 1] + list[middle]) / 2;
+	    }
+	  
+	}
+	public int[][] sortMultiInt(int[][] grid)
 	{
 		int m = grid.length;
 		int n = grid[0].length;
-		int t=0;
-          for(int x=0;x<m;x++)
+		int t = 0;
+          for(int x = 0;x < m;x++)
           {
-              for(int y=0;y<n;y++)
+              for(int y = 0;y < n;y++)
               {
-                  for(int i=0;i<m;i++)
+                  for(int i = 0;i < m;i++)
                   {
-                      for(int j=0;j<n;j++)
+                      for(int j = 0;j < n;j++)
                       {
-                          if(grid[i][j]>grid[x][y])
+                          if(grid[i][j] > grid[x][y])
                           {
                               t = grid[x][y];
                               grid[x][y]= grid[i][j];
-                              grid[i][j]=t;
+                              grid[i][j] = t;
                           }
                       }
                   }
