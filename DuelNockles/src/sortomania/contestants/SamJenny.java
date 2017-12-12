@@ -1,5 +1,22 @@
 package sortomania.contestants;
 
+
+/**
+ * x start
+ * y start
+ * w width of each sprite
+ * h height
+ * n number of sprites
+ * 3 sprite lists
+ *  -standing
+ *  -hitting
+ *  -getting hit
+ *  
+ *  penguinmaple.png
+ *  0,0,118,76,8
+ *  0,161,126,84,4
+ *  0,449,174,98,2
+ */
 import java.awt.Color;
 
 import sortomania.Contestant;
