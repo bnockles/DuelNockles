@@ -2,13 +2,41 @@ package sortomania;
 
 import java.awt.Color;
 
-public class JasonDavid extends Contestant{
+public class JasonDavid{ //extends Contestants
 	public static void main(String args[]) {
 		JasonDavid hi = new JasonDavid();
-		int[] array = rand();
+		long num = simAvg();
+		System.out.println(num+ " " + simSD(num)+" ms");
 		
 	}
-	@Override
+	
+	public static long simAvg() {
+		long num = 0;
+		for (int i=0; i<200; i++) {
+			JasonDavid hi = new JasonDavid();
+			int[] array = rand();
+			long startTime = System.nanoTime();
+			double med = hi.sortAndGetMedian(array);
+			long endTime = System.nanoTime();
+			long duration = (endTime - startTime)/100000;
+			num += duration;
+		}
+		return num/200;
+	}
+	public static long simSD(long avg) {
+		long num =0;
+		for (int i=0; i<200; i++) {
+			JasonDavid hi = new JasonDavid();
+			int[] array = rand();
+			long startTime = System.nanoTime();
+			double med = hi.sortAndGetMedian(array);
+			long endTime = System.nanoTime();
+			long duration = (endTime - startTime)/100000;
+			num += Math.pow(duration-avg, 2);
+		}
+		return (long) Math.sqrt(num/201);
+	}
+	//@Override
 	public Color getColor() {
 		return new Color(124, 255, 124);
 	}
@@ -20,7 +48,7 @@ public class JasonDavid extends Contestant{
 	         System.out.print(anArray[i]);
 	      }
 	   }
-	@Override
+	//@Override
 	public String getSpriteName() {
 		return CHUN_LI;
 	}
@@ -35,7 +63,7 @@ public class JasonDavid extends Contestant{
 	public static int randInt(int min, int max) {
 		return min + (int)(Math.random() * ((max - min) + 1));
 	}
-	@Override
+	//@Override
 	public double sortAndGetMedian(int[] random) {
 		 sort(random,0,random.length-1);
 		 if (random.length%2==0) {
@@ -92,25 +120,25 @@ public class JasonDavid extends Contestant{
 	          sort(arr, pi+1, high);
 	      }
 	  }
-	@Override
+	//@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
+	//@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
+	//@Override
 	public double sortMultiDim(int[][] grid) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
+	//@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		// TODO Auto-generated method stub
 		return 0;
