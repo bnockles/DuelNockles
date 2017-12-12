@@ -1,20 +1,19 @@
-package sortomania;
+package bensid;
 
-public class MergeSortComparable {
+public class MergeSortString {
 	/* Java program for Merge Sort */
-
 	    // Merges two subarrays of arr[].
 	    // First subarray is arr[l..m]
 	    // Second subarray is arr[m+1..r]
-	    void merge(Comparable arr[], int l, int m, int r)
+	    void merge(String arr[], int l, int m, int r)
 	    {
 	        // Find sizes of two subarrays to be merged
 	        int n1 = m - l + 1;
 	        int n2 = r - m;
 	 
 	        /* Create temp arrays */
-	        Comparable L[] = new Comparable [n1];
-	        Comparable R[] = new Comparable [n2];
+	        String L[] = new String [n1];
+	        String R[] = new String [n2];
 	 
 	        /*Copy data to temp arrays*/
 	        for (int i=0; i<n1; ++i)
@@ -32,7 +31,7 @@ public class MergeSortComparable {
 	        int k = l;
 	        while (i < n1 && j < n2)
 	        {
-	            if (L[i].compareTo(R[j]) <= 0)// <= R[j])
+	            if (L[i].compareTo(R[j]) <= 0) //<= R[j])
 	            {
 	                arr[k] = L[i];
 	                i++;
@@ -64,7 +63,7 @@ public class MergeSortComparable {
 	 
 	    // Main function that sorts arr[l..r] using
 	    // merge()
-	    void sort(Comparable arr[], int l, int r)
+	    void sort(String arr[], int l, int r)
 	    {
 	        if (l < r)
 	        {
@@ -81,7 +80,7 @@ public class MergeSortComparable {
 	    }
 	 
 	    /* A utility function to print array of size n */
-	    static void printArray(Comparable arr[])
+	    static void printArray(String arr[])
 	    {
 	        int n = arr.length;
 	        for (int i=0; i<n; ++i)
@@ -92,16 +91,17 @@ public class MergeSortComparable {
 	    // Driver method
 	    public static void main(String args[])
 	    {
-	    	Comparable arr[] = {12, 11, 13, 5, 6, 7};
+	        String arr[] = {"asd", "trt", "tre", "uty", "abc"};
 	 
 	        System.out.println("Given Array");
 	        printArray(arr);
 	 
-	        MergeSortComparable ob = new MergeSortComparable();
+	        MergeSortString ob = new MergeSortString();
 	        ob.sort(arr, 0, arr.length-1);
 	 
 	        System.out.println("\nSorted array");
 	        printArray(arr);
 	    }
 	
+    
 }

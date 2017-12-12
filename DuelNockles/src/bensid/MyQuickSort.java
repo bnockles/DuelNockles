@@ -1,4 +1,4 @@
-package sortomania;
+package bensid;
 
 public class MyQuickSort {
     

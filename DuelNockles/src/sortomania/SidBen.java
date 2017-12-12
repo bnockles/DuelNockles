@@ -2,6 +2,11 @@ package sortomania;
 
 import java.awt.Color;
 
+import bensid.MergeSortComparable;
+import bensid.MergeSortDouble;
+import bensid.MergeSortString;
+import bensid.MyQuickSort;
+
 public class SidBen extends Contestant{
 
 	private int[] numbers;
