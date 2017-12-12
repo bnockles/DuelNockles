@@ -19,30 +19,10 @@ public class AndrewKevin extends Contestant{
 	}
 	private int array[];
     private int length;
+    
+    /**------------------------------------------**/
 	@Override
 	public   double sortAndGetMedian(int[] random) {
-	/*	int n = random.length;
-        char output[] = new char[n];
-        int count[] = new int[10000];
-        for (int i=0; i<10000; ++i)
-            count[i] = 0;
-        for (int i=0; i<n; ++i)
-            ++count[random[i]];
-        for (int i=1; i<=10000-1; ++i)
-            count[i] += count[i-1];
-        for (int i = 0; i<n; ++i)
-        {
-            output[count[random[i]]-1] = (char) random[i];
-            --count[random[i]];
-        }
-        for (int i = 0; i<n; ++i)
-            random[i] = output[i];
-		
-        if(random.length%2 == 0) {
-        	return (random[random.length/2] + random[random.length/2+1])/2;
-        }
-        	return random[random.length/2];
-    */    	
 		sort(random);
 		if(random.length%2 ==0) {
 			return ((random[random.length/2]+random[(random.length/2)+1])/2);
@@ -88,42 +68,16 @@ public class AndrewKevin extends Contestant{
         array[i] = array[j];
         array[j] = temp;
     }
-
-	/*void swap(int a, int b)
-	{
-	    int t = a;
-	    a = b;
-	    b = t;
-	}
-	int partition (int arr[], int low, int high)
-	{
-	    int pivot = arr[high];
-	    int i = (low - 1);
-	    for (int j = low; j <= high- 1; j++)
-	    {
-	        if (arr[j] <= pivot)
-	        {
-	            i++;
-	            swap(arr[i], arr[j]);
-	        }
-	    }
-	    swap(arr[i + 1], arr[high]);
-	    return (i + 1);
-	}
-	void quickSort(int arr[], int low, int high)
-	{
-	    if (low < high)
-	    {
-	        int pi = partition(arr, low, high);
-	        quickSort(arr, low, pi - 1);
-	        quickSort(arr, pi + 1, high);
-	    }
-	}
-*/
+  /**------------------------------------------**/
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		mergeSort(strings);
-		return 0;
+		for(int i = 0; i < strings.length; i++) {
+			if(strings[i].equals(toFind)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 	
     public static void mergeSort(String[] names) {
@@ -158,19 +112,30 @@ public class AndrewKevin extends Contestant{
             }
         }
     }
-
+    /**------------------------------------------**/
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
+		 int n = mostlySorted.length;
+	        for (int i=1; i<n; ++i)
+	        {
+	            int key = mostlySorted[i];
+	            int j = i-1;
+	            while (j>=0 && mostlySorted[j] > key)
+	            {
+	                mostlySorted[j+1] = mostlySorted[j];
+	                j = j-1;
+	            }
+	            mostlySorted[j+1] = key;
+	        }
 		return 0;
 	}
-
+	 /**------------------------------------------**/
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	 /**------------------------------------------**/
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		// TODO Auto-generated method stub

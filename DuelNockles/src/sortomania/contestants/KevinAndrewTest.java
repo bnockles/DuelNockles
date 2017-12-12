@@ -13,14 +13,12 @@ public static void main(String a[]){
         //}
         int[] input = {24,2,45,20,56,75,2,56,53,12};
         final long startTime = System.nanoTime();
-        sorter.sort(input);
+        sorter.mostlySortAndGetMedian(input);
         final long duration = System.nanoTime() - startTime;
         for(int i:input){
             System.out.println(i);
         }
         System.out.println ("\n" + duration + " nanoseconds");
-        System.out.println (input.length/2);
-        System.out.println(input[input.length/2]);
         System.out.println(sorter.sortAndGetMedian(input));
         
         String[] fruits = {"Apple","Mango","Peach","Banana","Orange","aaaaa","Grapes","Watermelon","Tomato"};
@@ -31,6 +29,7 @@ public static void main(String a[]){
             System.out.println(i);
         }
         System.out.println ("\n" + duration2 + " nanoseconds");
+        System.out.println(sorter.sortAndGetResultingIndexOf(fruits,"Apple"));
     }
 
 }
