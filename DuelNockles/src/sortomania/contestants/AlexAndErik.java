@@ -289,7 +289,7 @@ public class AlexAndErik extends Contestant {
 	
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stu
 		return 0;
 	}
 
