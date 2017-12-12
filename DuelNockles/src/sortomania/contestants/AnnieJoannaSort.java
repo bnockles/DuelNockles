@@ -74,9 +74,38 @@ public class AnnieJoannaSort extends Contestant {
 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		String temp;
+		for (int i = 0; i < strings.length; i++) 
+        {
+            for (int j = i + 1; j < strings.length; j++) 
+            {
+                if (strings[i].compareTo(strings[j])>0) 
+                {
+                    temp = strings[i];
+                    strings[i] = strings[j];
+                    strings[j] = temp;
+                }
+            }
+        }
+      
+        for (int i = 0; i < strings.length - 1; i++) 
+        {
+            System.out.print(strings[i] + ",");
+        }
+        System.out.print(strings[n - 1]);
+		
+        findIndex(strings,toFind);
 	}
+	
+
+	private int findIndex(String[] strings, String toFind) {
+		for(int i = 0; i < strings.length; i++) {
+			if(strings[i].equals(toFind))
+				return i;
+		}
+		return -1;
+	}
+
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
