@@ -22,6 +22,15 @@ public static void main(String a[]){
         System.out.println (input.length/2);
         System.out.println(input[input.length/2]);
         System.out.println(sorter.sortAndGetMedian(input));
+        
+        String[] fruits = {"Apple","Mango","Peach","Banana","Orange","aaaaa","Grapes","Watermelon","Tomato"};
+        final long startTime2 = System.nanoTime();
+        sorter.sortAndGetResultingIndexOf(fruits, "Peach");
+        final long duration2 = System.nanoTime() - startTime;
+        for(String i:fruits){
+            System.out.println(i);
+        }
+        System.out.println ("\n" + duration2 + " nanoseconds");
     }
 
 }
