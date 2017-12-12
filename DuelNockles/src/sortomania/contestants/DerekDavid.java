@@ -8,16 +8,28 @@ public class DerekDavid extends Contestant {
 
 	public static void main(String[] args) {
 
+		
+		  int [] array = new int[100];                    // Sorted Array of 100
+		    for (int a = 0; a < array.length; a++) {
+		      array[a] = (a + 1) * 10;
+		    }
+
 		DerekDavid test = new DerekDavid();
-		int[] arr = { 1, 3,5,7,84,23,4};
+		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		
 		
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
-
-		int n = arr.length;
-		test.sort(arr);
-
-		System.out.println("Sorted array is");
+		System.out.println("And the sorted array is: \n"); 
 		printArray(arr);
+		
+		
+		int[] mostlyArr = test.insertionSort(array);
+		
+		System.out.println("The mostly sorted array \n");
+		printArray(mostlyArr);
+		System.out.println("The median of the mostly sorted array is: " + test.mostlySortAndGetMedian(array));
+
+		
 }
 
 
@@ -49,8 +61,16 @@ public class DerekDavid extends Contestant {
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
-		return 0;
+		int [] numArray = insertionSort(mostlySorted);
+		
+		double median;
+		if (numArray.length % 2 == 0)
+			median = ((double) numArray[numArray.length / 2] + (double) numArray[numArray.length / 2 - 1]) / 2;
+		else
+			median = (double) numArray[numArray.length / 2];
+		return median;
+		
+		
 	}
 
 	@Override
@@ -118,4 +138,28 @@ public class DerekDavid extends Contestant {
 			System.out.print(arr[i] + " ");
 		System.out.println();
 	}
+	
+	
+	public int[] insertionSort(int arr[])
+    {
+        int n = arr.length;
+        for (int i=1; i<n; ++i)
+        {
+            int key = arr[i];
+            int j = i-1;
+ 
+            /* Move elements of arr[0..i-1], that are
+               greater than key, to one position ahead
+               of their current position */
+            while (j>=0 && arr[j] > key)
+            {
+                arr[j+1] = arr[j];
+                j = j-1;
+            }
+            arr[j+1] = key;
+        }
+        
+        return arr;
+    }
+	
 }
