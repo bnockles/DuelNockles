@@ -136,11 +136,12 @@ public class AnnieJoannaSort extends Contestant {
 	}
 	
 	public double getMedian(int[] sorted) {
-		double half = sorted.length / 2;
-		if(half != (int)(half))
-			return sorted[(int) half];
+		double median;
+		if (sorted.length % 2 == 0)
+		    median = ((double)sorted[sorted.length/2] + (double)sorted[sorted.length/2 - 1])/2;
 		else
-			return (double)((sorted[(int) half] + sorted[(int) (half - 1)]) / 2);
+		    median = (double) sorted[sorted.length/2];
+		return median;
 	}
-
+	
 }
