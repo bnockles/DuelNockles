@@ -13,10 +13,11 @@ public class KevinStephContestant extends Contestant {
     
 	public static void main(String[] args) {
 		KevinStephContestant test = new KevinStephContestant();
-		Comparable[] arr = {4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8};
+		//Comparable[] arr = {4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8};
 		//String[] arr = {"d", "a", "h", "f", "g", "e", "s", "d"};
-		System.out.println("The index is: " + test.sortAndSearch(arr, 10));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
+		int[][] arr = {{1,2,3,4}, {5,8,9,10}};
+		//System.out.println("The index is: " + sortMultiDim(arr));
+		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr));
 	}
 
 	
