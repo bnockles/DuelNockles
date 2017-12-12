@@ -25,15 +25,29 @@ public class StevenTest {
 			numbers[i]=(int)(Math.random()*10000);
 		}
 	}
+	public static String[] generateArray(int size){
+
+	    String[] arr= new String[size];
+	    int[] val = new int[size];
+
+	    for (int i=0; i<arr.length; i++) {
+	        val[i] = (int)(100 * Math.random());
+	        arr[i] = String.valueOf(val[i]);
+	    }
+
+	    return arr;
+	}
 	public static void main(String[] args) {
 		StevenTest a=new StevenTest();
 		a.makeNums();
+		//strings[] = a.generateArray(10000);
 		long avg = 0;
 		for (int i = 0; i < 200; i++)
 		{
-		long startTime = System.nanoTime();
-		
-		System.out.println(sortAndGetMedian(getNumbers()));
+			long startTime = System.nanoTime();
+			
+			sortAndGetMedian(getNumbers());	
+			sortAndGetResultingIndexOf(strings ,"r");
 		
 		long endTime = System.nanoTime();
 		long b = endTime - startTime;
@@ -44,7 +58,9 @@ public class StevenTest {
 		System.out.println("That took " + avg + " nanoTime");
 	//	System.out.print(a.getNumbers().toString());
 
-	//	System.out.println(Arrays.toString(getNumbers()));
+		System.out.println(sortAndGetMedian(getNumbers()));	
+		System.out.println(sortAndGetResultingIndexOf(strings ,"r"));
+		System.out.println(Arrays.toString(strings));
 		
 		
 	}
@@ -104,31 +120,40 @@ public class StevenTest {
     
     /************************************************************************************************************************/
     // Merge Sort
-    public static void sort(int[] a, int low, int high) 
-    {
-        int N = high - low;         
-        if (N <= 1) 
-            return; 
-        int mid = low + N/2; 
-        // recursively sort 
-        sort(a, low, mid); 
-        sort(a, mid, high); 
-        // merge two sorted subarrays
-        int[] temp = new int[N];
-        int i = low, j = mid;
-        for (int k = 0; k < N; k++) 
-        {
-            if (i == mid)  
-                temp[k] = a[j++];
-            else if (j == high) 
-                temp[k] = a[i++];
-            else if (a[j]<a[i]) 
-                temp[k] = a[j++];
-            else 
-                temp[k] = a[i++];
-        }    
-        for (int k = 0; k < N; k++) 
-            a[low + k] = temp[k];         
+    public static void mergeSort(String[] a) {
+        if (a.length >= 2) {
+            String[] left = new String[a.length / 2];
+            String[] right = new String[a.length-a.length / 2];
+
+            for (int i = 0; i < left.length; i++)
+            {
+                left[i] = a[i];
+            }
+            for (int i = 0; i < right.length; i++)
+            {
+                right[i] = a[i + a.length / 2];
+            }
+
+            mergeSort(left);
+            mergeSort(right);
+
+            merge(a, left, right);
+        }
+    }
+
+    public static void merge(String[] result, String[] left, String[] right) {
+        int i1 = 0;
+        int i2 = 0;
+        for (int i = 0; i < result.length; i++) {
+        	 if (i2 >= right.length || (i1 < left.length &&
+                     left[i1].compareToIgnoreCase(right[i2])<0)) {
+                      result[i] = left[i1];
+                      i1++;
+                 } else {
+                      result[i] = right[i2];
+                      i2++;
+                 }
+            }
     }
     /************************************************************************************************************************/
     
@@ -137,6 +162,31 @@ public class StevenTest {
     	sort(random);
     	
     	return (random[4999]+random[5000])/2;
+	}
+    
+	public static int sortAndGetResultingIndexOf(String[] strings, String toFind)
+	{
+		mergeSort(strings);
+		
+		for (int i = 0; i < strings.length; i++)
+		{
+			if (strings[i].equals(toFind))
+			{
+				return i;
+			}
+		}
+		
+		return -1;
+	}
+	
+	public double mostlySortAndGetMedian(int[] mostlySorted)
+	{
+		for (int i = 0; i < mostlySorted.length; i++)
+		{
+			
+		//	if (mostlySorted[i] <)
+		}
+		return 0;
 	}
 }
 
