@@ -4,15 +4,8 @@ import java.awt.Color;
 
 import sortomania.Contestant;
 
-public class SamJenny{
-
-	public static void main(String[] args) {
-		//int[] test = {3,5,1,4,2,6,10};
-		//int[][] test = {{1,6,4,3,2},{7,12,5,70,8}, {1,2,3,4,5}, {6,7,8,9,10}};
-		Comparable[] test = {"a","c","d","b", "sdfsdf", "342", "bbd", "'"};
-		System.out.println(sortAndSearch(test, "a;sdfkqwldfk"));
-	}
-
+public class SamJenny extends Contestant{
+	
 	public Color getColor() {
 		return new Color(142,202,255);
 	}
@@ -23,7 +16,7 @@ public class SamJenny{
 	}
 
 
-	public static double sortAndGetMedian(int[] random) {
+	public double sortAndGetMedian(int[] random) {
 		sort(random);
 		if(random.length%2 == 0) {
 			return (double)(random[random.length/2-1]+random[random.length/2])/2;
@@ -31,7 +24,7 @@ public class SamJenny{
 		return random[random.length/2];
 	}
 
-	public static double sortAndGetMedian(double[] random) {
+	public double sortAndGetMedian(double[] random) {
 		sort(random);
 		if(random.length%2 == 0) {
 			return (double)(random[random.length/2-1]+random[random.length/2])/2;
@@ -39,7 +32,7 @@ public class SamJenny{
 		return random[random.length/2];
 	}
 
-	public static void sort(int arr[])
+	public void sort(int arr[])
 	{
 		int n = arr.length;
 
@@ -60,7 +53,7 @@ public class SamJenny{
 		}
 	}
 
-	public static void sort(double arr[])
+	public void sort(double arr[])
 	{
 		int n = arr.length;
 
@@ -83,7 +76,7 @@ public class SamJenny{
 
 	// To heapify a subtree rooted with node i which is
 	// an index in arr[]. n is size of heap
-	static void heapify(int arr[], int n, int i)
+	 void heapify(int arr[], int n, int i)
 	{
 		int largest = i;  // Initialize largest as root
 		int l = 2*i + 1;  // left = 2*i + 1
@@ -108,7 +101,7 @@ public class SamJenny{
 			heapify(arr, n, largest);
 		}
 	}
-	static void heapify(double arr[], int n, int i)
+	 void heapify(double arr[], int n, int i)
 	{
 		int largest = i;  // Initialize largest as root
 		int l = 2*i + 1;  // left = 2*i + 1
@@ -134,7 +127,7 @@ public class SamJenny{
 		}
 	}
 
-	public static void swap(int i, int j) {
+	public void swap(int i, int j) {
 		int temp = i;
 		i = j;
 		j = temp;
@@ -142,7 +135,7 @@ public class SamJenny{
 	}
 
 
-	public static int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		for (int i = 0; i < strings.length; i++) 
 		{
 			for (int j = i + 1; j < strings.length; j++) 
@@ -166,7 +159,7 @@ public class SamJenny{
 	}
 
 
-	public static double mostlySortAndGetMedian(int[] mostlySorted) {
+	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		sort2(mostlySorted);
 		if(mostlySorted.length%2 == 0) {
 			return (double)(mostlySorted[mostlySorted.length/2-1]+mostlySorted[mostlySorted.length/2])/2;
@@ -174,7 +167,7 @@ public class SamJenny{
 		return mostlySorted[mostlySorted.length/2];
 	}
 
-	static void sort2(int arr[])
+	 void sort2(int arr[])
 	{
 		int n = arr.length;
 		for (int i=1; i<n; ++i)
@@ -195,7 +188,7 @@ public class SamJenny{
 	}
 
 
-	public static double sortMultiDim(int[][] grid) {
+	public double sortMultiDim(int[][] grid) {
 		double[] medians = new double[grid.length];
 		for(int row = 0; row < grid.length; row++) {
 			medians[row] = sortAndGetMedian(grid[row]);
@@ -204,7 +197,7 @@ public class SamJenny{
 	}
 
 
-	public static int sortAndSearch(Comparable[] arr, Comparable toFind) {
+	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		for (int i = 0; i < arr.length; i++) 
 		{
 			for (int j = i + 1; j < arr.length; j++) 
