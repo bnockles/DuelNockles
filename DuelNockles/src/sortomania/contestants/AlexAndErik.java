@@ -17,6 +17,7 @@ public class AlexAndErik extends Contestant {
 
 	public static void main(String[] args) {
 		AlexAndErik test = new AlexAndErik();
+		
 		int[] array = {2,2,3,4,5};
 		System.out.println("The median is " + test.sortAndGetMedian(array) + " .");
 		System.out.println("And the sorted array is: \n" + Arrays.toString(array));
@@ -33,6 +34,14 @@ public class AlexAndErik extends Contestant {
 		int[] arr2 = {11,20,10};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr2));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr2));
+		
+		int[] arr3 = {11,20,21,50};
+		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr3));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arr3));
+		
+		int[] arr4 = {11,20,10};
+		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr4));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arr4));
 	}
 
 	
@@ -46,16 +55,20 @@ public class AlexAndErik extends Contestant {
 		return E_HONDA;
 	}
 
+	public double getMedian(int[] arr) {
+		if(arr.length%2 == 0) {
+			int mid = (arr.length/2) -1;
+			int mid2 = arr.length/2;
+			return (double)(arr[mid] + arr[mid2])/2;
+		}else {
+			int mid = arr.length/2;
+			return arr[mid];
+		}
+	}
+	
 	public double sortAndGetMedian(int[] random) {
 		mergeSort(random);
-		if(random.length%2 == 0) {
-			int mid = (random.length/2) -1;
-			int mid2 = random.length/2;
-			return (double)(random[mid] + random[mid2])/2;
-		}else {
-			int mid = random.length/2;
-			return random[mid];
-		}
+		return getMedian(random);
 	}	
 //CODE TO MERGE INCOMPLETE
 /*	
@@ -166,14 +179,17 @@ public class AlexAndErik extends Contestant {
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
-		return 0;
+		mergeSort(mostlySorted);
+		return getMedian(mostlySorted);
 	}
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		double[] medians = new double[grid.length];
+		for(int i = 0; i < grid.length;i++) {
+			mergeSort(grid[i]);
+			medians[i] = getMedian(grid[i]);
+		}
 	}
 
 	@Override
