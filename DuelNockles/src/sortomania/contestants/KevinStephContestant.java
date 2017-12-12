@@ -1,26 +1,31 @@
 package sortomania.contestants;
 
 import java.awt.Color;
+import java.util.Arrays;
 
 import sortomania.Contestant;
 
 public class KevinStephContestant extends Contestant {
 
 	public KevinStephContestant() {
+		
+	}
+    
+	public static void main(String[] args) {
 		KevinStephContestant test = new KevinStephContestant();
-		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
-		System.out.println("The median is: " + test.sortAndGetMedian(arr));
-		System.out.println("And the sorted array is: \n" + arr);
+		Comparable[] arr = {4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8};
+		//String[] arr = {"d", "a", "h", "f", "g", "e", "s", "d"};
+		System.out.println("The index is: " + test.sortAndSearch(arr, 10));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
 	}
 
+	
 	public Color getColor() {
-		// TODO Auto-generated method stub
-		return null;
+		return Color.green;
 	}
 
 	public String getSpriteName() {
-		// TODO Auto-generated method stub
-		return null;
+		return BLANKA;
 	}
 
 	public double sortAndGetMedian(int[] random) {
@@ -30,33 +35,55 @@ public class KevinStephContestant extends Contestant {
 	        for (int i = 0; i < n-1; i++)
 	        {
 	        	// Find the minimum element in unsorted array
-	        	int min_idx = i;
+	        	int min = i;
 	        	for (int j = i+1; j < n; j++)
-	                if (random[j] < random[min_idx])
-	                    min_idx = j;
+	                if (random[j] < random[min])
+	                    min = j;
 	 
 	            // Swap the found minimum element with the first element
-	            int temp = random[min_idx];
-	            random[min_idx] = random[i];
+	            int temp = random[min];
+	            random[min] = random[i];
 	            random[i] = temp;
 	        }
 	        
 	        if (random.length % 2 == 1) {
-	        	m = random[(random.length+1)/2];
+	        	m = random[(random.length)/2];
 	        } else if (random.length % 2 == 0){
-	        	m = (random[random.length/2] + random[(random.length/2)+1])/2;
+	        	m = (random[random.length/2] + random[(random.length/2)-1])/2;
 	        }
 	      
 	        return m;
 	}
 
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		int n = strings.length;
+		String temp = "";
+		int found = 0;
+		
+        for (int i = 0; i < n-1; i++)
+        {
+        	// a negative value if this String is first, a positive value if other is first and 0 if the two objects are equal value
+        	int min = i;
+        	for (int j = i+1; j < n; j++)
+                if (strings[j].compareTo(strings[min]) < 0) {
+                    min = j;
+                } 
+ 
+            temp = strings[min];
+            strings[min] = strings[i];
+            strings[i] = temp;
+        }
+        for (int a = 0; a < strings.length; a++) {
+        	if (strings[a] == toFind) {
+        		found = a;
+        	}
+        }
+		return found;
 	}
 	
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		int temp;
+		int m = 0;
         for (int i = 1; i < mostlySorted.length; i++) {
             for(int j = i ; j > 0 ; j--){
                 if(mostlySorted[j] < mostlySorted[j-1]){
@@ -66,23 +93,79 @@ public class KevinStephContestant extends Contestant {
                 }
             }
         }
-        return 0;
+        
+        if (mostlySorted.length % 2 == 1) {
+        	m = mostlySorted[(mostlySorted.length)/2];
+        } else if (mostlySorted.length % 2 == 0){
+        	m = (mostlySorted[mostlySorted.length/2] + mostlySorted[(mostlySorted.length/2)-1])/2;
+        }
+      
+        return m;
 	}
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		int[] ms = null;
+		int m = 0;
+		int sum = 0;
+		
+		for (int i = 0; i < grid.length; i++) {
+			for (int j = 0; j < grid[i].length; j++) {
+				int min = grid[i][j];
+				for (int a = j+1; a < grid[i].length; a++) {
+					if (grid[i][a] < grid[i][min]) {
+						grid[i][min] = grid[i][a];
+					}
+					
+					int temp = grid[i][min];
+					grid[i][min] = grid[i][j];
+					grid[i][j] = temp;
+				}
+				
+				if (grid[j].length % 2 == 1) {
+		        	m = grid[j][(grid[j].length)/2];
+		        } else if (grid[j].length % 2 == 0){
+		        	m = (grid[j][grid[j].length/2] + grid[j][(grid[j].length/2)-1])/2;
+		        }
+				
+				ms[i] = m;
+			}
+	      
+		}
+		if (ms.length % 2 == 1) {
+        	sum = ms[(ms.length)/2];
+        } else if (ms.length % 2 == 0){
+        	sum = (ms[ms.length/2] + ms[(ms.length/2)-1])/2;
+        }
+		
+		return sum;
 	}
 
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		//sort comparable and return index of comparable.
-		// TODO Auto-generated method stub
-		return 0;
+		int n = arr.length;
+		int found = 0;
+			// One by one move boundary of unsorted subarray
+	        for (int i = 0; i < n-1; i++)
+	        {
+	        	// Find the minimum element in unsorted array
+	        	int min = i;
+	        	for (int j = i+1; j < n; j++)
+	                if (arr[j].compareTo(arr[min]) < 0)
+	                    min = j;
+	 
+	            // Swap the found minimum element with the first element
+	            Comparable temp = arr[min];
+	            arr[min] = arr[i];
+	            arr[i] = temp;
+	        }
+	        for (int a = 0; a < arr.length; a++) {
+	        	if (arr[a] == toFind) {
+	        		found = a;
+	        	}
+	        }
+			return found;
 	}
 
-	public static void main(String[] args) {
-
-	}
-
+	
 }
