@@ -26,7 +26,7 @@ public static void main(String a[]){
         String[] fruits = {"Apple","Mango","Peach","Banana","Orange","aaaaa","Grapes","Watermelon","Tomato"};
         final long startTime2 = System.nanoTime();
         sorter.sortAndGetResultingIndexOf(fruits, "Peach");
-        final long duration2 = System.nanoTime() - startTime;
+        final long duration2 = System.nanoTime() - startTime2;
         for(String i:fruits){
             System.out.println(i);
         }
