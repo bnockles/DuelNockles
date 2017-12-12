@@ -6,24 +6,20 @@ import sortomania.Contestant;
 
 public class DerekDavid extends Contestant {
 
-	
-
 	public static void main(String[] args) {
-		
-		
-
 
 		DerekDavid test = new DerekDavid();
-		int[] arr = {1,2,3,4,5,6};
+		int[] arr = { 1, 3,5,7,84,23,4};
+		
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
-		
-		
-		System.out.println("And the sorted array is: \n" + test.sort(arr));
-		
-	
-		
-		
-	}
+
+		int n = arr.length;
+		test.sort(arr);
+
+		System.out.println("Sorted array is");
+		printArray(arr);
+}
+
 
 	@Override
 	public Color getColor() {
@@ -47,7 +43,7 @@ public class DerekDavid extends Contestant {
 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-
+		
 		return 0;
 	}
 
@@ -72,35 +68,54 @@ public class DerekDavid extends Contestant {
 	public int[] sort(int arr[]) {
 		int n = arr.length;
 
-		// The output character array that will have sorted arr
-		int output[] = new int[n];
+		// Build heap (rearrange array)
+		for (int i = n / 2 - 1; i >= 0; i--)
+			heapify(arr, n, i);
 
-		// Create a count array to store count of inidividul
-		// characters and initialize count array as 0
-		int count[] = new int[256];
-		for (int i = 0; i < 256; ++i)
-			count[i] = 0;
+		// One by one extract an element from heap
+		for (int i = n - 1; i >= 0; i--) {
+			// Move current root to end
+			int temp = arr[0];
+			arr[0] = arr[i];
+			arr[i] = temp;
 
-		// store count of each character
-		for (int i = 0; i < n; ++i)
-			++count[arr[i]];
-
-		// Change count[i] so that count[i] now contains actual
-		// position of this character in output array
-		for (int i = 1; i <= 255; ++i)
-			count[i] += count[i - 1];
-
-		// Build the output character array
-		for (int i = 0; i < n; ++i) {
-			output[count[arr[i]] - 1] = (int) arr[i];
-			--count[arr[i]];
+			// call max heapify on the reduced heap
+			heapify(arr, i, 0);
 		}
-
-		// Copy the output array to arr, so that arr now
-		// contains sorted characters
-		for (int i = 0; i < n; ++i)
-			arr[i] = output[i];
-		return output;
+		return arr;
 	}
 
+	// To heapify a subtree rooted with node i which is
+	// an index in arr[]. n is size of heap
+	void heapify(int arr[], int n, int i) {
+		int largest = i; // Initialize largest as root
+		int l = 2 * i + 1; // left = 2*i + 1
+		int r = 2 * i + 2; // right = 2*i + 2
+
+		// If left child is larger than root
+		if (l < n && arr[l] > arr[largest])
+			largest = l;
+
+		// If right child is larger than largest so far
+		if (r < n && arr[r] > arr[largest])
+			largest = r;
+
+		// If largest is not root
+		if (largest != i) {
+			int swap = arr[i];
+			arr[i] = arr[largest];
+			arr[largest] = swap;
+
+			// Recursively heapify the affected sub-tree
+			heapify(arr, n, largest);
+		}
+	}
+
+	/* A utility function to print array of size n */
+	static void printArray(int arr[]) {
+		int n = arr.length;
+		for (int i = 0; i < n; ++i)
+			System.out.print(arr[i] + " ");
+		System.out.println();
+	}
 }
