@@ -17,7 +17,7 @@ public class EthanDavidContestant extends Contestant {
 	}
 
 	private void testSort() {
-		int[] arr = {1,5,3};
+		int[] arr = {1,5,3,4};
 		sortAndGetMedian(arr);
 	}
 
@@ -82,13 +82,12 @@ public class EthanDavidContestant extends Contestant {
 	@Override
 	public double sortAndGetMedian(int[] random) {
 		quickSort(random,0,random.length-1);
-		if(random.length%2 == 0) {
-			System.out.println((random[random.length/2] + random[(random.length - random.length/2)])/2);
-			return (random[random.length/2] + random[(random.length - random.length/2)])/2;
-		}
-		else {
-			System.out.println(random[(int)(random.length/2) - 1]);
-			return random[(int)(random.length/2) - 1];
+		if(random.length % 2 == 0) {
+			System.out.println((double)(random[random.length/2] + random[random.length/2-1])/2);
+			return (double)(random[random.length/2] + random[random.length/2-1])/2;
+		}else {
+			System.out.println(random[random.length/2]);
+			return random[random.length/2];
 		}
 	}
 	
