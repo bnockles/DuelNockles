@@ -137,13 +137,24 @@ public class JessicaJi extends Contestant {
 	@Override
 	public double sortAndGetMedian(int[] random) {
 		random = mergeSort(random, 0, random.length - 1);
-		if((random.length - 1)%2 == 0)
-		{
-			
-		}
-		
+		return getMedian(random);
 	}
 
+	
+	public double getMedian(int[] x)	
+	{
+		double median;
+		if (x.length % 2 == 0)//even 
+		{
+		    median = ((double)x[x.length/2] + (double)x[x.length/2 - 1])/2; //two numbers in middle adding then dividng by 2
+		}
+		else //odd
+		{
+		    median = (double) x[x.length/2];
+		}//middle num
+		
+		return median;
+	}
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		// TODO Auto-generated method stub
@@ -152,10 +163,12 @@ public class JessicaJi extends Contestant {
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
-		return 0;
+		mostlySorted = insertionSort(mostlySorted);
+		return getMedian(mostlySorted);
 	}
 
+
+	
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		// TODO Auto-generated method stub
