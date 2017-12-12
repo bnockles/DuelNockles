@@ -59,8 +59,12 @@ public class AbidAbedContestant extends Contestant
 	@Override
 	public double sortMultiDim(int[][] grid) 
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		double medians[] = new double[grid[0].length];
+		for(int i=0;i < grid[0].length;i++) {
+			for(int j=0; j<grid.length;j++) {
+				sortAndGetMedian(int)
+			}
+		}
 	}
 
 	@Override
