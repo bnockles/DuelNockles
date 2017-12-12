@@ -5,18 +5,16 @@ import java.util.Arrays;
 
 public class CarsonSort extends Contestant{
 
-	private static int array[];
-	private int length;
-
 	public static void main(String a[]){
 		CarsonSort test = new CarsonSort();
-		int[] input = {24,2,45,20,56,75,2,56,99,53,12,1};
-		CarsonSort.quickSort(input, 0, input.length - 1);
-		System.out.println("The median is: " + test.sortAndGetMedian(input));
-		for(int i:input){
-            System.out.print(i);
-            System.out.print(" ");
-        }
+		int[][] input = {{4,2,5,1,3}, {3,7,6,4,7}, {6,5,3,1,6}, {4,8,1,2,6}};
+		System.out.println(test.sortMultiDim(input));
+		
+		for(int i = 0; i < input.length; i ++) {
+			for(int j = 0; j < input[i].length; j++) {
+				System.out.println(input[i][j] + " ");
+			}
+		}
 	}
 
 	public Color getColor() {
@@ -32,8 +30,9 @@ public class CarsonSort extends Contestant{
 		if(random.length % 2 == 0) {
 			return (random[(int)random.length /2]+random[((int)random.length /2)+1])/2;
 		}
-		else
-		return random[(int)random.length /2];
+		else {
+			return random[(int)random.length /2];
+		}
 		//System.out.println(Arrays.toString(random));
 
 	}
@@ -70,6 +69,7 @@ public class CarsonSort extends Contestant{
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		insertSort(mostlySorted);
+
 		if(mostlySorted.length % 2 == 0) {
 			return (mostlySorted[(int)mostlySorted.length /2]+mostlySorted[((int)mostlySorted.length /2)+1])/2;
 		}
@@ -78,8 +78,11 @@ public class CarsonSort extends Contestant{
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		int[] arr = new int[grid.length];
+		for(int i = 0; i < grid.length; i ++) {
+			arr[i] = (int) sortAndGetMedian(grid[i]);
+		}
+		return sortAndGetMedian(arr);
 	}
 
 	@Override
@@ -124,44 +127,6 @@ public class CarsonSort extends Contestant{
 			quickSort(intArr, lowerIndex, j);
 		if (i < higherIndex)
 			quickSort(intArr, i, higherIndex);
-	}
-	
-	public void quickSort(String[] strArr, int lowerIndex, int higherIndex) {
-		
-		if (strArr == null || strArr.length == 0) {
-			return;
-		}
-
-		int i = lowerIndex;
-		int j = higherIndex;
-		// calculate pivot number, I am taking pivot as middle index number
-		int pivot = array[lowerIndex+(higherIndex-lowerIndex)/2];
-		// Divide into two arrays
-		while (i <= j) {
-			/**
-			 * In each iteration, we will identify a number from left side which 
-			 * is greater then the pivot value, and also we will identify a number 
-			 * from right side which is less then the pivot value. Once the search 
-			 * is done, then we exchange both numbers.
-			 */
-			while (array[i] < pivot) {
-				i++;
-			}
-			while (array[j] > pivot) {
-				j--;
-			}
-			if (i <= j) {
-				swap(strArr, i, j);
-				//move index to next position on both sides
-				i++;
-				j--;
-			}
-		}
-		// call quickSort() method recursively
-		if (lowerIndex < j)
-			quickSort(strArr, lowerIndex, j);
-		if (i < higherIndex)
-			quickSort(strArr, i, higherIndex);
 	}
 
 	private static void swap(int[] arr, int i, int j) {
