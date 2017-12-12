@@ -9,7 +9,7 @@ public class AnnieJoannaSort extends Contestant {
 
 	public static void main(String[] args){
 		AnnieJoannaSort test = new AnnieJoannaSort();
-		int[] arr = {4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8};
+		int[] arr = {4, 7, 10, 18, 12, 34, 42, 23, 40, 56, 31, 8};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
 	}
@@ -31,51 +31,46 @@ public class AnnieJoannaSort extends Contestant {
 	@Override
 	public double sortAndGetMedian(int[] random) {
 
-		mergeSort(random);
+		doMergeSort(random, 0, random.length -1);
 		
 		return getMedian(random);
 	}
 	
 	
-	public  int[] mergeSort(int[] array){
-	    if(array.length==1)return array;
-	    int half = array.length/2;//rounds down
-	    int[] firstHalf = new int[half];
-	    int[] secondHalf = new int[array.length - half];
-	    for(int i=0; i<firstHalf.length; i++){
-	        firstHalf[i]=array[i];
-	    }
-	    for(int i=0; i<secondHalf.length; i++){
-	        secondHalf[i]=array[i+firstHalf.length];
-	    }
-	    return merge(mergeSort(firstHalf),mergeSort(secondHalf));
-	}
-	 
-	public  int[] merge(int[] a, int[] b){
-		int[] c = new int[a.length + b.length];
-        int i = 0, j = 0;
-        for (int k = 0; k < c.length; k++) {
-            if      (i >= a.length) c[k] = b[j++];
-            else if (j >= b.length) c[k] = a[i++];
-            else if (a[i] <= b[j])  c[k] = a[i++];
-            else                    c[k] = b[j++];
+    public void doMergeSort(int[] arr, int lowerIndex, int higherIndex) {
+        if (lowerIndex < higherIndex) {
+            int middle = lowerIndex + (higherIndex - lowerIndex) / 2;
+            doMergeSort(arr, lowerIndex, middle);
+            doMergeSort(arr, middle + 1, higherIndex);
+            mergeParts(arr, lowerIndex, middle, higherIndex);
         }
-        return c; 
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    }
+ 
+    public void mergeParts(int[] arr, int lowerIndex, int middle, int higherIndex) {
+    	int[] tempMergArr = new int[arr.length];
+        for (int i = lowerIndex; i <= higherIndex; i++) {
+            tempMergArr[i] = arr[i];
+        }
+        int i = lowerIndex;
+        int j = middle + 1;
+        int k = lowerIndex;
+        while (i <= middle && j <= higherIndex) {
+            if (tempMergArr[i] <= tempMergArr[j]) {
+                arr[k] = tempMergArr[i];
+                i++;
+            } else {
+                arr[k] = tempMergArr[j];
+                j++;
+            }
+            k++;
+        }
+        while (i <= middle) {
+            arr[k] = tempMergArr[i];
+            k++;
+            i++;
+        }
+ 
+    }
 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
@@ -85,9 +80,23 @@ public class AnnieJoannaSort extends Contestant {
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
+		doInsertionSort(mostlySorted);
 		return 0;
 	}
+	
+	public int[] doInsertionSort(int[] input){
+        int temp;
+        for (int i = 1; i < input.length; i++) {
+            for(int j = i ; j > 0 ; j--){
+                if(input[j] < input[j-1]){
+                    temp = input[j];
+                    input[j] = input[j-1];
+                    input[j-1] = temp;
+                }
+            }
+        }
+        return input;
+    }
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
@@ -101,10 +110,10 @@ public class AnnieJoannaSort extends Contestant {
 		return 0;
 	}
 	
-	public int getMedian(int[] sorted) {
+	public double getMedian(int[] sorted) {
 		int half = sorted.length / 2;
 		if(sorted.length % 2 == 0)
-			return (sorted[half] + sorted[half - 1]) / 2;
+			return (double)((sorted[half] + sorted[half - 1]) / 2);
 		else
 			return sorted[half];
 	}
