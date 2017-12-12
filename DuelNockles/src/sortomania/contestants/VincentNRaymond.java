@@ -75,20 +75,29 @@ public class VincentNRaymond extends Contestant {
 
 	@Override
 	public double sortAndGetMedian(int[] random) {
+		int[] arr = { 4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8, 9, 124, 562, 26 };
+		System.out.println("MOSTLY SORTED:"+ mostlySortAndGetMedian(arr));
+		
+		
+		
 		String[] strings =  {"zz","ab", "aa"};
 		System.out.println(sortAndGetResultingIndexOf(strings, "ab"));
 		
 		
 		// TODO Auto-generated method stub
 		int[] sortedArray = sort(random);
+		return getMedian(sortedArray);
+		
+	}
+
+	public double getMedian(int[] sortedArray) {
 		if (sortedArray.length % 2 == 1) {
 			return sortedArray[(sortedArray.length - 1) / 2];
 		} else {
 			return ((sortedArray[sortedArray.length / 2]) + (sortedArray[(sortedArray.length / 2) - 1])) / 2;
 		}
-		
 	}
-
+	
 	  public static int partition(String[] stringArray, int idx1, int idx2) {
 	        String pivotValue = stringArray[idx1];
 	        while (idx1 < idx2) {
@@ -160,13 +169,14 @@ public class VincentNRaymond extends Contestant {
 	
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
-		return 0;
+		insertionSort(mostlySorted);
+		return getMedian(mostlySorted);
 	}
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
