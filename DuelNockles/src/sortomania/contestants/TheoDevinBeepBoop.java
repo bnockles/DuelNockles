@@ -1,10 +1,19 @@
 package sortomania.contestants;
 
 import java.awt.Color;
+import java.util.Arrays;
 
 import sortomania.Contestant;
 
 public class TheoDevinBeepBoop extends Contestant {
+		public static void main (String[]args) {
+			TheoDevinBeepBoop test = new TheoDevinBeepBoop();
+			int [] arr = {0, 9, 2, 4, 8, 1, 3, 5, 7, 6};
+		
+			System.out.println(test.sortAndGetMedian(arr));
+			System.out.println(Arrays.toString(arr));
+			
+		}
 
 	@Override
 	public Color getColor() {
@@ -50,8 +59,8 @@ public class TheoDevinBeepBoop extends Contestant {
 	}
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
 		return 0;
+
 	}
 
 	@Override
