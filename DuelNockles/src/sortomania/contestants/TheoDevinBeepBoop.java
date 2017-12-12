@@ -18,41 +18,34 @@ public class TheoDevinBeepBoop extends Contestant {
 
 	@Override
 	public double sortAndGetMedian(int[] random) {//heap for random, insertion for near
-		int n = random.length;
-		 
-        // The output character array that will have sorted arr
-        int output[] = new int[n];
- 
-        // Create a count array to store count of inidividul
-        // characters and initialize count array as 0
-        int count[] = new int[256];
-        for (int i=0; i<256; ++i)
-            count[i] = 0;
- 
-        // store count of each character
-        for (int i=0; i<n; ++i)
-            ++count[random[i]];
- 
-        // Change count[i] so that count[i] now contains actual
-        // position of this character in output array
-        for (int i=1; i<=255; ++i)
-            count[i] += count[i-1];
- 
-        // Build the output character array
-        for (int i = 0; i<n; ++i)
-        {
-            output[count[random[i]]-1] = random[i];
-            --count[random[i]];
-        }
- 
-        // Copy the output array to arr, so that arr now
-        // contains sorted characters
-        for (int i = 0; i<n; ++i)
-            random[i] = output[i];//
+		int numCounts[] = new int[random.length];
+
+	    // populate numCounts
+	    for (int num : random) {
+	        numCounts[num]++;
+	    }
+
+	    // populate the final sorted array
+	    int[] sortedArray = new int[random.length];
+	    int currentSortedIndex = 0;
+
+	    // for each num in numCounts
+	    for (int num = 0; num < numCounts.length; num++) {
+	        int count = numCounts[num];
+
+	        // for the number of times the item occurs
+	        for (int i = 0; i < count; i++) {
+
+	            // add it to the sorted array
+	            sortedArray[currentSortedIndex] = num;
+	            currentSortedIndex++;
+	        }
+	    }
+	    random = sortedArray;
 		if(random.length%2==1) {
-			return (double)random[random.length/2];
+			return (double)sortedArray[random.length/2];
 		}else {
-			return (double)(random[random.length/2]+random[(random.length/2)-1])/2;
+			return (double)(sortedArray[random.length/2]+sortedArray[(random.length/2)-1])/2;
 		}
 	}
 	@Override
