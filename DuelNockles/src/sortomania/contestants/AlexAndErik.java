@@ -16,7 +16,7 @@ public class AlexAndErik extends Contestant {
     private int lengthDo;
     
 	public AlexAndErik() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public static void main(String[] args) {
