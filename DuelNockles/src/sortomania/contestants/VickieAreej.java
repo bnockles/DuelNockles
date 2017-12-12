@@ -1,6 +1,8 @@
 package sortomania.contestants;
 
 import java.awt.Color;
+import java.util.Arrays;
+
 import sortomania.Contestant;
 
 public class VickieAreej extends Contestant{
@@ -10,9 +12,10 @@ public class VickieAreej extends Contestant{
 
 	public static void main(String[] args) {
 		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
-		System.out.print(heapSort(arr));
+		heapSort(arr);
+		System.out.print(Arrays.toString(arr));
 		//System.out.println("The median is: " + mostlySortAndGetMedian(arr));
-		System.out.println("And the sorted array is: \n" + arr);
+		//System.out.println("And the sorted array is: \n" + arr);
     }  
 
 	@Override
@@ -25,7 +28,7 @@ public class VickieAreej extends Contestant{
 		return FEI_LONG;
 	}
 
-		public static void heapSort(int arr[])
+		public static int[] heapSort(int arr[])
 	    {
 	        int n = arr.length;
 	 
@@ -44,6 +47,7 @@ public class VickieAreej extends Contestant{
 	            // call max heapify on the reduced heap
 	            heapify(arr, i, 0);
 	        }
+	        return arr;
 	    }
 	 
 	    // To heapify a subtree rooted with node i which is
@@ -89,9 +93,9 @@ public class VickieAreej extends Contestant{
 		//heap sort
 		heapSort(random);
 		//get median
-		//double median = random[random.length/2];
-		//return median;
-		return heapSort
+		double median = random[random.length/2];
+		return median;
+		//return heapSort
 	}
 
 	@Override
