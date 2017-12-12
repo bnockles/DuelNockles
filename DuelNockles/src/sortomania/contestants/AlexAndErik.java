@@ -22,9 +22,17 @@ public class AlexAndErik extends Contestant {
 		System.out.println("And the sorted array is: \n" + Arrays.toString(array));
 		
 		
-		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8,9};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
+		
+		int[] arr1 = {11,20,21,50};
+		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arr1));
+		
+		int[] arr2 = {11,20,10};
+		System.out.println("The median is: " + test.sortAndGetMedian(arr2));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arr2));
 	}
 
 	
@@ -40,9 +48,14 @@ public class AlexAndErik extends Contestant {
 
 	public double sortAndGetMedian(int[] random) {
 		mergeSort(random);
-		int mid = random.length/2;
-		int median = random[mid];
-		return median;
+		if(random.length%2 == 0) {
+			int mid = (random.length/2) -1;
+			int mid2 = random.length/2;
+			return (double)(random[mid] + random[mid2])/2;
+		}else {
+			int mid = random.length/2;
+			return random[mid];
+		}
 	}	
 //CODE TO MERGE INCOMPLETE
 /*	
@@ -148,15 +161,7 @@ public class AlexAndErik extends Contestant {
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		// TODO Auto-generated method stub
-		int count = 0;
-		while(count < strings.length) {
-			for(int i = 0; i < tofind.length()-1;i++) {
-				if(toFind.substring(i,i+1).equals(strings[count].substring(i,i+1) {
-					
-				}
-			}
-		}
-		
+		return 0;
 	}
 
 	@Override
