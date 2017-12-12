@@ -11,6 +11,10 @@ public class AlexAndErik extends Contestant {
     private int[] tempMergArr;
     private int length;
     
+    private double[] arrayDo;
+    private double[] tempMergArrDo;
+    private int lengthDo;
+    
 	public AlexAndErik() {
 		// TODO Auto-generated constructor stub
 	}
@@ -45,6 +49,10 @@ public class AlexAndErik extends Contestant {
 		int[] arr4 = {11,20,10};
 		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr4));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr4));
+		
+		int[][] arr5 = {{100,200,300},{100,10,300},{1,2,3}};
+		System.out.println("The median is: " + test.sortMultiDim(arr5));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arr5));
 	}
 
 	
@@ -59,6 +67,17 @@ public class AlexAndErik extends Contestant {
 	}
 
 	public double getMedian(int[] arr) {
+		if(arr.length%2 == 0) {
+			int mid = (arr.length/2) -1;
+			int mid2 = arr.length/2;
+			return (double)(arr[mid] + arr[mid2])/2;
+		}else {
+			int mid = arr.length/2;
+			return arr[mid];
+		}
+	}
+	
+	public double getMedian(double[] arr) {
 		if(arr.length%2 == 0) {
 			int mid = (arr.length/2) -1;
 			int mid2 = arr.length/2;
@@ -133,8 +152,7 @@ public class AlexAndErik extends Contestant {
         doMergeSort(0, length - 1);
     }
  
-    private void doMergeSort(int lowerIndex, int higherIndex) {
-         
+    private void doMergeSort(int lowerIndex, int higherIndex) {  
         if (lowerIndex < higherIndex) {
             int middle = lowerIndex + (higherIndex - lowerIndex) / 2;
             // Below step sorts the left side of the array
@@ -215,8 +233,55 @@ public class AlexAndErik extends Contestant {
 			mergeSort(grid[i]);
 			medians[i] = getMedian(grid[i]);
 		}
+		mergeSortDoubles(medians);
+		return getMedian(medians);
 	}
 
+	public void mergeSortDoubles(double[] medians) {
+		this.arrayDo = medians;
+        this.length = medians.length;
+        this.tempMergArrDo = new double[length];
+        doMergeSortDo(0, length - 1);
+	}
+
+	private void doMergeSortDo(int lowerIndex, int higherIndex) {  
+	        if (lowerIndex < higherIndex) {
+	            int middle = lowerIndex + (higherIndex - lowerIndex) / 2;
+	            // Below step sorts the left side of the array
+	            doMergeSortDo(lowerIndex, middle);
+	            // Below step sorts the right side of the array
+	            doMergeSortDo(middle + 1, higherIndex);
+	            // Now merge both sides
+	            mergePartsDo(lowerIndex, middle, higherIndex);
+	        }
+	    }
+	
+	private void mergePartsDo(int lowerIndex, int middle, int higherIndex) {
+		  
+	        for (int i = lowerIndex; i <= higherIndex; i++) {
+	            tempMergArrDo[i] = arrayDo[i];
+	        }
+	        int i = lowerIndex;
+	        int j = middle + 1;
+	        int k = lowerIndex;
+	        while (i <= middle && j <= higherIndex) {
+	            if (tempMergArrDo[i] <= tempMergArrDo[j]) {
+	                arrayDo[k] = tempMergArrDo[i];
+	                i++;
+	            } else {
+	                arrayDo[k] = tempMergArrDo[j];
+	                j++;
+	            }
+	            k++;
+	        }
+	        while (i <= middle) {
+	            arrayDo[k] = tempMergArrDo[i];
+	            k++;
+	            i++;
+	        }
+	 
+	    }
+	
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		// TODO Auto-generated method stub
