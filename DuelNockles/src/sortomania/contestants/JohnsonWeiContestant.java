@@ -7,36 +7,35 @@ import sortomania.Contestant;
 public class JohnsonWeiContestant extends Contestant {
 	
 	public static void main(String[] args) {
-		int[] nums = {18,44,5,21,90,87,65,98};
+		int[] nums = {15,10,24,3,4,5,6,7};
 		JohnsonWeiContestant test = new JohnsonWeiContestant();
 		System.out.println(test.sortAndGetMedian(nums));
-	}
-
-	public JohnsonWeiContestant() {
-		
 	}
 
 	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Color(0,255,255);
 	}
 
 	@Override
 	public String getSpriteName() {
 		// TODO Auto-generated method stub
-		return null;
+		return CHUN_LI;
 	}
 
 	@Override
 	public double sortAndGetMedian(int[] random) {
 		int last = random.length -1;
 		int max = random.length;
+		long startTime = System.nanoTime();
 		quickSort(random, 0, last);
-		
-		if(last % 2 == 0) {
-			return (random[max/2] + random[(max/2)-1]) / 2;
-		}else return random[(max-1)/2];
+		long endTime = System.nanoTime();
+		System.out.println((endTime - startTime) / 1000000.0);
+		if(max % 2 == 0) {
+			return (double)(random[max/2] + random[(max/2)-1]) / 2;
+		}else return random[last/2];
+		//COMPLETED WITH TEST
 	}
 	
 	private void quickSort(int[] array, int lowerIndex, int higherIndex) {
@@ -125,14 +124,17 @@ public class JohnsonWeiContestant extends Contestant {
 		}
 		
 		if(n % 2 == 0) {
-			return (mostlySorted[n/2] + mostlySorted[(n/2)-1]) / 2;
+			return (double)(mostlySorted[n/2] + mostlySorted[(n/2)-1]) / 2;
 		}else return mostlySorted[(n-1)/2];
 	}
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		double[] medians = new double[grid.length];
+		for(int i = 0; i < grid.length;i++) {
+			medians[i] = sortAndGetMedian(grid[i]);
+		}
+		return sortAndGetMedian(medians);
 	}
 
 	@Override
