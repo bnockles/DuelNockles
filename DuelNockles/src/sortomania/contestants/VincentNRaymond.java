@@ -1,11 +1,19 @@
 package sortomania.contestants;
 
 import java.awt.Color;
+import java.util.Arrays;
 
 import sortomania.Contestant;
 
 public class VincentNRaymond extends Contestant {
 
+	public static void main(String[] args) {
+		VincentNRaymond test = new VincentNRaymond();
+		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(sort(arr)));
+	}
+	
 	public VincentNRaymond() {
 		// TODO Auto-generated constructor stub
 	}
