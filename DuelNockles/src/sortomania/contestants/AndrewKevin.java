@@ -6,18 +6,6 @@ import sortomania.Contestant;
 
 public class AndrewKevin extends Contestant{
 	
-	public static void main(String[] args) {
-		int[] test = new int [10000];
-		for(int i = 0; i < test.length; i++) {
-			test[i] = (int)(Math.random()*10000);
-		}
-		Contestant a = new AndrewKevin();
-		long startTime = System.currentTimeMillis();
-		a.sortAndGetMedian(test);
-		long endTime = System.currentTimeMillis();
-		System.out.println("It took " + (endTime - startTime) + " milliseconds");
-	}
-	
 	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub
@@ -32,7 +20,7 @@ public class AndrewKevin extends Contestant{
 
 	@Override
 	public   double sortAndGetMedian(int[] random) {
-		int n = random.length;
+		/*int n = random.length;
         char output[] = new char[n];
         int count[] = new int[10000];
         for (int i=0; i<10000; ++i)
@@ -47,9 +35,42 @@ public class AndrewKevin extends Contestant{
             --count[random[i]];
         }
         for (int i = 0; i<n; ++i)
-            random[i] = output[i];
+            random[i] = output[i];*/
+		
+		quickSort(random, 0, 10000-1);
         
         	return random[random.length/2];
+	}
+	
+	void swap(int a, int b)
+	{
+	    int t = a;
+	    a = b;
+	    b = t;
+	}
+	int partition (int arr[], int low, int high)
+	{
+	    int pivot = arr[high];
+	    int i = (low - 1);
+	    for (int j = low; j <= high- 1; j++)
+	    {
+	        if (arr[j] <= pivot)
+	        {
+	            i++;
+	            swap(arr[i], arr[j]);
+	        }
+	    }
+	    swap(arr[i + 1], arr[high]);
+	    return (i + 1);
+	}
+	void quickSort(int arr[], int low, int high)
+	{
+	    if (low < high)
+	    {
+	        int pi = partition(arr, low, high);
+	        quickSort(arr, low, pi - 1);
+	        quickSort(arr, pi + 1, high);
+	    }
 	}
 
 	@Override
