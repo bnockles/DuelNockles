@@ -105,7 +105,7 @@ public class GarrettRicky extends Contestant {
 			return (double)(mostlySorted[mostlySorted.length/2] + mostlySorted[mostlySorted.length/2 - 1])/2;
 		}
 		return (double)mostlySorted[(mostlySorted.length-1)/2];
-	}
+	}//edit
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
