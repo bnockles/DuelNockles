@@ -27,6 +27,9 @@ public class AlexAndErik extends Contestant {
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
 		
+		String[] temp = {"siddeeq","erik","alex"};
+		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp,"alex"));
+		
 		int[] arr1 = {11,20,21,50};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr1));
@@ -173,8 +176,30 @@ public class AlexAndErik extends Contestant {
 	
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+		//int count = 0;
+		int numMatches = 0;
+		for(int i = 0; i < strings.length; i++) {
+			if(toFind.length() == strings[i].length()) {
+				for(int j = 0; j < toFind.length();j++) {
+					if(toFind.substring(j,j+1).equals(strings[i].substring(j,j+1))) {
+						numMatches++;
+						if(numMatches == toFind.length()) {
+							return i;
+						}
+					}
+				}
+			}
+		}
+		return -1;
+		/*while(count < strings.length) {
+			for(int i = 0; i < toFind.length()-1;i++) {
+				if(toFind.length() == strings[count].length() && !toFind.substring(i,i+1).equals(strings[count].substring(i,i+1))) {
+					count++;
+				}
+			}
+		}
+		return count;*/
 		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override
