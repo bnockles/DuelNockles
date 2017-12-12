@@ -117,11 +117,16 @@ public class EthanDavidContestant extends Contestant {
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		double median = 0;
-		//sort through the grid
-		//get the median of each row
-		//add to new array
-		//find median of that array 
-		//return 
+		double[] medianOfMedians = new double[grid.length];
+		for(int row = 0; row < grid.length; row++) {
+			medianOfMedians[row] = sortAndGetMedian(grid[row]);
+		}
+		if(medianOfMedians.length%2 != 0) {
+			median += medianOfMedians[(int)(medianOfMedians.length/2) - 1];
+		}
+		else {
+			median += (medianOfMedians[0 + (medianOfMedians.length/2)] + medianOfMedians[(medianOfMedians.length - medianOfMedians.length/2)])/2;
+		}
 		return median;
 	}
 
