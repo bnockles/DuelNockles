@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import sortomania.Contestant;
 
-public class JustinSunny {
+public class JustinSunny extends Contestant {
 
 	public static final String[] FIRST_START = {"J", "M", "Chr", "T", "Th", "D", "Fr", "ODJSAODJS", "DASDSJA", "OOMPA", "NEIN", "NANI", "OCTUPUS"};
 	public static final String[] FIRST_MIDDLE = {"usti", "ist", "oma", "o", "e", "or", "aphin", "Himer", "Donk", "Oo", "Jelly", "Cookie", "Milk", "Oreo", "Biscuits"};
@@ -29,6 +29,8 @@ public class JustinSunny {
 		populate(arr);
 		String str = arr[3];
 		
+		//OptimizedQuickSort(arr, 0, arr.length - 1);
+		
 		//Comparable[] arr = new Comparable[10000];
 		//populate(arr);
 		//Comparable num = arr[2];
@@ -37,13 +39,13 @@ public class JustinSunny {
 		
 		//sortMultiDim(arr);
 		//sortAndGetMedian(arr);
-		sortAndGetResultingIndexOf(arr, str);
+		//sortAndGetResultingIndexOf(arr, str);
 		//sortAndSearch(arr, num);
 		
 		long endTime =  System.currentTimeMillis();
 
 		long duration = (endTime - startTime);
-		System.out.println(duration + " " + sortAndGetResultingIndexOf(arr, str));
+		//System.out.println(duration + " " + sortAndGetResultingIndexOf(arr, str));
 		//System.out.println(Arrays.toString(arr));
 		
 		
@@ -109,21 +111,21 @@ public class JustinSunny {
 		}
 	}
 	
-	//@Override
+	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub
 		return new Color(153, 255, 153);
 	}
 	
-	//@Override
+	@Override
 	public String getSpriteName() {
 		// TODO Auto-generated method stub
 		return "RYU";
 	}
 
 	//Works
-	//@Override
-	public static double sortAndGetMedian(int[] random) {
+	@Override
+	public double sortAndGetMedian(int[] random) {
 		//sort(random, 0, random.length - 1); //Heap Sort 2-6ms
 		OptimizedQuickSort(random, 0, random.length - 1); //1-5ms
 		int halfWayMarker = (int) random.length/2 - 1;
@@ -131,15 +133,15 @@ public class JustinSunny {
 	}
 
 	//Tested for small cases POOP FOR LARGE CASES
-	//@Override
-	public static int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+	@Override
+	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		OptimizedQuickSort(strings, 0, strings.length - 1); //7-13ms BAAAHHH
 		return binarySearch(strings, 0, strings.length - 1, toFind);
 	}
 
 	//WORKS
-	//@Override
-	public static double mostlySortAndGetMedian(int[] mostlySorted) {
+	@Override
+	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		//insertionSort(mostlySorted); //10-14ms
 		//timSort(mostlySorted, mostlySorted.length); //10-12ms
 		//OptimizedQuickSort(mostlySorted, 0, mostlySorted.length - 1);
@@ -149,8 +151,8 @@ public class JustinSunny {
 	}
 
 	//WORKS
-	//@Override
-	public static double sortMultiDim(int[][] grid) {
+	@Override
+	public double sortMultiDim(int[][] grid) {
 		double[] newArr = new double[grid.length];
 		for(int i = 0; i < newArr.length; i++) {
 			newArr[i] = sortAndGetMedian(grid[i]); //1-3ms
@@ -160,14 +162,14 @@ public class JustinSunny {
 	}
 
 	//WORKS BUT BAD FOR LARGE CASES
-	//@Override
-	public static int sortAndSearch(Comparable[] arr, Comparable toFind) {
+	@Override
+	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		OptimizedQuickSort(arr, 0, arr.length - 1); //4-12ms
 		return binarySearch(arr, 0, arr.length - 1, toFind);
 	}
 	
 	/* Function to sort an array using insertion sort*/
-    public static void insertionSort(int[] arr) {
+    public void insertionSort(int[] arr) {
         for(int i = 1; i < arr.length; i++) {
             int temp = arr[i];
             int j;
@@ -178,7 +180,7 @@ public class JustinSunny {
     }
     
 	/* Function to sort an array using insertion sort*/
-    public static void insertionSortR(int[] arr) {
+    public void insertionSortR(int[] arr) {
         for(int i = arr.length - 1; i >= 0; i--) {
             int temp = arr[i];
             int j;
@@ -189,7 +191,7 @@ public class JustinSunny {
         }
     }
 	
-    public static void insertionSort(int arr[], int left, int right)
+    public void insertionSort(int arr[], int left, int right)
     {
         for (int i = left; i <= right; i++)
         {
@@ -201,7 +203,7 @@ public class JustinSunny {
         }
     }
     
-    public static int binarySearch(int arr[], int l, int r, int x)
+    public int binarySearch(int arr[], int l, int r, int x)
     {
         if (r>=l)
         {
@@ -225,7 +227,7 @@ public class JustinSunny {
         return -1;
     }
     
-    public static int binarySearch(Comparable arr[], int l, int r, Comparable x)
+    public int binarySearch(Comparable arr[], int l, int r, Comparable x)
     {
         if (r>=l)
         {
@@ -250,7 +252,7 @@ public class JustinSunny {
         return -1;
     }
     
-    public static int binarySearch(String arr[], int l, int r, String x)
+    public int binarySearch(String arr[], int l, int r, String x)
     {
         if (r>=l)
         {
@@ -275,7 +277,7 @@ public class JustinSunny {
         return -1;
     }
     
-    public static void merge(int arr[], int l, int m, int r)
+    public void merge(int arr[], int l, int m, int r)
     {
         // Find sizes of two subarrays to be merged
         int n1 = m - l + 1;
@@ -333,7 +335,7 @@ public class JustinSunny {
  
     // Main function that sorts arr[l..r] using
     // merge()
-    public static void sort(int arr[], int l, int r)
+    public void sort(int arr[], int l, int r)
     {
         if (l < r)
         {
@@ -349,7 +351,7 @@ public class JustinSunny {
         }
     }
     
-    public static void OptimizedQuickSort(int[] Arr, int Left, int Right)
+    public void OptimizedQuickSort(int[] Arr, int Left, int Right)
     {
         int pivot = Q_Sort(Arr, Left, Right);
         if(Left < pivot - 1)
@@ -362,7 +364,7 @@ public class JustinSunny {
         }
     }  
 
-    public static void OptimizedQuickSort(String[] Arr, int Left, int Right)
+    public void OptimizedQuickSort(String[] Arr, int Left, int Right)
     {
         int pivot = Q_Sort(Arr, Left, Right);
         if(Left < pivot - 1)
@@ -375,7 +377,7 @@ public class JustinSunny {
         }
     }  
     
-    public static void OptimizedQuickSort(Comparable[] Arr, int Left, int Right)
+    public void OptimizedQuickSort(Comparable[] Arr, int Left, int Right)
     {
         int pivot = Q_Sort(Arr, Left, Right);
         if(Left < pivot - 1)
@@ -388,7 +390,7 @@ public class JustinSunny {
         }
     }  
     
-    public static int Q_Sort(Comparable[] Arr, int Left, int Right)
+    public int Q_Sort(Comparable[] Arr, int Left, int Right)
     {
         Comparable pivot = Arr[Left];
         while(Left < Right)
@@ -416,7 +418,7 @@ public class JustinSunny {
         return Left;
     } 
     
-    public static int Q_Sort(int[] Arr, int Left, int Right)
+    public int Q_Sort(int[] Arr, int Left, int Right)
     {
         int pivot = Arr[Left];
         while(Left < Right)
@@ -445,7 +447,7 @@ public class JustinSunny {
     } 
 
     
-    public static int Q_Sort(String[] Arr, int Left, int Right)
+    public int Q_Sort(String[] Arr, int Left, int Right)
     {
         String pivot = Arr[Left];
         while(Left < Right)
@@ -475,7 +477,7 @@ public class JustinSunny {
     
     // iterative Timsort function to sort the
     // array[0...n-1] (similar to merge sort)
-    public static void timSort(int arr[], int n)
+    public void timSort(int arr[], int n)
     {
     	int RUN = getMinRun(arr.length);
         // Sort individual subarrays of size RUN
@@ -503,11 +505,11 @@ public class JustinSunny {
         }
     }
     
-    public static int min(int num, int num1) {
+    public int min(int num, int num1) {
     	return (num>num1)?num1:num;
     }
     
-    public static int getMinRun(int n)
+    public int getMinRun(int n)
     {
         int r = 0;  /* becomes 1 if the least significant bits contain at least one off bit */
         while (n >= 64) {
