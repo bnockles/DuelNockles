@@ -20,7 +20,7 @@ public class AndrewKevin extends Contestant{
 
 	@Override
 	public   double sortAndGetMedian(int[] random) {
-		/*int n = random.length;
+		int n = random.length;
         char output[] = new char[n];
         int count[] = new int[10000];
         for (int i=0; i<10000; ++i)
@@ -35,10 +35,11 @@ public class AndrewKevin extends Contestant{
             --count[random[i]];
         }
         for (int i = 0; i<n; ++i)
-            random[i] = output[i];*/
+            random[i] = output[i];
 		
-		quickSort(random, 0, 10000-1);
-        
+        if(random.length%2 == 0) {
+        	return (random[random.length/2] + random[random.length/2+1])/2;
+        }
         	return random[random.length/2];
 	}
 	
