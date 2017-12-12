@@ -14,7 +14,7 @@ public class VickieAreej extends Contestant{
 		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
 		heapSort(arr);
 		System.out.print(Arrays.toString(arr));
-		//System.out.println("The median is: " + mostlySortAndGetMedian(arr));
+		System.out.println("The median is: " + sortAndGetMedian(arr));
 		//System.out.println("And the sorted array is: \n" + arr);
     }  
 
@@ -88,14 +88,12 @@ public class VickieAreej extends Contestant{
 	    }
  
     // Driver program
-	@Override
 	public double sortAndGetMedian(int[] random) {
 		//heap sort
 		heapSort(random);
 		//get median
 		double median = random[random.length/2];
 		return median;
-		//return heapSort
 	}
 
 	@Override
@@ -104,26 +102,29 @@ public class VickieAreej extends Contestant{
 		return 0;
 	}
 
+			public  int[] bubbleSort(int[] mostlySorted) {
+				int n = mostlySorted.length;  
+		        int temp = 0;  
+		         for(int i=0; i < n; i++){  
+		                 for(int j=1; j < (n-i); j++){  
+		                          if(mostlySorted[j-1] > mostlySorted[j]){  
+		                                 //swap elements  
+		                                 temp = mostlySorted[j-1];  
+		                                 mostlySorted[j-1] = mostlySorted[j];  
+		                                 mostlySorted[j] = temp;  
+		                         }  
+		                          
+		                 }  
+		         }
+		         return mostlySorted;
+			}
+	
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		//bubble sort
-		int n = mostlySorted.length;  
-        int temp = 0;  
-         for(int i=0; i < n; i++){  
-                 for(int j=1; j < (n-i); j++){  
-                          if(mostlySorted[j-1] > mostlySorted[j]){  
-                                 //swap elements  
-                                 temp = mostlySorted[j-1];  
-                                 mostlySorted[j-1] = mostlySorted[j];  
-                                 mostlySorted[j] = temp;  
-                         }  
-                          
-                 }  
-         }  
-		
-		/*//get median
+		bubbleSort(mostlySorted);
+		//get median
 		int median = mostlySorted[mostlySorted.length/2];
-		return median;*/
-         return n;
+		return median;
 	}
 
 	@Override
