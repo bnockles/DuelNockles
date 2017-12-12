@@ -10,20 +10,18 @@ public class AliceDanielSort extends Contestant{
 
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Color(63,0,40);
 	}
 
 	@Override
 	public String getSpriteName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "AliceDanielSprite";
 	}
 
 	@Override
 	public double sortAndGetMedian(int[] random) {
 		//put all sorting methods into one method then call it here
-		int answer = 0;
+		double answer = 0;
 		
 		int lengthOfArray = random.length;
 		//first sort using introsort then:
