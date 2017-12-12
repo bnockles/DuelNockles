@@ -98,6 +98,7 @@ public class DanSteven extends Contestant{
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) 
 	{
+		
 		bubbleSort(arr);
 		
 		for (int i = 0; i < arr.length; i++)
@@ -215,19 +216,23 @@ public class DanSteven extends Contestant{
     public void bubbleSort(Comparable[] array)
     {
          boolean noChange = true; // stop when a pass causes no change
-         for(int i = array.length; i > 0; i--)
+         
+         while(!noChange)
          {
-              noChange = true;
-              for(int j = 1; j < i; j++)
-              {
-                   if(array[j].compareTo(array[j - 1]) < 0)
-                   {
-                        swap(array, j, j - 1);
-                        noChange = false;
-                   }
-              }
-              if (noChange)
-                   return; // sorted--no need to continue
+	         for(int i = array.length; i > 0; i--)
+	         {
+	              noChange = true;
+	              for(int j = 1; j < i; j++)
+	              {
+	                   if(array[j].compareTo(array[j - 1]) < 0)
+	                   {
+	                        swap(array, j, j - 1);
+	                        noChange = false;
+	                   }
+	              }
+	              if (noChange)
+	                   return; // sorted--no need to continue
+	         }
          }
     }
     public void swap(Object[] array, int index1, int index2)
