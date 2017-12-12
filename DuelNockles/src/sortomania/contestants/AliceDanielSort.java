@@ -15,7 +15,7 @@ public class AliceDanielSort extends Contestant{
 
 	@Override
 	public String getSpriteName() {
-		return "AliceDanielSprite";
+		return KEN;
 	}
 
 	@Override
@@ -44,12 +44,18 @@ public class AliceDanielSort extends Contestant{
 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+		//abc order
+		
+		
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
+		
+		// use introsort as well
+		
 		// TODO Auto-generated method stub
 		return 0;
 	}
