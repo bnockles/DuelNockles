@@ -8,8 +8,8 @@ import sortomania.Contestant;
 public class JustinSunny {
 
 	public static void main(String[] args) {
-		int[] arr = new int[10000];
-		populate(arr);
+		//int[] arr = new int[10000];
+		//populate(arr);
 		/*
 		int[][] arr = new int[100][100];
 		for(int[] row: arr) {
@@ -23,23 +23,27 @@ public class JustinSunny {
 
 		//String[] arr = {"Bob", "Levin", "Annie", "Justin", "Xeno", "Kene"};
 		
-		//long startTime =  System.currentTimeMillis();
+		Comparable[] arr = new Comparable[10000];
+		populate(arr);
+		Comparable num = arr[2];
+		
+		System.out.println(Arrays.toString(arr));
+		
+		long startTime =  System.currentTimeMillis();
 		
 		//sortMultiDim(arr);
 		//sortAndGetMedian(arr);
 		//sortAndGetResultingIndexOf(arr, "Levin");
+		sortAndSearch(arr, num);
 		
-		/*
 		long endTime =  System.currentTimeMillis();
 
 		long duration = (endTime - startTime);
-		System.out.println(duration + " " + sortAndGetMedian(arr));
-		for(int[] row1: arr) {
-			System.out.println(Arrays.toString(row1));
-		}
-		*/
+		System.out.println(duration + " " + sortAndSearch(arr, num));
+		System.out.println(Arrays.toString(arr));
 		
 		
+		/*
 		long startTime =  System.currentTimeMillis();
 		
 		mostlySortAndGetMedian(arr);
@@ -48,12 +52,12 @@ public class JustinSunny {
 		long duration = (endTime - startTime);
 		System.out.println(duration + " " + mostlySortAndGetMedian(arr));
 		System.out.println(Arrays.toString(arr));
-		
+		*/
 	}
 	
 	public static void populate(int[] arr) {
 		
-		
+		/*
 		for(int i = 0; i < arr.length; i++) {
 			if(Math.random() > 0.25)
 			{
@@ -63,12 +67,28 @@ public class JustinSunny {
 				arr[i] = (int) (Math.random() * 9999);
 			}
 		}
+		*/
 		
-		/*
 		for(int i = 0; i < arr.length; i++) {
 			arr[i] = (int) (Math.random() * 9999);
 		}
+		
+		/*
+		OptimizedQuickSort(arr, 0, arr.length - 1);
+		for(int i = 0; i < 2500; i++) {
+			int rIndex = (int) ((Math.random() * 9999));
+			int temp = arr[rIndex];
+			arr[rIndex] = arr[rIndex + 1];
+			arr[rIndex  + 1] = arr[temp]; 
+		}
 		*/
+	}
+	
+	public static void populate(Comparable[] arr) {
+		for(int i = 0; i < arr.length; i++) {
+			Comparable num = (int) (Math.random() * 9999);
+			arr[i] = num;
+		}
 	}
 	
 	//@Override
@@ -105,7 +125,7 @@ public class JustinSunny {
 		//insertionSort(mostlySorted); //10-14ms
 		//timSort(mostlySorted, mostlySorted.length); //10-12ms
 		//OptimizedQuickSort(mostlySorted, 0, mostlySorted.length - 1);
-		insertionSortR(mostlySorted); //2-4ms
+		insertionSortR(mostlySorted); //2-6ms
 		int halfWayMarker = (int) mostlySorted.length/2 - 1;
 		return (mostlySorted.length % 2 == 0)?((mostlySorted[halfWayMarker] + mostlySorted[halfWayMarker + 1])/2):mostlySorted[halfWayMarker];
 	}
@@ -121,10 +141,11 @@ public class JustinSunny {
 		return (newArr.length % 2 == 0)?((newArr[halfWayMarker] + newArr[halfWayMarker + 1])/2):newArr[halfWayMarker];
 	}
 
+	//WORKS BUT SHIT
 	//@Override
-	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+	public static int sortAndSearch(Comparable[] arr, Comparable toFind) {
+		OptimizedQuickSort(arr, 0, arr.length - 1); //4-12ms
+		return binarySearch(arr, 0, arr.length - 1, toFind);
 	}
 
 	public static void sort(int arr[])
@@ -164,9 +185,10 @@ public class JustinSunny {
         for(int i = arr.length - 1; i >= 0; i--) {
             int temp = arr[i];
             int j;
-            for(j = i; j < arr.length - 1 && arr[j + 1] > temp; j++)
+            for(j = i; j + 1 < arr.length && arr[j + 1] < temp; j++) {
                 arr[j] = arr[j + 1];
-            arr[j] = temp;
+                arr[j + 1] = temp;
+            }
         }
     }
 	
@@ -270,6 +292,31 @@ public class JustinSunny {
             // If element is smaller than mid, then it can only
             // be present in left subarray
             if (arr[mid] > x)
+               return binarySearch(arr, l, mid-1, x);
+ 
+            // Else the element can only be present in right
+            // subarray
+            return binarySearch(arr, mid+1, r, x);
+        }
+ 
+        // We reach here when element is not present in array
+        return -1;
+    }
+    
+    public static int binarySearch(Comparable arr[], int l, int r, Comparable x)
+    {
+        if (r>=l)
+        {
+            int mid = l + (r - l)/2;
+            int compareValue = arr[mid].compareTo(x);
+            
+            // If the element is present at the middle itself
+            if (compareValue == 0)
+               return mid;
+ 
+            // If element is smaller than mid, then it can only
+            // be present in left subarray
+            if (compareValue > 0)
                return binarySearch(arr, l, mid-1, x);
  
             // Else the element can only be present in right
@@ -406,7 +453,48 @@ public class JustinSunny {
         }
     }  
     
-    static int Q_Sort(int[] Arr, int Left, int Right)
+    public static void OptimizedQuickSort(Comparable[] Arr, int Left, int Right)
+    {
+        int pivot = Q_Sort(Arr, Left, Right);
+        if(Left < pivot - 1)
+        {
+            OptimizedQuickSort(Arr, Left, pivot - 1);
+        }
+        if(Right > pivot + 1)
+        {
+            OptimizedQuickSort(Arr, pivot + 1, Right);
+        }
+    }  
+    
+    public static int Q_Sort(Comparable[] Arr, int Left, int Right)
+    {
+        Comparable pivot = Arr[Left];
+        while(Left < Right)
+        {
+            while((Arr[Right].compareTo(pivot) >= 0) && (Left < Right))
+            {
+                Right--;
+            }
+            if(Left != Right)
+            {
+                Arr[Left] = Arr[Right];
+                Left++;
+            }
+            while((Arr[Left].compareTo(pivot) <= 0) && (Left < Right))
+            {
+                Left++;
+            }
+            if(Left != Right)
+            {
+                Arr[Right] = Arr[Left];
+                Right--;
+            }
+        }   
+        Arr[Left] = pivot;
+        return Left;
+    } 
+    
+    public static int Q_Sort(int[] Arr, int Left, int Right)
     {
         int pivot = Arr[Left];
         while(Left < Right)
