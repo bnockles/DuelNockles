@@ -9,8 +9,22 @@ public class JaneVictorContestant extends Contestant{
 	public static void main(String[] args) {
 		JaneVictorContestant test= new JaneVictorContestant();
 		int[] arr = {4, 5,6, 7,8, 12, 34, 35, 8, 40, 56, 61, 8, 68};
+		int[] c = {1,4,23,5,5};
+		int[] d = {5,75,3,45,3};
+		int[] e = {3,7,343,334,32};
+		int[] f = {453,634,1652,2432,43};
+		int[] g = {24,234,35,24,24};
+		int[][] s = {c, d, e, f, g};
 		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
+		String[] strs = {"hdasklha", "h!NAON", "JOPAas", "jovn", "noxnw", "h"};
+		System.out.println("The index is " + test.sortAndGetResultingIndexOf(strs, "h"));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(strs));
+		System.out.println("The meidan is " + test.sortMultiDim(s));
+		for(int i = 0; i < s.length; i++) {
+			System.out.println("And the sorted array is: \n" + Arrays.toString(s[i]));
+			System.out.println("The median is: " + test.mostlySortAndGetMedian(s[i]));
+		}
 		
 	}
 
@@ -109,25 +123,48 @@ public class JaneVictorContestant extends Contestant{
 	
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		char[][] charArr = new char[strings.length][];
+		sort(strings);
 		for(int i = 0; i < strings.length; i++) {
-			char[] arr = strings[i].toCharArray();
-			charArr[i] = arr;
-		}
-		//use radix sort?
-		//go through each char array in the 2d arr. 
-		//compare first letters anbd sorrt acordingly into seperate arrays. 
-		//Sort those arrays.
-		//keep going until a certain point. Then merge array.
-		//turn string into charArr. Find index where it is equal.
-		char[] selArr = toFind.toCharArray();
-		for(int i = 0; i < charArr.length; i++) {
-			if(charArr[i] == selArr) {
+			if(strings[i].equals(toFind)) {
 				return i;
 			}
 		}
 		return -1;
 	}
+
+	static int R = 2<<8;
+    
+    public static void sort(String[] s){
+        String[] aux = new String[s.length];
+        int lo = 0, hi = s.length-1, at = 0;
+        sort(s, aux, lo, hi, at);
+    }
+    
+    private static int charAt(String s, int i){
+        if(i<s.length())return s.charAt(i);
+        else return -1;
+    }
+    
+    private static void sort(String[] s, String[] aux, int lo, int hi, int at){
+        
+        if(hi<=lo)return;
+        
+        int[] count = new int[R+2];
+        
+        for(int i = lo; i <= hi; ++i)    count[charAt(s[i], at)+2]++;
+        
+        for(int i = 0; i < R+1; ++i)     count[i+1] += count[i];
+        
+        for(int i = lo; i <= hi; ++i)    aux[count[charAt(s[i], at)+1]++] = s[i];
+        
+        for(int i = lo; i <= hi; ++i)    s[i] = aux[i-lo];
+        
+        for(int r=0;r<R;++r) sort(s, aux, lo+count[r], lo+count[r+1]-1, at+1); 
+    }
+
+
+
+
 
 	static void countSort(int arr[], int n, int exp)
     {
