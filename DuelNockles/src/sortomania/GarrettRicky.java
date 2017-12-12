@@ -1,13 +1,16 @@
 package sortomania;
 
 import java.awt.Color;
+import java.util.Arrays;
 
 public class GarrettRicky extends Contestant {
 
 	public static void main(String[] args) {
 		GarrettRicky test = new GarrettRicky();
-		int[] random = {0,1,2,3,4,5,6,7,8,9,10};
-		test.sortAndGetMedian(random);
+		int[] random = {10,1,5,8,6,2,4,7,3,9,0,12,11};
+		System.out.println(Arrays.toString(random));
+		System.out.println(test.sortAndGetMedian(random));
+		System.out.println(Arrays.toString(random));
 	}
 
 	@Override
@@ -36,7 +39,11 @@ public class GarrettRicky extends Contestant {
             merge(random, left, right);
 	    	}
 	    //INSERT GETMEDIAN METHOD//
-		}
+	    if(random.length % 2 == 0) {
+	    	return (double)(random[random.length/2] + random[random.length/2 - 1])/2;
+	    }
+	    return (double)random[(random.length-1)/2];
+	}
 	    public static int[] leftHalf(int[] array) {
 	        int size1 = array.length / 2;
 	        int[] left = new int[size1];
