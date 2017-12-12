@@ -9,77 +9,155 @@ public class VincentNRaymond extends Contestant {
 
 	public static void main(String[] args) {
 		VincentNRaymond test = new VincentNRaymond();
-		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		int[] arr = { 4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8, 9, 124, 562, 26 };
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+		
+
 		System.out.println("And the sorted array is: \n" + Arrays.toString(sort(arr)));
+		
+		
+
 	}
-	
+
 	public VincentNRaymond() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Color getColor() {
-		return new Color(0,0,255);
+		return new Color(0, 0, 255);
 	}
 
 	@Override
 	public String getSpriteName() {
 		return RYU;
 	}
-	
-	public static int[] sort(int[] old) {
-	    // Loop for every bit in the integers
-	    for (int shift = Integer.SIZE - 1; shift > -1; shift--) {
-	        // The array to put the partially sorted array into
-	        int[] tmp = new int[old.length];
-	        // The number of 0s
-	        int j = 0;
-	 
-	        // Move the 0s to the new array, and the 1s to the old one
-	        for (int i = 0; i < old.length; i++) {
-	            // If there is a 1 in the bit we are testing, the number will be negative
-	            boolean move = old[i] << shift >= 0;
-	 
-	            // If this is the last bit, negative numbers are actually lower
-	            if (shift == 0 ? !move : move) {
-	                tmp[j] = old[i];
-	                j++;
-	            } else {
-	                // It's a 1, so stick it in the old array for now
-	                old[i - j] = old[i];
-	            }
-	        }
-	 
-	        // Copy over the 1s from the old array
-	        for (int i = j; i < tmp.length; i++) {
-	            tmp[i] = old[i - j];
-	        }
-	 
-	        // And now the tmp array gets switched for another round of sorting
-	        old = tmp;
-	    }
-	 
-	    return old;
+
+	public static int[] sort(int[] input) {
+
+		// Largest place for a 32-bit int is the 1 billion's place
+		for (int place = 1; place <= 1000000000; place *= 10) {
+			// Use counting sort at each digit's place
+			input = countingSort(input, place);
+		}
+
+		return input;
 	}
-	
+
+	private static int[] countingSort(int[] input, int place) {
+		int[] out = new int[input.length];
+
+		int[] count = new int[10];
+
+		for (int i = 0; i < input.length; i++) {
+			int digit = getDigit(input[i], place);
+			count[digit] += 1;
+		}
+
+		for (int i = 1; i < count.length; i++) {
+			count[i] += count[i - 1];
+		}
+
+		for (int i = input.length - 1; i >= 0; i--) {
+			int digit = getDigit(input[i], place);
+
+			out[count[digit] - 1] = input[i];
+			count[digit]--;
+		}
+
+		return out;
+
+	}
+
+	private static int getDigit(int value, int digitPlace) {
+		return ((value / digitPlace) % 10);
+	}
+
 	@Override
 	public double sortAndGetMedian(int[] random) {
+		String[] strings =  {"zz","ab", "aa"};
+		System.out.println(sortAndGetResultingIndexOf(strings, "ab"));
+		
+		
 		// TODO Auto-generated method stub
-		int[] sortedArray= sort(random);
-		if(sortedArray.length % 2 == 0) {
-			return sortedArray[(sortedArray.length-1)/2];
+		int[] sortedArray = sort(random);
+		if (sortedArray.length % 2 == 1) {
+			return sortedArray[(sortedArray.length - 1) / 2];
 		} else {
-			return ((sortedArray[sortedArray.length/2])+(sortedArray[(sortedArray.length/2)-1]))/2;	
+			return ((sortedArray[sortedArray.length / 2]) + (sortedArray[(sortedArray.length / 2) - 1])) / 2;
 		}
+		
 	}
 
+	  public static int partition(String[] stringArray, int idx1, int idx2) {
+	        String pivotValue = stringArray[idx1];
+	        while (idx1 < idx2) {
+	           String value1;
+	           String value2;
+	           while ((value1 = stringArray[idx1]).compareTo( pivotValue ) < 0) {
+	               idx1 = idx1 + 1;
+	           }
+	           while ((value2 = stringArray[idx2]).compareTo( pivotValue ) > 0) {
+	               idx2 = idx2 - 1;
+	           }
+	           stringArray[idx1] = value2;
+	           stringArray[idx2] = value1;
+	        }
+	        return idx1;
+	    }
+	    public static void QuicksortString(String[] stringArray, int idx1, int idx2) {
+	        if (idx1 >= idx2) {
+	            // we are done
+	            return;
+	        }
+	        int pivotIndex = partition(stringArray, idx1, idx2);
+	        QuicksortString(stringArray, idx1, pivotIndex);
+	        QuicksortString(stringArray, pivotIndex+1, idx2);
+	     }
+	    public static void QuicksortString(String[] stringArray) {
+	        QuicksortString(stringArray, 0, stringArray.length - 1);
+	    }
+	
+	
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		QuicksortString(strings);
+		if(toFind.substring(0, 1).compareTo("A") > -1000) {
+			//start from the end
+			for(int i = strings.length - 1 ; i >= 0; i--) {
+				if(strings[i].compareTo(toFind) == 0) {
+					return i;
+				}
+			}
+		} else {
+			for(int i = 0 ; i < strings.length - 1; i++) {
+				if(strings[i].compareTo(toFind) == 0) {
+					return i;
+				}
+			}
+		}
+		return -1;
 	}
 
+	public void insertionSort(int[] arr) {
+		 int n = arr.length;
+	        for (int i=1; i<n; ++i)
+	        {
+	            int key = arr[i];
+	            int j = i-1;
+	 
+	            /* Move elements of arr[0..i-1], that are
+	               greater than key, to one position ahead
+	               of their current position */
+	            while (j>=0 && arr[j] > key)
+	            {
+	                arr[j+1] = arr[j];
+	                j = j-1;
+	            }
+	            arr[j+1] = key;
+	        }
+	}
+	
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		// TODO Auto-generated method stub
