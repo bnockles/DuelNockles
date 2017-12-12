@@ -8,15 +8,33 @@ import sortomania.Contestant;
 public class DanSteven extends Contestant{
 
 	public static void main(String[] args) {
-
+		int arr[] = new int[10000];
+		DanSteven a=new DanSteven();
+	     for(int i=0;i<arr.length;i++) {
+	    	 arr[i]=(int)(Math.random()*10000);
+	     }
+	     int avg=0;
+	     for(int i=0;i<500;i++) {
+	    	 long startTime = System.nanoTime();
+	    	 a.radixsort(arr, 10000);
+	    	 long endTime = System.nanoTime();
+	    	 avg+=(endTime-startTime);
+	    	 for(int j=0;j<arr.length;j++) {
+	        	 arr[j]=(int)(Math.random()*10000);
+	         }
+	     }
+	     avg=avg/500;
+	     
+	     System.out.println(avg);
 	}
 	@Override
 	public Color getColor() {
-		return null;
+		Color a=new Color(1,1,1);
+		return a;
 	}
 	@Override
 	public String getSpriteName() {
-		return null;
+		return "Steven";
 	}
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
