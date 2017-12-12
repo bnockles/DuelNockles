@@ -160,7 +160,49 @@ public class JaneVictorContestant extends Contestant{
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-	
+		sortComparable(arr, 0, arr.length-1);
+		for(int i =0; i<arr.length; i++) {
+			if(arr[i]==toFind) {
+				return i;
+			}
+		}
+		return -1;
+
+	}
+
+	private void sortComparable(Comparable[] arr, int lo, int hi) {
+		if (hi <= lo) return;
+
+        // make sure a[lo] <= a[hi]
+        if (less(arr[hi], arr[lo])) exch(arr, lo, hi);
+
+        int lt = lo + 1, gt = hi - 1;
+        int i = lo + 1;
+        while (i <= gt) {
+            if       (less(arr[i], arr[lo])) exch(arr, lt++, i++);
+            else if  (less(arr[hi], arr[i])) exch(arr, i, gt--);
+            else                         i++;
+        }
+        exch(arr, lo, --lt);
+        exch(arr, hi, ++gt);
+
+        // recursively sort three subarrays
+        sortComparable(arr, lo, lt-1);
+        if (less(arr[lt], arr[gt])) sortComparable(arr, lt+1, gt-1);
+        sortComparable(arr, gt+1, hi);
+
+		
+	}
+
+	private boolean less(Comparable v, Comparable w) {
+		return v.compareTo(w) < 0;
+	}
+
+	private void exch(Comparable[] a, int i, int j) {
+		  Comparable swap = a[i];
+	        a[i] = a[j];
+	        a[j] = swap;
+		
 	}
 
 	
