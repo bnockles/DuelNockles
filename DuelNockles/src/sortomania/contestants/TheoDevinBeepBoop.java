@@ -48,7 +48,7 @@ public class TheoDevinBeepBoop extends Contestant {
         // Copy the output array to arr, so that arr now
         // contains sorted characters
         for (int i = 0; i<n; ++i)
-            random[i] = output[i];
+            random[i] = output[i];//
 		if(random.length%2==1) {
 			return (double)random[random.length/2];
 		}else {
