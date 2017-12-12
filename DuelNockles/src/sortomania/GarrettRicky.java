@@ -12,8 +12,7 @@ public class GarrettRicky extends Contestant {
 
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub
-		return null;
+		return rgb(51, 204, 51);
 	}
 
 	@Override
@@ -78,8 +77,24 @@ public class GarrettRicky extends Contestant {
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
-		return 0;
+		 int n = mostlySorted.length;
+	        for (int i=1; i<n; ++i)
+	        {
+	            int key = mostlySorted[i];
+	            int j = i-1;
+	 
+	            /* Move elements of arr[0..i-1], that are
+	               greater than key, to one position ahead
+	               of their current position */
+	            while (j>=0 && mostlySorted[j] > key)
+	            {
+	            	mostlySorted[j+1] = mostlySorted[j];
+	                j = j-1;
+	            }
+	            mostlySorted[j+1] = key;
+	        }
+	        //INSERT GETMEDIAN METHOD//
+			return n;
 	}
 
 	@Override
