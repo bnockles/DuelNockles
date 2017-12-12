@@ -1,6 +1,7 @@
 package sortomania.contestants;
 
 import java.awt.Color;
+import java.util.Arrays;
 
 import sortomania.Contestant;
 
@@ -10,7 +11,7 @@ public class AnnieJoannaSort extends Contestant {
 		AnnieJoannaSort test = new AnnieJoannaSort();
 		int[] arr = {4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
-		System.out.println("And the sorted array is: \n" + arr.toString());
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
 	}
 	
 	public AnnieJoannaSort() {
@@ -32,7 +33,7 @@ public class AnnieJoannaSort extends Contestant {
 
 		mergeSort(random);
 		
-		return 0;
+		return getMedian(random);
 	}
 	
 	
@@ -98,6 +99,14 @@ public class AnnieJoannaSort extends Contestant {
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public int getMedian(int[] sorted) {
+		int half = sorted.length / 2;
+		if(sorted.length % 2 == 0)
+			return (sorted[half] + sorted[half - 1]) / 2;
+		else
+			return sorted[half];
 	}
 
 }
