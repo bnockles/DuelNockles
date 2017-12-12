@@ -15,7 +15,7 @@ public class GarrettRicky extends Contestant {
 
 	@Override
 	public Color getColor() {
-		return rgb(51, 204, 51);
+		return rgb(51, 204, 51); 
 	}
 
 	@Override
