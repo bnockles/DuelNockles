@@ -46,13 +46,29 @@ public class EthanDavidContestant extends Contestant {
 	        return i+1;
 	    }
 
-	   public void sort(int arr[], int low, int high)
+	   public void quickSort(int arr[], int low, int high)
 	    {
 	        if (low < high)
 	        {
 	            int pi = partition(arr, low, high);
-	            sort(arr, low, pi-1);
-	            sort(arr, pi+1, high);
+	            quickSort(arr, low, pi-1);
+	            quickSort(arr, pi+1, high);
+	        }
+	    }
+	   
+	   void insertionSort(int arr[])
+	    {
+	        int n = arr.length;
+	        for (int i=1; i<n; ++i)
+	        {
+	            int key = arr[i];
+	            int j = i-1;
+	            while (j>=0 && arr[j] > key)
+	            {
+	                arr[j+1] = arr[j];
+	                j = j-1;
+	            }
+	            arr[j+1] = key;
 	        }
 	    }
 
@@ -60,7 +76,7 @@ public class EthanDavidContestant extends Contestant {
 	public double sortAndGetMedian(int[] random) {
 		double median = 0;
 		System.out.println(random + " non-sorted");
-		sort(random,0,random.length);
+		quickSort(random,0,random.length);
 		System.out.println(random + " sorted");
 		if(random.length%2 != 0) {
 			median += random[(int)(random.length/2) - 1];
