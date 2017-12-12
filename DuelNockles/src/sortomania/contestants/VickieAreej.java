@@ -7,6 +7,8 @@ import sortomania.Contestant;
 
 public class VickieAreej extends Contestant{
 
+	private double median;
+	
 	public VickieAreej() {
 	}
 
@@ -93,7 +95,11 @@ public class VickieAreej extends Contestant{
 		//heap sort
 		heapSort(random);
 		//get median
-		double median = random[random.length/2];
+		if(random.length%2 ==0) {
+			median = (random[random.length/2]+random[(random.length/2)+1])/2;
+		}else {
+			median = random[random.length/2];
+		}
 		return median;
 	}
 
@@ -124,7 +130,11 @@ public class VickieAreej extends Contestant{
 		//bubble sort
 		bubbleSort(mostlySorted);
 		//get median
-		int median = mostlySorted[mostlySorted.length/2];
+		if(mostlySorted.length%2 ==0) {
+			median = (mostlySorted[mostlySorted.length/2]+mostlySorted[(mostlySorted.length/2)+1])/2;
+		}else {
+			median = mostlySorted[mostlySorted.length/2];
+		}
 		return median;
 	}
 
@@ -140,7 +150,7 @@ public class VickieAreej extends Contestant{
 		return 0;
 	}
 	public String toString() {
-		return null;
+		return "A & V";
 		
 	}
 
