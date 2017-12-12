@@ -65,7 +65,23 @@ public class DanSteven extends Contestant{
 	}
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		return 0;
+		for (int i = 0; i < mostlySorted.length; i++)
+		{
+			
+			if (i+1 < mostlySorted.length)
+			{
+				if (mostlySorted[i+1] < mostlySorted[i])
+				{
+					radixsort(mostlySorted,mostlySorted.length);
+					return (mostlySorted[4999]+mostlySorted[5000])/2;
+				}
+			}
+			else
+			{
+				return (mostlySorted[4999]+mostlySorted[5000])/2;
+			}
+		}
+		return -1;
 	}
 	@Override
 	public double sortMultiDim(int[][] grid) {
