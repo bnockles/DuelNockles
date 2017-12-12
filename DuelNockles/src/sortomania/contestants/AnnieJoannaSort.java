@@ -183,11 +183,24 @@ public class AnnieJoannaSort extends Contestant {
 	}
 
 	@Override
-	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+		public int sortAndSearch(Comparable[] arr, Comparable toFind) {
+			for (int i = 0; i<arr.length; i++) {
+	            for (int j = i+1; j < arr.length; j++) {
+	                if (arr[i].compareTo(arr[j])>0) {
+	                    Comparable t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+	                }
+	            }
+	        }
+			findMed(toFind);
+	    }
 	}
 	
+	private void findMed(Comparable toFind) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public double getMedian(int[] sorted) {
 		double median;
 		if (sorted.length % 2 == 0)
