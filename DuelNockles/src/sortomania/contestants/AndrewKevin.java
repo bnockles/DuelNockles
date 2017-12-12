@@ -17,10 +17,11 @@ public class AndrewKevin extends Contestant{
 		// TODO Auto-generated method stub
 		return "E_HONDA";
 	}
-
+	private int array[];
+    private int length;
 	@Override
 	public   double sortAndGetMedian(int[] random) {
-		int n = random.length;
+	/*	int n = random.length;
         char output[] = new char[n];
         int count[] = new int[10000];
         for (int i=0; i<10000; ++i)
@@ -41,9 +42,54 @@ public class AndrewKevin extends Contestant{
         	return (random[random.length/2] + random[random.length/2+1])/2;
         }
         	return random[random.length/2];
+    */    	
+		sort(random);
+		if(random.length%2 ==0) {
+			return ((random[random.length/2]+random[(random.length/2)+1])/2);
+		}
+		return random[(int)((random.length/2))];
 	}
+	 public void sort(int[] inputArr) {
+         
+	        if (inputArr == null || inputArr.length == 0) {
+	            return;
+	        }
+	        this.array = inputArr;
+	        length = inputArr.length;
+	        quickSort(0, length - 1);
+	    }
 	
-	void swap(int a, int b)
+	private void quickSort(int lowerIndex, int higherIndex) {
+        
+        int i = lowerIndex;
+        int j = higherIndex;
+        int pivot = array[lowerIndex+(higherIndex-lowerIndex)/2];
+        while (i <= j) {
+            while (array[i] < pivot) {
+                i++;
+            }
+            while (array[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                exchangeNumbers(i, j);
+                i++;
+                j--;
+            }
+        }
+        if (lowerIndex < j)
+            quickSort(lowerIndex, j);
+        if (i < higherIndex)
+            quickSort(i, higherIndex);
+    }
+ 
+    private void exchangeNumbers(int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+	/*void swap(int a, int b)
 	{
 	    int t = a;
 	    a = b;
@@ -73,7 +119,7 @@ public class AndrewKevin extends Contestant{
 	        quickSort(arr, pi + 1, high);
 	    }
 	}
-
+*/
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		// TODO Auto-generated method stub
