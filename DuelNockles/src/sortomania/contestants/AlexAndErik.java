@@ -22,12 +22,20 @@ public class AlexAndErik extends Contestant {
 		System.out.println("And the sorted array is: \n" + Arrays.toString(array));
 		
 		
-		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8,9};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
 		
 		String[] temp = {"siddeeq","erik","alex"};
 		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp,"alex"));
+		
+		int[] arr1 = {11,20,21,50};
+		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arr1));
+		
+		int[] arr2 = {11,20,10};
+		System.out.println("The median is: " + test.sortAndGetMedian(arr2));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arr2));
 	}
 
 	
@@ -43,9 +51,14 @@ public class AlexAndErik extends Contestant {
 
 	public double sortAndGetMedian(int[] random) {
 		mergeSort(random);
-		int mid = random.length/2;
-		int median = random[mid];
-		return median;
+		if(random.length%2 == 0) {
+			int mid = (random.length/2) -1;
+			int mid2 = random.length/2;
+			return (double)(random[mid] + random[mid2])/2;
+		}else {
+			int mid = random.length/2;
+			return random[mid];
+		}
 	}	
 //CODE TO MERGE INCOMPLETE
 /*	
@@ -173,6 +186,7 @@ public class AlexAndErik extends Contestant {
 			}
 		}
 		return count;*/
+		// TODO Auto-generated method stub
 	}
 
 	@Override
