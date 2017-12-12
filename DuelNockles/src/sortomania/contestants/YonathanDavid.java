@@ -45,6 +45,7 @@ public class YonathanDavid extends Contestant{
 
 	@Override
 	public double sortAndGetMedian(int[] arr) {
+		//Yonathan
 		sort(arr,0,arr.length-1);
 		if(arr.length%2==0) {
         	return ((double)(arr[arr.length/2-1]+arr[arr.length/2])/2);
