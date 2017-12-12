@@ -5,9 +5,15 @@ import java.awt.Color;
 import sortomania.Contestant;
 
 public class JohnsonWeiContestant extends Contestant {
+	
+	public static void main(String[] args) {
+		int[] nums = {18,44,5,21,90,87,65,98};
+		JohnsonWeiContestant test = new JohnsonWeiContestant();
+		System.out.println(test.sortAndGetMedian(nums));
+	}
 
 	public JohnsonWeiContestant() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
@@ -65,11 +71,42 @@ public class JohnsonWeiContestant extends Contestant {
         
     }
 	
+	private void quickSort(Comparable[] array, int lowerIndex, int higherIndex) {
+		int i = lowerIndex;
+        int j = higherIndex;
+        
+        Comparable pivot = array[lowerIndex+(higherIndex-lowerIndex)/2];
+        
+        while (i <= j) {
+            while (array[i].compareTo(pivot) < 0) {
+                i++;
+            }
+            while (array[i].compareTo(pivot) > 0) {
+                j--;
+            }
+            if (i <= j) {
+            	Comparable temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+				i++;
+                j--;
+            }
+        }
+        
+        if (lowerIndex < j)
+            quickSort(array,lowerIndex, j);
+        if (i < higherIndex)
+            quickSort(array,i, higherIndex);
+        
+        
+    }
+	
 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		int length = strings.length - 1;
+		quickSort(strings, 0, length);
+		return binarySearch(strings, 0, length, toFind);
 	}
 
 	@Override
@@ -100,7 +137,24 @@ public class JohnsonWeiContestant extends Contestant {
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		
+		int length = arr.length - 1;
+		quickSort(arr, 0, length);
+		return binarySearch(arr, 0, length, toFind);
+	}
+	
+	public int binarySearch(Comparable[] arr, int lower, int upper, Comparable target) {
+		if(upper >= lower) {
+			int mid = lower + (upper-lower)/2;
+			
+			if(arr[mid].equals(target)) {
+				return mid;
+			}
+			if(arr[mid].compareTo(target) > 0 ) {
+				return binarySearch(arr, lower, mid-1, target);
+			}
+			else return binarySearch(arr,mid+1,upper,target);
+		}
+		return -1;
 	}
 
 }
