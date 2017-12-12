@@ -24,7 +24,6 @@ public class DanSteven extends Contestant{
 	         }
 	     }
 	     avg=avg/500;
-	     
 	     System.out.println(avg);
 	}
 	@Override
