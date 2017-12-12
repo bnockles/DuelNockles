@@ -18,87 +18,43 @@ public class TheoDevinBeepBoop extends Contestant {
 
 	@Override
 	public double sortAndGetMedian(int[] random) {//heap for random, insertion for near
-		sort(random,0,random.length-1);
+		int n = random.length;
+		 
+        // The output character array that will have sorted arr
+        int output[] = new int[n];
+ 
+        // Create a count array to store count of inidividul
+        // characters and initialize count array as 0
+        int count[] = new int[256];
+        for (int i=0; i<256; ++i)
+            count[i] = 0;
+ 
+        // store count of each character
+        for (int i=0; i<n; ++i)
+            ++count[random[i]];
+ 
+        // Change count[i] so that count[i] now contains actual
+        // position of this character in output array
+        for (int i=1; i<=255; ++i)
+            count[i] += count[i-1];
+ 
+        // Build the output character array
+        for (int i = 0; i<n; ++i)
+        {
+            output[count[random[i]]-1] = random[i];
+            --count[random[i]];
+        }
+ 
+        // Copy the output array to arr, so that arr now
+        // contains sorted characters
+        for (int i = 0; i<n; ++i)
+            random[i] = output[i];
 		if(random.length%2==1) {
 			return (double)random[random.length/2];
 		}else {
 			return (double)(random[random.length/2]+random[(random.length/2)-1])/2;
 		}
 	}
-	 void merge(int arr[], int l, int m, int r)
-	    {
-	        // Find sizes of two subarrays to be merged
-	        int n1 = m - l + 1;
-	        int n2 = r - m;
-	 
-	        /* Create temp arrays */
-	        int L[] = new int [n1];
-	        int R[] = new int [n2];
-	 
-	        /*Copy data to temp arrays*/
-	        for (int i=0; i<n1; ++i)
-	            L[i] = arr[l + i];
-	        for (int j=0; j<n2; ++j)
-	            R[j] = arr[m + 1+ j];
-	 
-	 
-	        /* Merge the temp arrays */
-	 
-	        // Initial indexes of first and second subarrays
-	        int i = 0, j = 0;
-	 
-	        // Initial index of merged subarry array
-	        int k = l;
-	        while (i < n1 && j < n2)
-	        {
-	            if (L[i] <= R[j])
-	            {
-	                arr[k] = L[i];
-	                i++;
-	            }
-	            else
-	            {
-	                arr[k] = R[j];
-	                j++;
-	            }
-	            k++;
-	        }
-	 
-	        /* Copy remaining elements of L[] if any */
-	        while (i < n1)
-	        {
-	            arr[k] = L[i];
-	            i++;
-	            k++;
-	        }
-	 
-	        /* Copy remaining elements of R[] if any */
-	        while (j < n2)
-	        {
-	            arr[k] = R[j];
-	            j++;
-	            k++;
-	        }
-	    }
-	 
-	    // Main function that sorts arr[l..r] using
-	    // merge()
-	    void sort(int arr[], int l, int r)
-	    {
-	        if (l < r)
-	        {
-	            // Find the middle point
-	            int m = (l+r)/2;
-	 
-	            // Sort first and second halves
-	            sort(arr, l, m);
-	            sort(arr , m+1, r);
-	 
-	            // Merge the sorted halves
-	            merge(arr, l, m, r);
-	        }
-	    }
-
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		// TODO Auto-generated method stub
