@@ -10,22 +10,36 @@ public class JustinSunny {
 	public static void main(String[] args) {
 		int[] arr = new int[10000];
 		populate(arr);
-		System.out.println(Arrays.toString(arr));
+		/*
+		int[][] arr = new int[100][100];
+		for(int[] row: arr) {
+			populate(row);
+		}
+		*/
 		/*
 		timSort(arr, arr.length);
 		System.out.println(Arrays.toString(arr));
 		*/
 
-		long startTime =  System.currentTimeMillis();
+		//String[] arr = {"Bob", "Levin", "Annie", "Justin", "Xeno", "Kene"};
 		
-		sortAndGetMedian(arr);
+		//long startTime =  System.currentTimeMillis();
+		
+		//sortMultiDim(arr);
+		//sortAndGetMedian(arr);
+		//sortAndGetResultingIndexOf(arr, "Levin");
+		
+		/*
 		long endTime =  System.currentTimeMillis();
 
 		long duration = (endTime - startTime);
 		System.out.println(duration + " " + sortAndGetMedian(arr));
-		System.out.println(Arrays.toString(arr));
+		for(int[] row1: arr) {
+			System.out.println(Arrays.toString(row1));
+		}
+		*/
 		
-		/*
+		
 		long startTime =  System.currentTimeMillis();
 		
 		mostlySortAndGetMedian(arr);
@@ -34,11 +48,12 @@ public class JustinSunny {
 		long duration = (endTime - startTime);
 		System.out.println(duration + " " + mostlySortAndGetMedian(arr));
 		System.out.println(Arrays.toString(arr));
-		*/
+		
 	}
 	
 	public static void populate(int[] arr) {
-		/*
+		
+		
 		for(int i = 0; i < arr.length; i++) {
 			if(Math.random() > 0.25)
 			{
@@ -48,12 +63,12 @@ public class JustinSunny {
 				arr[i] = (int) (Math.random() * 9999);
 			}
 		}
-		*/
-
+		
+		/*
 		for(int i = 0; i < arr.length; i++) {
 			arr[i] = (int) (Math.random() * 9999);
 		}
-
+		*/
 	}
 	
 	//@Override
@@ -68,35 +83,39 @@ public class JustinSunny {
 		return "RYU";
 	}
 
+	//Works
 	//@Override
 	public static double sortAndGetMedian(int[] random) {
 		//sort(random, 0, random.length - 1); //Heap Sort 2-6ms
-		OptimizedQuickSort(random, 0, random.length - 1); //1-4ms
+		OptimizedQuickSort(random, 0, random.length - 1); //1-5ms
 		int halfWayMarker = (int) random.length/2 - 1;
 		return (random.length % 2 == 0)?((double) random[halfWayMarker] + random[halfWayMarker + 1])/2:random[halfWayMarker];
 	}
 
+	//Tested for small cases
 	//@Override
-	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		sort(strings);
+	public static int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+		OptimizedQuickSort(strings, 0, strings.length - 1);
 		return binarySearch(strings, 0, strings.length - 1, toFind);
 	}
 
+	//WORKS
 	//@Override
 	public static double mostlySortAndGetMedian(int[] mostlySorted) {
 		//insertionSort(mostlySorted); //10-14ms
 		//timSort(mostlySorted, mostlySorted.length); //10-12ms
 		//OptimizedQuickSort(mostlySorted, 0, mostlySorted.length - 1);
-		insertionSortR(mostlySorted); //2-3ms
+		insertionSortR(mostlySorted); //2-4ms
 		int halfWayMarker = (int) mostlySorted.length/2 - 1;
 		return (mostlySorted.length % 2 == 0)?((mostlySorted[halfWayMarker] + mostlySorted[halfWayMarker + 1])/2):mostlySorted[halfWayMarker];
 	}
 
+	//WORKS
 	//@Override
-	public double sortMultiDim(int[][] grid) {
+	public static double sortMultiDim(int[][] grid) {
 		double[] newArr = new double[grid.length];
 		for(int i = 0; i < newArr.length; i++) {
-			newArr[i] = sortAndGetMedian(grid[i]);
+			newArr[i] = sortAndGetMedian(grid[i]); //1-3ms
 		}
 		int halfWayMarker = (int) newArr.length/2 - 1;
 		return (newArr.length % 2 == 0)?((newArr[halfWayMarker] + newArr[halfWayMarker + 1])/2):newArr[halfWayMarker];
@@ -145,8 +164,8 @@ public class JustinSunny {
         for(int i = arr.length - 1; i >= 0; i--) {
             int temp = arr[i];
             int j;
-            for(j = i; j > 0 && arr[j-1] > temp; j--)
-                arr[j] = arr[j-1];
+            for(j = i; j < arr.length - 1 && arr[j + 1] > temp; j++)
+                arr[j] = arr[j + 1];
             arr[j] = temp;
         }
     }
@@ -363,25 +382,36 @@ public class JustinSunny {
     
     public static void OptimizedQuickSort(int[] Arr, int Left, int Right)
     {
-        int Pivot;
-        Pivot = Q_Sort(Arr, Left, Right);
-        if(Left < Pivot - 1)
+        int pivot = Q_Sort(Arr, Left, Right);
+        if(Left < pivot - 1)
         {
-            OptimizedQuickSort(Arr, Left, Pivot - 1);
+            OptimizedQuickSort(Arr, Left, pivot - 1);
         }
-        if(Right > Pivot + 1)
+        if(Right > pivot + 1)
         {
-            OptimizedQuickSort(Arr, Pivot + 1, Right);
+            OptimizedQuickSort(Arr, pivot + 1, Right);
         }
     }  
 
-    public static int Q_Sort(int[] Arr, int Left, int Right)
+    public static void OptimizedQuickSort(String[] Arr, int Left, int Right)
     {
-        int Pivot;
-        Pivot = Arr[Left];
+        int pivot = Q_Sort(Arr, Left, Right);
+        if(Left < pivot - 1)
+        {
+            OptimizedQuickSort(Arr, Left, pivot - 1);
+        }
+        if(Right > pivot + 1)
+        {
+            OptimizedQuickSort(Arr, pivot + 1, Right);
+        }
+    }  
+    
+    static int Q_Sort(int[] Arr, int Left, int Right)
+    {
+        int pivot = Arr[Left];
         while(Left < Right)
         {
-            while((Arr[Right] >= Pivot) && (Left < Right))
+            while((Arr[Right] >= pivot) && (Left < Right))
             {
                 Right--;
             }
@@ -390,7 +420,7 @@ public class JustinSunny {
                 Arr[Left] = Arr[Right];
                 Left++;
             }
-            while((Arr[Left] <= Pivot) && (Left < Right))
+            while((Arr[Left] <= pivot) && (Left < Right))
             {
                 Left++;
             }
@@ -400,7 +430,36 @@ public class JustinSunny {
                 Right--;
             }
         }   
-        Arr[Left] = Pivot;
+        Arr[Left] = pivot;
+        return Left;
+    } 
+
+    
+    public static int Q_Sort(String[] Arr, int Left, int Right)
+    {
+        String pivot = Arr[Left];
+        while(Left < Right)
+        {
+            while((Arr[Right].compareTo(pivot) >= 0) && (Left < Right))
+            {
+                Right--;
+            }
+            if(Left != Right)
+            {
+                Arr[Left] = Arr[Right];
+                Left++;
+            }
+            while((Arr[Left].compareTo(pivot) <= 0) && (Left < Right))
+            {
+                Left++;
+            }
+            if(Left != Right)
+            {
+                Arr[Right] = Arr[Left];
+                Right--;
+            }
+        }   
+        Arr[Left] = pivot;
         return Left;
     } 
     
