@@ -98,7 +98,7 @@ public class VickieAreej extends Contestant{
 		if(random.length%2 ==0) {
 			median = (random[random.length/2]+random[(random.length/2)+1])/2;
 		}else {
-			median = random[random.length/2];
+			median = random[(int) ((random.length/2)+.5)];
 		}
 		return median;
 	}
@@ -133,7 +133,7 @@ public class VickieAreej extends Contestant{
 		if(mostlySorted.length%2 ==0) {
 			median = (mostlySorted[mostlySorted.length/2]+mostlySorted[(mostlySorted.length/2)+1])/2;
 		}else {
-			median = mostlySorted[mostlySorted.length/2];
+			median = mostlySorted[(int) ((mostlySorted.length/2)+.5)];
 		}
 		return median;
 	}
