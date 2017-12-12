@@ -8,10 +8,14 @@ public class GarrettRicky extends Contestant {
 	public static void main(String[] args) {
 		GarrettRicky test = new GarrettRicky();
 		//int[] mostlySorted = {0,1,2,3,6,5,7,8,4,9,11,10,12,13,14,15};
-		String[] nintendo = {" Nintendo", "Switch", " costs", "way.....", " 2", "much", " nowadays "};
-		System.out.println(Arrays.toString(nintendo));
-		System.out.println(test.sortAndGetResultingIndexOf(nintendo,"much"));
-		System.out.println(Arrays.toString(nintendo));
+		//String[] nintendo = {" Nintendo", "Switch", " costs", "way.....", " 2", "much", " nowadays "};
+		//System.out.println(Arrays.toString(nintendo));
+		//System.out.println(test.sortAndGetResultingIndexOf(nintendo,"much"));
+		//System.out.println(Arrays.toString(nintendo));
+		int[][] example = {{1,3,5,4,2},{5,3,4,2,1}};
+		System.out.println(Arrays.toString(example[0]) + Arrays.toString(example[1]));
+		System.out.println(test.sortMultiDim(example));
+		System.out.println(Arrays.toString(example[0]) + Arrays.toString(example[1]));
 		//System.out.println(test.mostlySortAndGetMedian(mostlySorted));
 		//System.out.println(Arrays.toString(mostlySorted));
 		
@@ -47,6 +51,7 @@ public class GarrettRicky extends Contestant {
 		}
 		return (double)random[(random.length-1)/2];
 	}
+	
 	public static int[] leftHalf(int[] array) {
 		int size1 = array.length / 2;
 		int[] left = new int[size1];
@@ -129,8 +134,64 @@ public class GarrettRicky extends Contestant {
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		double[] medians = new double[grid.length];
+		for(int i = 0; i < grid.length; i++) {
+			medians[i] = sortAndGetMedian(grid[i]);
+		}
+		return sortAndGetMedian(medians);
+	}
+
+	public double sortAndGetMedian(double[] medians) {
+		if (medians.length > 1) {
+			// split array into two halves
+			double[] left = leftHalf(medians);
+			double[] right = rightHalf(medians);
+
+			// recursively sort the two halves
+			sortAndGetMedian(left);
+			sortAndGetMedian(right);
+
+			// merge the sorted halves into a sorted whole
+			merge(medians, left, right);
+		}
+		//INSERT GETMEDIAN METHOD//
+		if(medians.length % 2 == 0) {
+			return (double)(medians[medians.length/2] + medians[medians.length/2 - 1])/2;
+		}
+		return (double)medians[(medians.length-1)/2];
+	}
+	
+	public static double[] leftHalf(double[] array) {
+		int size1 = array.length / 2;
+		double[] left = new double[size1];
+		for (int i = 0; i < size1; i++) {
+			left[i] = array[i];
+		}
+		return left;
+	}
+	public static double[] rightHalf(double[] array) {
+		int size1 = array.length / 2;
+		int size2 = array.length - size1;
+		double[] right = new double[size2];
+		for (int i = 0; i < size2; i++) {
+			right[i] = array[i + size1];
+		}
+		return right;
+	}
+
+	public static void merge(double[] result, double[] left, double[] right) {
+		int i1 = 0;   // index into left array
+		int i2 = 0;   // index into right array
+
+		for (int i = 0; i < result.length; i++) {
+			if (i2 >= right.length || (i1 < left.length && left[i1] <= right[i2])) {
+				result[i] = left[i1];    // take from left
+				i1++;
+			} else {
+				result[i] = right[i2];   // take from right
+				i2++;
+			}
+		}
 	}
 
 	@Override
