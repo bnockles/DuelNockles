@@ -64,7 +64,7 @@ public class MergeSortComparable {
 	 
 	    // Main function that sorts arr[l..r] using
 	    // merge()
-	    void sort(Comparable arr[], int l, int r)
+	    public void sort(Comparable arr[], int l, int r)
 	    {
 	        if (l < r)
 	        {
@@ -81,7 +81,7 @@ public class MergeSortComparable {
 	    }
 	 
 	    /* A utility function to print array of size n */
-	    static void printArray(Comparable arr[])
+	    public static void printArray(Comparable arr[])
 	    {
 	        int n = arr.length;
 	        for (int i=0; i<n; ++i)

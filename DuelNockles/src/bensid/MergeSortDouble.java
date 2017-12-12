@@ -63,7 +63,7 @@ public class MergeSortDouble {
 	 
 	    // Main function that sorts arr[l..r] using
 	    // merge()
-	    void sort(double arr[], int l, int r)
+	    public void sort(double arr[], int l, int r)
 	    {
 	        if (l < r)
 	        {
@@ -80,7 +80,7 @@ public class MergeSortDouble {
 	    }
 	 
 	    /* A utility function to print array of size n */
-	    static void printArray(double arr[])
+	    public static void printArray(double arr[])
 	    {
 	        int n = arr.length;
 	        for (int i=0; i<n; ++i)

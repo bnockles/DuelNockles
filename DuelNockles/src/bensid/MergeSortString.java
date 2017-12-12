@@ -63,7 +63,7 @@ public class MergeSortString {
 	 
 	    // Main function that sorts arr[l..r] using
 	    // merge()
-	    void sort(String arr[], int l, int r)
+	    public void sort(String arr[], int l, int r)
 	    {
 	        if (l < r)
 	        {
@@ -80,7 +80,7 @@ public class MergeSortString {
 	    }
 	 
 	    /* A utility function to print array of size n */
-	    static void printArray(String arr[])
+	    public static void printArray(String arr[])
 	    {
 	        int n = arr.length;
 	        for (int i=0; i<n; ++i)
