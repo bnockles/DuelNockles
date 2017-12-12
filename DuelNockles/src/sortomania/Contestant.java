@@ -210,8 +210,8 @@ public abstract class Contestant extends Component implements Runnable{
 
 	/**
 	 * TASK 5
-	 * sorts each array in a multi-dimensional array
-	 * then returns the median of the medians
+	 * sorts each array of comparables
+	 * then returns the index
 	 * @param random
 	 * @return
 	 */
