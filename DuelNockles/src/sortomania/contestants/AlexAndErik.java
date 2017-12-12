@@ -52,7 +52,11 @@ public class AlexAndErik extends Contestant {
 		
 		int[][] arr5 = {{100,200,300},{100,10,300},{1,2,3}};
 		System.out.println("The median is: " + test.sortMultiDim(arr5));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr5));
+		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr5));
+		
+		int[][] arr6 = {{12,10,30},{53,0,1000},{9,9,4}};
+		System.out.println("The median is: " + test.sortMultiDim(arr6));
+		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr6));
 	}
 
 	
@@ -231,7 +235,9 @@ public class AlexAndErik extends Contestant {
 			mergeSort(grid[i]);
 			medians[i] = getMedian(grid[i]);
 		}
+		System.out.println("The median array is: \n" + Arrays.toString(medians));
 		mergeSortDoubles(medians);
+		System.out.println("The newly sorted median array is: \n" + Arrays.toString(medians));
 		return getMedian(medians);
 	}
 
@@ -282,7 +288,7 @@ public class AlexAndErik extends Contestant {
 	
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stu
 		return 0;
 	}
 
