@@ -70,14 +70,13 @@ public class AlexAndErik extends Contestant {
 		return E_HONDA;
 	}
 
+	//simpler version of getMedian()
 	public double getMedian(int[] arr) {
+		int half = arr.length/2;
 		if(arr.length%2 == 0) {
-			int mid = (arr.length/2) -1;
-			int mid2 = arr.length/2;
-			return (double)(arr[mid] + arr[mid2])/2;
+			return (double)(arr[half-1] + arr[half])/2;
 		}else {
-			int mid = arr.length/2;
-			return arr[mid];
+			return arr[half];
 		}
 	}
 	
@@ -158,7 +157,7 @@ public class AlexAndErik extends Contestant {
  
     private void doMergeSort(int lowerIndex, int higherIndex) {  
         if (lowerIndex < higherIndex) {
-            int middle = lowerIndex + (higherIndex - lowerIndex) / 2;
+            int middle = (higherIndex + lowerIndex) / 2;
             // Below step sorts the left side of the array
             doMergeSort(lowerIndex, middle);
             // Below step sorts the right side of the array
