@@ -5,16 +5,15 @@ import java.util.Arrays;
 
 import sortomania.Contestant;
 
-public class MarkWilliam extends Contestant {
+public class MarkWilliam extends Contestant{
 
 	
 	public static void main (String[] args) {
 		MarkWilliam test = new MarkWilliam();
-		int[] arr = {4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31,51};
+		String[] arr = {"ffffff","aaaaaa","cccccc","hhhhhh","dddddd","bbbbbb","eeeeee","gggggg"};
 		
-		System.out.println("The median is: " + test.sortAndGetMedian(arr));
-		System.out.println("And the sorted array is: \n");
-		printArr(arr, arr.length);
+		System.out.println("The index for bbbbbb is: " + test.sortAndGetResultingIndexOf(arr,"bbbbbbb"));
+		printStrArr(arr,arr.length);
 	}
 	
 	@Override
@@ -42,7 +41,11 @@ public class MarkWilliam extends Contestant {
 	    for (int i=0; i<n; i++)
 	        System.out.print(arr[i]+" ");
 	}
-	
+	static void printStrArr(String arr[], int n)
+	{
+	    for (int i=0; i<n; i++)
+	        System.out.print(arr[i]+" ");
+	}
 	// A utility function to get maximum value in arr[]
     static int getMax(int arr[], int n)
     {
@@ -98,79 +101,94 @@ public class MarkWilliam extends Contestant {
             countSort(arr, n, exp);
     }
 	
+
+	
+	static String getMaxString(String[] arr, int n)
+    {
+        String mx = arr[0];
+        for (int i = 1; i < n-1; i++)
+            if (arr[i].compareTo(arr[i-1]) > 0)
+                mx = arr[i];
+        return mx;
+    }
+	
+
+
+
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		radixsort(strings);
+		for(int i = 0; i < strings.length; i++) {
+			if(strings[i].equals(toFind)) return i;
+		}
+		return strings[3].compareTo(toFind);
 	}
 
-	public int getMaxString(String arr[], int n){
-	    int max = arr[0].size();
-	    for (int i = 1; i < n; i++){
-	        if (arr[i].size()>max)
-	            max = arr[i].size();
-	    }
-	    return max;
+	public static void radixsort(String[] a){
+		String[] aux = new String[a.length];
+		radixsort2(a, aux, 0, a.length - 1, 0);
 	}
-
-	public void countSortString(String a[], int size, int k){
-	    String b = new String[size];
-	    int c = new int[257];
-
-
-
-	    for (int i = 0; i <257; i++){
-	        c[i] = 0;
-	       
-	    }
-	    for (int j = 0; j <size; j++){   
-	        c[k < a[j].size() ? (int)(unsigned char)a[j][k] + 1 : 0]++;            //a[j] is a string
-	        //cout << c[a[j]] << endl;
-	    }
-
-	    for (int f = 1; f <257; f++){
-	        c[f] += c[f - 1];
-	    }
-
-	    for (int r = size - 1; r >= 0; r--){
-	        b[c[k < a[r].size() ? (int)(unsigned char)a[r][k] + 1 : 0] - 1] = a[r];
-	        c[k < a[r].size() ? (int)(unsigned char)a[r][k] + 1 : 0]--;
-	    }
-
-	    for (int l = 0; l < size; l++){
-	        a[l] = b[l];
-	    }
-
-	    // avold memory leak
-	    delete[] b;
-	    delete[] c;
+	
+	private static void radixsort2(String[] a, String[] aux, int lo, int hi, int d){
+		int R = 256; // extended ASCII Alphabets
+		if (hi <= lo) return;
+		int[] count = new int[R+2]; // R+1 values, including the special small value for padding
+		for (int i = lo; i <= hi; i++)
+		count[charAt(a[i], d) + 2]++; // alphabet j is counted at count[j + 2]
+		for (int r = 0; r < R+1; r++)
+		count[r+1] += count[r];
+		for (int i = lo; i <= hi; i++)
+		aux[count[charAt(a[i], d) + 1]++] = a[i]; // after accumulating number of alphabets less than j is count[j + 2 - 1]
+		for (int i = lo; i <= hi; i++)
+		a[i] = aux[i - lo];
+		for (int r = 0; r < R; r++)
+		radixsort2(a, aux, lo + count[r], lo + count[r+1] - 1, d+1); // after moving data from a[] to aux[], count[r] records the number of alphabits less than r
 	}
-
-
-	void radixStringSort(String b[], int r){
-	    size_t max = getMax(b, r);
-	    for (size_t digit = max; digit > 0; digit--){ // size_t is unsigned, so avoid using digit >= 0, which is always true
-	        countSort(b, r, digit - 1);
-	    }
-
+	
+	private static int charAt(String s, int d){
+		if (d < s.length()) return s.charAt(d);
+		return -1;
 	}
 	
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int n = mostlySorted.length;
+		
+		for (int i = 1; i < n; i++)
+		{
+			int key = mostlySorted[i];
+			int j = i - 1;
+			while (j >= 0 && mostlySorted[j] > key){
+				mostlySorted[j + 1] = mostlySorted[j];
+				j--;
+			}
+			mostlySorted[j + 1] = key;
+		}
+		
+		if(n % 2 == 0)
+			return (double)(mostlySorted[n / 2] + mostlySorted[(n / 2) - 1]) / 2;
+		return (double)(mostlySorted[n / 2]);
 	}
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		int n = grid.length;
+		double[]medians = new double[n];
+		for(int i = 0; i < grid.length; i++) {
+			medians[i] = sortAndGetMedian(grid[i]);
+		}
+		if(medians.length%2==0)
+			return ((medians[n/2] + medians[(n/2)-1])/2);
+		return medians[n/2];
 	}
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 }
+
+
+
