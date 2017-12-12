@@ -19,22 +19,35 @@ public class MimiJessiSort extends Contestant{
 		return CHUN_LI;
 	}
 
+	public double Median(int[] arr) {
+	    int middle = arr.length / 2;
+	       if (arr.length%2 == 1)
+	        {
+	           return arr[middle];
+	        } else {
+	        	return (arr[middle-1] + arr[middle]) / 2.0;
+	        }
+	}
+	
 	@Override
 	public double sortAndGetMedian(int[] random) {
-		if (random == null || random.length==0){
-            return ;
-        }
+		if (random.length==0){
+           return 0;
+       }
         this.random = random;
         number = random.length;
         quickSort(0, number - 1);
         
+        Median(random);
         
-        if(random.length % 2 == 0) {
-        	
-        }
-        else if (random.length % 2 == 1) {
-        	return random[random.length/2];
-        }
+      //  if(random.length % 2 == 0) {
+        //	return (random[random.length-1] + random[random.length])/2.0;
+        //}
+        //else if (random.length % 2 == 1) {
+        //	return random[random.length/2];
+       // }
+		return number;
+	
 	}
 
 	/**
@@ -44,7 +57,6 @@ public class MimiJessiSort extends Contestant{
 	public void quickSort(int low, int high) {
 		int i = low;
 		int j = high;
-		//  
 		int pivot = random[low + (high - low)/2];
 		
 		while(i <= j) {
@@ -55,7 +67,7 @@ public class MimiJessiSort extends Contestant{
 				j--;
 			}
 			if ( i <= j) {
-				exchange(i,j);
+				swap(i,j);
 				i++;
 				j--;
 			}
@@ -66,7 +78,7 @@ public class MimiJessiSort extends Contestant{
             quickSort(i, high);
 	}
 
-	private void exchange(int i, int j) {
+	private void swap(int i, int j) {
 		int temp = random[i];
         random[i] = random[j];
         random[j] = temp;
@@ -77,22 +89,64 @@ public class MimiJessiSort extends Contestant{
 		
 		return 0;
 	}
+	
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		// TODO Auto-generated method stub
+		insertionSort(mostlySorted);
+		
 		return 0;
 	}
+	
+	public void insertionSort(int arr[]) {
+		int n = arr.length;
+		for(int i = 1; i < n; i++) {
+			int key = arr[i];
+			int j = i-1;
+			while(j >= 0 && arr[j] > key) {
+				arr[j+1] = arr[j];
+				j = j -1;
+			}
+			arr[j+1] = key;
+		}
+	}
 
+	public void mergeSort(int arr[], int l, int m, int r) {
+		int n = m - l + 1;
+		int p = r - m;
+		int L[] = new int [n];
+		int R[] = new int [p];
+		
+		for(int i = 0; i < n; i++) {
+			L[i] = arr[l + i];
+		}
+		for(int j = 0; j < p; j++) {
+			R[j] = arr[m + 1 + j];
+		}
+		
+		int i = 0;
+		int j = 0;
+		int k = 1;
+		while(i < n && j < p) {
+			if(L[i] <= R[j]) {
+				arr[k] = L[i];
+				i++;
+			}else {
+				arr[k] = R[j];
+				j++;
+			}
+		}
+	}
+	
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
+	
 		return 0;
 	}
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 	
