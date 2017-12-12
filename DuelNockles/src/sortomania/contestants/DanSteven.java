@@ -25,6 +25,19 @@ public class DanSteven extends Contestant{
 	     }
 	     avg=avg/500;
 	     System.out.println(avg);
+	     
+	     String[] strings = {"bee","ba", "be", "a", "]"};
+	     
+	     
+	     a.sortAndGetResultingIndexOf(strings, "be");
+	     System.out.println(a.sortAndGetResultingIndexOf(strings, "e"));
+	     
+	     for (int i = 0; i < strings.length; i++)
+	     {
+	    	 System.out.println(strings[i]);
+	     }
+	     
+	     
 	}
 	@Override
 	public Color getColor() {
