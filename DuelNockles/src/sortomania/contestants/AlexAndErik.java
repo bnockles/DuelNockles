@@ -199,7 +199,7 @@ public class AlexAndErik extends Contestant {
 			}
 		}
 		return count;*/
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stu
 	}
 
 	@Override
