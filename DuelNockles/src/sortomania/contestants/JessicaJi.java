@@ -65,10 +65,9 @@ public class JessicaJi extends Contestant {
 	
 	}
 	
-	public static String[] mergeSortString(String[] arr) {
+	public static String[] insertionSortString(String[] arr) {
 		int i,j;
 		  String idx;
-		  //System.out.println(Arrays.toString(arr));
 		  for (j = 1; j < arr.length; j++) {
 			  idx = arr[j];
 		    i = j - 1;
@@ -80,11 +79,47 @@ public class JessicaJi extends Contestant {
 		      i--;
 		    }
 		    arr[i + 1] = idx;
-		    //System.out.println(Arrays.toString(arr));
-		  }
-		  //System.out.println(Arrays.toString(arr))		
+		  }		
 		  return arr;
 	}
+	
+	public static String[] mergeSortString(String[] arr) {
+        if (arr.length >= 2) {
+            String[] left = new String[arr.length / 2];
+            String[] right = new String[arr.length-arr.length / 2];
+
+            for (int i = 0; i < left.length; i++)
+            {
+                left[i] = arr[i];
+            }
+            for (int i = 0; i < right.length; i++)
+            {
+                right[i] = arr[i + arr.length / 2];
+            }
+
+            mergeSortString(left);
+            mergeSortString(right);
+
+            merge(arr, left, right);
+        }
+        return arr;
+    }
+	//helper method for mergeSortString
+	 public static void merge(String[] result, String[] left, String[] right) {
+	        int i1 = 0;
+	        int i2 = 0;
+	        for (int i = 0; i < result.length; i++) {
+	            if (i2 >= right.length || (i1 < left.length &&
+	                                 left[i1].compareToIgnoreCase(right[i2])<0)) {
+	                      result[i] = left[i1];
+	                      i1++;
+	                 } else {
+	                      result[i] = right[i2];
+	                      i2++;
+	                 }
+	            }
+	    }
+	
 	public JessicaJi() {
 		// TODO Auto-generated constructor stub
 	}
