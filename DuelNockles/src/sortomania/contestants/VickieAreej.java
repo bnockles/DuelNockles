@@ -11,10 +11,11 @@ public class VickieAreej extends Contestant{
 	}
 
 	public static void main(String[] args) {
-		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8, 56,234,56,35,234,67};
 		heapSort(arr);
+		//bubbleSort(arr);
 		System.out.print(Arrays.toString(arr));
-		System.out.println("The median is: " + sortAndGetMedian(arr));
+		//System.out.println("The median is: " + sortAndGetMedian(arr));
 		//System.out.println("And the sorted array is: \n" + arr);
     }  
 
@@ -28,7 +29,7 @@ public class VickieAreej extends Contestant{
 		return FEI_LONG;
 	}
 
-		public static int[] heapSort(int arr[])
+		public static void heapSort(int arr[])
 	    {
 	        int n = arr.length;
 	 
@@ -47,7 +48,7 @@ public class VickieAreej extends Contestant{
 	            // call max heapify on the reduced heap
 	            heapify(arr, i, 0);
 	        }
-	        return arr;
+	        //return arr;
 	    }
 	 
 	    // To heapify a subtree rooted with node i which is
@@ -102,7 +103,7 @@ public class VickieAreej extends Contestant{
 		return 0;
 	}
 
-			public  int[] bubbleSort(int[] mostlySorted) {
+			public static  int[] bubbleSort(int[] mostlySorted) {
 				int n = mostlySorted.length;  
 		        int temp = 0;  
 		         for(int i=0; i < n; i++){  
