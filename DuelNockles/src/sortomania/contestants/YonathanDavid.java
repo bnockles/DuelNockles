@@ -74,7 +74,7 @@ public class YonathanDavid extends Contestant{
 		}
 		return -1;
 	}
-	public boolean 
+
 	public boolean check(String s1,String s2) {
 		//check if one is larger than the other
 		//run along each string checking each letter until it runs out.\
