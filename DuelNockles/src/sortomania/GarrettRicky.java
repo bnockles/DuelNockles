@@ -7,10 +7,14 @@ public class GarrettRicky extends Contestant {
 
 	public static void main(String[] args) {
 		GarrettRicky test = new GarrettRicky();
-		int[] mostlySorted = {0,1,2,3,6,5,7,8,4,9,11,10,12,13,14,15};
-		System.out.println(Arrays.toString(mostlySorted));
-		System.out.println(test.mostlySortAndGetMedian(mostlySorted));
-		System.out.println(Arrays.toString(mostlySorted));
+		//int[] mostlySorted = {0,1,2,3,6,5,7,8,4,9,11,10,12,13,14,15};
+		String[] nintendo = {" Nintendo", "Switch", " costs", "way.....", " 2", "much", " nowadays "};
+		System.out.println(Arrays.toString(nintendo));
+		System.out.println(test.sortAndGetResultingIndexOf(nintendo,"much"));
+		System.out.println(Arrays.toString(nintendo));
+		//System.out.println(test.mostlySortAndGetMedian(mostlySorted));
+		//System.out.println(Arrays.toString(mostlySorted));
+		
 	}
 
 	@Override
@@ -78,8 +82,24 @@ public class GarrettRicky extends Contestant {
 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		for (int j=0; j<strings.length;j++)
+		   {
+		       for (int i=j+1 ; i<strings.length; i++)
+		       {
+		           if (strings[i].compareTo(strings[j])<0)
+		           {
+		               String temp = strings[j];
+		               strings[j] = strings[i];
+		               strings[i] = temp;
+		           }
+		       }
+		   }
+		for(int k = 0; k < strings.length; k++) {
+			if(toFind.equals(strings[k])) {
+				return k;
+			}
+		}
+		return -1;
 	}
 
 	@Override
@@ -105,7 +125,7 @@ public class GarrettRicky extends Contestant {
 			return (double)(mostlySorted[mostlySorted.length/2] + mostlySorted[mostlySorted.length/2 - 1])/2;
 		}
 		return (double)mostlySorted[(mostlySorted.length-1)/2];
-	}//edit
+	}
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
