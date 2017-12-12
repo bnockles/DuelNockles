@@ -19,7 +19,7 @@ public class MimiJessiSort extends Contestant{
 		return CHUN_LI;
 	}
 
-	public double Median(int[] arr) {
+	public double median(int[] arr) {
 	    int middle = arr.length / 2;
 	       if (arr.length%2 == 1)
 	        {
@@ -38,7 +38,7 @@ public class MimiJessiSort extends Contestant{
         number = random.length;
         quickSort(0, number - 1);
         
-        Median(random);
+        median(random);
         
       //  if(random.length % 2 == 0) {
         //	return (random[random.length-1] + random[random.length])/2.0;
@@ -90,11 +90,13 @@ public class MimiJessiSort extends Contestant{
 		return 0;
 	}
 	
-
+	public static void sortString() {
+		
+	}
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		insertionSort(mostlySorted);
-		
+		//median(mostlySorted);
 		return 0;
 	}
 	
@@ -110,8 +112,14 @@ public class MimiJessiSort extends Contestant{
 			arr[j+1] = key;
 		}
 	}
-
-	public void mergeSort(int arr[], int l, int m, int r) {
+	
+	@Override
+	public double sortMultiDim(int[][] grid) {
+		//mergeSort();
+		return 0;
+	}
+	
+	public void merge(int arr[], int l, int m, int r) {
 		int n = m - l + 1;
 		int p = r - m;
 		int L[] = new int [n];
@@ -138,10 +146,13 @@ public class MimiJessiSort extends Contestant{
 		}
 	}
 	
-	@Override
-	public double sortMultiDim(int[][] grid) {
-	
-		return 0;
+	public void mergeSort(int arr[], int l, int r) {
+		if(l < r) {
+			int m = (1+r)/2;
+			mergeSort(arr, l, m);
+			mergeSort(arr, m+1, r);
+			merge(arr, l, m, r);
+		}
 	}
 
 	@Override
@@ -149,5 +160,7 @@ public class MimiJessiSort extends Contestant{
 		
 		return 0;
 	}
+	
+	
 	
 }
