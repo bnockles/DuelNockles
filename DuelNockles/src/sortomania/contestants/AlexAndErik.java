@@ -193,7 +193,6 @@ public class AlexAndErik extends Contestant {
 	
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		//int count = 0;
 		int numMatches = 0;
 		for(int i = 0; i < strings.length; i++) {
 			if(toFind.length() == strings[i].length()) {
