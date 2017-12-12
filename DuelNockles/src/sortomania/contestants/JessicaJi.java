@@ -18,6 +18,7 @@ public class JessicaJi extends Contestant {
 	//	System.out.println("The sorted string array is: \n" + Arrays.toString(mergeSortString(arr2)));
 	//	System.out.println("The sorted string array is: \n" + Arrays.toString(insertionSortString(arr2)));
 		System.out.println("The sorted 2D array is: \n" + Arrays.deepToString(sortMultiInt(arr3)));
+		System.out.println("The index of the sorted string array is: \n" + Integer.toString(test.sortAndGetResultingIndexOf(arr2,"Bob")));
 		System.out.println("The sorted 2D array is: \n" + Double.toString( test.sortMultiDim(arr3)));
 	}
 	public static int[] insertionSort(int[] arr) {
@@ -163,8 +164,35 @@ public class JessicaJi extends Contestant {
 	}
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		strings = mergeSortString(strings);
+		int low = 0;
+		int high = strings.length - 1;
+		int mid;
+
+		while (low <= high) {
+			mid = (low + high) / 2;
+
+		    if (strings[mid].compareTo(toFind) < 0) {
+		    	low = mid + 1;
+		    } else if (strings[mid].compareTo(toFind) > 0) {
+		    	high = mid - 1;
+		        } else {
+		            return mid;
+		        }
+		    }
+
+		    return -1;
+		//linear search
+		/*
+		int index = -1;
+		for (int i=0; i<strings.length; i++) {
+		    if (strings[i].equals(toFind)) {
+		        index = i;
+		        break;
+		    }
+		}
+		return index;
+		*/
 	}
 
 	@Override
