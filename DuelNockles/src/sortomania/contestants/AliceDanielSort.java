@@ -24,16 +24,22 @@ public class AliceDanielSort extends Contestant{
 	public double sortAndGetMedian(int[] random) {
 		//put all sorting methods into one method then call it here
 		
-		random.length = 
+		
+		int lengthOfArray = random.length;
 		//first sort using introsort then:
 		
-		if (random.length %2 == 1) {
+		if (lengthOfArray %2 == 1) {
 			
-			(random.length + 1)/2
+			return random[(lengthOfArray + 1)/2];
 			
 		}
 		
-		return 0;
+		else if(lengthOfArray %2 == 0 ) {
+			
+			int sum = random[lengthOfArray/2] + random[(lengthOfArray/2 )+ 1];
+			
+			return sum/2;
+		}
 	}
 
 	@Override
