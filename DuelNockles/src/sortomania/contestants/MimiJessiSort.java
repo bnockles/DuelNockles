@@ -5,9 +5,13 @@ import java.awt.Color;
 import sortomania.Contestant;
 
 public class MimiJessiSort extends Contestant{
-	
-	private int[] random;
-    private int number;
+	public static void main(String[] args) {
+		MimiJessiSort test = new MimiJessiSort();
+		
+		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+		System.out.println("And the sorted array is: \n" + arr);
+	}
 
 	@Override
 	public Color getColor() {
@@ -31,92 +35,8 @@ public class MimiJessiSort extends Contestant{
 	
 	@Override
 	public double sortAndGetMedian(int[] random) {
-		if (random.length==0){
-           return 0;
-       }
-        this.random = random;
-        number = random.length;
-        quickSort(0, number - 1);
-        
-        median(random);
-        
-      //  if(random.length % 2 == 0) {
-        //	return (random[random.length-1] + random[random.length])/2.0;
-        //}
-        //else if (random.length % 2 == 1) {
-        //	return random[random.length/2];
-       // }
-		return number;
-	
-	}
-
-	/**
-	 * helper method for sortAndGetMedian
-	 * @return
-	 */
-	public void quickSort(int low, int high) {
-		int i = low;
-		int j = high;
-		int pivot = random[low + (high - low)/2];
-		
-		while(i <= j) {
-			while(random[i] < pivot) {
-				i++;
-			}
-			while(random[j] > pivot) {
-				j--;
-			}
-			if ( i <= j) {
-				swap(i,j);
-				i++;
-				j--;
-			}
-		}
-		if (low < j)
-            quickSort(low, j);
-        if (i < high)
-            quickSort(i, high);
-	}
-
-	private void swap(int i, int j) {
-		int temp = random[i];
-        random[i] = random[j];
-        random[j] = temp;
-	}
-
-	@Override
-	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		
-		return 0;
-	}
-	
-	public static void sortString() {
-		
-	}
-	@Override
-	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		insertionSort(mostlySorted);
-		//median(mostlySorted);
-		return 0;
-	}
-	
-	public void insertionSort(int arr[]) {
-		int n = arr.length;
-		for(int i = 1; i < n; i++) {
-			int key = arr[i];
-			int j = i-1;
-			while(j >= 0 && arr[j] > key) {
-				arr[j+1] = arr[j];
-				j = j -1;
-			}
-			arr[j+1] = key;
-		}
-	}
-	
-	@Override
-	public double sortMultiDim(int[][] grid) {
-		//mergeSort();
-		return 0;
+		mergeSort(random, 0, random.length - 1);
+		return median(random);
 	}
 	
 	public void merge(int arr[], int l, int m, int r) {
@@ -143,6 +63,17 @@ public class MimiJessiSort extends Contestant{
 				arr[k] = R[j];
 				j++;
 			}
+			k++;
+		}
+		while(i < n) {
+			arr[k] = L[i];
+			i++;
+			k++;
+		}
+		while(j < p) {
+			arr[k] = R[j];
+			j++;
+			k++;
 		}
 	}
 	
@@ -155,6 +86,91 @@ public class MimiJessiSort extends Contestant{
 		}
 	}
 
+
+	@Override
+	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+		mergeString(strings);
+		return binarySearch(mergeString(strings), toFind);
+	}
+	
+	public static void mergeString(String[] names) {
+        if (names.length >= 2) {
+            String[] left = new String[names.length / 2];
+            String[] right = new String[names.length - names.length / 2];
+
+            for (int i = 0; i < left.length; i++) {
+                left[i] = names[i];
+            }
+
+            for (int i = 0; i < right.length; i++) {
+                right[i] = names[i + names.length / 2];
+            }
+
+            mergeString(left);
+            mergeString(right);
+            mergeS(names, left, right);
+        }
+    }
+	
+	public static void mergeS(String[] names, String[] left, String[] right) {
+        int a = 0;
+        int b = 0;
+        for (int i = 0; i < names.length; i++) {
+            if (b >= right.length || (a < left.length && left[a].compareToIgnoreCase(right[b]) < 0)) {
+                names[i] = left[a];
+                a++;
+            } else {
+                names[i] = right[b];
+                b++;
+            }
+        }
+    }
+	
+	public static int binarySearch(String[] s, String x) {
+		int low = 0;
+		int high = s.length -1;
+		int mid;
+		while(low <= high) {
+			mid = (low + high)/2;
+			if(s[mid].compareTo(x) < 0) {
+				low = mid +1;
+			}else if(s[mid].compareTo(x) > 0){
+				high = mid -1;
+			}else {
+				return mid;
+			}
+		}
+		return -1;
+	}
+	
+	@Override
+	public double mostlySortAndGetMedian(int[] mostlySorted) {
+		insertionSort(mostlySorted);
+		return median(mostlySorted);
+	}
+	
+	public void insertionSort(int arr[]) {
+		int n = arr.length;
+		for(int i = 1; i < n; i++) {
+			int key = arr[i];
+			int j = i-1;
+			while(j >= 0 && arr[j] > key) {
+				arr[j+1] = arr[j];
+				j = j -1;
+			}
+			arr[j+1] = key;
+		}
+	}
+	
+	@Override
+	public double sortMultiDim(int[][] grid) {
+		int[] medians = new int[grid.length];
+		for(int i = 0; i < grid.length; i++) {
+			medians[i] = (int) sortAndGetMedian(grid[i]);
+		}
+		return sortAndGetMedian(medians);
+	}
+	//sort the array then return index of the toFind
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		
