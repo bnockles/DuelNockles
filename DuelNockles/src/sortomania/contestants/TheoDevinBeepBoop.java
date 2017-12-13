@@ -11,7 +11,7 @@ public class TheoDevinBeepBoop extends Contestant {
 			int [] arr = {0, 9, 2, 4, 8, 1, 3, 5, 7, 6};
 		
 			System.out.println(test.sortAndGetMedian(arr));
-			System.out.println(Arrays.toString(arr));
+			System.out.println(test.mostlySortAndGetMedian(arr));
 			
 		}
 
@@ -59,7 +59,16 @@ public class TheoDevinBeepBoop extends Contestant {
 	}
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		return 0;
+		String phrase[] = new String[strings.length];
+		
+		for(int i = 0; i < strings.length-1;i++) {
+		if(phrase[i].compareTo(phrase[i+1]) > 0) {
+			String temp = phrase[i+1];
+            phrase[i+1] = phrase[i];
+            phrase[i] = temp;
+            //not heap, more like bubble, but is missing parts of it
+		}
+		}
 
 	}
 
