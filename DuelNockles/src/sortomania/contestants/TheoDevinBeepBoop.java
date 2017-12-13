@@ -144,8 +144,13 @@ public class TheoDevinBeepBoop extends Contestant {
 		for(int i =0;i<grid.length;i++) {
 			grid[i]= countingSort(grid[i]);
 		}
-		
-		return 0;
+		double[] med = new double[grid.length];
+		for(int i =0;i<grid.length;i++) {
+			med[i]= sortAndGetMedian(grid[i]);
+		}
+		if(med.length%2==0)
+			return ((med[grid.length/2] + med[(grid.length/2)-1])/2);
+		return med[grid.length/2];
 	}
 	  public int[] countingSort(int[] theArray) {
 
