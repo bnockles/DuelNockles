@@ -159,7 +159,8 @@ public class AndrewKevin extends Contestant{
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		// TODO Auto-generated method stub
-		mergeSort(arr,arr.length-1,0);
+		//bubbleSort(arr);
+		mergeSort(arr,0,arr.length-1);
 		for(int i = 0; i < arr.length; i++) {
 			if(arr[i].compareTo(toFind) == 0) {
 				return i;
@@ -167,12 +168,39 @@ public class AndrewKevin extends Contestant{
 		}
 		return -1;
 	}
+	    public void bubbleSort(Comparable[] array)
+	    {
+	         boolean noChange = true;
+	         while(true)
+	         {
+		         for(int i = array.length; i > 0; i--)
+		         {
+		              noChange = true;
+		              for(int j = 1; j < i; j++)
+		              {
+		                   if(array[j].compareTo(array[j - 1]) < 0)
+		                   {
+		                        swap(array, j, j - 1);
+		                        noChange = false;
+		                   }
+		              }
+		              if (noChange)
+		                   return;
+		         }
+	         }
+	    }
+	    public void swap(Comparable[] array, int index1, int index2)
+	    {
+	    	Comparable temp = array[index1];
+	         array[index1] = array[index2];
+	         array[index2] = temp;
+	    }
 		    void merge(Comparable arr[], int l, int m, int r)
 		    {
 		        int n1 = m - l + 1;
 		        int n2 = r - m;
-		        Comparable L[] = new Comparable [n1];
-		        Comparable R[] = new Comparable [n2];
+		        Comparable L[] = new Comparable[n1];
+		        Comparable R[] = new Comparable[n2];
 		        for (int i=0; i<n1; ++i)
 		            L[i] = arr[l + i];
 		        for (int j=0; j<n2; ++j)

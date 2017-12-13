@@ -41,6 +41,19 @@ public static void main(String a[]){
         }
         System.out.println ("\n" + duration2 + " nanoseconds");
         System.out.println(sorter.sortAndGetResultingIndexOf(fruits,"aaaaa"));
+        
+        Comparable[] cTest = new Comparable[10000];
+        for(int i = 0; i < cTest.length; i++) {
+        	cTest[i] = new Test1();
+        }
+        final long startTime4 = System.nanoTime();
+        sorter.sortAndSearch(cTest, cTest[1]);
+        final long duration4 = System.nanoTime() - startTime4;
+        for(Comparable i:cTest){
+            System.out.println((((Test1) i).getA()));
+        }
+        System.out.println ("\n" + duration4 + " nanoseconds");
+        System.out.println(sorter.sortAndSearch(cTest,cTest[1]));
     }
 
 }
