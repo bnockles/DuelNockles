@@ -14,8 +14,8 @@ public class FahadDavidSorter extends Contestant {
 	//recursive merge sort
 	 public static void main (String[] args){
 		 FahadDavidSorter test = new FahadDavidSorter();
-		 int[] arr = {4,6,2,4,5,5};
-		 System.out.println(test.mostlySortAndGetMedian(arr));
+		 Comparable[] arr = {4,6,2,4,5,5};
+		 System.out.println(test.sortAndSearch(arr, 6));
 		 System.out.println(Arrays.toString(arr));
 	   }
 	
@@ -140,4 +140,18 @@ public class FahadDavidSorter extends Contestant {
 			    inputArray[i + 1] = key;
 			  }
 	 }
+	 
+		public static void insertionSort(Comparable[] array){
+			int i, j;
+			Comparable newValue;
+			for (i = 1; i < array.length; i++) {
+				newValue = array[i];
+				j = i;
+				while (j > 0 && (array[j - 1].compareTo(newValue)>0)) {
+					array[j] = array[j - 1];
+					j--;
+				}
+				array[j] = newValue;
+			}
+		}
 }
