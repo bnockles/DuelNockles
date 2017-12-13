@@ -10,11 +10,11 @@ import sortomania.Contestant;
 public class AliceDanielSort extends Contestant{
 	//private static int size_threshold = 16;
 	
-	public AliceDanielSort() {
+	public static void main(String args[]) {
 		
 		AliceDanielSort test = new AliceDanielSort();
-		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
-		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+		int[][] arr = {3,4,5,6,10};
+		System.out.println("The median is: " + test.sortMultiDim(arr[]));
 		System.out.println("And the sorted array is: \n" + arr);
 
 	}
