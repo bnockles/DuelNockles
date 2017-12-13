@@ -18,25 +18,33 @@ public class EthanDavidContestant extends Contestant {
 
 	private void testSort() {
 		String[] stringArr = {"sdljad", "asc", "Abc"};
-		int[][] arr = new int[3][2];
-		int[] arr1 = {1,4,5,8,11,7};
+		int[][] arr = new int[3][4];
+		int[] arr1 = {1,4,5,8,11,7,6,9};
 		arr[0][0] = 50;
 		arr[0][1] = 100;
+		arr[0][2] = 72;
+		arr[0][3] = 37;
 		arr[1][0] = 19;
 		arr[1][1] = 14;
+		arr[1][2] = 378;
+		arr[1][3] = 2381;
 		arr[2][0] = 21;
 		arr[2][1] = 15;
+		arr[2][2] = 891;
+		arr[2][3] = 9832;
+		
+		
 		System.out.println(sortMultiDim(arr));
-		sortAndGetMedian(arr1);
-		sortAndGetResultingIndexOf(stringArr, "Abc");
-		System.out.println(Arrays.toString(stringArr));
-		System.out.println(Arrays.toString(arr1));
 		System.out.println(Arrays.deepToString(arr));
+		System.out.println(sortAndGetMedian(arr1));
+		System.out.println(Arrays.toString(arr1));
+		System.out.println(sortAndGetResultingIndexOf(stringArr, "Abc"));
+		System.out.println(Arrays.toString(stringArr));
 	}
 
 	@Override
 	public Color getColor() {
-		return new Color(0,0,0);
+		return new Color(0,27,120);
 	}
 
 	@Override
@@ -146,10 +154,8 @@ public class EthanDavidContestant extends Contestant {
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		insertionSort(mostlySorted);
 		if(mostlySorted.length % 2 == 0) {
-			System.out.println((double)(mostlySorted[mostlySorted.length/2] + mostlySorted[mostlySorted.length/2-1])/2);
 			return (double)(mostlySorted[mostlySorted.length/2] + mostlySorted[mostlySorted.length/2-1])/2;
 		}else {
-			System.out.println(mostlySorted[mostlySorted.length/2]);
 			return mostlySorted[mostlySorted.length/2];
 		}
 	}   
@@ -192,7 +198,6 @@ public class EthanDavidContestant extends Contestant {
 		for(int i = 0; i < grid.length; i++) {
 			median[i] = sortAndGetMedian(grid[i]);
 		}
-		System.out.println(Arrays.toString(median));
 		quickSort1(median,0,median.length-1);
 		if(median.length%2 != 0) {
 			return median[grid.length/2];
