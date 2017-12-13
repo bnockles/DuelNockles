@@ -1,7 +1,6 @@
 package sortomania.contestants;
 
 import java.awt.Color;
-import java.awt.Colowr;
 import java.util.Arrays;
 
 import sortomania.Contestant;
