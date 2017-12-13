@@ -31,9 +31,17 @@ public class AlexAndErik extends Contestant {
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
 		
-		String[] temp = {"siddeeq","erik","alex"};
-		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp,"alex"));
-		System.out.println("Here is the sorted string array: " + test.mergeStrings(String[] boss,temp,temp));
+		
+		String[] temp1 = {"siddeeq","erik","alex"};
+		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp1,"alex"));	
+		String[] temp2 = {"bob","david","katherine"};
+		String[] store = new String[temp1.length+temp2.length];
+		mergeSortString(temp1);
+		mergeSortString(temp2);
+		mergeStrings(store, temp1, temp2);
+		mergeSortString(store);
+			
+		System.out.println("Here is the sorted string array: " + store);
 		
 		int[] arr1 = {11,20,21,50};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
@@ -213,7 +221,7 @@ public class AlexAndErik extends Contestant {
         }
     }
 
-    public static String[] mergeStrings(String[] names, String[] left, String[] right) {
+    public static void mergeStrings(String[] names, String[] left, String[] right) {
         int a = 0;
         int b = 0;
         for (int i = 0; i < names.length; i++) {
@@ -225,7 +233,6 @@ public class AlexAndErik extends Contestant {
                 b++;
             }
         }
-        return names;
     }
 	
 	@Override
