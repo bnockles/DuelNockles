@@ -179,16 +179,7 @@ public class JessicaJi extends Contestant {
 	}
 	public double medianMulti(int[][] grid) //median of median so each array gets median and divide by median
 	{
-	 /*   int[] list = new int[grid.length * grid[0].length];
-
-	    int listPos = 0;
-	    for (int i = 0; i < grid.length; i++) 
-	    {
-	      for (int j = 0; j < grid[0].length; j++) 
-	      {
-	        list[listPos++] = grid[i][j];
-	      }
-	    }*/
+	 
 		double sum = 0;
 	
 		for(int i = 0; i < grid.length; i++) {
@@ -197,11 +188,7 @@ public class JessicaJi extends Contestant {
 		}
 		
 		return (double)sum/grid.length;
-		
-	 //   return (getMedian(grid[0]) + getMedian(grid[1])) / grid.length;
-	 //   return getMedian(list);
-	  
-	  
+
 	}
 	public static int[][] sortMultiInt(int[][] grid) 
 	{
