@@ -81,7 +81,7 @@ public class BenjaminDardia extends Contestant
 	            strings[i] = aux[i];
 	        }
 	      
-	      return performBinarySearchIterative(strings, toFind, 0, strings.length);
+	      return performBinarySearchIterative(strings, toFind, 0, strings.length - 1);
 	      
 	}
 	
