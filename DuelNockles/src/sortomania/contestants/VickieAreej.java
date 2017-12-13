@@ -190,57 +190,29 @@ public class VickieAreej extends Contestant{
 	    return list;
 	}
 
-	//
-	public static void sortCom(Comparable[] a) {
-		quicksortCom(a, 0, a.length-1);
-    }
-	
-	public static void quicksortCom(Comparable[] a, int low, int high) {
-        if(low >= high) {
-        	return;
-        }
-        int part = partitionA(a, low, high);
-        quicksortCom(a, low, part-1);
-        quicksortCom(a, part+1, high);
-    }
-    
-    public static int partitionA(Comparable[] a, int low, int high) {
-        int i = low + 1;
-        int j = high;
-
-        while(i <= j) {
-            if(a[i].compareTo(a[low]) <= 0) { 
-                i++; 
-            }
-            else if(a[j].compareTo(a[low]) > 0) { 
-                j--;
-            }
-            else if(j < i) {
-                break;
-            }
-            else {
-            	 exchange(a, i, j);
-            }
-               
-        }
-        exchange(a, low, j);
-        return j;
-    }
-
-    public static void exchange(Object[] a, int i, int j) {
-        Object tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-    }
-    
 	//TASK5
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		sortCom(arr);
+		 sortComArrExchange(arr);
 		for(int i = 0; i < arr.length; i++) {
 			if(arr[i].equals(toFind)) return i;
 		}
 		return -1;
 	}
+	
+	public void sortComArrExchange( Comparable x [] ){
+	       int i, j;
+	       Comparable temp;
+
+	       for(i = 0; i<x.length-1; i++){
+	    	   for (j = i+1;j < x.length; j++){  
+	    		   if ( ((String) x[i]).compareToIgnoreCase((String) x[j])>0 ) {                                            
+	    			   temp = x [ i ];
+	                   x [ i ] = x [ j ];  
+	                   x [ j ] = temp;     
+	               } 
+	           } 
+	        } 
+	     }
 	
 	public String toString() {
 		return "A & V";
