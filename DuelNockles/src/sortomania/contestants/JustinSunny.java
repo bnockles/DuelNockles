@@ -111,20 +111,17 @@ public class JustinSunny extends Contestant {
 		}
 	}
 	
-	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub
 		return new Color(153, 255, 153);
 	}
 	
-	@Override
 	public String getSpriteName() {
 		// TODO Auto-generated method stub
 		return "RYU";
 	}
 
 	//Works
-	@Override
 	public double sortAndGetMedian(int[] random) {
 		//sort(random, 0, random.length - 1); //Heap Sort 2-6ms
 		OptimizedQuickSort(random, 0, random.length - 1); //1-5ms
@@ -140,14 +137,12 @@ public class JustinSunny extends Contestant {
 	}
 
 	//Tested for small cases POOP FOR LARGE CASES
-	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		OptimizedQuickSort(strings, 0, strings.length - 1); //7-13ms BAAAHHH
 		return binarySearch(strings, 0, strings.length - 1, toFind);
 	}
 
 	//WORKS
-	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		//insertionSort(mostlySorted); //10-14ms
 		//timSort(mostlySorted, mostlySorted.length); //10-12ms
@@ -158,7 +153,6 @@ public class JustinSunny extends Contestant {
 	}
 
 	//WORKS
-	@Override
 	public double sortMultiDim(int[][] grid) {
 		double[] newArr = new double[grid.length];
 		for(int i = 0; i < newArr.length; i++) {
@@ -168,7 +162,6 @@ public class JustinSunny extends Contestant {
 	}
 
 	//WORKS BUT BAD FOR LARGE CASES
-	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		OptimizedQuickSort(arr, 0, arr.length - 1); //4-12ms
 		return binarySearch(arr, 0, arr.length - 1, toFind);
