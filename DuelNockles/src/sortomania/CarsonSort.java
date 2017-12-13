@@ -36,7 +36,24 @@ public class CarsonSort extends Contestant{
 	}
 
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		return 0;
+		for (int i=0; i<strings.length;i++)
+		{
+			for (int j=i+1 ; j<strings.length; j++)
+			{
+				if (strings[j].compareTo(strings[i])<0)
+				{
+					String k = strings[i];
+					strings[i] = strings[j];
+					strings[j] = k;
+				}
+			}
+		}
+		for(int l = 0; l < strings.length; l++) {
+			if(toFind.equals(strings[l])) {
+				return l;
+			}
+		}
+		return -1;
 	}
 	
 	void insertSort(int arr[])
@@ -103,34 +120,7 @@ public class CarsonSort extends Contestant{
 		}
 	}
 	
-	public static void quickSort(String[] strArr, int lowerIndex, int higherIndex) {
-		if (strArr == null || strArr.length == 0) {
-			return;
-		}
-		
-		int i = lowerIndex;
-		int j = higherIndex;
-		int pivot = strArr[lowerIndex+(higherIndex-lowerIndex)/2];
-		while (i <= j) {
-			while (strArr[i] < pivot) {
-				i++;
-			}
-			while (strArr[j] > pivot) {
-				j--;
-			}
-			if (i <= j) {
-				swap(strArr, i, j);
-				i++;
-				j--;
-			}
-		}
-		if (lowerIndex < j) {
-			quickSort(strArr, lowerIndex, j);
-		}
-		if (i < higherIndex) {
-			quickSort(strArr, i, higherIndex);
-		}
-	}
+	
 
 	static void printArray(int arr[]) {
 		int n = arr.length;
