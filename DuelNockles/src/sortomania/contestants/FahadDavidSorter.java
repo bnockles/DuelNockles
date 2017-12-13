@@ -78,6 +78,7 @@ public class FahadDavidSorter extends Contestant {
 	}
 
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
+		insertionSort(arr);
 		for(int i = 0; i < arr.length; i++) {
 			if(arr[i] == toFind) {
 				return i;
