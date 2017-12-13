@@ -35,6 +35,9 @@ public class DerekDavid extends Contestant {
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
 		System.out.println("And the sorted array is: \n"+Arrays.toString(heapSort(arr)));
 		
+		System.nanoTime();
+		
+		
 		//TASK 2
 		System.out.println("Your String is at index:"+test.sortAndGetResultingIndexOf(arrStr, c));
 		
@@ -51,7 +54,9 @@ public class DerekDavid extends Contestant {
 		
 		//TASK 5
 		
-		
+		Comparable[] test1 = {"asd","qweo","qpwqe","dfghj","c"};
+        System.out.println("The median of the mostly sorted array is: " + test.sortAndSearch(test1,"c"));
+        
 		
 }
 	@Override
@@ -123,10 +128,50 @@ public class DerekDavid extends Contestant {
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		return 0;
+		Quicksort1(arr);
+		System.out.print(Arrays.toString(arr));
+        for(int i=0;i<arr.length;i++)
+        {
+            if(arr[i].compareTo(toFind) == 0)
+            {
+                return i;
+            }
+        }
+        return -1;
 	}
 
+	//quicksort for Comparable
+	public void Quicksort1(Comparable[] arr, int idx1, int idx2) {
+        if (idx1 >= idx2) {
+
+            return;
+        }
+        int pivotIndex = partition1(arr, idx1, idx2);
+        Quicksort1(arr, idx1, pivotIndex);
+        Quicksort1(arr, pivotIndex+1, idx2);
+     }
 	
+	public int partition1(Comparable[] arr, int idx1, int idx2) {
+        Comparable pivotValue = arr[idx1];
+       while (idx1 < idx2) {
+          Comparable value1;
+          Comparable value2;
+          while ((value1 = arr[idx1]).compareTo( pivotValue ) < 0) {
+              idx1 = idx1 + 1;
+          }
+          while ((value2 = arr[idx2]).compareTo( pivotValue ) > 0) {
+              idx2 = idx2 - 1;
+          }
+          arr[idx1] = value2;
+          arr[idx2] = value1;
+       }
+       return idx1;
+   }
+	
+	 public void Quicksort1(Comparable[] arr) {
+         Quicksort1(arr, 0, arr.length - 1);
+     }
+	 
 	//TASK ONE HEAP SORT
 	public static int[] heapSort(int arr[]) {
 		int n = arr.length;
