@@ -16,7 +16,7 @@ public class YonathanDavid extends Contestant{
 		String[] z = {"kjgae","aergre","aaf","abc","asfff","dnreiugnge","xroigner","xae","d386fggeg"};
 		int[][] x = {a,b,c,d};
 		YonathanDavid test = new YonathanDavid();
-/*		
+		
 		double y = test.sortMultiDim(x);
 		for(int i=0;i<x.length;i++) {
 		System.out.println(Arrays.toString(x[i]));
@@ -24,26 +24,28 @@ public class YonathanDavid extends Contestant{
 		System.out.println(y);
 		
 
-		double h = test.mostlySortAndGetMedian(a);
-		double g = test.sortAndGetMedian(b);
-		System.out.println(h);
-		System.out.println(Arrays.toString(a));
-		System.out.println(g);
-		System.out.println(Arrays.toString(b));
-		int r = test.sortAndGetResultingIndexOf(z,"kjgae"); 
-		System.out.println(r);
-		System.out.println(Arrays.deepToString(z));
+		//double h = test.mostlySortAndGetMedian(a);
+		//double g = test.sortAndGetMedian(b);
+		//System.out.println(h);
+		//System.out.println(Arrays.toString(a));
+		//System.out.println(g);
+		//System.out.println(Arrays.toString(b));
+		//int r = test.sortAndGetResultingIndexOf(z,"kjgae"); 
+		//System.out.println(r);
+		//System.out.println(Arrays.deepToString(z));
 		
-		int r = test.sortAndSearch(z, "d386fggeg");  
+		
+	/*	int r = test.sortAndSearch(z, "d386fggeg");  
 		System.out.println(r);
 		System.out.println(Arrays.deepToString(z));
-	*/	
+		*/
+		
 	}
 
 	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub
-		return new Color(255,255,255);
+		return new Color(0,0,0);
 	}
 
 	@Override
