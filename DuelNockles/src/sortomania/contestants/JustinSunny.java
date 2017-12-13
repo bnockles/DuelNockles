@@ -14,12 +14,12 @@ public class JustinSunny extends Contestant {
 	public static void main(String[] args) {
 		//int[] arr = new int[10000];
 		//populate(arr);
-	
+		/*
 		int[][] arr = new int[100][100];
 		for(int[] row: arr) {
 			populate(row);
 		}
-	
+		*/
 		/*
 		timSort(arr, arr.length);
 		System.out.println(Arrays.toString(arr));
@@ -35,16 +35,16 @@ public class JustinSunny extends Contestant {
 		//populate(arr);
 		//Comparable num = arr[2];
 		
-		long startTime =  System.currentTimeMillis();
+		//long startTime =  System.currentTimeMillis();
 		
 		//sortMultiDim(arr);
 		//sortAndGetMedian(arr);
 		//sortAndGetResultingIndexOf(arr, str);
 		//sortAndSearch(arr, num);
 		
-		long endTime =  System.currentTimeMillis();
+		//long endTime =  System.currentTimeMillis();
 
-		long duration = (endTime - startTime);
+		//long duration = (endTime - startTime);
 		//System.out.println(duration + " " + sortAndGetResultingIndexOf(arr, str));
 		//System.out.println(Arrays.toString(arr));
 		
