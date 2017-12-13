@@ -9,7 +9,7 @@ public class MimiJessiSort extends Contestant{
 	public static void main(String[] args) {
 		MimiJessiSort test = new MimiJessiSort();
 		
-		//capital I for comparables
+		//capital I for comparables 
 		Integer[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
 		Integer toFind = 12;
 		System.out.println("The median is: " + test.sortAndSearch(arr, toFind));
