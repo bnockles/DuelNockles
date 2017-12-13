@@ -6,7 +6,7 @@ import java.util.Arrays;
 import sortomania.Contestant;
 
 public class MarkWilliam extends Contestant{
-
+	
 	@Override
 	public Color getColor() {
 		return new Color(0,200,255);
@@ -25,17 +25,6 @@ public class MarkWilliam extends Contestant{
 		if(random.length%2==0)
 			return ((random[arrLen/2] + random[(arrLen/2)-1])/2);
 		return random[arrLen/2];
-	}
-	
-	static void printArr(int arr[], int n)
-	{
-	    for (int i=0; i<n; i++)
-	        System.out.print(arr[i]+" ");
-	}
-	static void printStrArr(String arr[], int n)
-	{
-	    for (int i=0; i<n; i++)
-	        System.out.print(arr[i]+" ");
 	}
 	// A utility function to get maximum value in arr[]
     static int getMax(int arr[], int n)
@@ -109,10 +98,22 @@ public class MarkWilliam extends Contestant{
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		radixsort(strings);
-		for(int i = 0; i < strings.length; i++) {
-			if(strings[i].equals(toFind)) return i;
-		}
-		return -1;
+		int low = 0;
+        int high = strings.length - 1;
+        int mid;
+
+        while (low <= high) {
+            mid = (low + high) / 2;
+
+            if (strings[mid].compareTo(toFind) < 0) {
+                low = mid + 1;
+            } else if (strings[mid].compareTo(toFind) > 0) {
+                high = mid - 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
 	}
 
 	public static void radixsort(String[] a){
@@ -177,10 +178,22 @@ public class MarkWilliam extends Contestant{
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		sort(arr);
-		for(int i = 0; i < arr.length; i++) {
-			if(arr[i].equals(toFind)) return i;
-		}
-		return -1;
+		int low = 0;
+        int high = arr.length - 1;
+        int mid;
+
+        while (low <= high) {
+            mid = (low + high) / 2;
+
+            if (arr[mid].compareTo(toFind) < 0) {
+                low = mid + 1;
+            } else if (arr[mid].compareTo(toFind) > 0) {
+                high = mid - 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
 	}
 
 	public static void sort(Comparable[] a) {
