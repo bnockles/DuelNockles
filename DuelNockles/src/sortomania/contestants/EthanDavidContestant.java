@@ -17,6 +17,7 @@ public class EthanDavidContestant extends Contestant {
 	}
 
 	private void testSort() {
+		String[] stringArr = {"sdljad", "asc", "Abc"};
 		int[][] arr = new int[3][2];
 		int[] arr1 = {1,4,5,8,11,7};
 		arr[0][0] = 50;
@@ -25,10 +26,12 @@ public class EthanDavidContestant extends Contestant {
 		arr[1][1] = 14;
 		arr[2][0] = 21;
 		arr[2][1] = 15;
-		System.out.println(Arrays.deepToString(arr));
 		sortMultiDim(arr);
 		sortAndGetMedian(arr1);
+		sortAndGetResultingIndexOf(stringArr, "Abc");
+		System.out.println(stringArr);
 		System.out.println(Arrays.toString(arr1));
+		System.out.println(Arrays.deepToString(arr));
 	}
 
 	@Override
