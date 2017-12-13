@@ -15,8 +15,8 @@ public class VickieAreej extends Contestant{
 	public static void main(String[] args) {
 		VickieAreej run = new VickieAreej();
 		
-		int[] arr = {4, 7, 35,234,68,8765};
-		int[][] arr2 = {{2,1,3,98,9},{23,54,23,8,3}};
+		/*int[] arr = {4, 7, 35,234,68,8765,453,345345,234,756,242,546,2,6,7,34,42,5,345,7,4};
+		int[][] arr2 = {{2,1,3,98,9,45,345,2,672,23},{23,54,23,8,3,234,3,6,23,67}};
 
 		//System.out.print(Arrays.toString(run.multiArraySort2(arr2)));//1d arr
 		//System.out.print(Arrays.deepToString(arr2)); //2d arr
@@ -28,7 +28,7 @@ public class VickieAreej extends Contestant{
 		
 		
 		System.out.print("TEST 2:\n");
-		String[ ] names = {"joe", "SLIM", "ed", "george", "Vivkie", "vickie", "slim"};
+		String[ ] names = {"joe", "SLIM", "ed", "george", "Vivkie", "vickie", "slim", "dfgdf", "erter", "erterter"};
 		run.sortAndGetResultingIndexOf(names, "vickie");
 		System.out.print(run.sortAndGetResultingIndexOf(names, "vickie"));//1d arr
 		System.out.print("	"+Arrays.toString(names));//1d arr
@@ -48,11 +48,11 @@ public class VickieAreej extends Contestant{
 		System.out.println("\n----------------------------------------------------------------------------------------");
 		
 		System.out.print("TEST 5:\n");
-		String[ ] names2 = {"joe", "SLIM", "ed", "george", "Vivkie", "vickie", "slim"};
+		String[ ] names2 = {"joe", "SLIM", "ed", "george", "Vivkie", "vickie", "slim","erterwt", "qwer", "wertwerb"};
 		System.out.println("The sorted string array is: \n" + run.sortAndSearch(names2, "vickie"));
 		System.out.print("	"+Arrays.toString(names2));
 		System.out.println("\n----------------------------------------------------------------------------------------");
-		
+		*/
 		
     }  
 
