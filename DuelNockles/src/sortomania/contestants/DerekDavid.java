@@ -82,7 +82,33 @@ public class DerekDavid extends Contestant {
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		
-		return 0;
+		double [] medianArr = new double[grid.length];
+		
+		for(int i = 0; i<grid[i].length; i++)
+		{
+			for(int x = 0; x<grid[i].length; x++)
+			{
+				int[] numArray = heapSort(grid[i]);
+				
+				double median;
+				
+				if (numArray.length % 2 == 0)
+					median = ((double) numArray[numArray.length / 2] + (double) numArray[numArray.length / 2 - 1]) / 2;
+				else
+					median = (double) numArray[numArray.length / 2];
+				
+				medianArr[x] = median;
+				
+			}
+		}
+		
+		double Finmedian;
+		if (medianArr.length % 2 == 0)
+			Finmedian = ((double) medianArr[medianArr.length / 2] + (double) medianArr[medianArr.length / 2 - 1]) / 2;
+		else
+			Finmedian = (double) medianArr[medianArr.length / 2];
+		return Finmedian;
+		
 	}
 
 	@Override
