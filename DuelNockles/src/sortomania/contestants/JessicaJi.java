@@ -9,17 +9,17 @@ public class JessicaJi extends Contestant {
 
 	public static void main(String[] args) {
 		JessicaJi test = new JessicaJi();
-		int[] arr = {4, 7, 10, 2, 8, 12, 100, 34, 42, 23, 40, 56, 31, 8};
+	/*	int[] arr = {4, 7, 10, 2, 8, 12, 100, 34, 42, 23, 40, 56, 31, 8};
 		String[] arr2 = {"Jessica", "Ji", "Bob", "Sam", "Amanda", "Panda"};
-		int[][] arr3 = { {1,2,5,5,7} , {7,5,9,5,0} };
-	//	System.out.println("The median is: " + test.sortAndGetMedian(arr));
-	//	System.out.println("And the sorted array is: \n" + Arrays.toString(insertionSort(arr)));
-	//	System.out.println("And the sorted array is: \n" + Arrays.toString(mergeSort(arr, 0, arr.length - 1)));
+		int[][] arr3 = { {1,2,5,7} , {7,9,5,0} };
+		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(insertionSort(arr)));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(mergeSort(arr, 0, arr.length - 1)));
 		System.out.println("The sorted string array is: \n" + Arrays.toString(mergeSortComparable(arr2)));
-	//	System.out.println("The sorted string array is: \n" + Arrays.toString(insertionSortString(arr2)));
+		System.out.println("The sorted string array is: \n" + Arrays.toString(insertionSortString(arr2)));
 		System.out.println("The sorted 2D array is: \n" + Arrays.deepToString(sortMultiInt(arr3)));
-	//	System.out.println("The index of the sorted string array is: \n" + Integer.toString(test.sortAndGetResultingIndexOf(arr2,"Ji")));
-		System.out.println("The sorted 2D array's median is: \n" + Double.toString( test.sortMultiDim(arr3)));
+		System.out.println("The index of the sorted string array is: \n" + Integer.toString(test.sortAndGetResultingIndexOf(arr2,"Ji")));
+		System.out.println("The sorted 2D array's median is: \n" + Double.toString( test.sortMultiDim(arr3)));*/
 	}
 	public static int[] insertionSort(int[] arr) {
         for (int i=1; i<arr.length; i++)
@@ -174,7 +174,7 @@ public class JessicaJi extends Contestant {
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		grid = sortMultiInt(grid);
-		return medianMulti(grid); //give wrong answer
+		return medianMulti(grid); 
 		
 	}
 	public double medianMulti(int[][] grid) //median of median so each array gets median and divide by median
@@ -219,36 +219,6 @@ public class JessicaJi extends Contestant {
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		return sortAndSearch(strings, toFind);
-		
-		/*strings = (String[])mergeSortComparable(strings);
-		int low = 0;
-		int high = strings.length - 1;
-		int mid;
-
-		while (low <= high) {
-			mid = (low + high) / 2;
-
-		    if (strings[mid].compareTo(toFind) < 0) {
-		    	low = mid + 1;
-		    } else if (strings[mid].compareTo(toFind) > 0) {
-		    	high = mid - 1;
-		        } else {
-		            return mid;
-		        }
-		    }
-
-		    return -1;*/
-		//linear search
-		/*
-		int index = -1;
-		for (int i=0; i<strings.length; i++) {
-		    if (strings[i].equals(toFind)) {
-		        index = i;
-		        break;
-		    }
-		}
-		return index;
-		*/
 	}
 	
 	@Override
