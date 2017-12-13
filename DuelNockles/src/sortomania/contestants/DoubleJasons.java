@@ -164,15 +164,13 @@ public class DoubleJasons extends Contestant{
 	@Override
 	public double sortAndGetMedian(int[] random) {	
 		shellSort(random);
-		double half = random.length/2;
-		System.out.println(random[(int) Math.floor(half)]);
-		System.out.println(random[(int) Math.ceil(half)]);
+		double half = (double)((random.length-1)/2);
 		return (random[(int) Math.floor(half)] + random[(int) Math.ceil(half)])/2;
 	}
 
 	public double sortAndGetMedian(double[] medians) {
 		shellSort(medians);
-		double half = medians.length/2;
+		double half = (double)((medians.length-1)/2);
 		return (medians[(int) Math.floor(half)] + medians[(int) Math.ceil(half)])/2;
 	}
 	
@@ -188,7 +186,7 @@ public class DoubleJasons extends Contestant{
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		shellSort(mostlySorted);
-		double half = mostlySorted.length/2;
+		double half = (double)((mostlySorted.length-1)/2);
 		return (mostlySorted[(int) Math.floor(half)] + mostlySorted[(int) Math.ceil(half)])/2;
 	}
 
@@ -197,7 +195,6 @@ public class DoubleJasons extends Contestant{
 		double[] medians = new double[grid.length];
 		for (int i = 0; i < grid.length; i++) {
 			medians[i] = sortAndGetMedian(grid[i]);
-			System.out.println(medians[i]);
 		}
 		return sortAndGetMedian(medians);
 	}
