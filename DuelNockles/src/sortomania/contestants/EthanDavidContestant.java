@@ -1,5 +1,6 @@
 package sortomania.contestants;
 
+import java.awt.Color;
 import java.awt.Colowr;
 import java.util.Arrays;
 
@@ -35,8 +36,8 @@ public class EthanDavidContestant extends Contestant {
 	}
 
 	@Override
-	public Colowr getColowr() {
-		return new Colowr(0,0,0);
+	public Color getColor() {
+		return new Color(0,0,0);
 	}
 
 	@Override
