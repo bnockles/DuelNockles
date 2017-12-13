@@ -1,6 +1,7 @@
 package sortomania.contestants;
 
 import java.awt.Color;
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 import sortomania.Contestant;
@@ -8,35 +9,6 @@ import sortomania.Contestant;
 public class DanSteven extends Contestant{
 
 	public static void main(String[] args) {
-		int arr[] = new int[10000];
-		DanSteven a=new DanSteven();
-	     for(int i=0;i<arr.length;i++) {
-	    	 arr[i]=(int)(Math.random()*10000);
-	     }
-	     int avg=0;
-	     for(int i=0;i<500;i++) {
-	    	 long startTime = System.nanoTime();
-	    	 a.radixsort(arr, 10000);
-	    	 long endTime = System.nanoTime();
-	    	 avg+=(endTime-startTime);
-	    	 for(int j=0;j<arr.length;j++) {
-	        	 arr[j]=(int)(Math.random()*10000);
-	         }
-	     }
-	     avg=avg/500;
-	     System.out.println(avg);
-	     
-	     String[] strings = {"bee","ba", "be", "a", "]"};
-	     
-	     
-	     a.sortAndGetResultingIndexOf(strings, "be");
-	     System.out.println(a.sortAndGetResultingIndexOf(strings, "e"));
-	     
-	     for (int i = 0; i < strings.length; i++)
-	     {
-	    	 System.out.println(strings[i]);
-	     }
-	     
 	     
 	}
 	@Override
@@ -65,20 +37,21 @@ public class DanSteven extends Contestant{
 	}
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		for (int i = 0; i < mostlySorted.length; i++)
+		int n=mostlySorted.length;
+		for (int i = 0; i < n; i++)
 		{
 			
-			if (i+1 < mostlySorted.length-1)
+			if (i+1 < n-1)
 			{
 				if (mostlySorted[i+1] < mostlySorted[i])
 				{
-					radixsort(mostlySorted,mostlySorted.length);
-					return (mostlySorted[4999]+mostlySorted[5000])/2;
+					radixsort(mostlySorted,n);
+					return ((double)(mostlySorted[n/2]+mostlySorted[(n/2)-1])/2);
 				}
 			}
 			else
 			{
-				return (mostlySorted[4999]+mostlySorted[5000])/2;
+				return ((double)(mostlySorted[n/2]+mostlySorted[(n/2)-1])/2);
 			}
 		}
 		return -1;
@@ -90,7 +63,7 @@ public class DanSteven extends Contestant{
 		for(int i=0;i<grid.length;i++) {
 			int n=grid[i].length;
 			radixsort(grid[i],n);
-			median[count]=(grid[i][n/2]+grid[i][(n-1)/2])/2;
+			median[count]=(grid[i][n/2]+grid[i][(n/2)-1])/2;
 			count++;
 		}
 		return sortAndGetMedian(median);
@@ -114,7 +87,7 @@ public class DanSteven extends Contestant{
 	public double sortAndGetMedian(int[] random) {
 		int n=random.length;
 		radixsort(random,random.length);
-		return (random[n/2]+random[(n-1)/2])/2;
+		return ((double)(random[n/2]+random[(n/2)-1])/2);
 	}
 	
 	public int getMax(int arr[], int n)
@@ -217,7 +190,7 @@ public class DanSteven extends Contestant{
     {
          boolean noChange = true; // stop when a pass causes no change
          
-         while(!noChange)
+         while(true)
          {
 	         for(int i = array.length; i > 0; i--)
 	         {
@@ -235,9 +208,9 @@ public class DanSteven extends Contestant{
 	         }
          }
     }
-    public void swap(Object[] array, int index1, int index2)
+    public void swap(Comparable[] array, int index1, int index2)
     {
-         Object temp = array[index1];
+    	Comparable temp = array[index1];
          array[index1] = array[index2];
          array[index2] = temp;
     } 
