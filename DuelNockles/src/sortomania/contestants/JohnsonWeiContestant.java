@@ -6,26 +6,13 @@ import sortomania.Contestant;
 
 public class JohnsonWeiContestant extends Contestant {
 	
-	public static void main(String[] args) {
-		int[] nums = {15,10,24,3,4,5,6,7};
-		int[][] multi = {{12,23,5,9},{3,2,6,5}};
-		Comparable[] items = {"a", "c", "d", "e", "g", "h", "f", "x", "y", "p", "o"};
-		JohnsonWeiContestant test = new JohnsonWeiContestant();
-		long startTime = System.nanoTime();
-		System.out.println(test.sortAndSearch(items, "h"));
-		long endTime = System.nanoTime();
-		System.out.println((endTime - startTime));
-	}
-
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub
 		return new Color(0,255,255);
 	}
 
 	@Override
 	public String getSpriteName() {
-		// TODO Auto-generated method stub
 		return CHUN_LI;
 	}
 
@@ -33,10 +20,7 @@ public class JohnsonWeiContestant extends Contestant {
 	public double sortAndGetMedian(int[] random) {
 		int last = random.length -1;
 		int max = random.length;
-		long startTime = System.nanoTime();
 		quickSort(random, 0, last);
-		long endTime = System.nanoTime();
-		System.out.println((endTime - startTime) / 1000000.0);
 		if(max % 2 == 0) {
 			return (double)(random[max/2] + random[(max/2)-1]) / 2;
 		}else return random[last/2];
@@ -46,10 +30,7 @@ public class JohnsonWeiContestant extends Contestant {
 	public double sortAndGetMedian(double[] random) {
 		int last = random.length -1;
 		int max = random.length;
-		long startTime = System.nanoTime();
 		quickSort(random, 0, last);
-		long endTime = System.nanoTime();
-		System.out.println((endTime - startTime) / 1000000.0);
 		if(max % 2 == 0) {
 			return (double)(random[max/2] + random[(max/2)-1]) / 2;
 		}else return random[last/2];
@@ -63,7 +44,6 @@ public class JohnsonWeiContestant extends Contestant {
         double pivot = array[lowerIndex+(higherIndex-lowerIndex)/2];
         
         while (i <= j) {
-            
             while (array[i] < pivot) {
                 i++;
             }
@@ -82,9 +62,8 @@ public class JohnsonWeiContestant extends Contestant {
             quickSort(array,lowerIndex, j);
         if (i < higherIndex)
             quickSort(array,i, higherIndex);
-        
-        
-    }
+      //COMPLETED WITH TEST
+   }
 	
 	private void quickSort(int[] array, int lowerIndex, int higherIndex) {
 		int i = lowerIndex;
@@ -112,11 +91,11 @@ public class JohnsonWeiContestant extends Contestant {
             quickSort(array,lowerIndex, j);
         if (i < higherIndex)
             quickSort(array,i, higherIndex);
-        
-        
-    }
+      //COMPLETED WITH TEST
+   }
 	
 	private void quickSort(Comparable[] array, int lowerIndex, int higherIndex) {
+		
 		int i = lowerIndex;
         int j = higherIndex;
         
@@ -142,9 +121,9 @@ public class JohnsonWeiContestant extends Contestant {
             quickSort(array, lowerIndex, j);
         if (i < higherIndex)
             quickSort(array, i, higherIndex);
-    }
+      //COMPLETED WITH TEST
+	}
 	
-
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		int length = strings.length - 1;
@@ -154,22 +133,24 @@ public class JohnsonWeiContestant extends Contestant {
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		int n = mostlySorted.length;  
-		int temp = 0;
-		
-		for(int i=0; i < n; i++){  
-			for(int j=1; j < (n-i); j++){  
-	            if(mostlySorted[j-1] > mostlySorted[j]){  
-		            temp = mostlySorted[j-1];  
-	                mostlySorted[j-1] = mostlySorted[j];  
-	                mostlySorted[j] = temp;  
-	            }  
-            }  
-		}
-		
-		if(n % 2 == 0) {
+		int n = mostlySorted.length;
+        for (int i=1; i<n; ++i)
+        {
+            int key = mostlySorted[i];
+            int j = i-1;
+ 
+          
+            while (j>=0 && mostlySorted[j] > key)
+            {
+            	mostlySorted[j+1] = mostlySorted[j];
+                j = j-1;
+            }
+            mostlySorted[j+1] = key;
+        }
+        if(n % 2 == 0) {
 			return (double)(mostlySorted[n/2] + mostlySorted[(n/2)-1]) / 2;
 		}else return mostlySorted[(n-1)/2];
+		//COMPLETED WITH TEST
 	}
 
 	@Override
@@ -187,6 +168,7 @@ public class JohnsonWeiContestant extends Contestant {
 		quickSort(arr, 0, length);
 		return binarySearch(arr, 0, length, toFind);
 	}
+	//COMPLETED WITH TEST	
 	
 	public int binarySearch(Comparable[] arr, int lower, int upper, Comparable target) {
 		if(upper >= lower) {
@@ -201,6 +183,7 @@ public class JohnsonWeiContestant extends Contestant {
 			else return binarySearch(arr,mid+1,upper,target);
 		}
 		return -1;
+		//COMPLETED WITH TEST
 	}
 
 }
