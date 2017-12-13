@@ -32,9 +32,8 @@ public class AlexAndErik extends Contestant {
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
 		
 		
-		String[] temp1 = {"siddeeq","erik","alex"};
-		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp1,"siddeeq"));
-		System.out.println("Here is the sorted string array: " + test.mergeSortString(temp1));
+		String[] temp1 = {"siddeeq","erik","alex","katherine","bob","calvin"};
+		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp1,"erik"));
 		
 		int[] arr1 = {11,20,21,50};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
@@ -228,35 +227,33 @@ public class AlexAndErik extends Contestant {
             }
         }
     }
+    
+	public static int binarySearch(String[] a, String x) {
+	    int low = 0;
+	    int high = a.length - 1;
+	    int mid;
 	
+	    while (low <= high) {
+	        mid = (low + high) / 2;
+	        if (a[mid].compareTo(x) < 0) {
+	            low = mid + 1;
+	        } 
+	        else if (a[mid].compareTo(x) > 0) {
+	            high = mid - 1;
+	        } 
+	        else {
+	            return mid;
+	        }
+	    }
+	    return -1;
+    }
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		mergeSortString(strings);
+		binarySearch(mergeSortString(strings),toFind);
 		//sort randomized array of strings
 		//perform a binary search in the array of string
-		/*
-		 * import java.util.*;
-
-public class NewClass {
-    public static void main(String[] args) {
-        String[] ClassTwo = { "Minnie", "Kitty", "Madonna", "Miley", "Zoom-zoom", "Cristine", "Bubbles", "Ara", "Rose", "Maria" };
-        String[] names = new String[ClassOne.length + ClassTwo.length];
-
-        mergeSortString(ClassOne);
-        mergeSortString(ClassTwo);
-
-        mergeStrings(names, ClassOne, ClassTwo);
-
-        mergeSortString(names);
-        //Arrays.sort(names);
-    }
-
-    
-}
-
-		 * */
-		
-		
+		/* 
 		int numMatches = 0;
 		for(int i = 0; i < strings.length; i++) {
 			if(toFind.length() == strings[i].length()) {
@@ -271,15 +268,7 @@ public class NewClass {
 			}
 		}
 		return -1;
-		/*while(count < strings.length) {
-			for(int i = 0; i < toFind.length()-1;i++) {
-				if(toFind.length() == strings[count].length() && !toFind.substring(i,i+1).equals(strings[count].substring(i,i+1))) {
-					count++;
-				}
-			}
-		}
-		return count;*/
-		// TODO Auto-generated method stu
+		 * */
 	}
 
 	@Override
