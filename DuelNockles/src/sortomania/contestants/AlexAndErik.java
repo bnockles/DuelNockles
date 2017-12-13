@@ -22,48 +22,53 @@ public class AlexAndErik extends Contestant {
 	}
 
 	public static void main(String[] args) {
-		AlexAndErik test = new AlexAndErik();
-		
-		int[] array = {2,2,3,4,5};
-		System.out.println("The median is " + test.sortAndGetMedian(array) + " .");
-		System.out.println("And the sorted array is: \n" + Arrays.toString(array));
-		
-		
-		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8,9};
-		System.out.println("The median is: " + test.sortAndGetMedian(arr));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
-		
-		
-		String[] temp1 = {"siddeeq","erik","alex","katherine","bob","calvin"};
-		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp1,"erik"));
-		
-		int[] arr1 = {11,20,21,50};
-		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr1));
-		
-		int[] arr2 = {11,20,10};
-		System.out.println("The median is: " + test.sortAndGetMedian(arr2));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr2));
-		
-		int[] arr3 = {11,20,21,50};
-		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr3));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr3));
-		
-		int[] arr4 = {11,20,10};
-		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr4));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr4));
-		
-		int[][] arr5 = {{100,200,300},{100,10,300},{1,2,3}};
-		System.out.println("The median is: " + test.sortMultiDim(arr5));
-		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr5));
-		
-		int[][] arr6 = {{12,10,30},{53,0,1000},{9,9,4}};
-		System.out.println("The median is: " + test.sortMultiDim(arr6));
-		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr6));
-		
-		String[] arr7 = {"z","b","1","a","f","p","m","q","t"};
-		System.out.println("The median is: " + test.sortAndSearch(arr7, "b"));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr7));
+//		AlexAndErik test = new AlexAndErik();
+//		
+//		int[] array = {2,2,3,4,5};
+//		System.out.println("The median is " + test.sortAndGetMedian(array) + " .");
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(array));
+//		
+//		
+//		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8,9};
+//		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
+//		
+//		
+//		String[] temp1 = {"siddeeq","erik","alex","katherine","bob","calvin"};
+//		System.out.println("Here is THE the index: " + test.sortAndGetResultingIndexOf(temp1,"katherine"));
+//		System.out.println("Comparable index: " + test.sortAndSearch(temp1,"katherine"));
+//		
+//		int[] arr1 = {11,20,21,50};
+//		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr1));
+//		
+//		int[] arr2 = {11,20,10};
+//		System.out.println("The median is: " + test.sortAndGetMedian(arr2));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr2));
+//		
+//		int[] arr3 = {11,20,21,50};
+//		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr3));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr3));
+//		
+//		int[] arr4 = {11,20,10};
+//		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr4));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr4));
+//		
+//		int[][] arr5 = {{100,200,300},{100,10,300},{1,2,3}};
+//		System.out.println("The median is: " + test.sortMultiDim(arr5));
+//		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr5));
+//		
+//		int[][] arr6 = {{12,10,30},{53,0,1000},{9,9,4}};
+//		System.out.println("The median is: " + test.sortMultiDim(arr6));
+//		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr6));
+//		
+//		String[] arr7 = {"z","b","1","a","f","p","m","q","t"};
+//		System.out.println("Searching for b at position: " + test.sortAndSearch(arr7, "b"));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr7));
+//		
+//		String[] arr8 = {"z","b","1","a","f","p","m","q","t"};
+//		System.out.println("Searching for b at position: " + test.sortAndGetResultingIndexOf(arr8, "b"));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr8));
 	}
 
 	
@@ -77,6 +82,76 @@ public class AlexAndErik extends Contestant {
 		return E_HONDA;
 	}
 
+	//TASK 1
+	public double sortAndGetMedian(int[] random) {
+		mergeSort(random);
+		return getMedian(random);
+	}
+	
+	//TASK 2
+	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+		mergeSortString(strings);
+		return binarySearch(mergeSortString(strings),toFind);
+		//sort randomized array of strings
+		//perform a binary search in the array of string
+		/* 
+		int numMatches = 0;
+		for(int i = 0; i < strings.length; i++) {
+			if(toFind.length() == strings[i].length()) {
+				for(int j = 0; j < toFind.length();j++) {
+					if(toFind.substring(j,j+1).equals(strings[i].substring(j,j+1))) {
+						numMatches++;
+						if(numMatches == toFind.length()) {
+							return i;
+						}
+					}
+				}
+			}
+		}
+		return -1;
+		*/
+	}
+	
+	//TASK 3
+	public double mostlySortAndGetMedian(int[] mostlySorted) {
+		mergeSort(mostlySorted);
+		return getMedian(mostlySorted);
+	}
+	
+	//TASK 4
+	public double sortMultiDim(int[][] grid) {
+		double[] medians = new double[grid.length];
+		for(int i = 0; i < grid.length;i++) {
+			mergeSort(grid[i]);
+			medians[i] = getMedian(grid[i]);
+		}
+		//System.out.println("The median array is: \n" + Arrays.toString(medians));
+		mergeSortDoubles(medians);
+		//System.out.println("The newly sorted median array is: \n" + Arrays.toString(medians));
+		return getMedian(medians);
+	}
+	
+	//TASK 5
+	public static Comparable[] mergeSortComparable(Comparable[] names) {
+        if (names.length > 1) {
+        	Comparable[] left = new Comparable[names.length / 2];
+        	Comparable[] right = new Comparable[names.length - names.length / 2];
+
+            for (int i = 0; i < left.length; i++) {
+                left[i] = names[i];
+            }
+
+            for (int i = 0; i < right.length; i++) {
+                right[i] = names[i + names.length / 2];
+            }
+
+            mergeSortComparable(left);
+            mergeSortComparable(right);
+            mergeComparables(names, left, right);
+        }
+        return names;
+    }
+	
 	//simpler version of getMedian()
 	public double getMedian(int[] arr) {
 		int half = arr.length/2;
@@ -96,64 +171,8 @@ public class AlexAndErik extends Contestant {
 			int mid = arr.length/2;
 			return arr[mid];
 		}
-	}
-	
-	public double sortAndGetMedian(int[] random) {
-		mergeSort(random);
-		return getMedian(random);
 	}	
-//CODE TO MERGE INCOMPLETE
-/*	
-	public static int[] mergeSort(int[] random) {
-		if(random.length == 1) {
-			return random;
-		}
-		int mid = random.length/2;
-		int[] firstHalf = new int[mid];
-	    int[] secondHalf = new int[random.length - mid];
-	    for(int i=0; i<firstHalf.length; i++){
-	        firstHalf[i]=random[i];
-	    }
-	    for(int i=0; i<secondHalf.length; i++){
-	        secondHalf[i]=random[i+firstHalf.length];
-	    }
-	    return merge(mergeSort(firstHalf),mergeSort(secondHalf));
-	}
 
-	public static int[] merge(int[] mergeSort, int[] mergeSort2) {
-		int[] arr = new int[mergeSort.length + mergeSort2.length];
-		int i = 0;
-		int j = 0;
-		int k = 0;
-		while(i < mergeSort.length && j < mergeSort2.length) {
-			if(mergeSort[i] <= mergeSort2[j]) {
-				arr[k] = mergeSort[i];
-				i++;
-			}else {
-				arr[k] = mergeSort2[j];
-				j++;
-			}
-			k++;
-		}
-		while(i < mergeSort.length) {
-			arr[k] = mergeSort[i];
-			i++;
-			k++;
-		}
-		while(j < mergeSort2.length-1) {
-			arr[k] = mergeSort[j];
-			j++;
-			k++;
-		}
-//		int[] arr = new int[mergeSort.length + mergeSort2.length];
-//		if(mergeSort[mergeSort.length-1] < mergeSort2[mergeSort2.length-1]) {
-//			arr[0] = mergeSort[mergeSort.length-1];
-//			arr[1] = mergeSort2[mergeSort2.length-1];
-//		}
-		return arr;
-	}
-*/
-	
 //CODE FOR MERGESORT COMPLETE	
 	   public void mergeSort(int inputArr[]) {
         this.array = inputArr;
@@ -253,48 +272,6 @@ public class AlexAndErik extends Contestant {
 	    }
 	    return -1;
     }
-	@Override
-	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		mergeSortString(strings);
-		binarySearch(mergeSortString(strings),toFind);
-		//sort randomized array of strings
-		//perform a binary search in the array of string
-		/* 
-		int numMatches = 0;
-		for(int i = 0; i < strings.length; i++) {
-			if(toFind.length() == strings[i].length()) {
-				for(int j = 0; j < toFind.length();j++) {
-					if(toFind.substring(j,j+1).equals(strings[i].substring(j,j+1))) {
-						numMatches++;
-						if(numMatches == toFind.length()) {
-							return i;
-						}
-					}
-				}
-			}
-		}
-		return -1;
-		 * */
-	}
-
-	@Override
-	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		mergeSort(mostlySorted);
-		return getMedian(mostlySorted);
-	}
-
-	@Override
-	public double sortMultiDim(int[][] grid) {
-		double[] medians = new double[grid.length];
-		for(int i = 0; i < grid.length;i++) {
-			mergeSort(grid[i]);
-			medians[i] = getMedian(grid[i]);
-		}
-		System.out.println("The median array is: \n" + Arrays.toString(medians));
-		mergeSortDoubles(medians);
-		System.out.println("The newly sorted median array is: \n" + Arrays.toString(medians));
-		return getMedian(medians);
-	}
 
 	public void mergeSortDoubles(double[] medians) {
 		this.arrayDo = medians;
@@ -341,7 +318,40 @@ public class AlexAndErik extends Contestant {
 	 
 	    }
 	
-	@Override
+	public static void mergeComparables(Comparable[] names, Comparable[] left, Comparable[] right) {
+        int a = 0;
+        int b = 0;
+        for (int i = 0; i < names.length; i++) {
+            if (b >= right.length || (a < left.length && left[a].compareTo(right[b]) < 0)) {
+                names[i] = left[a];
+                a++;
+            } else {
+                names[i] = right[b];
+                b++;
+            }
+        }
+    }
+	
+	public static int binarySearchComparable(Comparable[] a, Comparable x) {
+	    int low = 0;
+	    int high = a.length - 1;
+	    int mid;
+	
+	    while (low <= high) {
+	        mid = (low + high) / 2;
+	        if (a[mid].compareTo(x) < 0) {
+	            low = mid + 1;
+	        } 
+	        else if (a[mid].compareTo(x) > 0) {
+	            high = mid - 1;
+	        } 
+	        else {
+	            return mid;
+	        }
+	    }
+	    return -1;
+    }
+
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		mergeSortComp(arr);
 		for(int i = 0; i < arr.length;i++) {
@@ -349,9 +359,10 @@ public class AlexAndErik extends Contestant {
 				return i;
 			}
 		}
-		return -1;
+		mergeSortComparable(arr);
+		return binarySearchComparable(mergeSortComparable(arr),toFind);
 	}
-
+	
 	private void mergeSortComp(Comparable[] arr) {
 		this.arrayComp = arr;
         this.length = arr.length;
