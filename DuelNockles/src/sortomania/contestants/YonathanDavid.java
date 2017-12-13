@@ -16,25 +16,34 @@ public class YonathanDavid extends Contestant{
 		String[] z = {"kjgae","aergre","aaf","abc","asfff","dnreiugnge","xroigner","xae","d386fggeg"};
 		int[][] x = {a,b,c,d};
 		YonathanDavid test = new YonathanDavid();
-		//double x = test.mostlySortAndGetMedian(a);
-		//double x = test.sortAndGetMedian(a);
-		/*double y = test.sortMultiDim(x);
+/*		
+		double y = test.sortMultiDim(x);
 		for(int i=0;i<x.length;i++) {
 		System.out.println(Arrays.toString(x[i]));
 		}
 		System.out.println(y);
-		*/
+		
+
+		double h = test.mostlySortAndGetMedian(a);
+		double g = test.sortAndGetMedian(b);
+		System.out.println(h);
+		System.out.println(Arrays.toString(a));
+		System.out.println(g);
+		System.out.println(Arrays.toString(b));
 		int r = test.sortAndGetResultingIndexOf(z,"kjgae"); 
 		System.out.println(r);
 		System.out.println(Arrays.deepToString(z));
 		
-		
+		int r = test.sortAndSearch(z, "d386fggeg");  
+		System.out.println(r);
+		System.out.println(Arrays.deepToString(z));
+	*/	
 	}
 
 	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub
-		return new Color(0,0,0);
+		return new Color(255,255,255);
 	}
 
 	@Override
@@ -148,8 +157,29 @@ public class YonathanDavid extends Contestant{
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
+		 int n = arr.length;
+
+	        for (int i = 0; i < n-1; i++)
+	            for (int j = 0; j < n-i-1; j++)
+	          
+	                if (arr[j].compareTo(arr[j+1])>0)
+	                {
+	                	
+	                    // swap temp and arr[i]
+	                	//strings[j].compareTo(strings[j+1])>0
+	                    Comparable temp = arr[j];
+	                    arr[j] =arr[j+1];
+	                    arr[j+1] = temp;	                
+	                    }
+		  
+		for(int i = 0;i<arr.length-1;i++) {
+			if(arr[i]== toFind) {
+				
+				return i;
+			}
+		}
+		return -1;
 		
-		return 0;
 	}
 	public void merge(int arr[], int l, int m, int r)
     {
