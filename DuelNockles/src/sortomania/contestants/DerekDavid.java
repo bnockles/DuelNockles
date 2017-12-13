@@ -15,6 +15,10 @@ public class DerekDavid extends Contestant {
 		DerekDavid test = new DerekDavid();
 		int[] arr = {4,7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
 		
+		//TASK 2 ARRAY
+		String[] arrStr = {"ansioa","paalqc","lwyux","c"};
+		String c = "c";
+		
 		//TASK 3 ARRAY
 		int [] array = new int[100];    // Almost sorted Array of 100
 		array[0] = (int)(Math.random () * 10) + 1;
@@ -24,16 +28,16 @@ public class DerekDavid extends Contestant {
 		
 		//TASK 4 ARRAY
 		
-		 
-
-		int[][] grid = {{5,8,2,10},{11,2,30,4}};
-		
-		
+		int[][] grid = {{5,8,2,10},{11,2,30,4},{11,2,3,40},{1,2,42,42}};
 		
 		
 		//TASK 1
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
 		System.out.println("And the sorted array is: \n"+Arrays.toString(heapSort(arr)));
+		
+		//TASK 2
+		System.out.println("Your String is at index:"+test.sortAndGetResultingIndexOf(arrStr, c));
+		
 		
 		
 		//TASK 3
@@ -44,6 +48,8 @@ public class DerekDavid extends Contestant {
 		//TASK 4
 		System.out.println("The median of the 2D array is: " + test.sortMultiDim(grid));
 		System.out.println("The mostly sorted array \n"+Arrays.deepToString(grid));
+		
+		//TASK 5
 		
 		
 		
@@ -92,19 +98,14 @@ public class DerekDavid extends Contestant {
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		
-		
-		double [] medianArr = new double[grid.length];
+		double [] medianArr = new double[grid.length]; //new array of pass median
 		
 		for(int row = 0; row<grid.length; row++)
-		{
-			
-			
+		{	
 			for(int col = 0; col<grid[row].length-1; col++)
 			{
 				medianArr[row] = sortAndGetMedian(grid[row]);
-			
 			}
-			
 		}
 		
 		double finMedian;
@@ -112,6 +113,7 @@ public class DerekDavid extends Contestant {
 			finMedian = ((double) medianArr[medianArr.length / 2] + (double) medianArr[medianArr.length / 2 - 1]) / 2;
 		else
 			finMedian = (double) medianArr[medianArr.length / 2];
+		System.out.println("The median of the sorted 2D array"+ Arrays.toString(medianArr));
 		return finMedian;
 		
 		
