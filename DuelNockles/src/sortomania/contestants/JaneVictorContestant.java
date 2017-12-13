@@ -1,12 +1,13 @@
 package sortomania.contestants;
 
 import java.awt.Color;
+import java.sql.Array;
 import java.util.Arrays;
 
 import sortomania.Contestant;
 
 public class JaneVictorContestant extends Contestant{
-
+	
 	@Override
 	public Color getColor() {
 		return new Color(149, 215, 237);
@@ -33,6 +34,7 @@ public class JaneVictorContestant extends Contestant{
         int n2 = r - m;
  
         /* Create temp arrays */
+        
         int L[] = new int [n1];
         int R[] = new int [n2];
  
@@ -103,14 +105,27 @@ public class JaneVictorContestant extends Contestant{
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		sort(strings);
-		for(int i = 0; i < strings.length; i++) {
-			if(strings[i].equals(toFind)) {
-				return i;
-			}
-		}
-		return -1;
+		return binarySearch(strings, toFind);
 	}
+	public static int binarySearch(String[] a, String x) {
+	    int low = 0;
+	    int high = a.length - 1;
+	    int mid;
 
+	    while (low <= high) {
+	        mid = (low + high) / 2;
+
+	        if (a[mid].compareTo(x) < 0) {
+	            low = mid + 1;
+	        } else if (a[mid].compareTo(x) > 0) {
+	            high = mid - 1;
+	        } else {
+	            return mid;
+	        }
+	    }
+
+	    return -1;
+	}
 	static int R = 2<<8;
     
     public static void sort(String[] s){
@@ -186,15 +201,28 @@ public class JaneVictorContestant extends Contestant{
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		sortComparable(arr, 0, arr.length-1);
-		for(int i =0; i<arr.length; i++) {
-			if(arr[i]==toFind) {
-				return i;
-			}
-		}
-		return -1;
-
+		return binarySearch(arr, toFind);
 	}
 
+	private int binarySearch(Comparable[] arr, Comparable x) {
+		int low = 0;
+	    int high = arr.length - 1;
+	    int mid;
+
+	    while (low <= high) {
+	        mid = (low + high) / 2;
+
+	        if (arr[mid].compareTo(x) < 0) {
+	            low = mid + 1;
+	        } else if (arr[mid].compareTo(x) > 0) {
+	            high = mid - 1;
+	        } else {
+	            return mid;
+	        }
+	    }
+
+	    return -1;
+	}
 	private void sortComparable(Comparable[] arr, int lo, int hi) {
 		if (hi <= lo) return;
 
