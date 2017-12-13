@@ -6,7 +6,7 @@ import sortomania.Contestant;
 
 public class DoubleJasons extends Contestant{
 	
-	private int[] ISSeq = {1,2,3, 7, 21, 48, 112, 336, 861, 1968, 4592};
+	private int[] ISSeq = {1,3, 7, 21, 48, 112, 336, 861, 1968, 4592};
 	private static String[] names = {"Tashia","Fidela","Carley","Starla","Maisie","Elijah","Pearl","Jacquie","Zelma","Tama","Hannelore","Shaniqua","Isa","Emily","Desiree","Garnet","Lauri","Erna","Denese","Renato","Britney","Numbers","Randa","Jewel","Vincenzo","Arianna","Johnathon","Charlette","Rae","Jerald"};
 	
 	public DoubleJasons() {
