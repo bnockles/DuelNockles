@@ -144,17 +144,17 @@ public class AlexAndErik extends Contestant {
 	}
 	
 	public static Comparable[] mergeSortComparable(Comparable[] names) {
-		int comparableLength = names.length;
-        if (names.length > 1) {
-        	Comparable[] left = new Comparable[names.length / 2];
-        	Comparable[] right = new Comparable[names.length - names.length / 2];
+		int comparableLengthMid = names.length/2;
+        if (2*comparableLengthMid > 1) {
+        	Comparable[] left = new Comparable[comparableLengthMid];
+        	Comparable[] right = new Comparable[comparableLengthMid];
 
             for (int i = 0; i < left.length; i++) {
                 left[i] = names[i];
             }
 
             for (int i = 0; i < right.length; i++) {
-                right[i] = names[i + names.length / 2];
+                right[i] = names[i + comparableLengthMid];
             }
 
             mergeSortComparable(left);
@@ -175,15 +175,17 @@ public class AlexAndErik extends Contestant {
 	}
 	
 	public double getMedian(double[] arr) {
-		int half = arr.length/2;
 		if(arr.length%2 == 0) {
-			return (double)(arr[half-1] + arr[half])/2;
+			int mid = (arr.length/2) -1;
+			int mid2 = arr.length/2;
+			return (double)(arr[mid] + arr[mid2])/2;
 		}else {
-			return arr[half];
+			int mid = arr.length/2;
+			return arr[mid];
 		}
 	}	
 
-//CODE FOR MERGESORT COMPLEE	
+//CODE FOR MERGESORT COMPLETE	
 	   public void mergeSort(int inputArr[]) {
         this.array = inputArr;
         this.length = inputArr.length;
