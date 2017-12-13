@@ -14,6 +14,8 @@ public class AlexAndErik extends Contestant {
     private double[] arrayDo;
     private double[] tempMergArrDo;
     private int lengthDo;
+	private Comparable[] arrayComp;
+	private Comparable[] tempMergArrComp;
     
 	public AlexAndErik() {
 
@@ -57,6 +59,10 @@ public class AlexAndErik extends Contestant {
 		int[][] arr6 = {{12,10,30},{53,0,1000},{9,9,4}};
 		System.out.println("The median is: " + test.sortMultiDim(arr6));
 		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr6));
+		
+		String[] arr7 = {"z","b","1","a","f","p","m","q","t"};
+		System.out.println("The median is: " + test.sortAndSearch(arr7, "b"));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arr7));
 	}
 
 	
@@ -288,8 +294,58 @@ public class AlexAndErik extends Contestant {
 	
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stu
-		return 0;
+		mergeSortComp(arr);
+		for(int i = 0; i < arr.length;i++) {
+			if(toFind.equals(arr[i])) {
+				return i;
+			}
+		}
+		return -1;
 	}
+
+	private void mergeSortComp(Comparable[] arr) {
+		this.arrayComp = arr;
+        this.length = arr.length;
+        this.tempMergArrComp = new Comparable[length];
+        doMergeSortComp(0, length - 1);
+		
+	}
+
+	private void doMergeSortComp(int lowerIndex, int higherIndex) {
+		 if (lowerIndex < higherIndex) {
+	            int middle = lowerIndex + (higherIndex - lowerIndex) / 2;
+	            // Below step sorts the left side of the array
+	            doMergeSortComp(lowerIndex, middle);
+	            // Below step sorts the right side of the array
+	            doMergeSortComp(middle + 1, higherIndex);
+	            // Now merge both sides
+	            mergePartsComp(lowerIndex, middle, higherIndex);
+	        }
+	}
+	
+	private void mergePartsComp(int lowerIndex, int middle, int higherIndex) {
+        for (int i = lowerIndex; i <= higherIndex; i++) {
+            tempMergArrComp[i] = arrayComp[i];
+        }
+        int i = lowerIndex;
+        int j = middle + 1;
+        int k = lowerIndex;
+        while (i <= middle && j <= higherIndex) {
+            if (tempMergArrComp[i].compareTo(tempMergArrComp[j]) <= 0) {
+                arrayComp[k] = tempMergArrComp[i];
+                i++;
+            } else {
+                arrayComp[k] = tempMergArrComp[j];
+                j++;
+            }
+            k++;
+        }
+        while (i <= middle) {
+            arrayComp[k] = tempMergArrComp[i];
+            k++;
+            i++;
+        }
+ 
+    }
 
 }
