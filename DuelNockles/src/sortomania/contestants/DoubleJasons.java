@@ -23,33 +23,33 @@ public class DoubleJasons extends Contestant{
 		String holder;
 		String char1;
 		String char2;
-			for(int i = 0; i< arr.length; i++) //iterate through arr
+		for(int i = 0; i< arr.length; i++) //iterate through arr
+		{
+			if(i+ gap >= arr.length)
 			{
-				if(i+ gap >= arr.length)
+				i = -1;
+				index --;
+				if(index ==-1) break;
+				gap = ISSeq[index];
+			}
+			else 
+			{
+				for(int idx = 0; idx< arr[i].length()-1; idx++)
 				{
-					i = -1;
-					index --;
-					if(index ==-1) break;
-					gap = ISSeq[index];
-				}
-				else 
-				{
-					for(int idx = 0; idx< arr[i].length()-1; idx++)
+					char1 = arr[i].substring(idx, idx+1); 
+					char2 = arr[i+gap].substring(idx, idx+1);
+					if( char1.compareTo(char2) > 0)
 					{
-						char1 = arr[i].substring(idx, idx+1); 
-						char2 = arr[i+gap].substring(idx, idx+1);
-						if( char1.compareTo(char2) > 0)
-						{
-							holder = arr[i];
-							arr[i] = arr[i+gap];
-							arr[i+gap] = holder;
-							checkPreviousIndices(i,gap,arr);
-							break;
-						}
-						if(char1.compareTo(char2) < 0)break;
+						holder = arr[i];
+						arr[i] = arr[i+gap];
+						arr[i+gap] = holder;
+						checkPreviousIndices(i,gap,arr);
+						break;
 					}
+					if(char1.compareTo(char2) < 0)break;
 				}
 			}
+		}
 			
 		for( String name: arr)
 		{
@@ -61,24 +61,22 @@ public class DoubleJasons extends Contestant{
 		int index = ISSeq.length-1;
 		int gap = ISSeq[index];
 		int holder;
-		while( index > 0) {
-			for(int i = 0; i< arr.length; i++) //iterate through arr
+		for(int i = 0; i< arr.length; i++) //iterate through arr
+		{
+			if(i+gap >= arr.length)
 			{
-				if(i+ gap >= arr.length)
-				{
-					i = -1;
-					index --;
-					if(index ==-1) break;
-					gap = ISSeq[index];
-				}
-				else 
-				{
-					if(arr[i] > arr[i+gap]) {
-						holder = arr[i];
-						arr[i] = arr[i+gap];
-						arr[i+gap] = arr[i];
-						checkPreviousIndices(i,gap,arr);
-					}
+				i = -1;
+				index --;
+				if(index ==-1) break;
+				gap = ISSeq[index];
+			}
+			else 
+			{
+				if(arr[i] > arr[i+gap]) {
+					holder = arr[i];
+					arr[i] = arr[i+gap];
+					arr[i+gap] = holder;
+					checkPreviousIndices(i,gap,arr);
 				}
 			}
 		}
