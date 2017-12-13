@@ -11,10 +11,10 @@ public class AbidAbedContestant extends Contestant
 	public static void main(String[] args)
 	{
 		AbidAbedContestant ab = new AbidAbedContestant();
-		int[] numbers = new int[1000];
+		Comparable[] numbers = {1,2,5,6,5,5,33,2,3,5,6,1,1,4,};
 		String[] toppings = {"Cheese", "Pepperoni", "Black Olives"};
-		ab.quickSort(toppings,0,toppings.length-1);
-		System.out.println(ab.sortAndGetResultingIndexOf(toppings, "Cheese"));
+		ab.quickSort(numbers,0,numbers.length-1);
+		System.out.println(ab.sortAndSearch(numbers,33));
 		
 	}
 	@Override
@@ -39,7 +39,15 @@ public class AbidAbedContestant extends Contestant
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) 
 	{
-		return 0;
+		quickSort(arr,0,arr.length-1);
+		for(int i = 0; i < arr.length;i++)
+		{
+			if(arr[i].equals(toFind))
+			{
+				return i;
+			}
+		}
+		return -1;
 		
 	} 
 	@Override
@@ -156,7 +164,7 @@ public class AbidAbedContestant extends Contestant
             
         }
     }
-	public  void quickSort(int[] arr, int low, int high) 
+	public void quickSort(int[] arr, int low, int high) 
 	{
 		
 		if (low >= high)
@@ -215,7 +223,7 @@ public class AbidAbedContestant extends Contestant
 		}
     	
     }
-    private void quickSort(String[] a, int start, int end)
+    public void quickSort(String[] a, int start, int end)
     {
             int i = start;
             int j = end;
@@ -249,6 +257,45 @@ public class AbidAbedContestant extends Contestant
         String temp = a[i];
         a[i] = a[j];
         a[j] = temp;
+   }
+
+
+   public void quickSort(Comparable[] a, int lo, int hi) 
+   {
+       if(lo >= hi) return;
+       int pi = partition(a, lo, hi);
+       quickSort(a, lo, pi-1);
+       quickSort(a, pi+1, hi);
+   }
+
+   private int partition(Comparable[] a, int lo, int hi) 
+   {
+       int i = lo + 1;
+       int j = hi;
+
+       while(i <= j) {
+           if(a[i].compareTo(a[lo]) <= 0) { 
+               i++; 
+           }
+           else if(a[j].compareTo(a[lo]) > 0) { 
+               j--;
+           }
+           else if(j < i) {
+               break;
+           }
+           else
+               swap(a, i, j);
+       }
+       swap(a, lo, j);
+       return j;
+   }
+   private void swap(Comparable[] a, int i, int j) 
+   {
+	
+	   Comparable temp = a[i];
+       a[i] = a[j];
+       a[j] = temp;
+	
    }
 
 }
