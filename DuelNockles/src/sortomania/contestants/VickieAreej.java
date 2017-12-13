@@ -2,9 +2,6 @@ package sortomania.contestants;
 
 import java.awt.Color;
 import java.util.Arrays;
-import java.util.Iterator;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 import sortomania.Contestant;
 
@@ -20,11 +17,10 @@ public class VickieAreej extends Contestant{
 		
 		int[] arr = {4, 7, 35,234,68,8765};
 		int[][] arr2 = {{2,1,3,98,9},{23,54,23,8,3}};
-		//multiArraySort2(arr2);
-		//heapSort(arr);
-		//bubbleSort(arr);
+
 		//System.out.print(Arrays.toString(run.multiArraySort2(arr2)));//1d arr
 		//System.out.print(Arrays.deepToString(arr2)); //2d arr
+		
 		System.out.print("TEST 1:\n");
 		System.out.println("	The median is: " + run.sortAndGetMedian(arr));
 		System.out.print("	"+Arrays.toString(arr));//1d arr
@@ -34,53 +30,24 @@ public class VickieAreej extends Contestant{
 		System.out.print("TEST 2:\n");
 		String[ ] names = {"joe", "SLIM", "ed", "george", "Vivkie", "vickie", "slim"};
 		run.sortAndGetResultingIndexOf(names, "vickie");
-		//run.sortStringExchange (names);
 		System.out.print(run.sortAndGetResultingIndexOf(names, "vickie"));//1d arr
 		System.out.print("	"+Arrays.toString(names));//1d arr
 		System.out.println("\n----------------------------------------------------------------------------------------");
 		
 		
-		SortedSet<String> set = new TreeSet<String>();
-
-	      String[] s= {"this", "will", "be", "sorted", "without", "any", "sort()", "function", "or", "comparator"};
-
-
-
-	      // Add elements to the set
-
-	      for(int i=0; i<s.length; i++)
-
-	      {
-
-	    	  set.add(s[i]);
-
-	      }
-
-	      
-
-	      // Iterating over the elements in the set
-
-	      Iterator<String> it = set.iterator();
-
-	      while (it.hasNext()) {
-
-	         // Get element
-
-	         Object element = it.next();
-
-	         System.out.println(element.toString());
-
-	      }
-
-	   		
-		int[] ar = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8, 56,234,56,35,234,67,5,23,4,345,4,5,24,23,4};
 		System.out.print("TEST 3:\n");
+		int[] ar = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8, 56,234,56,75,25,7,5,456,25,35,234,67,5,23,4,345,4,5,24,23,4,5,76,23,1,4,654,234,54};
 		run.mostlySortAndGetMedian(ar);
 		System.out.println("	The median is: " + run.median);
 		System.out.print("	"+Arrays.toString(ar));//1d arr
 		System.out.println("\n----------------------------------------------------------------------------------------");
 		
 		System.out.print("TEST 4:\n");
+		System.out.println("	The median is: " + run.sortMultiDim(arr2));
+		System.out.print("	"+Arrays.toString(run.multiArraySort2(arr2)));//1d arr
+		System.out.println("\n----------------------------------------------------------------------------------------");
+		
+		System.out.print("TEST 5:\n");
 		System.out.println("	The median is: " + run.sortMultiDim(arr2));
 		System.out.print("	"+Arrays.toString(run.multiArraySort2(arr2)));//1d arr
 		System.out.println("\n----------------------------------------------------------------------------------------");
@@ -112,34 +79,28 @@ public class VickieAreej extends Contestant{
     }
  
     public void heapify(int arr[], int n, int i){
-        int largest = i;  // Initialize largest as root
-        int l = 2*i + 1;  // left = 2*i + 1
-        int r = 2*i + 2;  // right = 2*i + 2
+        int largest = i; 
+        int l = 2*i + 1;  
+        int r = 2*i + 2; 
 
         if (l < n && arr[l] > arr[largest])
             largest = l;
- 
-        // If right child is larger than largest so far
+
         if (r < n && arr[r] > arr[largest])
             largest = r;
- 
-        // If largest is not root
-        if (largest != i)
-        {
+
+        if (largest != i){
             int swap = arr[i];
             arr[i] = arr[largest];
             arr[largest] = swap;
- 
-            // Recursively heapify the affected sub-tree
             heapify(arr, n, largest);
         }
     }
     
-    // Driver program
+    //TASK1
 	public double sortAndGetMedian(int[] random) {
-		//heap sort
 		heapSort(random);
-		//get median
+
 		if(random.length%2 ==0) {
 			median = ((double)random[random.length/2]+(double)random[(random.length/2)-1])/2;
 		}else {
@@ -149,24 +110,21 @@ public class VickieAreej extends Contestant{
 	}
 
 	 public void sortStringExchange( String x [] ){
-           int i, j;
-           String temp;
+       int i, j;
+       String temp;
 
-           for ( i = 0;  i < x.length - 1;  i++ )
-           {
-               for ( j = i + 1;  j < x.length;  j++ )
-               {  
-                        if ( x [ i ].compareToIgnoreCase( x [ j ] ) > 0 )
-                         {                                             // ascending sort
-                                     temp = x [ i ];
-                                     x [ i ] = x [ j ];    // swapping
-                                     x [ j ] = temp; 
-                                     
-                          } 
-                  } 
-            } 
-     } 
-	@Override
+       for(i = 0; i<x.length-1; i++){
+    	   for (j = i+1;j < x.length; j++){  
+    		   if ( x[i].compareToIgnoreCase(x[j])>0 ) {                                            
+    			   temp = x [ i ];
+                   x [ i ] = x [ j ];  
+                   x [ j ] = temp;     
+               } 
+           } 
+        } 
+     }
+	 
+	//TASK2
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		sortStringExchange(strings);
 		for(int i =0; i<strings.length;i++) {
@@ -181,19 +139,19 @@ public class VickieAreej extends Contestant{
 		int n = mostlySorted.length;  
         int temp = 0;  
          for(int i=0; i < n; i++){  
-                 for(int j=1; j < (n-i); j++){  
-                          if(mostlySorted[j-1] > mostlySorted[j]){  
-                                 //swap elements  
-                                 temp = mostlySorted[j-1];  
-                                 mostlySorted[j-1] = mostlySorted[j];  
-                                 mostlySorted[j] = temp;  
-                         }  
-                          
+        	 for(int j=1; j < (n-i); j++){  
+        		 if(mostlySorted[j-1] > mostlySorted[j]){  
+        			 temp = mostlySorted[j-1];  
+                     mostlySorted[j-1] = mostlySorted[j];  
+                     mostlySorted[j] = temp;  
                  }  
+             }  
          }
          return mostlySorted;
 	}
 	
+	
+	//TASK3
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		bubbleSort(mostlySorted);
 		
@@ -206,7 +164,7 @@ public class VickieAreej extends Contestant{
 		return median;
 	}
 
-	@Override
+	//TASK4
 	public double sortMultiDim(int[][] grid) {
 		int[] list = multiArraySort2(grid);
 		
@@ -219,27 +177,68 @@ public class VickieAreej extends Contestant{
 		return median;
 	}
 
-	private int[] multiArraySort2(int[][] grid) {
-		 // Create a new list to store the items
+	public int[] multiArraySort2(int[][] grid) {
 	    int[] list = new int[grid.length*grid[0].length];
-	    // keep track of where we are.
 	    int listPos = 0;
-	    // iterate over the entire 2d array adding each integer
 	    for(int i = 0 ; i < grid.length; i++) {
 	        for(int j = 0; j < grid[i].length; j++) {
 	            list[listPos++] = grid[i][j];
 	        }
 	    }
-
-	   // System.out.print("	"+Arrays.toString(list));
 	    heapSort(list);
 	    return list;
 	}
 
-	@Override
+	//
+	public static void sortCom(Comparable[] a) {
+		quicksortCom(a, 0, a.length-1);
+    }
+	
+	public static void quicksortCom(Comparable[] a, int low, int high) {
+        if(low >= high) {
+        	return;
+        }
+        int part = partitionA(a, low, high);
+        quicksortCom(a, low, part-1);
+        quicksortCom(a, part+1, high);
+    }
+    
+    public static int partitionA(Comparable[] a, int low, int high) {
+        int i = low + 1;
+        int j = high;
+
+        while(i <= j) {
+            if(a[i].compareTo(a[low]) <= 0) { 
+                i++; 
+            }
+            else if(a[j].compareTo(a[low]) > 0) { 
+                j--;
+            }
+            else if(j < i) {
+                break;
+            }
+            else {
+            	 exchange(a, i, j);
+            }
+               
+        }
+        exchange(a, low, j);
+        return j;
+    }
+
+    public static void exchange(Object[] a, int i, int j) {
+        Object tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+    
+	//TASK5
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		sortCom(arr);
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i].equals(toFind)) return i;
+		}
+		return -1;
 	}
 	
 	public String toString() {
