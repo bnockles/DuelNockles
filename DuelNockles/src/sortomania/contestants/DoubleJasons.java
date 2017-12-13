@@ -27,7 +27,7 @@ public class DoubleJasons extends Contestant{
 			{
 				if(i+ gap >= arr.length)
 				{
-					i = 0;
+					i = -1;
 					index --;
 					if(index ==-1) break;
 					gap = ISSeq[index];
@@ -38,7 +38,7 @@ public class DoubleJasons extends Contestant{
 					{
 						char1 = arr[i].substring(idx, idx+1);
 						char2 = arr[i+gap].substring(idx, idx+1);
-						if( char1.compareTo(char2) > 0)
+						if(char1.compareTo(char2) > 0)
 						{
 							holder = arr[i];
 							arr[i] = arr[i+gap];
@@ -46,7 +46,7 @@ public class DoubleJasons extends Contestant{
 							checkPreviousIndices(i,gap,arr);
 							break;
 						}
-						if(char1.compareTo(char2) < 0)break;
+						else if(char1.compareTo(char2) < 0)break;
 					}
 				}
 			}
@@ -89,20 +89,19 @@ public class DoubleJasons extends Contestant{
 	}
 
 	private void checkPreviousIndices(int index, int gap, String[] arr) {
-		while(index - gap > 0) {
+		while(index - gap >= 0) {
 			for(int secondCheck = 0; secondCheck< arr[index].length()-1; secondCheck++)
 			{
 				String char1 = arr[index-gap].substring(secondCheck, secondCheck+1);
 				String char2 = arr[index].substring(secondCheck, secondCheck+1);
-				if(char1.compareTo(char2) > 0)
+				if( char1.compareTo(char2) > 0)
 				{
 					String holder = arr[index-gap];
 					arr[index-gap] = arr[index];
 					arr[index] = holder;
-					index -= gap;
-					break;
+					return;
 				}
-				if(char1.compareTo(char2) < 0)break;
+				if(char1.compareTo(char2) <= 0)return;
 			}
 		}
 	}
