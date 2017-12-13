@@ -7,14 +7,14 @@ import sortomania.Contestant;
 public class DoubleJasons extends Contestant implements Comparable{
 	
 	private int[] ISSeq = {1,3,7,21,48,112,336,861,1968,4592};
-	private static String[] names = {"Tashia","Fidela","Carley","Starla","Maisie","Elijah","Pearl","Jacquie","Zelma","Tama","Hannelore","Shaniqua","Isa","Emily","Desiree","Garnet","Lauri","Erna","Denese","Renato","Britney","Numbers","Randa","Jewel","Vincenzo","Arianna","Johnathon","Charlette","Rae","Jerald"};
+	private static String[] names = {"Tashia","Fidela","Carley","starla","Maisie","Elijah","pearl","Jacquie","Zelma","Tama","Hannelore","Shaniqua","Isa","Emily","Desiree","Garnet","Lauri","Erna","Denese","Renato","Britney","Numbers","Randa","Jewel","Vincenzo","Arianna","Johnathon","Charlette","Rae","Jerald"};
 	private static int[][] nums = {{1,2312,12312,35435,345357},{7767,657,6765,76,576},{5765765,765,76,57,657,65,765,765},{765,7,657,657569},{789,79,907,78,9,879,879,78}};
 	public DoubleJasons() {															  //57,65,76,657,765,765,765,5765765	
 	}
 	
 	public static final void main(String[] args) {
 		DoubleJasons test = new DoubleJasons();
-		System.out.print(test.sortMultiDim(nums));
+		test.shellSort(names);
 	}
 	
 	private void shellSort(String[] arr) {
@@ -36,8 +36,8 @@ public class DoubleJasons extends Contestant implements Comparable{
 			{
 				for(int idx = 0; idx< arr[i].length()-1; idx++)
 				{
-					char1 = arr[i].substring(idx, idx+1); 
-					char2 = arr[i+gap].substring(idx, idx+1);
+					char1 = arr[i].substring(idx, idx+1).toLowerCase(); 
+					char2 = arr[i+gap].substring(idx, idx+1).toLowerCase();
 					if( char1.compareTo(char2) > 0)
 					{
 						holder = arr[i];
@@ -49,6 +49,11 @@ public class DoubleJasons extends Contestant implements Comparable{
 					if(char1.compareTo(char2) < 0)break;
 				}
 			}	
+		}
+		
+		for(String names: arr)
+		{
+			System.out.println(names);
 		}
 	}
 	
