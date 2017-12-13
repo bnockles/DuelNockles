@@ -127,6 +127,11 @@ public abstract class Contestant extends Component implements Runnable{
 					0,131,63,77,3,
 					405,893,55,85,4};
 			values = temp;
+		}else if(spriteName.equals("resources/penguinmaple.png")) {
+			int[] temp = {0,0,118,76,8,
+					  0,161,126,84,4,
+					 0,449,174,98,2};
+			values = temp;
 		}
 		
 		try {
@@ -472,16 +477,14 @@ public abstract class Contestant extends Component implements Runnable{
 	}
 	
 	public double getScore(){
-		double sum = 0.0;
-		for(double avg : bestAverages){
-			sum += avg;
-			if(avg == 0.0){
-				sum += 5000000;
-			}
-		}
-		System.out.println(this+"'s average is "+ sum/(bestAverages.length));
-		return sum/(bestAverages.length)+1000000000*totalSorts/(correctSorts+1);
+		return correctSorts/(double)totalSorts;
 	}
+	
+	
+	public int getPoints(){
+		return points;
+	}
+	
 	
 	public final void damage(double d) {
 		currentScore -= d;

@@ -29,7 +29,7 @@ public class SamJenny extends Contestant{
 
 
 	public String getSpriteName() {
-		return CHUN_LI;
+		return "resources/penguinmaple.png";
 	}
 
 
