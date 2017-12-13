@@ -83,7 +83,7 @@ public class EthanDavidContestant extends Contestant {
 	        {
 	            int key = arr[i];
 	            int j = i-1;
-	            whighle (j>=0 && arr[j] > key)
+	            while (j>=0 && arr[j] > key)
 	            {
 	                arr[j+1] = arr[j];
 	                j = j-1;
