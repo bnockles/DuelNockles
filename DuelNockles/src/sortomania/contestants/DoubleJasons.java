@@ -66,8 +66,9 @@ public class DoubleJasons extends Contestant{
 			{
 				if(i+ gap >= arr.length)
 				{
-					i = 0;
+					i = -1;
 					index --;
+					if(index ==-1) break;
 					gap = ISSeq[index];
 				}
 				else 
@@ -76,16 +77,15 @@ public class DoubleJasons extends Contestant{
 						holder = arr[i];
 						arr[i] = arr[i+gap];
 						arr[i+gap] = arr[i];
-					}
-					if(arr[i] == arr[i+gap]) {
-						holder = arr[i+1];
-						arr[i+1] = arr[i+gap];
-						arr[i+gap] = holder;
+						checkPreviousIndices(i,gap,arr);
 					}
 				}
 			}
 		}
-		System.out.print(arr);
+		for(int num: arr)
+		{
+			System.out.println(num);
+		}
 	}
 
 	private void shellSort(double[] arr) {
@@ -135,6 +135,19 @@ public class DoubleJasons extends Contestant{
 				}
 				if(char1.compareTo(char2) <= 0) return;
 			}
+		}
+	}
+	
+	private void checkPreviousIndices(int index, int gap, int[] arr) {
+		while(index - gap >= 0) {
+			if(arr[index] < arr[index - gap])
+			{
+				int holder = arr[index-gap];
+				arr[index-gap] = arr[index];
+				arr[index] = holder;
+				index -= gap;
+			}
+			else return;
 		}
 	}
 	
