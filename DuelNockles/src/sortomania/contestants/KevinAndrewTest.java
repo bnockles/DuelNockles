@@ -22,11 +22,11 @@ public static void main(String a[]){
         final long duration = System.nanoTime() - startTime;
         for(int r = 0; r < input1.length; r ++){
         	for(int d = 0; d < input1[r].length; d ++) {
-                System.out.println(input1[r][d]);
+               System.out.println(input1[r][d]);
         	}
         }
         
-        //for(int i = 0; i < input.length; i++) {
+       // for(int i = 0; i < input.length; i++) {
         //	System.out.println(input[i]);
        // }
         System.out.println ("\n" + duration + " nanoseconds");
@@ -37,7 +37,7 @@ public static void main(String a[]){
         sorter.sortAndGetResultingIndexOf(fruits, "Peach");
         final long duration2 = System.nanoTime() - startTime2;
         for(String i:fruits){
-            System.out.println(i);
+           // System.out.println(i);
         }
         System.out.println ("\n" + duration2 + " nanoseconds");
         System.out.println(sorter.sortAndGetResultingIndexOf(fruits,"aaaaa"));
@@ -53,7 +53,7 @@ public static void main(String a[]){
             System.out.println((((Test1) i).getA()));
         }
         System.out.println ("\n" + duration4 + " nanoseconds");
-        System.out.println(sorter.sortAndSearch(cTest,cTest[1]));
+        System.out.println(sorter.sortAndSearch(cTest,cTest[2]));
     }
 
 }

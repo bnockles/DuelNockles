@@ -168,33 +168,7 @@ public class AndrewKevin extends Contestant{
 		}
 		return -1;
 	}
-	    public void bubbleSort(Comparable[] array)
-	    {
-	         boolean noChange = true;
-	         while(true)
-	         {
-		         for(int i = array.length; i > 0; i--)
-		         {
-		              noChange = true;
-		              for(int j = 1; j < i; j++)
-		              {
-		                   if(array[j].compareTo(array[j - 1]) < 0)
-		                   {
-		                        swap(array, j, j - 1);
-		                        noChange = false;
-		                   }
-		              }
-		              if (noChange)
-		                   return;
-		         }
-	         }
-	    }
-	    public void swap(Comparable[] array, int index1, int index2)
-	    {
-	    	Comparable temp = array[index1];
-	         array[index1] = array[index2];
-	         array[index2] = temp;
-	    }
+	  
 		    void merge(Comparable arr[], int l, int m, int r)
 		    {
 		        int n1 = m - l + 1;
