@@ -127,10 +127,6 @@ public class JessicaJi extends Contestant {
 	            }
 	    }
 	
-	public JessicaJi() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	@Override
 	public Color getColor() {
 		return new Color(174, 198, 208);
