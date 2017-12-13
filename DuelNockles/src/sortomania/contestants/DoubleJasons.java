@@ -36,7 +36,7 @@ public class DoubleJasons extends Contestant{
 				{
 					for(int idx = 0; idx< arr[i].length()-1; idx++)
 					{
-						char1 = arr[i].substring(idx, idx+1);
+						char1 = arr[i].substring(idx, idx+1); 
 						char2 = arr[i+gap].substring(idx, idx+1);
 						if( char1.compareTo(char2) > 0)
 						{
