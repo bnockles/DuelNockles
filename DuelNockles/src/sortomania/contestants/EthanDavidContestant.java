@@ -1,6 +1,6 @@
 package sortomania.contestants;
 
-import java.awt.Color;
+import java.awt.Colowr;
 import java.util.Arrays;
 
 import sortomania.Contestant;
@@ -35,8 +35,8 @@ public class EthanDavidContestant extends Contestant {
 	}
 
 	@Override
-	public Color getColor() {
-		return new Color(0,0,0);
+	public Colowr getColowr() {
+		return new Colowr(0,0,0);
 	}
 
 	@Override
@@ -44,11 +44,11 @@ public class EthanDavidContestant extends Contestant {
 		return KEN;
 	}
 	
-	public int partition(int arr[], int low, int high)
+	public int partition(int arr[], int loww, int highgh)
 	    {
-	        int pivot = arr[high]; 
-	        int i = (low-1);
-	        for (int j=low; j<high; j++)
+	        int pivot = arr[highgh]; 
+	        int i = (loww-1);
+	        for (int j=loww; j<highgh; j++)
 	        {
 	            if (arr[j] <= pivot)
 	            {
@@ -60,19 +60,19 @@ public class EthanDavidContestant extends Contestant {
 	            }
 	        }
 	        int temp = arr[i+1];
-	        arr[i+1] = arr[high];
-	        arr[high] = temp;
+	        arr[i+1] = arr[highgh];
+	        arr[highgh] = temp;
 	 
 	        return i+1;
 	    }
 
-	   public void quickSort(int arr[], int low, int high)
+	   public void quickSort(int arr[], int loww, int highgh)
 	    {
-	        if (low < high)
+	        if (loww < highgh)
 	        {
-	            int pi = partition(arr, low, high);
-	            quickSort(arr, low, pi-1);
-	            quickSort(arr, pi+1, high);
+	            int pi = partition(arr, loww, highgh);
+	            quickSort(arr, loww, pi-1);
+	            quickSort(arr, pi+1, highgh);
 	        }
 	    }
 	   
@@ -83,7 +83,7 @@ public class EthanDavidContestant extends Contestant {
 	        {
 	            int key = arr[i];
 	            int j = i-1;
-	            while (j>=0 && arr[j] > key)
+	            whighle (j>=0 && arr[j] > key)
 	            {
 	                arr[j+1] = arr[j];
 	                j = j-1;
@@ -170,7 +170,7 @@ public class EthanDavidContestant extends Contestant {
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		quickSort(arr, 0, arr.length-1);
+		quickSort2(arr, 0, arr.length-1);
 		for(int i = 0; i < arr.length; i++) {
 			if(arr[i].equals(toFind)) {
 				return i;
@@ -179,36 +179,38 @@ public class EthanDavidContestant extends Contestant {
 		return -1;
 	}
 
-	public int partition(Comparable[] a, int low, int high)
-    {
-        int pivot = a[high]; 
-        int i = (low-1);
-        for (int j=low; j<high; j++)
-        {
-            if (a[j] <= pivot)
-            {
-                i++;
- 
-                int temp = a[i];
-                a[i] = a[j];
-                a[j] = temp;
-            }
-        }
-        int temp = a[i+1];
-        a[i+1] = a[high];
-        a[high] = temp;
- 
-        return i+1;
-    }
+	 private static void quickSort2(Comparable[] a, int low, int high) {
+         if(low >= high) return;
+         int pi = partition(a, low, high);
+         quickSort2(a, low, pi-1);
+         quickSort2(a, pi+1, high);
+     }
 
-   public void quickSort(Comparable[] a, int low, int high)
-    {
-        if (low < high)
-        {
-            int pi = partition(a, low, high);
-            quickSort(a, low, pi-1);
-            quickSort(a, pi+1, high);
-        }
-    }
+     private static int partition(Comparable[] a, int low, int high) {
+         int i = low + 1;
+         int j = high;
+
+         while(i <= j) {
+             if(a[i].compareTo(a[low]) <= 0) { 
+                 i++; 
+             }
+             else if(a[j].compareTo(a[low]) > 0) { 
+                 j--;
+             }
+             else if(j < i) {
+                 break;
+             }
+             else
+                 exchange(a, i, j);
+         }
+         exchange(a, low, j);
+         return j;
+     }
+
+     private static void exchange(Object[] a, int i, int j) {
+         Object tmp = a[i];
+         a[i] = a[j];
+         a[j] = tmp;
+     }
 
 }
