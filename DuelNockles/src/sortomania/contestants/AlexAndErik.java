@@ -132,6 +132,17 @@ public class AlexAndErik extends Contestant {
 	}
 	
 	//TASK 5
+	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
+		mergeSortComp(arr);
+		for(int i = 0; i < arr.length;i++) {
+			if(toFind.equals(arr[i])) {
+				return i;
+			}
+		}
+		mergeSortComparable(arr);
+		return binarySearchComparable(mergeSortComparable(arr),toFind);
+	}
+	
 	public static Comparable[] mergeSortComparable(Comparable[] names) {
         if (names.length > 1) {
         	Comparable[] left = new Comparable[names.length / 2];
@@ -351,17 +362,6 @@ public class AlexAndErik extends Contestant {
 	    }
 	    return -1;
     }
-
-	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		mergeSortComp(arr);
-		for(int i = 0; i < arr.length;i++) {
-			if(toFind.equals(arr[i])) {
-				return i;
-			}
-		}
-		mergeSortComparable(arr);
-		return binarySearchComparable(mergeSortComparable(arr),toFind);
-	}
 	
 	private void mergeSortComp(Comparable[] arr) {
 		this.arrayComp = arr;
