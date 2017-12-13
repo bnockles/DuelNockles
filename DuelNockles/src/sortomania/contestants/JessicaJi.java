@@ -15,11 +15,11 @@ public class JessicaJi extends Contestant {
 	//	System.out.println("The median is: " + test.sortAndGetMedian(arr));
 	//	System.out.println("And the sorted array is: \n" + Arrays.toString(insertionSort(arr)));
 	//	System.out.println("And the sorted array is: \n" + Arrays.toString(mergeSort(arr, 0, arr.length - 1)));
-	//	System.out.println("The sorted string array is: \n" + Arrays.toString(mergeSortString(arr2)));
+		System.out.println("The sorted string array is: \n" + Arrays.toString(mergeSortComparable(arr2)));
 	//	System.out.println("The sorted string array is: \n" + Arrays.toString(insertionSortString(arr2)));
-		System.out.println("The sorted 2D array is: \n" + Arrays.deepToString(sortMultiInt(arr3)));
-		System.out.println("The index of the sorted string array is: \n" + Integer.toString(test.sortAndGetResultingIndexOf(arr2,"Ji")));
-		System.out.println("The sorted 2D array's median is: \n" + Double.toString( test.sortMultiDim(arr3)));
+	//	System.out.println("The sorted 2D array is: \n" + Arrays.deepToString(sortMultiInt(arr3)));
+	//	System.out.println("The index of the sorted string array is: \n" + Integer.toString(test.sortAndGetResultingIndexOf(arr2,"Ji")));
+	//	System.out.println("The sorted 2D array's median is: \n" + Double.toString( test.sortMultiDim(arr3)));
 	}
 	public static int[] insertionSort(int[] arr) {
         for (int i=1; i<arr.length; i++)
@@ -90,10 +90,10 @@ public class JessicaJi extends Contestant {
 		  return arr;
 	}
 	
-	public static String[] mergeSortString(String[] arr) {
+	public static Comparable[] mergeSortComparable(Comparable[] arr) {
         if (arr.length >= 2) {
-            String[] left = new String[arr.length / 2];
-            String[] right = new String[arr.length-arr.length / 2];
+            Comparable[] left = new Comparable[arr.length / 2];
+            Comparable[] right = new Comparable[arr.length-arr.length / 2];
 
             for (int i = 0; i < left.length; i++)
             {
@@ -104,20 +104,20 @@ public class JessicaJi extends Contestant {
                 right[i] = arr[i + arr.length / 2];
             }
 
-            mergeSortString(left);
-            mergeSortString(right);
+            mergeSortComparable(left);
+            mergeSortComparable(right);
 
             merge(arr, left, right);
         }
         return arr;
     }
 	//helper method for mergeSortString
-	 public static void merge(String[] result, String[] left, String[] right) {
+	 public static void merge(Comparable[] result, Comparable[] left, Comparable[] right) {
 	        int i1 = 0;
 	        int i2 = 0;
 	        for (int i = 0; i < result.length; i++) {
 	            if (i2 >= right.length || (i1 < left.length &&
-	                                 left[i1].compareToIgnoreCase(right[i2])<0)) {
+	                                 left[i1].compareTo(right[i2])<0)) {
 	                      result[i] = left[i1];
 	                      i1++;
 	                 } else {
@@ -161,38 +161,6 @@ public class JessicaJi extends Contestant {
 		}//middle num
 		
 		return median;
-	}
-	@Override
-	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		strings = mergeSortString(strings);
-		int low = 0;
-		int high = strings.length - 1;
-		int mid;
-
-		while (low <= high) {
-			mid = (low + high) / 2;
-
-		    if (strings[mid].compareTo(toFind) < 0) {
-		    	low = mid + 1;
-		    } else if (strings[mid].compareTo(toFind) > 0) {
-		    	high = mid - 1;
-		        } else {
-		            return mid;
-		        }
-		    }
-
-		    return -1;
-		//linear search
-		/*
-		int index = -1;
-		for (int i=0; i<strings.length; i++) {
-		    if (strings[i].equals(toFind)) {
-		        index = i;
-		        break;
-		    }
-		}
-		return index;
-		*/
 	}
 
 	@Override
@@ -254,9 +222,60 @@ public class JessicaJi extends Contestant {
 	}
 
 	@Override
+	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+		return sortAndSearch(strings, toFind);
+		
+		/*strings = (String[])mergeSortComparable(strings);
+		int low = 0;
+		int high = strings.length - 1;
+		int mid;
+
+		while (low <= high) {
+			mid = (low + high) / 2;
+
+		    if (strings[mid].compareTo(toFind) < 0) {
+		    	low = mid + 1;
+		    } else if (strings[mid].compareTo(toFind) > 0) {
+		    	high = mid - 1;
+		        } else {
+		            return mid;
+		        }
+		    }
+
+		    return -1;*/
+		//linear search
+		/*
+		int index = -1;
+		for (int i=0; i<strings.length; i++) {
+		    if (strings[i].equals(toFind)) {
+		        index = i;
+		        break;
+		    }
+		}
+		return index;
+		*/
+	}
+	
+	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		arr = mergeSortComparable(arr);
+		int low = 0;
+		int high = arr.length - 1;
+		int mid;
+
+		while (low <= high) {
+			mid = (low + high) / 2;
+
+		    if (arr[mid].compareTo(toFind) < 0) {
+		    	low = mid + 1;
+		    } else if (arr[mid].compareTo(toFind) > 0) {
+		    	high = mid - 1;
+		        } else {
+		            return mid;
+		        }
+		    }
+
+		    return -1;
 	}
 	
 	@Override
