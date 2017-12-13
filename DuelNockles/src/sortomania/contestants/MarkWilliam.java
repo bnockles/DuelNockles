@@ -7,15 +7,6 @@ import sortomania.Contestant;
 
 public class MarkWilliam extends Contestant{
 
-	
-	public static void main (String[] args) {
-		MarkWilliam test = new MarkWilliam();
-		String[] arr = {"ffffff","aaaaaa","cccccc","hhhhhh","dddddd","bbbbbb","eeeeee","gggggg"};
-		
-		System.out.println("The index for bbbbbb is: " + test.sortAndGetResultingIndexOf(arr,"bbbbbbb"));
-		printStrArr(arr,arr.length);
-	}
-	
 	@Override
 	public Color getColor() {
 		return new Color(0,200,255);
@@ -121,7 +112,7 @@ public class MarkWilliam extends Contestant{
 		for(int i = 0; i < strings.length; i++) {
 			if(strings[i].equals(toFind)) return i;
 		}
-		return strings[3].compareTo(toFind);
+		return -1;
 	}
 
 	public static void radixsort(String[] a){
@@ -185,8 +176,50 @@ public class MarkWilliam extends Contestant{
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		return 0;
+		sort(arr);
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i].equals(toFind)) return i;
+		}
+		return -1;
 	}
+
+	public static void sort(Comparable[] a) {
+        quicksort(a, 0, a.length-1);
+    }
+
+    private static void quicksort(Comparable[] a, int lo, int hi) {
+        if(lo >= hi) return;
+        int pi = partition(a, lo, hi);
+        quicksort(a, lo, pi-1);
+        quicksort(a, pi+1, hi);
+    }
+
+    private static int partition(Comparable[] a, int lo, int hi) {
+        int i = lo + 1;
+        int j = hi;
+
+        while(i <= j) {
+            if(a[i].compareTo(a[lo]) <= 0) { 
+                i++; 
+            }
+            else if(a[j].compareTo(a[lo]) > 0) { 
+                j--;
+            }
+            else if(j < i) {
+                break;
+            }
+            else
+                exchange(a, i, j);
+        }
+        exchange(a, lo, j);
+        return j;
+    }
+
+    private static void exchange(Object[] a, int i, int j) {
+        Object tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
 
 }
 
