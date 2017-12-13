@@ -215,12 +215,12 @@ public class EthanDavidContestant extends Contestant {
 
 	 private static void quickSort2(Comparable[] a, int low, int high) {
          if(low >= high) return;
-         int pi = partition(a, low, high);
+         int pi = partition2(a, low, high);
          quickSort2(a, low, pi-1);
          quickSort2(a, pi+1, high);
      }
 
-     private static int partition(Comparable[] a, int low, int high) {
+     private static int partition2(Comparable[] a, int low, int high) {
          int i = low + 1;
          int j = high;
 
