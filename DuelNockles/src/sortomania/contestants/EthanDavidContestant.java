@@ -29,7 +29,7 @@ public class EthanDavidContestant extends Contestant {
 		sortMultiDim(arr);
 		sortAndGetMedian(arr1);
 		sortAndGetResultingIndexOf(stringArr, "Abc");
-		System.out.println(stringArr);
+		System.out.println(Arrays.toString(stringArr));
 		System.out.println(Arrays.toString(arr1));
 		System.out.println(Arrays.deepToString(arr));
 	}
@@ -135,6 +135,7 @@ public class EthanDavidContestant extends Contestant {
 			} 
 			for(int i=0;i<strings.length;i++){
 				if(strings[i].equals(toFind)) {
+					System.out.println(i);
 					return i;
 				}
 			} 
