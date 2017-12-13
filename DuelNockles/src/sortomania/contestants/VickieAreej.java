@@ -2,6 +2,9 @@ package sortomania.contestants;
 
 import java.awt.Color;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import sortomania.Contestant;
 
@@ -27,13 +30,49 @@ public class VickieAreej extends Contestant{
 		System.out.print("	"+Arrays.toString(arr));//1d arr
 		System.out.println("\n----------------------------------------------------------------------------------------");
 		
-		/*
-		System.out.print("TEST 2:\n");
-		System.out.println("	The median is: " + run.sortAndGetMedian(arr));
-		System.out.print("	"+Arrays.toString(arr));//1d arr
-		System.out.println("\n----------------------------------------------------------------------------------------");
-		*/
 		
+		System.out.print("TEST 2:\n");
+		String[ ] names = {"joe", "SLIM", "ed", "george", "Vivkie", "vickie", "slim"};
+		run.sortAndGetResultingIndexOf(names, "vickie");
+		//run.sortStringExchange (names);
+		System.out.print(run.sortAndGetResultingIndexOf(names, "vickie"));//1d arr
+		System.out.print("	"+Arrays.toString(names));//1d arr
+		System.out.println("\n----------------------------------------------------------------------------------------");
+		
+		
+		SortedSet<String> set = new TreeSet<String>();
+
+	      String[] s= {"this", "will", "be", "sorted", "without", "any", "sort()", "function", "or", "comparator"};
+
+
+
+	      // Add elements to the set
+
+	      for(int i=0; i<s.length; i++)
+
+	      {
+
+	    	  set.add(s[i]);
+
+	      }
+
+	      
+
+	      // Iterating over the elements in the set
+
+	      Iterator<String> it = set.iterator();
+
+	      while (it.hasNext()) {
+
+	         // Get element
+
+	         Object element = it.next();
+
+	         System.out.println(element.toString());
+
+	      }
+
+	   		
 		int[] ar = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8, 56,234,56,35,234,67,5,23,4,345,4,5,24,23,4};
 		System.out.print("TEST 3:\n");
 		run.mostlySortAndGetMedian(ar);
@@ -109,9 +148,32 @@ public class VickieAreej extends Contestant{
 		return median;
 	}
 
+	 public void sortStringExchange( String x [] ){
+           int i, j;
+           String temp;
+
+           for ( i = 0;  i < x.length - 1;  i++ )
+           {
+               for ( j = i + 1;  j < x.length;  j++ )
+               {  
+                        if ( x [ i ].compareToIgnoreCase( x [ j ] ) > 0 )
+                         {                                             // ascending sort
+                                     temp = x [ i ];
+                                     x [ i ] = x [ j ];    // swapping
+                                     x [ j ] = temp; 
+                                     
+                          } 
+                  } 
+            } 
+     } 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
+		sortStringExchange(strings);
+		for(int i =0; i<strings.length;i++) {
+			if (strings[i].equals(toFind)) {
+				return i;
+			}
+		}
 		return 0;
 	}
 
@@ -133,8 +195,8 @@ public class VickieAreej extends Contestant{
 	}
 	
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		//bubble sort
 		bubbleSort(mostlySorted);
+		
 		//get median
 		if(mostlySorted.length%2 ==0) {
 			median = ((double)mostlySorted[mostlySorted.length/2]+(double)mostlySorted[(mostlySorted.length/2)-1])/2;
@@ -146,8 +208,8 @@ public class VickieAreej extends Contestant{
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		//multiArraySort(grid);
 		int[] list = multiArraySort2(grid);
+		
 		//getMedian
 		if(list.length%2 ==0) {
 			median = ((double)list[list.length/2]+(double)list[(list.length/2)-1])/2;
