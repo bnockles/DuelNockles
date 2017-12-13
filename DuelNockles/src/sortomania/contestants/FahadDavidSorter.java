@@ -9,16 +9,6 @@ import sortomania.Contestant;
 
 public class FahadDavidSorter extends Contestant {
 
-	//Radix Sort
-	//TimSort
-	//recursive merge sort
-	 public static void main (String[] args){
-		 FahadDavidSorter test = new FahadDavidSorter();
-		 int[] arr = {42,6,7,33,4,55,5};
-		 System.out.println(test.sortAndGetMedian(arr));
-			 System.out.println(Arrays.toString(arr));
-	   }
-	
 	public Color getColor() {
 		return new Color(192,192,192);
 	}
