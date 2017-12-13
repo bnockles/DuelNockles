@@ -18,7 +18,13 @@ public class VincentNRaymond extends Contestant {
 	}
 
 	public VincentNRaymond() {
-		// TODO Auto-generated constructor stub
+		int[][] darr = new int[2][2];
+		darr[0][0] = 5;
+		darr[0][1] = 6;
+		darr[1][0] = 6;
+		darr[1][1] = 3;
+		System.out.println("DOUBLE MEDIAN: " + sortMultiDim(darr));
+		
 	}
 
 	@Override
@@ -73,12 +79,6 @@ public class VincentNRaymond extends Contestant {
 
 	@Override
 	public double sortAndGetMedian(int[] random) {
-		int[][] darr = new int[2][2];
-		darr[0][0] = 5;
-		darr[0][1] = 6;
-		darr[1][0] = 6;
-		darr[1][1] = 3;
-		System.out.println("DOUBLE MEDIAN: " + sortMultiDim(darr));
 		
 		int[] arr = { 4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8, 9, 124, 562, 26 };
 		System.out.println("MOSTLY SORTED:" + mostlySortAndGetMedian(arr));
@@ -187,7 +187,7 @@ public class VincentNRaymond extends Contestant {
 				medianHolder2[counter2] = grid[r][c];
 				counter2++;
 			}
-			medianHolder[count] = sortAndGetMedian(medianHolder2);
+			medianHolder[count] = sortAndGetMedian(medianHolder2);	
 			count++;
 		}
 		boolean sorted=true;
