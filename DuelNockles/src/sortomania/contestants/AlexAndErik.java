@@ -33,7 +33,8 @@ public class AlexAndErik extends Contestant {
 		
 		
 		String[] temp1 = {"siddeeq","erik","alex","katherine","bob","calvin"};
-		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp1,"erik"));
+		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp1,"kathe"));
+		System.out.println("Comparable index: " + test.sortAndSearch(temp1,"katherine"));
 		
 		int[] arr1 = {11,20,21,50};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
@@ -250,7 +251,7 @@ public class AlexAndErik extends Contestant {
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		mergeSortString(strings);
-		binarySearch(mergeSortString(strings),toFind);
+		return binarySearch(mergeSortString(strings),toFind);
 		//sort randomized array of strings
 		//perform a binary search in the array of string
 		/* 
@@ -335,10 +336,63 @@ public class AlexAndErik extends Contestant {
 	 
 	    }
 	
-	@Override
+	public static Comparable[] mergeSortComparable(Comparable[] names) {
+        if (names.length > 1) {
+        	Comparable[] left = new Comparable[names.length / 2];
+        	Comparable[] right = new Comparable[names.length - names.length / 2];
+
+            for (int i = 0; i < left.length; i++) {
+                left[i] = names[i];
+            }
+
+            for (int i = 0; i < right.length; i++) {
+                right[i] = names[i + names.length / 2];
+            }
+
+            mergeSortComparable(left);
+            mergeSortComparable(right);
+            mergeComparables(names, left, right);
+        }
+        return names;
+    }
+	
+	public static void mergeComparables(Comparable[] names, Comparable[] left, Comparable[] right) {
+        int a = 0;
+        int b = 0;
+        for (int i = 0; i < names.length; i++) {
+            if (b >= right.length || (a < left.length && left[a].compareTo(right[b]) < 0)) {
+                names[i] = left[a];
+                a++;
+            } else {
+                names[i] = right[b];
+                b++;
+            }
+        }
+    }
+	
+	public static int binarySearchComparable(Comparable[] a, Comparable x) {
+	    int low = 0;
+	    int high = a.length - 1;
+	    int mid;
+	
+	    while (low <= high) {
+	        mid = (low + high) / 2;
+	        if (a[mid].compareTo(x) < 0) {
+	            low = mid + 1;
+	        } 
+	        else if (a[mid].compareTo(x) > 0) {
+	            high = mid - 1;
+	        } 
+	        else {
+	            return mid;
+	        }
+	    }
+	    return -1;
+    }
+
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stu
-		return 0;
+		mergeSortComparable(arr);
+		return binarySearchComparable(mergeSortComparable(arr),toFind);
 	}
 
 }
