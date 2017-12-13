@@ -22,6 +22,14 @@ public class DerekDavid extends Contestant {
 		  array[i] = array[i-1] + (int)(Math.random() * 12) - 2;
 		}
 		
+		//TASK 4 ARRAY
+		
+		 
+
+		int[][] grid = {{5,8,2,10},{11,2,30,4}};
+		
+		
+		
 		
 		//TASK 1
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
@@ -33,7 +41,9 @@ public class DerekDavid extends Contestant {
 		System.out.println("The mostly sorted array \n"+Arrays.toString(insertionSort(array)));
 		
 		
-		
+		//TASK 4
+		System.out.println("The median of the 2D array is: " + test.sortMultiDim(grid));
+		System.out.println("The mostly sorted array \n"+Arrays.deepToString(grid));
 		
 		
 		
@@ -82,32 +92,30 @@ public class DerekDavid extends Contestant {
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		
+		
 		double [] medianArr = new double[grid.length];
 		
-		for(int i = 0; i<grid[i].length; i++)
+		for(int row = 0; row<grid.length; row++)
 		{
-			for(int x = 0; x<grid[i].length; x++)
+			
+			
+			for(int col = 0; col<grid[row].length-1; col++)
 			{
-				int[] numArray = heapSort(grid[i]);
-				
-				double median;
-				
-				if (numArray.length % 2 == 0)
-					median = ((double) numArray[numArray.length / 2] + (double) numArray[numArray.length / 2 - 1]) / 2;
-				else
-					median = (double) numArray[numArray.length / 2];
-				
-				medianArr[x] = median;
-				
+				medianArr[row] = sortAndGetMedian(grid[row]);
+			
 			}
+			
 		}
 		
-		double Finmedian;
+		double finMedian;
 		if (medianArr.length % 2 == 0)
-			Finmedian = ((double) medianArr[medianArr.length / 2] + (double) medianArr[medianArr.length / 2 - 1]) / 2;
+			finMedian = ((double) medianArr[medianArr.length / 2] + (double) medianArr[medianArr.length / 2 - 1]) / 2;
 		else
-			Finmedian = (double) medianArr[medianArr.length / 2];
-		return Finmedian;
+			finMedian = (double) medianArr[medianArr.length / 2];
+		return finMedian;
+		
+		
+		
 		
 	}
 
