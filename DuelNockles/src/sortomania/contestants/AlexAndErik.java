@@ -33,15 +33,8 @@ public class AlexAndErik extends Contestant {
 		
 		
 		String[] temp1 = {"siddeeq","erik","alex"};
-		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp1,"alex"));	
-		String[] temp2 = {"bob","david","katherine"};
-		String[] store = new String[temp1.length+temp2.length];
-		mergeSortString(temp1);
-		mergeSortString(temp2);
-		mergeStrings(store, temp1, temp2);
-		mergeSortString(store);
-			
-		System.out.println("Here is the sorted string array: " + store);
+		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp1,"siddeeq"));
+		System.out.println("Here is the sorted string array: " + test.mergeSortString(temp1));
 		
 		int[] arr1 = {11,20,21,50};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
@@ -202,7 +195,7 @@ public class AlexAndErik extends Contestant {
  
     }
 	
-	public static void mergeSortString(String[] names) {
+	public static String[] mergeSortString(String[] names) {
         if (names.length > 1) {
             String[] left = new String[names.length / 2];
             String[] right = new String[names.length - names.length / 2];
@@ -219,6 +212,7 @@ public class AlexAndErik extends Contestant {
             mergeSortString(right);
             mergeStrings(names, left, right);
         }
+        return names;
     }
 
     public static void mergeStrings(String[] names, String[] left, String[] right) {
