@@ -26,7 +26,7 @@ public class EthanDavidContestant extends Contestant {
 		arr[1][1] = 14;
 		arr[2][0] = 21;
 		arr[2][1] = 15;
-		sortMultiDim(arr);
+		System.out.println(sortMultiDim(arr));
 		sortAndGetMedian(arr1);
 		sortAndGetResultingIndexOf(stringArr, "Abc");
 		System.out.println(Arrays.toString(stringArr));
@@ -154,12 +154,46 @@ public class EthanDavidContestant extends Contestant {
 		}
 	}   
 
+	public int partition1(double arr[], int low, int high)
+    {
+        int pivot = (int) arr[high]; 
+        int i = (low-1);
+        for (int j=low; j<high; j++)
+        {
+            if (arr[j] <= pivot)
+            {
+                i++;
+ 
+                int temp = (int) arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        int temp = (int) arr[i+1];
+        arr[i+1] = arr[high];
+        arr[high] = temp;
+ 
+        return i+1;
+    }
+
+   public void quickSort1(double arr[], int low, int high)
+    {
+        if (low < high)
+        {
+            int pi = partition1(arr, low, high);
+            quickSort1(arr, low, pi-1);
+            quickSort1(arr, pi+1, high);
+        }
+    }
+   
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		double[] median = new double[grid.length];
 		for(int i = 0; i < grid.length; i++) {
 			median[i] = sortAndGetMedian(grid[i]);
 		}
+		System.out.println(Arrays.toString(median));
+		quickSort1(median,0,median.length-1);
 		if(median.length%2 != 0) {
 			return median[grid.length/2];
 		}
