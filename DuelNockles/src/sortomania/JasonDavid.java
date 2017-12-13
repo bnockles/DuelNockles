@@ -89,6 +89,18 @@ public class JasonDavid extends Contestant {
 		 }
 		
 	}
+	public double sortAndGetMedian(double[] random) {
+		quickSort(random,0,random.length-1);
+		 if (random.length%2==0) {
+			 int floor = (int)Math.floor(random.length/2)-1;
+			 int ceiling = floor+1;
+			 return (double)(random[floor]+random[ceiling])/2; 
+		 }
+		 else {
+			 return random[random.length/2];
+		 }
+		
+	}
 	public boolean checkSort(int[] arr) {
 		if(arr[0]<arr[1] && arr[1]<arr[2]&& arr[2]<arr[3]&& arr[4]<arr[5]) {
 			return true;
@@ -116,6 +128,32 @@ public class JasonDavid extends Contestant {
 	 
 	        // swap arr[i+1] and arr[high] (or pivot)
 	        int temp = arr[i+1];
+	        arr[i+1] = arr[high];
+	        arr[high] = temp;
+	 
+	        return i+1;
+	    }
+	 int partition(double arr[], int low, int high)
+	    {
+	        int pivot = (int) arr[high]; 
+	        int i = (low-1); // index of smaller element
+	        for (int j=low; j<high; j++)
+	        {
+	            // If current element is smaller than or
+	            // equal to pivot
+	            if (arr[j] <= pivot)
+	            {
+	                i++;
+	 
+	                // swap arr[i] and arr[j]
+	                int temp = (int) arr[i];
+	                arr[i] = arr[j];
+	                arr[j] = temp;
+	            }
+	        }
+	 
+	        // swap arr[i+1] and arr[high] (or pivot)
+	        int temp = (int) arr[i+1];
 	        arr[i+1] = arr[high];
 	        arr[high] = temp;
 	 
@@ -170,11 +208,47 @@ public class JasonDavid extends Contestant {
 			      }
 			 }
 	  }
+	  public void quickSort(double arr[], int low, int high) {
+		  if (low < high) {
+			 if (high-low < 9) {
+				 insertionSort(arr,low, high+1);
+			 }
+			 else  
+		 	{
+		          /* pi is partitioning index, arr[pi] is 
+		            now at right place */
+		          int pi = partition(arr, low, high);
+		
+		          // Recursively sort elements before
+		          // partition and after partition
+		          	quickSort(arr, low, pi-1);
+		          	quickSort(arr, pi+1, high);
+		      }
+		 }
+  }
 	  private void insertionSort(int[] arr, int low, int high) {
 		  //int n = high+1;
 	        for (int i=low+1; i<high; i++)
 	        {
 	            int key = arr[i];
+	            int j = i-1;
+	 
+	            /* Move elements of arr[0..i-1], that are
+	               greater than key, to one position ahead
+	               of their current position */
+	            while (j>=0 && arr[j] > key)
+	            {
+	                arr[j+1] = arr[j];
+	                j = j-1;
+	            }
+	            arr[j+1] = key;
+	        }
+	}
+	  private void insertionSort(double[] arr, int low, int high) {
+		  //int n = high+1;
+	        for (int i=low+1; i<high; i++)
+	        {
+	            double key = arr[i];
 	            int j = i-1;
 	 
 	            /* Move elements of arr[0..i-1], that are
@@ -334,9 +408,36 @@ public class JasonDavid extends Contestant {
 
 	//@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		double[] Medians = null;
+		for(int i=0; i<grid.length;i++) {
+			quickSort(grid[i], grid[i][0], grid[i][grid.length-1]);
+			Medians[i] = sortAndGetMedian(grid[i]);
+		}
+		return sortAndGetMedian(Medians);
 	}
+	int binarySearch(int arr[], int l, int r, int x)
+    {
+        if (r>=l)
+        {
+            int mid = l + (r - l)/2;
+ 
+            // If the element is present at the middle itself
+            if (arr[mid] == x)
+               return mid;
+ 
+            // If element is smaller than mid, then it can only
+            // be present in left subarray
+            if (arr[mid] > x)
+               return binarySearch(arr, l, mid-1, x);
+ 
+            // Else the element can only be present in right
+            // subarray
+            return binarySearch(arr, mid+1, r, x);
+        }
+ 
+        // We reach here when element is not present in array
+        return -1;
+    }
 	public void compareQuickSort(Comparable[] arr, int low, int high) {
 		if (low < high) {
 			
