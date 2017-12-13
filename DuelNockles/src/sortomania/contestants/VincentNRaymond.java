@@ -14,6 +14,7 @@ public class VincentNRaymond extends Contestant {
 	}
 
 	public VincentNRaymond() {
+		
 	}
 
 	@Override
@@ -160,37 +161,27 @@ public class VincentNRaymond extends Contestant {
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		// TODO Auto-generated method stub
-		int count = 0;
-		double[] medianHolder = new double[(grid.length - 1 )]; 
-		for(int r = 0; r < grid.length - 1; r++) {
-			int[] medianHolder2 = new int[grid.length];
-			int counter2 = 0;
-			for(int c = 0; c < grid[r].length; c ++) {
-				medianHolder2[counter2] = grid[r][c];
-				counter2++;
+		double[] medianArr = new double[grid.length]; // new array of pass median
+
+		for (int row = 0; row < grid.length; row++) {
+			for (int col = 0; col < grid[row].length - 1; col++) {
+				medianArr[row] = sortAndGetMedian(grid[row]);
 			}
-			medianHolder[count] = (double)sortAndGetMedian(medianHolder2);	
-			count++;
 		}
-		boolean sorted=true;
-	  	double temp = 0;
-	  while (sorted){
-	     sorted = false;
-	     for (int i=0; i < medianHolder.length-1; i++) 
-	        if (medianHolder[i] > medianHolder[i+1]) {                      
-	           temp       = medianHolder[i];
-	           medianHolder[i]       = medianHolder[i+1];
-	           medianHolder[i+1]     = temp;
-	           sorted = true;
-	        }     
-	  }
-		return getMedian(medianHolder);
+
+		double finMedian;
+		if (medianArr.length % 2 == 0)
+			finMedian = ((double) medianArr[medianArr.length / 2] + (double) medianArr[medianArr.length / 2 - 1]) / 2;
+		else
+			finMedian = (double) medianArr[medianArr.length / 2];
+
+		return finMedian;
 	}
 	private double getMedian(double[] sortedArray) {
 		if (sortedArray.length % 2 == 1) {
-			return sortedArray[(sortedArray.length - 1) / 2];
+			return ((double)sortedArray[(sortedArray.length - 1) / 2]);
 		} else {
-			return ((sortedArray[sortedArray.length / 2]) + (sortedArray[(sortedArray.length / 2) - 1])) / 2;
+			return ((double)(sortedArray[sortedArray.length / 2]) + ((double)(sortedArray[(sortedArray.length / 2) - 1])) / 2);
 		}
 	}
 	
