@@ -16,14 +16,36 @@ public class VickieAreej extends Contestant{
 		VickieAreej run = new VickieAreej();
 		
 		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8, 56,234,56,35,234,67};
-		int[][] arr2 = {{2,1,3,98},{23,54,23,9}};
+		int[][] arr2 = {{2,1,3,98,9},{23,54,23,9,3}};
 		//multiArraySort2(arr2);
 		//heapSort(arr);
 		//bubbleSort(arr);
-		System.out.print(Arrays.toString(run.multiArraySort2(arr2)));//1d arr
-		System.out.print(Arrays.deepToString(arr2)); //2d arr
-		System.out.println("The median is: " + run.sortAndGetMedian(arr));
-		//System.out.println("And the sorted array is: \n" + arr);
+		//System.out.print(Arrays.toString(run.multiArraySort2(arr2)));//1d arr
+		//System.out.print(Arrays.deepToString(arr2)); //2d arr
+		System.out.print("TEST 1:\n");
+		System.out.println("	The median is: " + run.sortAndGetMedian(arr));
+		System.out.print("	"+Arrays.toString(arr));//1d arr
+		System.out.println("\n----------------------------------------------------------------------------------------");
+		
+		/*
+		System.out.print("TEST 2:\n");
+		System.out.println("	The median is: " + run.sortAndGetMedian(arr));
+		System.out.print("	"+Arrays.toString(arr));//1d arr
+		System.out.println("\n----------------------------------------------------------------------------------------");
+		*/
+		
+		int[] ar = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8, 56,234,56,35,234,67,5,23,4,345,4,5,24,23,4};
+		System.out.print("TEST 3:\n");
+		System.out.println("	The median is: " + run.mostlySortAndGetMedian(ar));
+		System.out.print("	"+Arrays.toString(ar));//1d arr
+		System.out.println("\n----------------------------------------------------------------------------------------");
+		
+		System.out.print("TEST 4:\n");
+		System.out.println("	The median is: " + run.sortMultiDim(arr2));
+		System.out.print("	"+Arrays.toString(run.multiArraySort2(arr2)));//1d arr
+		System.out.println("\n----------------------------------------------------------------------------------------");
+		
+		
     }  
 
 	@Override
@@ -36,13 +58,11 @@ public class VickieAreej extends Contestant{
 		return FEI_LONG;
 	}
 
-	public void heapSort(int arr[])
-    {
+	public void heapSort(int arr[]){
         int n = arr.length;
         for (int i = n / 2 - 1; i >= 0; i--)
             heapify(arr, n, i);
-        for (int i=n-1; i>=0; i--)
-        {
+        for (int i=n-1; i>=0; i--){
             int temp = arr[0];
             arr[0] = arr[i];
             arr[i] = temp;
@@ -51,8 +71,7 @@ public class VickieAreej extends Contestant{
         }
     }
  
-    public void heapify(int arr[], int n, int i)
-    {
+    public void heapify(int arr[], int n, int i){
         int largest = i;  // Initialize largest as root
         int l = 2*i + 1;  // left = 2*i + 1
         int r = 2*i + 2;  // right = 2*i + 2
@@ -75,16 +94,7 @@ public class VickieAreej extends Contestant{
             heapify(arr, n, largest);
         }
     }
- 
-    /* A utility function to print array of size n */
-    static void printArray(int arr[])
-    {
-        int n = arr.length;
-        for (int i=0; i<n; ++i)
-            System.out.print(arr[i]+" ");
-        System.out.println();
-    }
- 
+    
     // Driver program
 	public double sortAndGetMedian(int[] random) {
 		//heap sort
@@ -138,7 +148,7 @@ public class VickieAreej extends Contestant{
 		//multiArraySort(grid);
 		int[] list = multiArraySort2(grid);
 		//getMedian
-		if(grid.length%2 ==0) {
+		if(list.length%2 ==0) {
 			median = (list[list.length/2]+list[(list.length/2)-1])/2;
 		}else {
 			median = list[(int) ((list.length/2)+.5)];
@@ -153,10 +163,12 @@ public class VickieAreej extends Contestant{
 	    int listPos = 0;
 	    // iterate over the entire 2d array adding each integer
 	    for(int i = 0 ; i < grid.length; i++) {
-	        for(int j = 0; j < grid.length; j++) {
+	        for(int j = 0; j < grid[i].length; j++) {
 	            list[listPos++] = grid[i][j];
 	        }
 	    }
+
+	    System.out.print("	"+Arrays.toString(list));
 	    heapSort(list);
 	    return list;
 	}
