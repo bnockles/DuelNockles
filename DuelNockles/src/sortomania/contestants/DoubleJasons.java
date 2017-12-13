@@ -6,8 +6,7 @@ import sortomania.Contestant;
 
 public class DoubleJasons extends Contestant{
 	
-	//private int[] ISSeq = {1, 3, 7, 21, 48, 112, 336, 861, 1968, 4592};
-	private int[] ISSeq = {1, 4, 13};
+	private int[] ISSeq = {1,2,3, 7, 21, 48, 112, 336, 861, 1968, 4592};
 	private static String[] names = {"Tashia","Fidela","Carley","Starla","Maisie","Elijah","Pearl","Jacquie","Zelma","Tama","Hannelore","Shaniqua","Isa","Emily","Desiree","Garnet","Lauri","Erna","Denese","Renato","Britney","Numbers","Randa","Jewel","Vincenzo","Arianna","Johnathon","Charlette","Rae","Jerald"};
 	
 	public DoubleJasons() {
@@ -22,6 +21,8 @@ public class DoubleJasons extends Contestant{
 		int index = ISSeq.length-1;
 		int gap = ISSeq[index];
 		String holder;
+		String char1;
+		String char2;
 			for(int i = 0; i< arr.length; i++) //iterate through arr
 			{
 				if(i+ gap >= arr.length)
@@ -35,14 +36,32 @@ public class DoubleJasons extends Contestant{
 				{
 					for(int idx = 0; idx< arr[i].length()-1; idx++)
 					{
-						String char1 = arr[i].substring(idx, idx+1);
-						String char2 = arr[i+gap].substring(idx, idx+1);
+						char1 = arr[i].substring(idx, idx+1);
+						char2 = arr[i+gap].substring(idx, idx+1);
 						if( char1.compareTo(char2) > 0)
 						{
 							holder = arr[i];
 							arr[i] = arr[i+gap];
 							arr[i+gap] = holder;
-							System.out.println(arr[i+gap]+"Switched with"+arr[i]);
+							
+							if( i - gap >= 0)
+							{
+								for(int secondCheck = 0; secondCheck< arr[i].length()-1; secondCheck++)
+								{
+									char1 = arr[i-gap].substring(secondCheck, secondCheck+1);
+									char2 = arr[i].substring(secondCheck, secondCheck+1);
+									if( char1.compareTo(char2) > 0)
+									{
+										holder = arr[i-gap];
+										arr[i-gap] = arr[i];
+										arr[i] = holder;
+										break;
+									}
+									if(char1.compareTo(char2) < 0)break;
+								}
+							}
+							
+							
 							break;
 						}
 						if(char1.compareTo(char2) < 0)break;
