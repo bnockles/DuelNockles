@@ -495,5 +495,22 @@ public abstract class Contestant extends Component implements Runnable{
 		currentScore = i;
 	}
 
+	public int getCorrectSorts() {
+		return correctSorts;
+	}
+
+	public int getTotalSorts() {
+		return totalSorts;
+	}
+
+	public int getCorrectMedians() {
+		return correctMedians;
+	}
+
+	public int getTotalMedians() {
+		return totalMedians;
+	}
+
+	
 
 }

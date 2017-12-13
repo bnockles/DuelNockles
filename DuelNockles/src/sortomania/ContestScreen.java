@@ -7,8 +7,11 @@ import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -143,6 +146,18 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 			}
 
 		});
+
+		displayAll();
+		saveCSV();
+	}
+
+	private void saveCSV() {
+		CSV csv = new CSV(participants,runnersUp);
+		DateFormat df = new SimpleDateFormat("MMdd-hh:mm:ss");
+		csv.writeCsvFile(df.format(new Date())+" trial.csv");
+	}
+
+	private void displayAll() {
 		int initY = 260;
 		int x = 25;
 		int y = initY;
@@ -178,7 +193,7 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 				x+= c.getWidth()+10;
 			}
 		}
-
+		
 	}
 
 	private void newRound() {
