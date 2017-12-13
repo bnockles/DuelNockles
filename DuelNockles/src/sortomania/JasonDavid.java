@@ -8,6 +8,7 @@ public class JasonDavid{ //extends Contestants
 
     private int number;
     public int count;
+    public static String[] testArray = {"boobs","hi","bye","sucky", "a"};
     public JasonDavid() {
     	count=0;
     }
@@ -16,6 +17,7 @@ public class JasonDavid{ //extends Contestants
 		long num = simAvg();
 		System.out.println(num+ " " + simSD(num)+" ms");
 		System.out.println(hi.count);
+		System.out.println(sortAndGetResultingIndexOf(testArray, "a"));
 	}
 	
 	public static long simAvg() {
@@ -188,7 +190,7 @@ public class JasonDavid{ //extends Contestants
 
 	    }
 	//@Override
-	    public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+	    public static int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 			quickSort(strings, 0, strings.length-1 );
 			return binarySearch(strings, toFind);
 		}
