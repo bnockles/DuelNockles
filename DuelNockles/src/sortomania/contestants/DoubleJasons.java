@@ -15,6 +15,9 @@ public class DoubleJasons extends Contestant implements Comparable{
 	public static final void main(String[] args) {
 		DoubleJasons test = new DoubleJasons();
 		test.shellSort(names);
+		for(String name : names) {
+			System.out.println(name);
+		}
 	}
 	
 	private void shellSort(String[] arr) {
@@ -108,8 +111,8 @@ public class DoubleJasons extends Contestant implements Comparable{
 		while(index - gap >= 0) {
 			for(int secondCheck = 0; secondCheck< arr[index].length()-1; secondCheck++)
 			{
-				String char1 = arr[index-gap].substring(secondCheck, secondCheck+1);
-				String char2 = arr[index].substring(secondCheck, secondCheck+1);
+				String char1 = arr[index-gap].substring(secondCheck, secondCheck+1).toLowerCase();
+				String char2 = arr[index].substring(secondCheck, secondCheck+1).toLowerCase();
 				if(char1.compareTo(char2) > 0)
 				{
 					String holder = arr[index-gap];
