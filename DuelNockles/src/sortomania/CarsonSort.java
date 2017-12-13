@@ -7,14 +7,12 @@ public class CarsonSort extends Contestant{
 
 	public static void main(String a[]){
 		CarsonSort test = new CarsonSort();
-		int[][] input = {{10,2,5,1,6}, {3,7,6,4,7,10}, {2,5,3,1,6}, {4,8,1,2,6}, {4,23,5,23,12}};
-		System.out.println(test.sortMultiDim(input));
-
-		for(int i = 0; i < input.length; i ++) {
-			for(int j = 0; j < input[i].length; j++) {
-				System.out.print(input[i][j] + " ");
-			}
-		}
+//		int[][] input = {{10,2,5,1,6}, {3,7,6,4,7,10}, {2,5,3,1,6}, {4,8,1,2,6}, {4,23,5,23,12}};
+		String[] test1 = {"abc", "zaq", "baq", "Aba", "C", "l", "ii"};
+		
+			System.out.println(Arrays.toString(test1));
+			System.out.println(test.sortAndSearch(test1,"huiho"));
+			System.out.println(Arrays.toString(test1));
 	}
 
 	public Color getColor() {
