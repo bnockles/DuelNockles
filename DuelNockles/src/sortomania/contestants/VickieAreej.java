@@ -125,15 +125,36 @@ public class VickieAreej extends Contestant{
         } 
      }
 	 
+	 public int binarySearch(String[] a, String x) {
+	        int low = 0;
+	        int high = a.length - 1;
+	        int mid;
+
+	        while (low <= high) {
+	            mid = (low + high) / 2;
+
+	            if (a[mid].compareTo(x) < 0) {
+	                low = mid + 1;
+	            } else if (a[mid].compareTo(x) > 0) {
+	                high = mid - 1;
+	            } else {
+	                return mid;
+	            }
+	        }
+
+	        return -1;
+	    }
+	 
 	//TASK2
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		sortStringExchange(strings);
-		for(int i =0; i<strings.length;i++) {
+		
+		/*for(int i =0; i<strings.length;i++) {
 			if (strings[i].equals(toFind)) {
 				return i;
 			}
-		}
-		return 0;
+		}*/
+		return binarySearch(strings, toFind);
 	}
 
 	public int[] bubbleSort(int[] mostlySorted) {
@@ -193,10 +214,13 @@ public class VickieAreej extends Contestant{
 	//TASK5
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		 sortComArrExchange(arr);
-		for(int i = 0; i < arr.length; i++) {
+		
+		 /*for(int i = 0; i < arr.length; i++) {
 			if(arr[i].equals(toFind)) return i;
 		}
-		return -1;
+		return -1;*/
+		
+		return binarySearchComparable(arr,toFind);
 	}
 	
 	public void sortComArrExchange( Comparable x [] ){
@@ -212,9 +236,11 @@ public class VickieAreej extends Contestant{
 	               } 
 	           } 
 	        } 
+	       
+	       
 	     }
 	
-	 public static int binarySearch(String[] a, String x) {
+	 public static int binarySearchComparable(Comparable[] a, Comparable x) {
 	        int low = 0;
 	        int high = a.length - 1;
 	        int mid;
@@ -233,6 +259,7 @@ public class VickieAreej extends Contestant{
 
 	        return -1;
 	    }
+	 
 	public String toString() {
 		return "A & V";
 		
