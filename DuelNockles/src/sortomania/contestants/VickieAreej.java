@@ -15,8 +15,8 @@ public class VickieAreej extends Contestant{
 	public static void main(String[] args) {
 		VickieAreej run = new VickieAreej();
 		
-		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8, 56,234,56,35,234,67};
-		int[][] arr2 = {{2,1,3,98,9},{23,54,23,9,3}};
+		int[] arr = {4, 7, 35,234,68,8765};
+		int[][] arr2 = {{2,1,3,98,9},{23,54,23,8,3}};
 		//multiArraySort2(arr2);
 		//heapSort(arr);
 		//bubbleSort(arr);
@@ -36,7 +36,8 @@ public class VickieAreej extends Contestant{
 		
 		int[] ar = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8, 56,234,56,35,234,67,5,23,4,345,4,5,24,23,4};
 		System.out.print("TEST 3:\n");
-		System.out.println("	The median is: " + run.mostlySortAndGetMedian(ar));
+		run.mostlySortAndGetMedian(ar);
+		System.out.println("	The median is: " + run.median);
 		System.out.print("	"+Arrays.toString(ar));//1d arr
 		System.out.println("\n----------------------------------------------------------------------------------------");
 		
@@ -101,9 +102,9 @@ public class VickieAreej extends Contestant{
 		heapSort(random);
 		//get median
 		if(random.length%2 ==0) {
-			median = (random[random.length/2]+random[(random.length/2)-1])/2;
+			median = ((double)random[random.length/2]+(double)random[(random.length/2)-1])/2;
 		}else {
-			median = random[(int) ((random.length/2)+.5)];
+			median = (double)random[(int) ((random.length/2)+.5)];
 		}
 		return median;
 	}
@@ -136,9 +137,9 @@ public class VickieAreej extends Contestant{
 		bubbleSort(mostlySorted);
 		//get median
 		if(mostlySorted.length%2 ==0) {
-			median = (mostlySorted[mostlySorted.length/2]+mostlySorted[(mostlySorted.length/2)-1])/2;
+			median = ((double)mostlySorted[mostlySorted.length/2]+(double)mostlySorted[(mostlySorted.length/2)-1])/2;
 		}else {
-			median = mostlySorted[(int) ((mostlySorted.length/2)+.5)];
+			median = (double)mostlySorted[(int) ((mostlySorted.length/2)+.5)];
 		}
 		return median;
 	}
@@ -149,9 +150,9 @@ public class VickieAreej extends Contestant{
 		int[] list = multiArraySort2(grid);
 		//getMedian
 		if(list.length%2 ==0) {
-			median = (list[list.length/2]+list[(list.length/2)-1])/2;
+			median = ((double)list[list.length/2]+(double)list[(list.length/2)-1])/2;
 		}else {
-			median = list[(int) ((list.length/2)+.5)];
+			median = (double)list[(int) ((list.length/2)+.5)];
 		}
 		return median;
 	}
@@ -168,7 +169,7 @@ public class VickieAreej extends Contestant{
 	        }
 	    }
 
-	    System.out.print("	"+Arrays.toString(list));
+	   // System.out.print("	"+Arrays.toString(list));
 	    heapSort(list);
 	    return list;
 	}
