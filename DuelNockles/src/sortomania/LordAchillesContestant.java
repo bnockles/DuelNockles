@@ -17,6 +17,7 @@ public class LordAchillesContestant extends Contestant{
 		quickSort(list1,low,high);
 		
 		printArray(list1);
+	
 	}
 	
 	/*
@@ -129,7 +130,7 @@ public class LordAchillesContestant extends Contestant{
 		list[pos2] = tempVar;
 	}
 	
-	public static void insertionSort(String[] list1) {
+	public static String insertionSort(String[] list1) {
 		for (int i = 1; i < list1.length; i++) {
 			int j = i-1;
 			int k = i;
@@ -139,7 +140,7 @@ public class LordAchillesContestant extends Contestant{
 				k--;
 			}
 		}
-		System.out.println(Arrays.toString(list1));
+		return Arrays.toString(list1);
 	}
 	
 	
