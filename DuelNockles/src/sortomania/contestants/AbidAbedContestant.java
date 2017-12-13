@@ -13,8 +13,8 @@ public class AbidAbedContestant extends Contestant
 		AbidAbedContestant ab = new AbidAbedContestant();
 		int[] numbers = new int[1000];
 		String[] toppings = {"Cheese", "Pepperoni", "Black Olives"};
-		quicksort(toppings,0,toppings.length-1);
-		Sysyem.out.println(Arrays.toString(topppings));
+		ab.quickSort(toppings,0,toppings.length-1);
+		System.out.println(ab.sortAndGetResultingIndexOf(toppings, "Cheese"));
 		
 	}
 	@Override
@@ -39,13 +39,21 @@ public class AbidAbedContestant extends Contestant
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) 
 	{
+		return 0;
 		
 	} 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) 
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		quickSort(strings,0,strings.length-1);
+		for(int i = 0; i < strings.length;i++)
+		{
+			if(strings[i].equals(toFind))
+			{
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	@Override
@@ -207,7 +215,7 @@ public class AbidAbedContestant extends Contestant
 		}
     	
     }
-    private static void quickSort(String[] a, int start, int end)
+    private void quickSort(String[] a, int start, int end)
     {
             int i = start;
             int j = end;
@@ -220,11 +228,11 @@ public class AbidAbedContestant extends Contestant
               
                 while (j > i)
                 {
-                    while (a[i].compareTo(pivot) < 0 && i <= end && j > i){
+                    while (a[i].compareTo(pivot) <= 0 && i < end && j > i){
                         i++;
                     }
           
-                    while (a[j].compareTo(pivot) > 0 && j >= start && j >= i){
+                    while (a[j].compareTo(pivot) >= 0 && j > start && j >= i){
                         j--;
                     }
                   
@@ -236,11 +244,11 @@ public class AbidAbedContestant extends Contestant
                 quickSort(a, j + 1, end);
             }
         }
-        private static void swap(String[] a, int i, int j)
-        {
+   private void swap(String[] a, int i, int j)
+   {
         String temp = a[i];
         a[i] = a[j];
         a[j] = temp;
-        }
+   }
 
 }
