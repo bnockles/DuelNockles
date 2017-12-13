@@ -141,11 +141,54 @@ public class ZhehaoRemington extends Contestant {
 	
 		
 	}
+	public void mergeSort(String[] arr) 
+	{
+        if (arr.length >= 2)
+        {
+            String[] left = new String[arr.length / 2];
+            String[] right = new String[arr.length-arr.length / 2];
+
+            for (int i = 0; i < left.length; i++)
+            {
+                left[i] = arr[i];
+            }
+            for (int i = 0; i < right.length; i++)
+            {
+                right[i] = arr[i + arr.length / 2];
+            }
+            mergeSort(left);
+            mergeSort(right);
+
+            merge(arr, left, right);
+        }
+    }
+	public static void merge(String[] arr, String[] left, String[] right) {
+        int a = 0;
+        int b = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (b >= right.length || (a < left.length && left[a].compareToIgnoreCase(right[b]) < 0)) {
+                arr[i] = left[a];
+                a++;
+            } else {
+                arr[i] = right[b];
+                b++;
+            }
+        }
+    }
 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		mergeSort(strings);
+		
+		for (int i = 0; i < strings.length; i++)
+		{
+			if (strings[i].equals(toFind))
+			{
+				return i;
+			}
+		}
+		
+		return -1;
 	}
 
 	@Override
@@ -169,8 +212,46 @@ public class ZhehaoRemington extends Contestant {
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		insertionSort(arr);
+		for (int i = 0; i < arr.length; i++)
+		{
+			if (arr[i].compareTo(toFind)==0)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	public static void insertionSort(Comparable[] arr)
+	{
+		int index = 0;
+		for (int i = 0; i < arr.length - 1; i++)
+		{
+			if (arr[i].compareTo(arr[i + 1]) > 0)
+			{
+				index = i + 1;
+				for (int j = i; j > -1; j--)
+				{
+					if (arr[index].compareTo(arr[j])<0)
+					{
+						swap(arr, index, j);
+						index = j;
+					}
+				}
+			}
+		}
+	}
+	private static void swap(Comparable[] arr, int i, int j) {
+		Comparable temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	private void swapNumbers(int i, int j, Comparable[] array) {
+			Comparable temp;
+	        temp =  array[i];
+	        array[i] = array[j];
+	        array[j] = temp;
 	}
 
 }
