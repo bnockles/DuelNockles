@@ -5,13 +5,13 @@ import java.util.Arrays;
 
 public class NabeelAmanatSort extends Contestant {
 
-	/*private static Comparable[] unsorted = {2,555,3,67,9999,45,32,34,576,675,756,565,808,654,6878,4543,1000,0111,1113,4535};
+	private static int [] unsorted = {2,555,3,67,9999,45,32,34,576,675,756,565,808,654,6878,4543,1000,0111,1113,4535};
 	private static Comparable[] stringList= {"bcde","Abcd", "cdef", "Mnlo", "katie","jklmn"};
-	private static int[][] twodim= {{34,23,34,32,34}, {75,5454, 45,34,45,45,4,5,7,6,808,654,6878,4543,1000,0111,1113,0,345},{45,999,998,776,55,444,33,6565,1453,3575}};*/
+	private static int[][] twodim= {{34,23,34,32,34}, {75,5454, 45,34,45,45,4,5,7,6,808,654,6878,4543,1000,0111,1113,0,345},{45,999,998,776,55,444,33,6565,1453,3575}};
 	private int index =0; 
 	
 	public static void main(String[] args) {
-		//NabeelAmanatSort test = new NabeelAmanatSort(); 
+		NabeelAmanatSort test = new NabeelAmanatSort(); 
 		//First test 
 		/*System.out.println(Arrays.toString(unsorted));
 		double x = test.sortAndGetMedian(unsorted);
@@ -20,17 +20,17 @@ public class NabeelAmanatSort extends Contestant {
 		
 		//Second test
 		/*System.out.println(Arrays.toString(stringList));
-		int x = test.sortAndSearch(unsorted, 34);
+		int x = test.sortAndSearch(stringList, "Mnlo");
 		System.out.println(x);
 		System.out.println(Arrays.toString(stringList));*/
 
 		
 		//third test
-		/*System.out.println(Arrays.toString(unsorted));
+		System.out.println(Arrays.toString(unsorted));
 		double x = test.mostlySortAndGetMedian(unsorted);
 		System.out.println(x);
 		System.out.println("hello");
-		System.out.println(Arrays.toString(unsorted));*/
+		System.out.println(Arrays.toString(unsorted));
 		
 		//fourth test
 		/*for(int i =0 ; i<twodim.length; i++) {
@@ -152,27 +152,10 @@ public class NabeelAmanatSort extends Contestant {
 	//third thing
 	@Override
 	public double mostlySortAndGetMedian(int[] random) {
-		return insertionSort(random, 0, (int)(random.length*0.75));
+		double  x = sortAndGetMedian(random);
+		return x;    
+	
 	}
-	public double insertionSort(int a[], int left, int right) {
-		 int j;
-		    for (int p = left; p < right; p++) {
-		        int tmp = a[p];
-		        for(j = p; j > 0 && tmp < a[j - 1]; j--) {
-		            a[j] = a[j-1];
-		        }
-		        a[j] = tmp;
-		    }
-		    if(a.length%2 == 0) 
-				return (a[(int)(a.length/2)] + a[(int)(a.length/2)-1])/2;
-			
-			else
-				return a[(int)(a.length/2)];
-
-			    }
-		    
-	
-	
 	//fourth thing 
 	@Override 
 	public double sortMultiDim(int[][] grid) {
