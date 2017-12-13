@@ -50,11 +50,6 @@ public class DoubleJasons extends Contestant implements Comparable{
 				}
 			}	
 		}
-		
-		for(String names: arr)
-		{
-			System.out.println(names);
-		}
 	}
 	
 	private void shellSort(int[] arr) {
