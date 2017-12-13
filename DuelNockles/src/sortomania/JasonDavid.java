@@ -2,7 +2,7 @@ package sortomania;
 
 import java.awt.Color;
 
-public class JasonDavid{ //extends Contestant {
+public class JasonDavid extends Contestant {
 	private int[] numbers;
     private int[] helper;
     private int number;
@@ -49,7 +49,7 @@ public class JasonDavid{ //extends Contestant {
 		}
 		return (long) Math.sqrt(num/201);
 	}
-	//@Override
+	@Override
 	public Color getColor() {
 		return new Color(124, 255, 124);
 	}
@@ -61,7 +61,7 @@ public class JasonDavid{ //extends Contestant {
 	         System.out.print(test[i]);
 	      }
 	   }
-	//@Override
+	@Override
 	public String getSpriteName() {
 		return CHUN_LI;
 	}
@@ -76,7 +76,7 @@ public class JasonDavid{ //extends Contestant {
 	public static int randInt(int min, int max) {
 		return min + (int)(Math.random() * ((max - min) + 1));
 	}
-	//@Override
+	@Override
 	public double sortAndGetMedian(int[] random) {
 		quickSort(random,0,random.length-1);
 		 if (random.length%2==0) {
@@ -121,29 +121,54 @@ public class JasonDavid{ //extends Contestant {
 	 
 	        return i+1;
 	    }
+	 int partitionComp(Comparable[] arr, int low, int high)
+	    {
+	        Comparable pivot = arr[high]; 
+	        int i = (low-1); // index of smaller element
+	        for (int j=low; j<high; j++)
+	        {
+	            // If current element is smaller than or
+	            // equal to pivot
+	            if (arr[j].compareTo(pivot) <= 0)
+	            {
+	                i++;
 	 
+	                // swap arr[i] and arr[j]
+	                Comparable temp = arr[i];
+	                arr[i] = arr[j];
+	                arr[j] = temp;
+	            }
+	        }
+	 
+	        // swap arr[i+1] and arr[high] (or pivot)
+	        Comparable temp = arr[i+1];
+	        arr[i+1] = arr[high];
+	        arr[high] = temp;
+	 
+	        return i+1;
+	    }
 	/* The main function that implements QuickSort()
     arr[] --> Array to be sorted,
     low  --> Starting index,
     high  --> Ending index */
 	 
 	  public void quickSort(int arr[], int low, int high) {
-		  if (low < high) {
-			 if (high-low < 9) {
-				 insertionSort(arr,low, high+1);
+			  if (low < high) {
+				 if (high-low < 9) {
+					 insertionSort(arr,low, high+1);
+				 }
+				 else  
+			 	{
+			          /* pi is partitioning index, arr[pi] is 
+			            now at right place */
+			          int pi = partition(arr, low, high);
+			
+			          // Recursively sort elements before
+			          // partition and after partition
+			          	quickSort(arr, low, pi-1);
+			          	quickSort(arr, pi+1, high);
+			      }
 			 }
-			 else  
-		 	{
-		          /* pi is partitioning index, arr[pi] is 
-		            now at right place */
-		          int pi = partition(arr, low, high);
-		
-		          // Recursively sort elements before
-		          // partition and after partition
-		          	quickSort(arr, low, pi-1);
-		          	quickSort(arr, pi+1, high);
-		      }
-		 }
 	  }
 	  private void insertionSort(int[] arr, int low, int high) {
 		  //int n = high+1;
@@ -216,7 +241,7 @@ public class JasonDavid{ //extends Contestant {
 	        // are already at the right position.
 
 	    }
-	//@Override
+	@Override
 	    public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 			quickSort(strings, 0, strings.length-1 );
 			return binarySearch(strings, toFind);
@@ -294,7 +319,7 @@ public class JasonDavid{ //extends Contestant {
 		    a[j] = temp;
 		    }
 
-	//@Override
+	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		mSort(mostlySorted);
 		 if (mostlySorted.length%2==0) {
@@ -312,8 +337,21 @@ public class JasonDavid{ //extends Contestant {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	//@Override
+	public void compareQuickSort(Comparable[] arr, int low, int high) {
+		if (low < high) {
+			
+		        /* pi is partitioning index, arr[pi] is 
+		           now at right place */
+		         int pi = partitionComp(arr, low, high);
+	
+	          // Recursively sort elements before
+	          // partition and after partition
+	          	compareQuickSort(arr, low, pi-1);
+	          	compareQuickSort(arr, pi+1, high);
+		      
+		 }
+	}
+	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		// TODO Auto-generated method stub
 		return 0;
