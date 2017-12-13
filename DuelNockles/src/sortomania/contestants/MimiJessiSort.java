@@ -10,8 +10,8 @@ public class MimiJessiSort extends Contestant{
 		MimiJessiSort test = new MimiJessiSort();
 		
 		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
-		System.out.println("The median is: " + test.sortAndGetMedian(arr));
-		System.out.println("And the sorted array is: \n" + arr);
+		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr));
+		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
 	}
 
 	@Override
@@ -35,9 +35,9 @@ public class MimiJessiSort extends Contestant{
 	}
 	
 	@Override
-	public double sortAndGetMedian(int[] random) {
-		mergeSort(random, 0, random.length - 1);
-		return getMedian(random);
+	public double sortAndGetMedian(int[] arr) {
+		mergeSort(arr, 0, arr.length - 1);
+		return getMedian(arr);
 	}
 	
 	public void merge(int arr[], int l, int m, int r) {
@@ -144,9 +144,9 @@ public class MimiJessiSort extends Contestant{
 	}
 	
 	@Override
-	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		insertionSort(mostlySorted);
-		return getMedian(mostlySorted);
+	public double mostlySortAndGetMedian(int[] arr) {
+		insertionSort(arr);
+		return getMedian(arr);
 	}
 	
 	public void insertionSort(int arr[]) {
@@ -171,13 +171,24 @@ public class MimiJessiSort extends Contestant{
 		return sortAndGetMedian(medians);
 	}
 	
-	//sort the array then return index of the toFind
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		
-		return 0;
+		for(int i = 0; i < arr.length; i++) {
+			for(int j = i+1; j < arr.length; j++) {
+				if(arr[i].compareTo(arr[j]) > 0) {
+					Comparable temp = arr[i];
+					arr[i] = arr[j];
+					arr[j] = temp;
+				}
+			}
+		}
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i].equals(toFind)) {
+				return i;
+			}
+		}
+		return -1;
 	}
-	
 	
 	
 }
