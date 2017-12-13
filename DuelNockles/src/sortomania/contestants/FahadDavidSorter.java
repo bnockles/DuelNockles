@@ -12,15 +12,11 @@ public class FahadDavidSorter extends Contestant {
 	//Radix Sort
 	//TimSort
 	//recursive merge sort
-	 public static void main (String[] args)
-	    {
+	 public static void main (String[] args){
 		 FahadDavidSorter test = new FahadDavidSorter();
-		 int[][] arr = {{3,2,1},{4,3,5}};
-		 System.out.println("The median is: " + test.sortMultiDim(arr));
-		 for(int i = 0; i < arr.length;i++) {
-			 System.out.println("An array is: " + Arrays.toString(arr[i]));
-		 }
-	    }
+		 int[] arr = {4,6,2,4,5};
+		 System.out.println(mostlySortAndGetMedian(arr));
+	   }
 	
 	public Color getColor() {
 		return new Color(192,192,192);
@@ -44,6 +40,7 @@ public class FahadDavidSorter extends Contestant {
 	}
 	
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+		insertionSort(strings);
 		for(int i = 0; i < strings.length; i++) {
 			if(strings[i] == toFind) {
 				return i;
@@ -89,8 +86,7 @@ public class FahadDavidSorter extends Contestant {
 		return -1;
 	}
 
-	 public static void radixSort(int[] a)
-	    {
+	 public static void radixSort(int[] a) {
 	        int i, m = a[0], exp = 1, n = a.length;
 	        int[] b = new int[10];
 	        for (i = 1; i < n; i++)
@@ -111,9 +107,9 @@ public class FahadDavidSorter extends Contestant {
 	                a[i] = b[i];
 	            exp *= 10;        
 	        }
-	    } 
+	 } 
+	 
 	 public static int[] insertionSort(int[] input){
-         
 	        int temp;
 	        for (int i = 1; i < input.length; i++) {
 	            for(int j = i ; j > 0 ; j--){
@@ -125,5 +121,20 @@ public class FahadDavidSorter extends Contestant {
 	            }
 	        }
 	        return input;
-	    }
+	}
+	 
+	 public static void insertionSort(String[] inputArray) {
+		  for (int j = 1; j < inputArray.length; j++) { //the condition has changed
+			    String key = inputArray[j];
+			    int i = j - 1;
+			    while (i >= 0) {
+			      if (key.compareTo(inputArray[i]) > 0) {//here too
+			        break;
+			      }
+			      inputArray[i + 1] = inputArray[i];
+			      i--;
+			    }
+			    inputArray[i + 1] = key;
+			  }
+	 }
 }
