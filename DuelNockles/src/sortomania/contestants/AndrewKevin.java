@@ -18,9 +18,8 @@ public class AndrewKevin extends Contestant{
 		return "CHUN_LI";
 	}
 	private int array[];
-	private double array2[];
     private int length;
-    
+    private double temp;
     /**------------------------------------------**/
 	@Override
 	public   double sortAndGetMedian(int[] random) {
@@ -28,7 +27,7 @@ public class AndrewKevin extends Contestant{
 		if(random.length%2 ==0) {
 			return (double)(random[random.length/2-1]+random[random.length/2])/2;
 		}
-		return (double)random[((random.length/2))];
+		return (double)random[(int)((random.length/2))+1];
 	}
 	
 		 	public void sort(int[] inputArr) {
@@ -141,21 +140,21 @@ public class AndrewKevin extends Contestant{
 		for(int i = 0; i < grid.length; i++) {
 			listMed[i] = sortAndGetMedian(grid[i]);
 		}
-		sort(listMed);
-		if(listMed.length%2 ==0) {
-			return (double)(listMed[listMed.length/2-1]+listMed[listMed.length/2])/2;
+		for (int index = 0; index < listMed.length - 1; index++) {
+			  for (int j = index + 1; j < listMed.length; j++) {
+			    if (listMed[j] < listMed[index]) {
+			      temp = listMed[j];
+			      listMed[j] = listMed[index];
+			      listMed[index] = temp;
+			    }
+			  }
+			}
+		if(listMed.length%2 == 0) {
+			return (listMed[listMed.length/2-1]+listMed[listMed.length/2])/2;
 		}
-		return (double)listMed[((listMed.length/2))];
+		return listMed[(int)((listMed.length/2))];
 	}
- 	public void sort(double[] inputArr) {
-        
-        if (inputArr == null || inputArr.length == 0) {
-            return;
-        }
-        this.array2 = inputArr;
-        length = inputArr.length;
-        quickSort(0, length - 1);
-    }
+ 
 	 /**------------------------------------------**/
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {

@@ -11,15 +11,22 @@ public static void main(String a[]){
         //for(int i = 0; i < input.length; i++) {
         //	input[i] = (int) (Math.random()*10001);
         //}
-        int[] input = {10,9,8,7,6,5,4,3,2};
+        int[][] input = new int[5][4];
+        for(int i = 0; i < input.length; i++) {
+        	for(int c = 0; c < input[i].length; c++) {
+        		input[i][c] = (int)(Math.random()*20);
+        	}
+        }
         final long startTime = System.nanoTime();
-        sorter.mostlySortAndGetMedian(input);
+        sorter.sortMultiDim(input);
         final long duration = System.nanoTime() - startTime;
-        for(int i:input){
-            System.out.println(i);
+        for(int r = 0; r < input.length; r ++){
+        	for(int d = 0; d < input[r].length; d ++) {
+                System.out.println(input[r][d]);
+        	}
         }
         System.out.println ("\n" + duration + " nanoseconds");
-        System.out.println(sorter.mostlySortAndGetMedian(input));
+        System.out.println(sorter.sortMultiDim(input));
         
         String[] fruits = {"Apple","Mango","Peach","Banana","Orange","aaaaa","Grapes","Watermelon","Tomato","an","abbn"};
         final long startTime2 = System.nanoTime();
