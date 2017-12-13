@@ -48,8 +48,9 @@ public class VickieAreej extends Contestant{
 		System.out.println("\n----------------------------------------------------------------------------------------");
 		
 		System.out.print("TEST 5:\n");
-		System.out.println("	The median is: " + run.sortMultiDim(arr2));
-		System.out.print("	"+Arrays.toString(run.multiArraySort2(arr2)));//1d arr
+		String[ ] names2 = {"joe", "SLIM", "ed", "george", "Vivkie", "vickie", "slim"};
+		System.out.println("The sorted string array is: \n" + run.sortAndSearch(names2, "vickie"));
+		System.out.print("	"+Arrays.toString(names2));
 		System.out.println("\n----------------------------------------------------------------------------------------");
 		
 		
