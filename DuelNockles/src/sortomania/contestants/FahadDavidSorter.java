@@ -44,7 +44,6 @@ public class FahadDavidSorter extends Contestant {
 	}
 	
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		
 		for(int i = 0; i < strings.length; i++) {
 			if(strings[i] == toFind) {
 				return i;
@@ -54,7 +53,7 @@ public class FahadDavidSorter extends Contestant {
 	}
 
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		
+		insertionSort(mostlySorted);
 		if(mostlySorted.length %2 == 1) {
 			return mostlySorted[(mostlySorted.length-1)/2];
 		}
