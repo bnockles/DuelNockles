@@ -59,17 +59,51 @@ public class TheoDevinBeepBoop extends Contestant {
 	}
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		String phrase[] = new String[strings.length];
+		//String phrase[] = new String[strings.length];
 		
-		for(int i = 0; i < strings.length-1;i++) {
-		if(phrase[i].compareTo(phrase[i+1]) > 0) {
-			String temp = phrase[i+1];
-            phrase[i+1] = phrase[i];
-            phrase[i] = temp;
-            //not heap, more like bubble, but is missing parts of it
+		//for(int i = 0; i < strings.length-1;i++) {
+		//if(phrase[i].compareTo(phrase[i+1]) > 0) {
+			//String temp = phrase[i+1];
+           // phrase[i+1] = phrase[i];
+           // phrase[i] = temp;
+            //attempt without helpers
+		bubbleSorting(strings);
+		for (int i = 0; i < strings.length; i++)
+		{
+			if(strings[i].compareTo(toFind) == 0)
+			{
+				return i;
+			}
 		}
-		}
+		return -1;
+	
+		
+		
 
+	}
+	public static void bubbleSorting(String[] strings)
+	{
+		boolean swap = false;
+		while(!swap)
+		{
+			int count = 0;
+			for(int i = 0; i < strings.length-1; i++)
+			{
+				
+				if(strings[i].compareTo(strings[i+1]) > 0)
+				{
+					String temp = strings[i+1];
+					strings[i+1] = strings[i];
+					strings[i] = temp;
+					count++;
+				}		
+			}
+			if(count == 0) //the elements stops iterating when the number of swap is 0
+			{
+				swap = true;
+			}
+			
+		}
 	}
 
 	@Override
