@@ -1,7 +1,9 @@
-package sortomania;
+package sortomania.contestants;
 
 import java.awt.Color;
 import java.util.Arrays;
+
+import sortomania.Contestant;
 
 public class NabeelAmanatSort extends Contestant {
 

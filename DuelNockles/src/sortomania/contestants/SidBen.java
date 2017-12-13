@@ -1,4 +1,4 @@
-package sortomania;
+package sortomania.contestants;
 
 import java.awt.Color;
 
@@ -6,6 +6,7 @@ import bensid.MergeSortComparable;
 import bensid.MergeSortDouble;
 import bensid.MergeSortString;
 import bensid.MyQuickSort;
+import sortomania.Contestant;
 
 public class SidBen extends Contestant{
 

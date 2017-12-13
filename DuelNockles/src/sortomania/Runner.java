@@ -56,6 +56,20 @@ public class Runner extends GUIApplication{
 		//PERIOD 4-5
 		arr = addContestant(arr[0],arr[1],participants, new SamJenny());
 		arr = addContestant(arr[0],arr[1],participants, new MimiJessiSort());
+		arr = addContestant(arr[0],arr[1],participants, new AlexAndErik());
+		arr = addContestant(arr[0],arr[1],participants, new SidBen());
+		arr = addContestant(arr[0],arr[1],participants, new TylerCarsonSort());
+		arr = addContestant(arr[0],arr[1],participants, new YonathanDavid());
+		arr = addContestant(arr[0],arr[1],participants, new NabeelAmanatSort());
+		arr = addContestant(arr[0],arr[1],participants, new JasonDavid());
+		arr = addContestant(arr[0],arr[1],participants, new JaneVictorContestant());
+		arr = addContestant(arr[0],arr[1],participants, new ZhehaoRemington());
+		arr = addContestant(arr[0],arr[1],participants, new DanSteven());
+		arr = addContestant(arr[0],arr[1],participants, new GarrettRicky());
+		arr = addContestant(arr[0],arr[1],participants, new AndrewKevin());
+		arr = addContestant(arr[0],arr[1],participants, new FahadDavidSorter());
+		arr = addContestant(arr[0],arr[1],participants, new JustinSunny());
+		//ALL OF THE ABOVE STUDENTS SUBMITTED BY THE DEADLINE
 		
 	}
 

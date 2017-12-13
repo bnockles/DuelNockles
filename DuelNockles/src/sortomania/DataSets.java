@@ -39,8 +39,8 @@ public class DataSets {
 		task1DataSetsSorted = new int[reps][];
 		task1Median = new double[reps];
 		for(int i = 0; i < task1DataSets.length; i++){
-			task1DataSets[i] = randomIntsArr(l);
 			l = 10000+(int)(Math.random()*1000);
+			task1DataSets[i] = randomIntsArr(l);
 			int[] copy = new int[l];
 			for(int j = 0; j < copy.length; j++){
 				copy[j] = task1DataSets[i][j];
