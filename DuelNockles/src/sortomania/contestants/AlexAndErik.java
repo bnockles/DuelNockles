@@ -120,8 +120,9 @@ public class AlexAndErik extends Contestant {
 	
 	//TASK 4
 	public double sortMultiDim(int[][] grid) {
-		double[] medians = new double[grid.length];
-		for(int i = 0; i < grid.length;i++) {
+		int gridLength = grid.length;
+		double[] medians = new double[gridLength];
+		for(int i = 0; i < gridLength;i++) {
 			mergeSort(grid[i]);
 			medians[i] = getMedian(grid[i]);
 		}
@@ -133,8 +134,9 @@ public class AlexAndErik extends Contestant {
 	
 	//TASK 5
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
+		int arrayLength = arr.length;
 		mergeSortComp(arr);
-		for(int i = 0; i < arr.length;i++) {
+		for(int i = 0; i < arrayLength;i++) {
 			if(toFind.equals(arr[i])) {
 				return i;
 			}
@@ -252,8 +254,11 @@ public class AlexAndErik extends Contestant {
     public static void mergeStrings(String[] names, String[] left, String[] right) {
         int a = 0;
         int b = 0;
-        for (int i = 0; i < names.length; i++) {
-            if (b >= right.length || (a < left.length && left[a].compareToIgnoreCase(right[b]) < 0)) {
+        int rightStringLength = right.length;
+        int leftStringLength = left.length;
+        int nameStringLength = names.length;
+        for (int i = 0; i < nameStringLength; i++) {
+            if (b >=  rightStringLength || (a < leftStringLength && left[a].compareToIgnoreCase(right[b]) < 0)) {
                 names[i] = left[a];
                 a++;
             } else {
