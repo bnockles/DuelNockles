@@ -38,7 +38,7 @@ public class DoubleJasons extends Contestant{
 					{
 						char1 = arr[i].substring(idx, idx+1); 
 						char2 = arr[i+gap].substring(idx, idx+1);
-						if(char1.compareTo(char2) > 0)
+						if( char1.compareTo(char2) > 0)
 						{
 							holder = arr[i];
 							arr[i] = arr[i+gap];
@@ -46,7 +46,7 @@ public class DoubleJasons extends Contestant{
 							checkPreviousIndices(i,gap,arr);
 							break;
 						}
-						else if(char1.compareTo(char2) < 0)break;
+						if(char1.compareTo(char2) < 0)break;
 					}
 				}
 			}
@@ -94,14 +94,15 @@ public class DoubleJasons extends Contestant{
 			{
 				String char1 = arr[index-gap].substring(secondCheck, secondCheck+1);
 				String char2 = arr[index].substring(secondCheck, secondCheck+1);
-				if( char1.compareTo(char2) > 0)
+				if(char1.compareTo(char2) > 0)
 				{
 					String holder = arr[index-gap];
 					arr[index-gap] = arr[index];
 					arr[index] = holder;
-					return;
+					index -= gap;
+					break;
 				}
-				if(char1.compareTo(char2) <= 0)return;
+				if(char1.compareTo(char2) <= 0) return;
 			}
 		}
 	}
