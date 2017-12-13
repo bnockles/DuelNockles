@@ -19,8 +19,8 @@ public class EthanDavidContestant extends Contestant {
 	private void testSort() {
 		int[][] arr = new int[2][2];
 		int[] arr1 = {1,4,5,8,11,7};
-		arr[0][0] = 5;
-		arr[0][1] = 1;
+		arr[0][0] = 50;
+		arr[0][1] = 100;
 		arr[1][0] = 19;
 		arr[1][1] = 14;
 		sortMultiDim(arr);
@@ -70,7 +70,7 @@ public class EthanDavidContestant extends Contestant {
 	        }
 	    }
 	   
-	   void insertionSort(int arr[])
+	  public void insertionSort(int arr[])
 	    {
 	        int n = arr.length;
 	        for (int i=1; i<n; ++i)
@@ -151,18 +151,19 @@ public class EthanDavidContestant extends Contestant {
 	public double sortMultiDim(int[][] grid) {
 		double median = 0;
 		double[] medianOfMedians = new double[grid.length];
-		for(int row = 0; row < grid.length; row++) {
-			medianOfMedians[row] = sortAndGetMedian(grid[row]);
+		for(int i = 0; i < grid.length; i++) {
+			medianOfMedians[i] = sortAndGetMedian(grid[i]);
 		}
 		if(medianOfMedians.length%2 != 0) {
-			median += medianOfMedians[(int)(medianOfMedians.length/2) - 1];
+			median = medianOfMedians[medianOfMedians.length/2];//medianOfMedians[(int)(medianOfMedians.length/2) - 1];
 		}
 		else {
-			median += (medianOfMedians[0 + (medianOfMedians.length/2)] + medianOfMedians[(medianOfMedians.length - medianOfMedians.length/2)])/2;
+			double x = (medianOfMedians[medianOfMedians.length/2] + medianOfMedians[medianOfMedians.length/2-1])/2;
+			System.out.println("sum is " + x);//(double)medianOfMedians[medianOfMedians.length/2] + medianOfMedians[medianOfMedians.length/2-1]/2 + "sdlksajd");
+			median = x;
 		}
-		System.out.println(median);
-		//sortAndGetMedian(medianOfMedians);
 		System.out.println(Arrays.toString(medianOfMedians));
+		System.out.println(median);
 		return median;
 	}
 
