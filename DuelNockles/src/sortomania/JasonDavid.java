@@ -7,22 +7,36 @@ public class JasonDavid extends Contestant {
     private int[] helper;
     private int number;
     public int count;
-    public JasonDavid() {
-    	count=0;
-    }
-	public static void main(String args[]) {
+ 
+	/*public static void main(String args[]) {
 		JasonDavid hi = new JasonDavid();
 		long num = simAvg();
 		System.out.println(num+ " " + simSD(num)+" ms");
 		int[] test = rand();
 		int[] test2 = {1};
-		double x = hi.sortAndGetMedian(test2);
-		printArray(test2);
+		double x = hi.sortAndGetMedian(test);
+		printArray(test);
+		test();
 		//System.out.println(test2[2]);
 		//System.out.println(hi.count);
 		//System.out.println(x);
-	}
+	}*/
 	
+	public static void test() {
+		JasonDavid asd = new JasonDavid();
+		System.out.println("send help");
+		System.out.println(asd.sortMultiDim(makeTestArray()));
+		
+	}
+	public static int[][] makeTestArray(){
+		int[][] dimen = new int[10][10];
+		for(int i=0; i<dimen.length;i++) {
+			for(int j=0; j<dimen[i].length; j++) {
+				dimen[i][j]= randInt(0,50);
+			}
+}
+		return dimen;
+	}
 	public static long simAvg() {
 		long num = 0;
 		for (int i=0; i<200; i++) {
@@ -75,19 +89,6 @@ public class JasonDavid extends Contestant {
 	
 	public static int randInt(int min, int max) {
 		return min + (int)(Math.random() * ((max - min) + 1));
-	}
-	@Override
-	public double sortAndGetMedian(int[] random) {
-		quickSort(random,0,random.length-1);
-		 if (random.length%2==0) {
-			 int floor = (int)Math.floor(random.length/2)-1;
-			 int ceiling = floor+1;
-			 return (double)(random[floor]+random[ceiling])/2; 
-		 }
-		 else {
-			 return random[random.length/2];
-		 }
-		
 	}
 	public double sortAndGetMedian(double[] random) {
 		quickSort(random,0,random.length-1);
@@ -392,7 +393,20 @@ public class JasonDavid extends Contestant {
 		    a[i] = a[j];
 		    a[j] = temp;
 		    }
-
+		    
+		    @Override
+			public double sortAndGetMedian(int[] random) {
+				quickSort(random,0,random.length-1);
+				 if (random.length%2==0) {
+					 int floor = (int)Math.floor(random.length/2)-1;
+					 int ceiling = floor+1;
+					 return (double)(random[floor]+random[ceiling])/2; 
+				 }
+				 else {
+					 return random[random.length/2];
+				 }
+				
+			}
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		mSort(mostlySorted);
@@ -406,11 +420,10 @@ public class JasonDavid extends Contestant {
 		 }
 	}
 
-	//@Override
+	@Override
 	public double sortMultiDim(int[][] grid) {
-		double[] Medians = null;
+		double[] Medians = new double[grid.length];
 		for(int i=0; i<grid.length;i++) {
-			quickSort(grid[i], grid[i][0], grid[i][grid.length-1]);
 			Medians[i] = sortAndGetMedian(grid[i]);
 		}
 		return sortAndGetMedian(Medians);
