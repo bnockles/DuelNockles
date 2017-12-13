@@ -14,8 +14,9 @@ public class FahadDavidSorter extends Contestant {
 	//recursive merge sort
 	 public static void main (String[] args){
 		 FahadDavidSorter test = new FahadDavidSorter();
-		 int[] arr = {4,6,2,4,5};
-		 System.out.println(mostlySortAndGetMedian(arr));
+		 int[] arr = {4,6,2,4,5,5};
+		 System.out.println(test.mostlySortAndGetMedian(arr));
+		 System.out.println(Arrays.toString(arr));
 	   }
 	
 	public Color getColor() {
@@ -56,7 +57,8 @@ public class FahadDavidSorter extends Contestant {
 		}
 		else{
 			int temp = (mostlySorted.length)/2;
-			return (mostlySorted[temp] + mostlySorted[temp + 1])/2;
+			double temp2 = (mostlySorted[temp] + mostlySorted[temp - 1]);
+			return temp2/2;
 		}
 	}
 
