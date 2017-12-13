@@ -11,11 +11,7 @@ public class AliceDanielSort extends Contestant{
 	//private static int size_threshold = 16;
 	
 	public static void main(String args[]) {
-		
-		AliceDanielSort test = new AliceDanielSort();
-		int[][] arr = {3,4,5,6,10};
-		System.out.println("The median is: " + test.sortMultiDim(arr[]));
-		System.out.println("And the sorted array is: \n" + arr);
+	
 
 	}
 	
@@ -76,15 +72,7 @@ public class AliceDanielSort extends Contestant{
 			medianArrPos[y] = y;
 		}
 		bubbleSort(medianArr, medianArrPos);
-		
-//		System.out.println("Median Array Sorted: ");
-//		for (int z = 0; z < medianArrPos.length; z++) {
-//			System.out.print(medianArr[z]+ " ");
-//		}
-//		System.out.println("Median Array Positions:");
-//		for (int z = 0; z < medianArrPos.length; z++) {
-//			System.out.print(medianArrPos[z]+ " ");
-//		}
+
 		for(int i = 0; i < medianArrPos.length; i++)
 		{
 			int[] temp = new int [grid[0].length];
