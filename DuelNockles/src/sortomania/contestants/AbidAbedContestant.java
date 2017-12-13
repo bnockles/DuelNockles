@@ -11,15 +11,9 @@ public class AbidAbedContestant extends Contestant
 	public static void main(String[] args)
 	{
 		AbidAbedContestant ab = new AbidAbedContestant();
-		int[] x = { 9, 2, 4, 7, 3, 7, 10 };
-		System.out.println(Arrays.toString(x));
- 
-		int low = 0;
-		int high = x.length - 1;
- 
-		ab.insertionSort(x);
-		System.out.println(Arrays.toString(x));
-		System.out.println(ab.mostlySortAndGetMedian(x));
+		int[] numbers = new int[1000];
+		
+		
 		
 	}
 	@Override
@@ -41,7 +35,12 @@ public class AbidAbedContestant extends Contestant
 		return median(random);
 		
 	}
-
+	@Override
+	public int sortAndSearch(Comparable[] arr, Comparable toFind) 
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	} 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) 
 	{
@@ -59,20 +58,80 @@ public class AbidAbedContestant extends Contestant
 	@Override
 	public double sortMultiDim(int[][] grid) 
 	{
-		double medians[] = new double[grid[0].length];
-		for(int i=0;i < grid[0].length;i++) {
-			for(int j=0; j<grid.length;j++) {
-				sortAndGetMedian(int)
-			}
+		double medians[] = new double[grid.length];
+		for(int i=0;i < grid.length;i++) 
+		{
+			medians[i] = sortAndGetMedian(grid[i]);
 		}
+		return sortAndGetMedian(medians);
 	}
 
-	@Override
-	public int sortAndSearch(Comparable[] arr, Comparable toFind) 
+	private double sortAndGetMedian(double[] random) 
 	{
-		// TODO Auto-generated method stub
-		return 0;
-	} 
+		quickSort(random,0,random.length-1);
+		return median(random);
+	}
+	private double median(double[] random) 
+	 {
+    	if(random.length % 2 == 1)
+		{
+			return random[(random.length-1)/2];
+		}
+		else if(random.length % 2 == 0)
+		{
+			int x = (random.length)/2;
+			return (double)(random[x] + random[x-1])/2;
+		}
+		else
+		{
+			return -1;
+		}
+    	
+    }
+	private void quickSort(double[] arr, int low, int high) 
+	{
+			
+			if (low >= high)
+				return;
+	 
+			// pick the pivot
+			int middle = low + (high - low) / 2;
+			int pivot = (int) arr[middle];
+	 
+			// make left < pivot and right > pivot
+			int i = low;
+			int j = high;
+			while (i <= j) 
+			{
+				while (arr[i] < pivot) 
+				{
+					i++;
+				}
+	 
+				while (arr[j] > pivot)
+				{
+					j--;
+				}
+	 
+				if (i <= j) 
+				{
+					int temp = (int) arr[i];
+					arr[i] = arr[j];
+					arr[j] = temp;
+					i++;
+					j--;
+				}
+			}
+	 
+			// recursively sort two sub parts
+			if (low < j)
+				quickSort(arr, low, j);
+	 
+			if (high > i)
+				quickSort(arr, i, high);
+			
+		
+	}
 	public void insertionSort(int array[]) 
 	{
         int n = array.length;
@@ -132,7 +191,7 @@ public class AbidAbedContestant extends Contestant
 			quickSort(arr, i, high);
 	}	
     
-    private  double median(int[] random)
+    private double median(int[] random)
     {
     	if(random.length % 2 == 1)
 		{
