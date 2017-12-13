@@ -7,18 +7,17 @@ import java.util.Arrays;
 import sortomania.Contestant;
 
 public class DanSteven extends Contestant{
+	private double[] numbers;
+    private int number;
 
-	public static void main(String[] args) {
-	     
-	}
 	@Override
 	public Color getColor() {
-		Color a=new Color(1,1,1);
+		Color a=new Color(236,142,205);
 		return a;
 	}
 	@Override
 	public String getSpriteName() {
-		return "CHUN-LI";
+		return "CHUN_LI";
 	}
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind)
@@ -46,11 +45,13 @@ public class DanSteven extends Contestant{
 				if (mostlySorted[i+1] < mostlySorted[i])
 				{
 					radixsort(mostlySorted,n);
+					if(n%2==1)return ((double)(mostlySorted[n/2]));
 					return ((double)(mostlySorted[n/2]+mostlySorted[(n/2)-1])/2);
 				}
 			}
 			else
 			{
+				if(n%2==1)return ((double)(mostlySorted[n/2]));
 				return ((double)(mostlySorted[n/2]+mostlySorted[(n/2)-1])/2);
 			}
 		}
@@ -58,15 +59,21 @@ public class DanSteven extends Contestant{
 	}
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		int[] median=new int[grid.length];
+		double[] median=new double[grid.length];
 		int count=0;
 		for(int i=0;i<grid.length;i++) {
 			int n=grid[i].length;
 			radixsort(grid[i],n);
-			median[count]=(grid[i][n/2]+grid[i][(n/2)-1])/2;
+			median[count]=((double)(grid[i][n/2]+grid[i][(n/2)-1])/2);
 			count++;
 		}
-		return sortAndGetMedian(median);
+		sort(median);
+		for(int i=0;i<median.length;i++) {
+			System.out.println(median[i]);
+		}
+		if(median.length%2==1)return (double)(median[grid.length/2]);
+		return (double)(median[grid.length/2]+median[(grid.length/2)-1])/2;
+
 	}
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) 
@@ -87,6 +94,7 @@ public class DanSteven extends Contestant{
 	public double sortAndGetMedian(int[] random) {
 		int n=random.length;
 		radixsort(random,random.length);
+		if(n%2==1)return ((double)(random[n/2]));
 		return ((double)(random[n/2]+random[(n/2)-1])/2);
 	}
 	
@@ -213,5 +221,57 @@ public class DanSteven extends Contestant{
     	Comparable temp = array[index1];
          array[index1] = array[index2];
          array[index2] = temp;
-    } 
+    }
+    public void sort(double[] values) {
+        // check for empty or null array
+        if (values == null || values.length==0){
+            return;
+        }
+        this.numbers = values;
+        number = values.length;
+        quicksort(0, number - 1);
+    }
+
+    private void quicksort(int low, int high) {
+        int i = low, j = high;
+        // Get the pivot element from the middle of the list
+        double pivot = numbers[low + (high-low)/2];
+
+        // Divide into two lists
+        while (i <= j) {
+            // If the current value from the left list is smaller than the pivot
+            // element then get the next element from the left list
+            while (numbers[i] < pivot) {
+                i++;
+            }
+            // If the current value from the right list is larger than the pivot
+            // element then get the next element from the right list
+            while (numbers[j] > pivot) {
+                j--;
+            }
+
+            // If we have found a value in the left list which is larger than
+            // the pivot element and if we have found a value in the right list
+            // which is smaller than the pivot element then we exchange the
+            // values.
+            // As we are done we can increase i and j
+            if (i <= j) {
+                exchange(i, j);
+                i++;
+                j--;
+            }
+        }
+        // Recursion
+        if (low < j)
+            quicksort(low, j);
+        if (i < high)
+            quicksort(i, high);
+    }
+
+    private void exchange(int i, int j) {
+    	double temp = numbers[i];
+        numbers[i] = numbers[j];
+        numbers[j] = temp;
+    }
+
 }
