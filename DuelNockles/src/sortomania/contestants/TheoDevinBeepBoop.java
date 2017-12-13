@@ -135,8 +135,39 @@ public class TheoDevinBeepBoop extends Contestant {
 		}
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		insertionSort(arr);
+		for (int i = 0; i < arr.length; i++)
+		{
+			if (arr[i].compareTo(toFind)==0)
+			{
+				return i;
+			}
+		}
+		return -1;
 	}
 
+	private void insertionSort(Comparable[] arr1) {
+		int index = 0;
+		for (int i = 0; i < arr1.length - 1; i++)
+		{
+			if (arr1[i].compareTo(arr1[i + 1]) > 0)
+			{
+				index = i + 1;
+				for (int j = i; j > -1; j--)
+				{
+					if (arr1[index].compareTo(arr1[j])<0)
+					{
+						swap(arr1, index, j);
+						index = j;
+					}
+				}
+			}
+		}
+	}
+	public static void swap(Comparable[] arr, int i, int j)
+	{
+		Comparable temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
 }
