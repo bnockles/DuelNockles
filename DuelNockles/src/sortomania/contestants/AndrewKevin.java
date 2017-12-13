@@ -18,6 +18,7 @@ public class AndrewKevin extends Contestant{
 		return "CHUN_LI";
 	}
 	private int array[];
+	private double array2[];
     private int length;
     
     /**------------------------------------------**/
@@ -136,9 +137,25 @@ public class AndrewKevin extends Contestant{
 	 /**------------------------------------------**/
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		// TODO Auto-generated method stub
-		return 0;
+		double[] listMed = new double[grid.length];
+		for(int i = 0; i < grid.length; i++) {
+			listMed[i] = sortAndGetMedian(grid[i]);
+		}
+		sort(listMed);
+		if(listMed.length%2 ==0) {
+			return (double)(listMed[listMed.length/2-1]+listMed[listMed.length/2])/2;
+		}
+		return (double)listMed[((listMed.length/2))];
 	}
+ 	public void sort(double[] inputArr) {
+        
+        if (inputArr == null || inputArr.length == 0) {
+            return;
+        }
+        this.array2 = inputArr;
+        length = inputArr.length;
+        quickSort(0, length - 1);
+    }
 	 /**------------------------------------------**/
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
