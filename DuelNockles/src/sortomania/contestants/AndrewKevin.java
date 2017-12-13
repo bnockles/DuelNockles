@@ -27,7 +27,7 @@ public class AndrewKevin extends Contestant{
 		if(random.length%2 ==0) {
 			return (double)(random[random.length/2-1]+random[random.length/2])/2;
 		}
-		return (double)random[(int)((random.length/2))+1];
+		return (double)random[(int)((random.length/2))];
 	}
 	
 		 	public void sort(int[] inputArr) {

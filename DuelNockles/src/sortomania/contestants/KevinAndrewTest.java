@@ -7,26 +7,30 @@ public class KevinAndrewTest {
 public static void main(String a[]){
         
         AndrewKevin sorter = new AndrewKevin();
-        //int[] input = new int [10000];
-        //for(int i = 0; i < input.length; i++) {
-        //	input[i] = (int) (Math.random()*10001);
-        //}
-        int[][] input = new int[5][4];
+        int[] input = new int [6];
         for(int i = 0; i < input.length; i++) {
-        	for(int c = 0; c < input[i].length; c++) {
-        		input[i][c] = (int)(Math.random()*20);
+        input[i] = (int) (Math.random()*10);
+        }
+        int[][] input1 = new int[5][4];
+        for(int i = 0; i < input1.length; i++) {
+        	for(int c = 0; c < input1[i].length; c++) {
+        		input1[i][c] = (int)(Math.random()*20);
         	}
         }
         final long startTime = System.nanoTime();
-        sorter.sortMultiDim(input);
+        sorter.sortAndGetMedian(input);
         final long duration = System.nanoTime() - startTime;
-        for(int r = 0; r < input.length; r ++){
+       /* for(int r = 0; r < input.length; r ++){
         	for(int d = 0; d < input[r].length; d ++) {
                 System.out.println(input[r][d]);
         	}
         }
+        */
+        for(int i = 0; i < input.length; i++) {
+        	System.out.println(input[i]);
+        }
         System.out.println ("\n" + duration + " nanoseconds");
-        System.out.println(sorter.sortMultiDim(input));
+        System.out.println(sorter.sortAndGetMedian(input));
         
         String[] fruits = {"Apple","Mango","Peach","Banana","Orange","aaaaa","Grapes","Watermelon","Tomato","an","abbn"};
         final long startTime2 = System.nanoTime();
