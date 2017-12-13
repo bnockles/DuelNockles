@@ -42,7 +42,7 @@ public static void main(String a[]){
         System.out.println ("\n" + duration2 + " nanoseconds");
         System.out.println(sorter.sortAndGetResultingIndexOf(fruits,"aaaaa"));
         
-        Comparable[] cTest = new Comparable[10000];
+        /*Comparable[] cTest = new Comparable[10000];
         for(int i = 0; i < cTest.length; i++) {
         	cTest[i] = new Test1();
         }
@@ -53,7 +53,7 @@ public static void main(String a[]){
             System.out.println((((Test1) i).getA()));
         }
         System.out.println ("\n" + duration4 + " nanoseconds");
-        System.out.println(sorter.sortAndSearch(cTest,cTest[2]));
+        System.out.println(sorter.sortAndSearch(cTest,cTest[2]));*/
     }
 
 }
