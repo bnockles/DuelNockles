@@ -17,7 +17,7 @@ public class JaneVictorContestant extends Contestant{
 		int[][] s = {c, d, e, f, g};
 		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
-		String[] strs = {"hdasklha", "h!NAON", "JOPAas", "jovn", "noxnw", "h"};
+		String[] strs = {"Hod","hHon","hdasklha", "h!NAON", "JOPAas", "jovn", "noxnw", "h","Gjs", "gasda","Klad","ksagdjka"};
 		System.out.println("The index is " + test.sortAndGetResultingIndexOf(strs, "h"));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(strs));
 		System.out.println("The meidan is " + test.sortMultiDim(s));
@@ -141,7 +141,13 @@ public class JaneVictorContestant extends Contestant{
     }
     
     private static int charAt(String s, int i){
-        if(i<s.length())return s.charAt(i);
+        if(i<s.length()) {
+        	if(s.charAt(i) >= 65 && s.charAt(i) <= 90) {
+        		return s.charAt(i) + 32;
+        	}else {
+            	return s.charAt(i);
+        	}
+        }
         else return -1;
     }
     
@@ -161,54 +167,6 @@ public class JaneVictorContestant extends Contestant{
         
         for(int r=0;r<R;++r) sort(s, aux, lo+count[r], lo+count[r+1]-1, at+1); 
     }
-
-
-
-
-
-	static void countSort(int arr[], int n, int exp)
-    {
-        int output[] = new int[n]; // output array
-        int i;
-        int count[] = new int[10];
-        Arrays.fill(count,0);
- 
-        // Store count of occurrences in count[]
-        for (i = 0; i < n; i++)
-            count[ arr[i]/exp%10 ]++;
- 
-        // Change count[i] so that count[i] now contains
-        // actual position of this digit in output[]
-        for (i = 1; i < 10; i++)
-            count[i] += count[i - 1];
- 
-        // Build the output array
-        for (i = n - 1; i >= 0; i--)
-        {
-            output[count[ (arr[i]/exp)%10 ] - 1] = arr[i];
-            count[ (arr[i]/exp)%10 ]--;
-        }
- 
-        // Copy the output array to arr[], so that arr[] now
-        // contains sorted numbers according to curent digit
-        for (i = 0; i < n; i++)
-            arr[i] = output[i];
-    }
- 
-    // The main function to that sorts arr[] of size n using
-    // Radix Sort
-    static void radixsort(int arr[], int n)
-    {
-        // Find the maximum number to know number of digits
-        int m = 101;
- 
-        // Do counting sort for every digit. Note that instead
-        // of passing digit number, exp is passed. exp is 10^i
-        // where i is current digit number
-        for (int exp = 1; m/exp > 0; exp *= 10)
-            countSort(arr, n, exp);
-    }
-
 	
 	@Override
 	public double mostlySortAndGetMedian(int[] arr) {
@@ -237,7 +195,6 @@ public class JaneVictorContestant extends Contestant{
         
 	}
 
-	  
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		int[] medians = new int[grid.length];
