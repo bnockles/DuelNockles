@@ -7,25 +7,25 @@ public class TylerCarsonSort extends Contestant{
 
 	public static void main(String a[]){
 		TylerCarsonSort test = new TylerCarsonSort();
-		int[] intArr = {3,5,21,5,1,23,4,6,12,4,56,2,34,5};
-	int[][] input = {{10,2,5,1,6}, {3,7,6,4,7,0}, {6,40,30,2034,4,3,20,14,15}, {11,1,30,9,340,34,20,2}};
+		int[] intArr = {3,5,21,5,1,23,4,6,12,4,56,2,34,5,23,5,2,5,78,9,4,3,2,4,1,5,76,23,3,2,5,3,234,23,234,2,34,4,5,63,7876,334,12,4,1,2,4,4,2,23432,1234,123,123123,65,23,454,2,1,123,453,645,232};
+		int[][] input = {{10,2,5,1,6}, {3,7,6,4,7,0}, {6,40,30,2034,4,3,20,14,15}, {11,1,30,9,340,34,20,2}};
 		String[] test1 = {"abc", "zaq", "baq", "Aba", "C", "l", "ii"};
-		
-			System.out.println(Arrays.toString(input[0]) + Arrays.toString(input[1]) + Arrays.toString(input[2]) + Arrays.toString(input[3]));
-			System.out.println(test.sortMultiDim(input));
-			System.out.println(Arrays.toString(input[0]) + Arrays.toString(input[1]) + Arrays.toString(input[2]) + Arrays.toString(input[3]));
-			System.out.println("\n");
-			System.out.println(Arrays.toString(intArr) + " " + test.sortAndGetMedian(intArr));
-			System.out.println(test.sortAndGetResultingIndexOf(test1, "baq"));
-			System.out.println(test.mostlySortAndGetMedian(intArr));
-			System.out.println(test.sortMultiDim(input));
-			System.out.println(test.sortAndSearch(test1, "C"));
+
+		System.out.println(Arrays.toString(input[0]) + Arrays.toString(input[1]) + Arrays.toString(input[2]) + Arrays.toString(input[3]));
+		System.out.println(test.sortMultiDim(input));
+		System.out.println(Arrays.toString(input[0]) + Arrays.toString(input[1]) + Arrays.toString(input[2]) + Arrays.toString(input[3]));
+		System.out.println("\n");
+		System.out.println(Arrays.toString(intArr) + " " + test.sortAndGetMedian(intArr));
+		System.out.println(test.sortAndGetResultingIndexOf(test1, "baq"));
+		System.out.println(test.mostlySortAndGetMedian(intArr));
+		System.out.println(test.sortMultiDim(input));
+		System.out.println(test.sortAndSearch(test1, "C"));
 	}
 
 	public Color getColor() {
-		return new Color(123,123,123);
+		return new Color(17, 163, 49);
 	}
-	
+
 	public String getSpriteName() {
 		return KEN;
 	}
@@ -61,7 +61,7 @@ public class TylerCarsonSort extends Contestant{
 		System.out.println(Arrays.toString(strings));
 		return -1;
 	}
-	
+
 	void insertSort(int arr[])
 	{
 		int n = arr.length;
@@ -130,15 +130,15 @@ public class TylerCarsonSort extends Contestant{
 			quickSort(random, i, higherIndex);
 		}
 	}
-	
-		
-	
+
+
+
 
 	private void swap(double[] random, int i, int j) {
 		double temp = random[i];
 		random[i] = random[j];
 		random[j] = temp;
-		
+
 	}
 
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
@@ -188,8 +188,8 @@ public class TylerCarsonSort extends Contestant{
 			quickSort(intArr, i, higherIndex);
 		}
 	}
-	
-	
+
+
 
 	static void printArray(int arr[]) {
 		int n = arr.length;
