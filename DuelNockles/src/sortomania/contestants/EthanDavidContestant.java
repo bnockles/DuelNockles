@@ -149,28 +149,58 @@ public class EthanDavidContestant extends Contestant {
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		double median = 0;
-		double[] medianOfMedians = new double[grid.length];
+		double[] median = new double[grid.length];
 		for(int i = 0; i < grid.length; i++) {
-			medianOfMedians[i] = sortAndGetMedian(grid[i]);
+			median[i] = sortAndGetMedian(grid[i]);
 		}
-		if(medianOfMedians.length%2 != 0) {
-			median = medianOfMedians[medianOfMedians.length/2];//medianOfMedians[(int)(medianOfMedians.length/2) - 1];
+		if(median.length%2 != 0) {
+			return median[grid.length/2];
 		}
 		else {
-			double x = (medianOfMedians[medianOfMedians.length/2] + medianOfMedians[medianOfMedians.length/2-1])/2;
-			System.out.println("sum is " + x);//(double)medianOfMedians[medianOfMedians.length/2] + medianOfMedians[medianOfMedians.length/2-1]/2 + "sdlksajd");
-			median = x;
+			return ((median[grid.length/2] + median[(grid.length/2)-1])/2);
 		}
-		System.out.println(Arrays.toString(medianOfMedians));
-		System.out.println(median);
-		return median;
+		
 	}
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		quickSort(arr, 0, arr.length-1);
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i].equals(toFind)) return i;
+		}
+		return -1;
 	}
+
+	public int partition(Comparable[] a, int low, int high)
+    {
+        int pivot = a[high]; 
+        int i = (low-1);
+        for (int j=low; j<high; j++)
+        {
+            if (a[j] <= pivot)
+            {
+                i++;
+ 
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+        int temp = a[i+1];
+        a[i+1] = a[high];
+        a[high] = temp;
+ 
+        return i+1;
+    }
+
+   public void quickSort(Comparable[] a, int low, int high)
+    {
+        if (low < high)
+        {
+            int pi = partition(a, low, high);
+            quickSort(a, low, pi-1);
+            quickSort(a, pi+1, high);
+        }
+    }
 
 }
