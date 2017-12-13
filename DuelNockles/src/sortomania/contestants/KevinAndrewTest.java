@@ -11,26 +11,26 @@ public static void main(String a[]){
         for(int i = 0; i < input.length; i++) {
         input[i] = (int) (Math.random()*10);
         }
-        int[][] input1 = new int[5][4];
+        int[][] input1 = new int[5][3];
         for(int i = 0; i < input1.length; i++) {
         	for(int c = 0; c < input1[i].length; c++) {
         		input1[i][c] = (int)(Math.random()*20);
         	}
         }
         final long startTime = System.nanoTime();
-        sorter.sortAndGetMedian(input);
+        sorter.sortMultiDim(input1);
         final long duration = System.nanoTime() - startTime;
-       /* for(int r = 0; r < input.length; r ++){
-        	for(int d = 0; d < input[r].length; d ++) {
-                System.out.println(input[r][d]);
+        for(int r = 0; r < input1.length; r ++){
+        	for(int d = 0; d < input1[r].length; d ++) {
+                System.out.println(input1[r][d]);
         	}
         }
-        */
-        for(int i = 0; i < input.length; i++) {
-        	System.out.println(input[i]);
-        }
+        
+        //for(int i = 0; i < input.length; i++) {
+        //	System.out.println(input[i]);
+       // }
         System.out.println ("\n" + duration + " nanoseconds");
-        System.out.println(sorter.sortAndGetMedian(input));
+        System.out.println(sorter.sortMultiDim(input1));
         
         String[] fruits = {"Apple","Mango","Peach","Banana","Orange","aaaaa","Grapes","Watermelon","Tomato","an","abbn"};
         final long startTime2 = System.nanoTime();
