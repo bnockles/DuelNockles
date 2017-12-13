@@ -9,8 +9,10 @@ public class MimiJessiSort extends Contestant{
 	public static void main(String[] args) {
 		MimiJessiSort test = new MimiJessiSort();
 		
-		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
-		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr));
+		//capital I for comparables
+		Integer[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		Integer toFind = 12;
+		System.out.println("The median is: " + test.sortAndSearch(arr, toFind));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
 	}
 
