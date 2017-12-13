@@ -8,13 +8,13 @@ public class DoubleJasons extends Contestant{
 	
 	private int[] ISSeq = {1,3,7,21,48,112,336,861,1968,4592};
 	private static String[] names = {"Tashia","Fidela","Carley","Starla","Maisie","Elijah","Pearl","Jacquie","Zelma","Tama","Hannelore","Shaniqua","Isa","Emily","Desiree","Garnet","Lauri","Erna","Denese","Renato","Britney","Numbers","Randa","Jewel","Vincenzo","Arianna","Johnathon","Charlette","Rae","Jerald"};
-	private static int[] nums = {1,2312,12312,35435,345357,7767,657,6765,76,576,5765765,765,76,57,657,65,765,765,765,7,657,657569,789,79,907,78,9,879,879,78};
-	public DoubleJasons() {
+	private static int[][] nums = {{1,2312,12312,35435,345357},{7767,657,6765,76,576},{5765765,765,76,57,657,65,765,765},{765,7,657,657569},{789,79,907,78,9,879,879,78}};
+	public DoubleJasons() {															  //57,65,76,657,765,765,765,5765765	
 	}
 	
 	public static final void main(String[] args) {
 		DoubleJasons test = new DoubleJasons();
-		test.shellSort(nums);
+		System.out.print(test.sortMultiDim(nums));
 	}
 	
 	private void shellSort(String[] arr) {
@@ -23,7 +23,7 @@ public class DoubleJasons extends Contestant{
 		String holder;
 		String char1;
 		String char2;
-			for(int i = 0; i< arr.length; i++) //iterate through arr
+		for(int i = 0; i< arr.length; i++) //iterate through arr
 			{
 				if(i+ gap >= arr.length)
 				{
@@ -50,11 +50,6 @@ public class DoubleJasons extends Contestant{
 					}
 				}
 			}
-			
-		for( String name: arr)
-		{
-			System.out.println(name);
-		}
 	}
 	
 	private void shellSort(int[] arr) {
@@ -76,15 +71,11 @@ public class DoubleJasons extends Contestant{
 					if(arr[i] > arr[i+gap]) {
 						holder = arr[i];
 						arr[i] = arr[i+gap];
-						arr[i+gap] = arr[i];
+						arr[i+gap] = holder;
 						checkPreviousIndices(i,gap,arr);
 					}
 				}
 			}
-		}
-		for(int num: arr)
-		{
-			System.out.println(num);
 		}
 	}
 
@@ -97,8 +88,9 @@ public class DoubleJasons extends Contestant{
 			{
 				if(i+ gap >= arr.length)
 				{
-					i = 0;
+					i = -1;
 					index --;
+					if(index ==-1) break;
 					gap = ISSeq[index];
 				}
 				else 
@@ -106,17 +98,12 @@ public class DoubleJasons extends Contestant{
 					if(arr[i] > arr[i+gap]) {
 						holder = arr[i];
 						arr[i] = arr[i+gap];
-						arr[i+gap] = arr[i];
-					}
-					if(arr[i] == arr[i+gap]) {
-						holder = arr[i+1];
-						arr[i+1] = arr[i+gap];
 						arr[i+gap] = holder;
+						checkPreviousIndices(i,gap,arr);
 					}
 				}
 			}
 		}
-		System.out.print(arr);
 	}
 	
 	private void checkPreviousIndices(int index, int gap, String[] arr) {
@@ -151,15 +138,26 @@ public class DoubleJasons extends Contestant{
 		}
 	}
 	
+	private void checkPreviousIndices(int index, int gap, double[] arr) {
+		while(index - gap >= 0) {
+			if(arr[index] < arr[index - gap])
+			{
+				double holder = arr[index-gap];
+				arr[index-gap] = arr[index];
+				arr[index] = holder;
+				index -= gap;
+			}
+			else return;
+		}
+	}
+	
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub
 		return new Color(255,0,255);
 	}
 
 	@Override
 	public String getSpriteName() {
-		// TODO Auto-generated method stub
 		return CHUN_LI;
 	}
 
@@ -167,6 +165,8 @@ public class DoubleJasons extends Contestant{
 	public double sortAndGetMedian(int[] random) {	
 		shellSort(random);
 		double half = random.length/2;
+		System.out.println(random[(int) Math.floor(half)]);
+		System.out.println(random[(int) Math.ceil(half)]);
 		return (random[(int) Math.floor(half)] + random[(int) Math.ceil(half)])/2;
 	}
 
@@ -188,7 +188,8 @@ public class DoubleJasons extends Contestant{
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		shellSort(mostlySorted);
-		return mostlySorted[mostlySorted.length/2];
+		double half = mostlySorted.length/2;
+		return (mostlySorted[(int) Math.floor(half)] + mostlySorted[(int) Math.ceil(half)])/2;
 	}
 
 	@Override
@@ -196,6 +197,7 @@ public class DoubleJasons extends Contestant{
 		double[] medians = new double[grid.length];
 		for (int i = 0; i < grid.length; i++) {
 			medians[i] = sortAndGetMedian(grid[i]);
+			System.out.println(medians[i]);
 		}
 		return sortAndGetMedian(medians);
 	}
