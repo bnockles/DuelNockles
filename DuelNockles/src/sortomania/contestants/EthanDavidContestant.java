@@ -17,15 +17,21 @@ public class EthanDavidContestant extends Contestant {
 	}
 
 	private void testSort() {
-		int[][] arr = new int[2][2];
+		String[] stringArr = {"sdljad", "asc", "Abc"};
+		int[][] arr = new int[3][2];
 		int[] arr1 = {1,4,5,8,11,7};
 		arr[0][0] = 50;
 		arr[0][1] = 100;
 		arr[1][0] = 19;
 		arr[1][1] = 14;
+		arr[2][0] = 21;
+		arr[2][1] = 15;
 		sortMultiDim(arr);
 		sortAndGetMedian(arr1);
+		sortAndGetResultingIndexOf(stringArr, "Abc");
+		System.out.println(Arrays.toString(stringArr));
 		System.out.println(Arrays.toString(arr1));
+		System.out.println(Arrays.deepToString(arr));
 	}
 
 	@Override
@@ -129,6 +135,7 @@ public class EthanDavidContestant extends Contestant {
 			} 
 			for(int i=0;i<strings.length;i++){
 				if(strings[i].equals(toFind)) {
+					System.out.println(i);
 					return i;
 				}
 			} 
@@ -145,7 +152,7 @@ public class EthanDavidContestant extends Contestant {
 			System.out.println(mostlySorted[mostlySorted.length/2]);
 			return mostlySorted[mostlySorted.length/2];
 		}
-	}
+	}   
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
@@ -159,7 +166,6 @@ public class EthanDavidContestant extends Contestant {
 		else {
 			return ((median[grid.length/2] + median[(grid.length/2)-1])/2);
 		}
-		
 	}
 
 	@Override
