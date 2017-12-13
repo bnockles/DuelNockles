@@ -33,6 +33,7 @@ public class AlexAndErik extends Contestant {
 		
 		String[] temp = {"siddeeq","erik","alex"};
 		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp,"alex"));
+		System.out.println("Here is the sorted string array: " + test.mergeSortString(temp));
 		
 		int[] arr1 = {11,20,21,50};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
@@ -193,10 +194,68 @@ public class AlexAndErik extends Contestant {
  
     }
 	
-	
+	public static void mergeSortString(String[] names) {
+        if (names.length > 1) {
+            String[] left = new String[names.length / 2];
+            String[] right = new String[names.length - names.length / 2];
+
+            for (int i = 0; i < left.length; i++) {
+                left[i] = names[i];
+            }
+
+            for (int i = 0; i < right.length; i++) {
+                right[i] = names[i + names.length / 2];
+            }
+
+            mergeSortString(left);
+            mergeSortString(right);
+            mergeStrings(names, left, right);
+        }
+    }
+
+    public static String[] mergeStrings(String[] names, String[] left, String[] right) {
+        int a = 0;
+        int b = 0;
+        for (int i = 0; i < names.length; i++) {
+            if (b >= right.length || (a < left.length && left[a].compareToIgnoreCase(right[b]) < 0)) {
+                names[i] = left[a];
+                a++;
+            } else {
+                names[i] = right[b];
+                b++;
+            }
+        }
+        return names;
+    }
 	
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+		mergeSortString(strings);
+		//sort randomized array of strings
+		//perform a binary search in the array of string
+		/*
+		 * import java.util.*;
+
+public class NewClass {
+    public static void main(String[] args) {
+        String[] ClassTwo = { "Minnie", "Kitty", "Madonna", "Miley", "Zoom-zoom", "Cristine", "Bubbles", "Ara", "Rose", "Maria" };
+        String[] names = new String[ClassOne.length + ClassTwo.length];
+
+        mergeSortString(ClassOne);
+        mergeSortString(ClassTwo);
+
+        mergeStrings(names, ClassOne, ClassTwo);
+
+        mergeSortString(names);
+        //Arrays.sort(names);
+    }
+
+    
+}
+
+		 * */
+		
+		
 		int numMatches = 0;
 		for(int i = 0; i < strings.length; i++) {
 			if(toFind.length() == strings[i].length()) {
