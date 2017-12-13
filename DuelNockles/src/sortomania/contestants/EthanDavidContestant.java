@@ -172,7 +172,9 @@ public class EthanDavidContestant extends Contestant {
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		quickSort(arr, 0, arr.length-1);
 		for(int i = 0; i < arr.length; i++) {
-			if(arr[i].equals(toFind)) return i;
+			if(arr[i].equals(toFind)) {
+				return i;
+			}
 		}
 		return -1;
 	}
