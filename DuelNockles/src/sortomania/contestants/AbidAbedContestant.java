@@ -7,26 +7,16 @@ import sortomania.Contestant;
 
 public class AbidAbedContestant extends Contestant
 {
-
-	public static void main(String[] args)
-	{
-		AbidAbedContestant ab = new AbidAbedContestant();
-		Comparable[] numbers = {1,2,5,6,5,5,33,2,3,5,6,1,1,4,};
-		String[] toppings = {"Cheese", "Pepperoni", "Black Olives"};
-		ab.quickSort(numbers,0,numbers.length-1);
-		System.out.println(ab.sortAndSearch(numbers,33));
-		
-	}
 	@Override
 	public Color getColor() 
 	{
-		return new Color(255,0,182);
+		return new Color(240,60,120);
 	}
 
 	@Override
 	public String getSpriteName() 
 	{
-		return DEE_JAY;
+		return CAMMY;
 	}
 	
 	@Override
@@ -110,11 +100,9 @@ public class AbidAbedContestant extends Contestant
 			if (low >= high)
 				return;
 	 
-			// pick the pivot
 			int middle = low + (high - low) / 2;
 			int pivot = (int) arr[middle];
 	 
-			// make left < pivot and right > pivot
 			int i = low;
 			int j = high;
 			while (i <= j) 
@@ -139,7 +127,6 @@ public class AbidAbedContestant extends Contestant
 				}
 			}
 	 
-			// recursively sort two sub parts
 			if (low < j)
 				quickSort(arr, low, j);
 	 
@@ -170,11 +157,9 @@ public class AbidAbedContestant extends Contestant
 		if (low >= high)
 			return;
  
-		// pick the pivot
 		int middle = low + (high - low) / 2;
 		int pivot = arr[middle];
  
-		// make left < pivot and right > pivot
 		int i = low;
 		int j = high;
 		while (i <= j) 
