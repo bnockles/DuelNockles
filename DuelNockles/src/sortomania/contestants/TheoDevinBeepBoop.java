@@ -6,14 +6,24 @@ import java.util.Arrays;
 import sortomania.Contestant;
 
 public class TheoDevinBeepBoop extends Contestant {
-		public static void main (String[]args) {
-			TheoDevinBeepBoop test = new TheoDevinBeepBoop();
-			int [] arr = {0, 9, 2, 4, 8, 1, 3, 5, 7, 6};
-		
-			System.out.println(test.sortAndGetMedian(arr));
-			System.out.println(test.mostlySortAndGetMedian(arr));
+		//public static void main (String[]args) {
+			//TheoDevinBeepBoop test = new TheoDevinBeepBoop();
+			//int [] arr = {0, 9, 2, 4, 8, 1, 3, 5, 7, 6};
+			//String [] arn = {"ab", "aa" , "ac" , "bc" , "ba"};
+			//int[][] dab = new int[2][3]; //{{1,5,69},{66,1337,564}};
+			//dab[0][0] = 1;
+			//dab[0][1] = 69;
+			//dab[0][2] = 5;
+			//dab[1][0] = 66;
+			//dab[1][1] = 1337;
+			//dab[1][2] = 567;
+					
+			//System.out.println(test.mostlySortAndGetMedian(arr)); // Task 1
+			//System.out.println(test.sortAndGetResultingIndexOf(arn,"bc")); //Task 2
+			//System.out.println(test.sortMultiDim(dab)); // Task 4
 			
-		}
+			
+		//}
 
 	@Override
 	public Color getColor() {
@@ -27,7 +37,7 @@ public class TheoDevinBeepBoop extends Contestant {
 
 	@Override
 	public double sortAndGetMedian(int[] random) {//heap for random, insertion for near
-		int numCounts[] = new int[random.length];
+		int numCounts[] = new int[10000];
 
 	    // populate numCounts
 	    for (int num : random) {
@@ -108,7 +118,7 @@ public class TheoDevinBeepBoop extends Contestant {
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		int numCounts[] = new int[mostlySorted.length];
+		int numCounts[] = new int[10000];
 
 	    // populate numCounts
 	    for (int num : mostlySorted) {
@@ -141,9 +151,9 @@ public class TheoDevinBeepBoop extends Contestant {
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		for(int i =0;i<grid.length;i++) {
-			grid[i]= countingSort(grid[i]);
-		}
+		//for(int i =0;i<grid.length;i++) {
+		//	grid[i]= countingSort(grid[i]);
+		//}
 		double[] med = new double[grid.length];
 		for(int i =0;i<grid.length;i++) {
 			med[i]= sortAndGetMedian(grid[i]);
