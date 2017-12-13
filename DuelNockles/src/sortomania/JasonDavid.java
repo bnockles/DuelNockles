@@ -2,13 +2,11 @@ package sortomania;
 
 import java.awt.Color;
 
-public class JasonDavid{ //extends Contestants
+public class JasonDavid{ //extends Contestant {
 	private int[] numbers;
     private int[] helper;
-
     private int number;
     public int count;
-    public static String[] testArray = {"boobs","hi","bye","sucky", "a"};
     public JasonDavid() {
     	count=0;
     }
@@ -16,8 +14,13 @@ public class JasonDavid{ //extends Contestants
 		JasonDavid hi = new JasonDavid();
 		long num = simAvg();
 		System.out.println(num+ " " + simSD(num)+" ms");
-		System.out.println(hi.count);
-		System.out.println(sortAndGetResultingIndexOf(testArray, "a"));
+		int[] test = rand();
+		int[] test2 = {1};
+		double x = hi.sortAndGetMedian(test2);
+		printArray(test2);
+		//System.out.println(test2[2]);
+		//System.out.println(hi.count);
+		//System.out.println(x);
 	}
 	
 	public static long simAvg() {
@@ -50,12 +53,12 @@ public class JasonDavid{ //extends Contestants
 	public Color getColor() {
 		return new Color(124, 255, 124);
 	}
-	private static void printArray(int[] anArray) {
-	      for (int i = 0; i < anArray.length; i++) {
+	private static void printArray(int[] test) {
+	      for (int i = 0; i < test.length; i++) {
 	         if (i > 0) {
 	            System.out.print(", ");
 	         }
-	         System.out.print(anArray[i]);
+	         System.out.print(test[i]);
 	      }
 	   }
 	//@Override
@@ -92,50 +95,74 @@ public class JasonDavid{ //extends Contestants
 		}
 		return false;
 	}
-	int partition(int arr[], int low, int high)
-    {
-        int pivot = arr[randInt(low,high)]; 
-        int i = (low-1); // index of smaller element
-        for (int j=low; j<high; j++)
-        {
-            // If current element is smaller than or
-            // equal to pivot
-            if (arr[j] <= pivot)
-            {
-                i++;
- 
-                // swap arr[i] and arr[j]
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
- 
-        // swap arr[i+1] and arr[high] (or pivot)
-        int temp = arr[i+1];
-        arr[i+1] = arr[high];
-        arr[high] = temp;
- 
-        return i+1;
-    }
+	 int partition(int arr[], int low, int high)
+	    {
+	        int pivot = arr[high]; 
+	        int i = (low-1); // index of smaller element
+	        for (int j=low; j<high; j++)
+	        {
+	            // If current element is smaller than or
+	            // equal to pivot
+	            if (arr[j] <= pivot)
+	            {
+	                i++;
+	 
+	                // swap arr[i] and arr[j]
+	                int temp = arr[i];
+	                arr[i] = arr[j];
+	                arr[j] = temp;
+	            }
+	        }
+	 
+	        // swap arr[i+1] and arr[high] (or pivot)
+	        int temp = arr[i+1];
+	        arr[i+1] = arr[high];
+	        arr[high] = temp;
+	 
+	        return i+1;
+	    }
+	 
 	/* The main function that implements QuickSort()
     arr[] --> Array to be sorted,
     low  --> Starting index,
     high  --> Ending index */
 	 
 	  public void quickSort(int arr[], int low, int high) {
-		  if (low < high)
-	      {
-	          /* pi is partitioning index, arr[pi] is 
-	            now at right place */
-	          int pi = partition(arr, low, high);
-	
-	          // Recursively sort elements before
-	          // partition and after partition
-	          quickSort(arr, low, pi-1);
-	          quickSort(arr, pi+1, high);
-	      }
+		  if (low < high) {
+			 if (high-low < 9) {
+				 insertionSort(arr,low, high+1);
+			 }
+			 else  
+		 	{
+		          /* pi is partitioning index, arr[pi] is 
+		            now at right place */
+		          int pi = partition(arr, low, high);
+		
+		          // Recursively sort elements before
+		          // partition and after partition
+		          	quickSort(arr, low, pi-1);
+		          	quickSort(arr, pi+1, high);
+		      }
+		 }
 	  }
+	  private void insertionSort(int[] arr, int low, int high) {
+		  //int n = high+1;
+	        for (int i=low+1; i<high; i++)
+	        {
+	            int key = arr[i];
+	            int j = i-1;
+	 
+	            /* Move elements of arr[0..i-1], that are
+	               greater than key, to one position ahead
+	               of their current position */
+	            while (j>=0 && arr[j] > key)
+	            {
+	                arr[j+1] = arr[j];
+	                j = j-1;
+	            }
+	            arr[j+1] = key;
+	        }
+	}
 	  public void mSort(int[] values) {
 	        this.numbers = values;
 	        number = values.length;
@@ -190,7 +217,7 @@ public class JasonDavid{ //extends Contestants
 
 	    }
 	//@Override
-	    public static int sortAndGetResultingIndexOf(String[] strings, String toFind) {
+	    public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 			quickSort(strings, 0, strings.length-1 );
 			return binarySearch(strings, toFind);
 		}
@@ -291,5 +318,5 @@ public class JasonDavid{ //extends Contestants
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	// :)
 }
