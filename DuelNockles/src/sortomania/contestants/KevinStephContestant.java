@@ -13,11 +13,14 @@ public class KevinStephContestant extends Contestant {
     
 	public static void main(String[] args) {
 		KevinStephContestant test = new KevinStephContestant();
+		//int[] arr = {4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8};
 		//Comparable[] arr = {4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8};
 		//String[] arr = {"d", "a", "h", "f", "g", "e", "s", "d"};
-		int[][] arr = {{1,2,3,4}, {5,8,9,10}};
+		int[][] arr = {{73,35,1}, {5,89,30}};
 		//System.out.println("The index is: " + sortMultiDim(arr));
+		System.out.println("The median is: " + test.sortMultiDim(arr));
 		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr));
+		//System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr));
 	}
 
 	
@@ -106,40 +109,17 @@ public class KevinStephContestant extends Contestant {
 
 	@Override
 	public double sortMultiDim(int[][] grid) {
-		int[] ms = null;
-		int m = 0;
 		int sum = 0;
-		
-		for (int i = 0; i < grid.length; i++) {
-			for (int j = 0; j < grid[i].length; j++) {
-				int min = grid[i][j];
-				for (int a = j+1; a < grid[i].length; a++) {
-					if (grid[i][a] < grid[i][min]) {
-						grid[i][min] = grid[i][a];
-					}
-					
-					int temp = grid[i][min];
-					grid[i][min] = grid[i][j];
-					grid[i][j] = temp;
-				}
-				
-				if (grid[j].length % 2 == 1) {
-		        	m = grid[j][(grid[j].length)/2];
-		        } else if (grid[j].length % 2 == 0){
-		        	m = (grid[j][grid[j].length/2] + grid[j][(grid[j].length/2)-1])/2;
-		        }
-				
-				ms[i] = m;
-			}
-	      
+		double[] medians = new double[grid.length];
+		for(int i = 0; i < grid.length; i++) {
+			sortAndGetMedian(grid[i]);
+			medians[i] = sortAndGetMedian(grid[i]);
 		}
-		if (ms.length % 2 == 1) {
-        	sum = ms[(ms.length)/2];
-        } else if (ms.length % 2 == 0){
-        	sum = (ms[ms.length/2] + ms[(ms.length/2)-1])/2;
-        }
-		
-		return sum;
+		for(int j = 0; j < medians.length; j++) {
+			sum += medians[j];
+		}
+		int m = sum/medians.length;
+		return m;
 	}
 
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
