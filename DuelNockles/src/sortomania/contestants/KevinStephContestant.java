@@ -110,15 +110,28 @@ public class KevinStephContestant extends Contestant {
 	@Override
 	public double sortMultiDim(int[][] grid) {
 		int sum = 0;
+		double m = 0;
 		double[] medians = new double[grid.length];
 		for(int i = 0; i < grid.length; i++) {
 			sortAndGetMedian(grid[i]);
 			medians[i] = sortAndGetMedian(grid[i]);
 		}
-		for(int j = 0; j < medians.length; j++) {
-			sum += medians[j];
-		}
-		int m = sum/medians.length;
+		for (int i = 0; i < medians.length-1; i++){
+	        int min = i;
+	        for (int j = i+1; j < medians.length-1; j++)
+	        	if (medians[j] < medians[min])
+	        		min = j;
+	            double temp = medians[min];
+	            medians[min] = medians[i];
+	            medians[i] = temp;
+	        }
+	        
+	        if (medians.length % 2 == 1) {
+	        	m = medians[(medians.length)/2];
+	        } else if (medians.length % 2 == 0){
+	        	m = (medians[medians.length/2] + medians[(medians.length/2)-1])/2;
+	        }
+	      
 		return m;
 	}
 
