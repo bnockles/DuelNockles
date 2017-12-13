@@ -10,21 +10,10 @@ public class VincentNRaymond extends Contestant {
 
 	public static void main(String[] args) {
 		VincentNRaymond test = new VincentNRaymond();
-		int[] arr = { 4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8, 9, 124, 562, 26 };
-		System.out.println("The median is: " + test.sortAndGetMedian(arr));
-
-		System.out.println("And the sorted array is: \n" + Arrays.toString(sort(arr)));
 
 	}
 
 	public VincentNRaymond() {
-		int[][] darr = new int[2][2];
-		darr[0][0] = 5;
-		darr[0][1] = 6;
-		darr[1][0] = 6;
-		darr[1][1] = 3;
-		System.out.println("DOUBLE MEDIAN: " + sortMultiDim(darr));
-		
 	}
 
 	@Override
@@ -79,24 +68,17 @@ public class VincentNRaymond extends Contestant {
 
 	@Override
 	public double sortAndGetMedian(int[] random) {
-		
-		int[] arr = { 4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8, 9, 124, 562, 26 };
-		System.out.println("MOSTLY SORTED:" + mostlySortAndGetMedian(arr));
-
-		String[] strings = { "zz", "ab", "aa" };
-		System.out.println(sortAndGetResultingIndexOf(strings, "ab"));
-
 		// TODO Auto-generated method stub
 		int[] sortedArray = sort(random);
-		return getMedian(sortedArray);
+		return (double)getMedian(sortedArray);
 
 	}
 
 	public double getMedian(int[] sortedArray) {
 		if (sortedArray.length % 2 == 1) {
-			return sortedArray[(sortedArray.length - 1) / 2];
+			return (double)sortedArray[(sortedArray.length - 1) / 2];
 		} else {
-			return ((sortedArray[sortedArray.length / 2]) + (sortedArray[(sortedArray.length / 2) - 1])) / 2;
+			return (double)((sortedArray[sortedArray.length / 2]) + (sortedArray[(sortedArray.length / 2) - 1])) / 2;
 		}
 	}
 
@@ -181,18 +163,17 @@ public class VincentNRaymond extends Contestant {
 		int count = 0;
 		double[] medianHolder = new double[(grid.length - 1 )]; 
 		for(int r = 0; r < grid.length - 1; r++) {
-			int[] medianHolder2 = new int[grid.length-1];
+			int[] medianHolder2 = new int[grid.length];
 			int counter2 = 0;
-			for(int c = 0; c < grid[r].length - 1; c ++) {
+			for(int c = 0; c < grid[r].length; c ++) {
 				medianHolder2[counter2] = grid[r][c];
 				counter2++;
 			}
-			medianHolder[count] = sortAndGetMedian(medianHolder2);	
+			medianHolder[count] = (double)sortAndGetMedian(medianHolder2);	
 			count++;
 		}
 		boolean sorted=true;
 	  	double temp = 0;
-
 	  while (sorted){
 	     sorted = false;
 	     for (int i=0; i < medianHolder.length-1; i++) 
