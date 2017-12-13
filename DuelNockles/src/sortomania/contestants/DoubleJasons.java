@@ -184,7 +184,7 @@ public class DoubleJasons extends Contestant implements Comparable{
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		shellSort(mostlySorted);
-		double half = mostlySorted.length/2;
+		double half = (double)((mostlySorted.length-1)/2);
 		return (mostlySorted[(int) Math.floor(half)] + mostlySorted[(int) Math.ceil(half)])/2;
 	}
 
