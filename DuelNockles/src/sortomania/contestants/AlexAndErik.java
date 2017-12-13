@@ -22,53 +22,53 @@ public class AlexAndErik extends Contestant {
 	}
 
 	public static void main(String[] args) {
-		AlexAndErik test = new AlexAndErik();
-		
-		int[] array = {2,2,3,4,5};
-		System.out.println("The median is " + test.sortAndGetMedian(array) + " .");
-		System.out.println("And the sorted array is: \n" + Arrays.toString(array));
-		
-		
-		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8,9};
-		System.out.println("The median is: " + test.sortAndGetMedian(arr));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
-		
-		
-		String[] temp1 = {"siddeeq","erik","alex","katherine","bob","calvin"};
-		System.out.println("Here is THE the index: " + test.sortAndGetResultingIndexOf(temp1,"katherine"));
-		System.out.println("Comparable index: " + test.sortAndSearch(temp1,"katherine"));
-		
-		int[] arr1 = {11,20,21,50};
-		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr1));
-		
-		int[] arr2 = {11,20,10};
-		System.out.println("The median is: " + test.sortAndGetMedian(arr2));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr2));
-		
-		int[] arr3 = {11,20,21,50};
-		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr3));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr3));
-		
-		int[] arr4 = {11,20,10};
-		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr4));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr4));
-		
-		int[][] arr5 = {{100,200,300},{100,10,300},{1,2,3}};
-		System.out.println("The median is: " + test.sortMultiDim(arr5));
-		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr5));
-		
-		int[][] arr6 = {{12,10,30},{53,0,1000},{9,9,4}};
-		System.out.println("The median is: " + test.sortMultiDim(arr6));
-		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr6));
-		
-		String[] arr7 = {"z","b","1","a","f","p","m","q","t"};
-		System.out.println("Searching for 5 at position: " + test.sortAndSearch(arr7, "5"));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr7));
-		
-		String[] arr8 = {"z","b","1","a","f","p","m","q","t"};
-		System.out.println("Searching for z at position: " + test.sortAndGetResultingIndexOf(arr8, "z"));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr8));
+//		AlexAndErik test = new AlexAndErik();
+//		
+//		int[] array = {2,2,3,4,5};
+//		System.out.println("The median is " + test.sortAndGetMedian(array) + " .");
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(array));
+//		
+//		
+//		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8,9};
+//		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
+//		
+//		
+//		String[] temp1 = {"siddeeq","erik","alex","katherine","bob","calvin"};
+//		System.out.println("Here is THE the index: " + test.sortAndGetResultingIndexOf(temp1,"katherine"));
+//		System.out.println("Comparable index: " + test.sortAndSearch(temp1,"katherine"));
+//		
+//		int[] arr1 = {11,20,21,50};
+//		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr1));
+//		
+//		int[] arr2 = {11,20,10};
+//		System.out.println("The median is: " + test.sortAndGetMedian(arr2));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr2));
+//		
+//		int[] arr3 = {11,20,21,50};
+//		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr3));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr3));
+//		
+//		int[] arr4 = {11,20,10};
+//		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr4));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr4));
+//		
+//		int[][] arr5 = {{100,200,300},{100,10,300},{1,2,3}};
+//		System.out.println("The median is: " + test.sortMultiDim(arr5));
+//		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr5));
+//		
+//		int[][] arr6 = {{12,10,30},{53,0,1000},{9,9,4}};
+//		System.out.println("The median is: " + test.sortMultiDim(arr6));
+//		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr6));
+//		
+//		String[] arr7 = {"z","b","1","a","f","p","m","q","t"};
+//		System.out.println("Searching for 5 at position: " + test.sortAndSearch(arr7, "5"));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr7));
+//		
+//		String[] arr8 = {"z","b","1","a","f","p","m","q","t"};
+//		System.out.println("Searching for z at position: " + test.sortAndGetResultingIndexOf(arr8, "z"));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(arr8));
 	}
 
 	
