@@ -37,7 +37,7 @@ private static final String NEW_LINE_SEPARATOR = "\n";
 		            fileWriter.append(NEW_LINE_SEPARATOR);
 
 		            for (Contestant student : students) {
-		                fileWriter.append(String.valueOf(student.getClass().toString().replaceAll("sortomania", "")));
+		                fileWriter.append(String.valueOf(student.getClass().toString().replaceAll("class sortomania.contestants.", "")));
 		                fileWriter.append(COMMA_DELIMITER);
 		                fileWriter.append(student.getPoints()+"");
 		                fileWriter.append(COMMA_DELIMITER);
@@ -46,7 +46,7 @@ private static final String NEW_LINE_SEPARATOR = "\n";
 		                fileWriter.append(student.getCorrectSorts()+"");
 		                fileWriter.append(COMMA_DELIMITER);
 		                fileWriter.append(student.getTotalSorts()+"");
-		                fileWriter.append(NEW_LINE_SEPARATOR);
+		                fileWriter.append(COMMA_DELIMITER);
 		                fileWriter.append(student.getCorrectMedians()+"");
 		                fileWriter.append(COMMA_DELIMITER);
 		                fileWriter.append(student.getTotalMedians()+"");

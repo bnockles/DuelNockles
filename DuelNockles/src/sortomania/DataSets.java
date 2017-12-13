@@ -32,7 +32,7 @@ public class DataSets {
 
 
 	public DataSets() {
-		int l = 10000;
+		int l = 10000+(int)(Math.random()*1000);
 
 		Runner.screen.displayMessage("Preparing data for test 1...");
 		task1DataSets = new int[reps][];
@@ -88,7 +88,7 @@ public class DataSets {
 		task4DataSets = new int[reps][][];
 		task4DataSetsSorted  = new int[reps][][];//2D arrays
 		task4Median = new double[reps];
-		int lw = 500;
+		int lw = 500+(int)(Math.random() * 50);
 		for(int i = 0; i < task4DataSets.length; i++){
 			task4DataSets[i] = randomIntsArr1(lw);
 			int[][] copy = new int[lw][lw];
@@ -294,7 +294,17 @@ public class DataSets {
 
 	public boolean checkTest5(Contestant c,Generic[] studentResponse, int studentIndex, int trial)
 	{
-		boolean b = Arrays.equals(studentResponse,task5DataSetsSorted[trial]);
+		if(studentResponse.length != task5DataSetsSorted[trial].length){
+			c.successfulSort(false, trial);
+			c.successfulFind(false, trial);
+			return false;
+		}
+		boolean b = true;
+		for(int i = 0; i < studentResponse.length; i++){
+			if(studentResponse[i].getValue() != task5DataSetsSorted[trial][i].getValue()){
+				b = false;
+			}
+		}
 		boolean d = studentIndex == task5Index[trial];
 		c.successfulSort(b, trial);
 		c.successfulFind(d, trial);

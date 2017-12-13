@@ -7,6 +7,7 @@ import ui.GUIApplication;
 
 public class Runner extends GUIApplication{
 
+	public static String fileNote = "Sample";
 	
 	static ContestScreen screen;
 	private int initY;
@@ -54,7 +55,7 @@ public class Runner extends GUIApplication{
 		int[] arr = {x,y};
 		//PERIOD 4-5
 		arr = addContestant(arr[0],arr[1],participants, new SamJenny());
-		arr = addContestant(arr[0],arr[1],participants, new SampleContestant());
+		arr = addContestant(arr[0],arr[1],participants, new MimiJessiSort());
 		
 	}
 
