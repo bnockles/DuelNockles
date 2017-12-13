@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import sortomania.Contestant;
 
-public class DoubleJasons extends Contestant{
+public class DoubleJasons extends Contestant implements Comparable{
 	
 	private int[] ISSeq = {1,3,7,21,48,112,336,861,1968,4592};
 	private static String[] names = {"Tashia","Fidela","Carley","Starla","Maisie","Elijah","Pearl","Jacquie","Zelma","Tama","Hannelore","Shaniqua","Isa","Emily","Desiree","Garnet","Lauri","Erna","Denese","Renato","Britney","Numbers","Randa","Jewel","Vincenzo","Arianna","Johnathon","Charlette","Rae","Jerald"};
@@ -199,8 +199,60 @@ public class DoubleJasons extends Contestant{
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		shellSort(arr);
+		for( int i =0; i< arr.length; i++)
+		{
+			if( arr[i].compareTo(toFind) == 0)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	private void shellSort(Comparable[] arr) {
+		int index = ISSeq.length-1;
+		int gap = ISSeq[index];
+		Comparable holder;
+		while( index > 0) {
+			for(int i = 0; i< arr.length; i++) //iterate through arr
+			{
+				if(i+ gap >= arr.length)
+				{
+					i = -1;
+					index --;
+					if(index ==-1) break;
+					gap = ISSeq[index];
+				}
+				else 
+				{
+					if(arr[i].compareTo(arr[i+gap]) > 0) {
+						holder = arr[i];
+						arr[i] = arr[i+gap];
+						arr[i+gap] = holder;
+						checkPreviousIndices(i,gap,arr);
+					}
+				}
+			}
+		}
+	}
+
+	private void checkPreviousIndices(int i, int gap, Comparable[] arr) {
+		while(i - gap >= 0) {
+			if(arr[i].compareTo(arr[i - gap]) > 0)
+			{
+				Comparable holder = arr[i-gap];
+				arr[i-gap] = arr[i];
+				arr[i] = holder;
+				i -= gap;
+			}
+			else return;
+		}
+	}
+
+	@Override
+	public int compareTo(Object arg) {
+		return (this.toString().compareTo(arg.toString()))*(-1);
 	}
 
 
