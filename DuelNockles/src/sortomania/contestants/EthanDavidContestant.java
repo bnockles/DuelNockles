@@ -7,17 +7,10 @@ import sortomania.Contestant;
 
 public class EthanDavidContestant extends Contestant {
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EthanDavidContestant test = new EthanDavidContestant();
-		test.testSort();
-	}
-
-	public EthanDavidContestant() {
-
-	}
-
-	private void testSort() {
-		String[] stringArr = {"sdljad", "asc", "Abc"};
+		//test.testSort();
+		/*	String[] stringArr = {"sdljad", "asc", "Abc"};
 		int[][] arr = new int[3][4];
 		int[] arr1 = {1,4,5,8,11,7,6,9};
 		arr[0][0] = 50;
@@ -33,13 +26,16 @@ public class EthanDavidContestant extends Contestant {
 		arr[2][2] = 891;
 		arr[2][3] = 9832;
 		
-		
 		System.out.println(sortMultiDim(arr));
 		System.out.println(Arrays.deepToString(arr));
 		System.out.println(sortAndGetMedian(arr1));
 		System.out.println(Arrays.toString(arr1));
 		System.out.println(sortAndGetResultingIndexOf(stringArr, "Abc"));
-		System.out.println(Arrays.toString(stringArr));
+		System.out.println(Arrays.toString(stringArr)); 
+	}*/
+
+	public EthanDavidContestant() {
+
 	}
 
 	@Override
