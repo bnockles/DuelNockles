@@ -14,21 +14,21 @@ public class JustinSunny extends Contestant {
 	public static void main(String[] args) {
 		//int[] arr = new int[10000];
 		//populate(arr);
-		/*
+	
 		int[][] arr = new int[100][100];
 		for(int[] row: arr) {
 			populate(row);
 		}
-		*/
+	
 		/*
 		timSort(arr, arr.length);
 		System.out.println(Arrays.toString(arr));
 		*/
-
+		/*
 		String[] arr = new String[10000];
 		populate(arr);
 		String str = arr[3];
-		
+		*/
 		//OptimizedQuickSort(arr, 0, arr.length - 1);
 		
 		//Comparable[] arr = new Comparable[10000];
@@ -131,6 +131,13 @@ public class JustinSunny extends Contestant {
 		int halfWayMarker = (int) random.length/2 - 1;
 		return (random.length % 2 == 0)?((double) random[halfWayMarker] + random[halfWayMarker + 1])/2:random[halfWayMarker];
 	}
+	
+	public double sortAndGetMedian(double[] random) {
+		//sort(random, 0, random.length - 1); //Heap Sort 2-6ms
+		OptimizedQuickSort(random, 0, random.length - 1); //1-5ms
+		int halfWayMarker = (int) random.length/2 - 1;
+		return (random.length % 2 == 0)?((double) random[halfWayMarker] + random[halfWayMarker + 1])/2:random[halfWayMarker];
+	}
 
 	//Tested for small cases POOP FOR LARGE CASES
 	@Override
@@ -157,8 +164,7 @@ public class JustinSunny extends Contestant {
 		for(int i = 0; i < newArr.length; i++) {
 			newArr[i] = sortAndGetMedian(grid[i]); //1-3ms
 		}
-		int halfWayMarker = (int) newArr.length/2 - 1;
-		return (newArr.length % 2 == 0)?((newArr[halfWayMarker] + newArr[halfWayMarker + 1])/2):newArr[halfWayMarker];
+		return sortAndGetMedian(newArr);
 	}
 
 	//WORKS BUT BAD FOR LARGE CASES
@@ -363,6 +369,19 @@ public class JustinSunny extends Contestant {
             OptimizedQuickSort(Arr, pivot + 1, Right);
         }
     }  
+    
+    public void OptimizedQuickSort(double[] Arr, int Left, int Right)
+    {
+        int pivot = Q_Sort(Arr, Left, Right);
+        if(Left < pivot - 1)
+        {
+            OptimizedQuickSort(Arr, Left, pivot - 1);
+        }
+        if(Right > pivot + 1)
+        {
+            OptimizedQuickSort(Arr, pivot + 1, Right);
+        }
+    }  
 
     public void OptimizedQuickSort(String[] Arr, int Left, int Right)
     {
@@ -421,6 +440,34 @@ public class JustinSunny extends Contestant {
     public int Q_Sort(int[] Arr, int Left, int Right)
     {
         int pivot = Arr[Left];
+        while(Left < Right)
+        {
+            while((Arr[Right] >= pivot) && (Left < Right))
+            {
+                Right--;
+            }
+            if(Left != Right)
+            {
+                Arr[Left] = Arr[Right];
+                Left++;
+            }
+            while((Arr[Left] <= pivot) && (Left < Right))
+            {
+                Left++;
+            }
+            if(Left != Right)
+            {
+                Arr[Right] = Arr[Left];
+                Right--;
+            }
+        }   
+        Arr[Left] = pivot;
+        return Left;
+    } 
+    
+    public int Q_Sort(double[] Arr, int Left, int Right)
+    {
+        double pivot = Arr[Left];
         while(Left < Right)
         {
             while((Arr[Right] >= pivot) && (Left < Right))
