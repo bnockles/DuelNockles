@@ -33,7 +33,7 @@ public class AlexAndErik extends Contestant {
 		
 		String[] temp = {"siddeeq","erik","alex"};
 		System.out.println("Here is the index: " + test.sortAndGetResultingIndexOf(temp,"alex"));
-		System.out.println("Here is the sorted string array: " + test.mergeSortString(temp));
+		System.out.println("Here is the sorted string array: " + test.mergeStrings(String[] boss,temp,temp));
 		
 		int[] arr1 = {11,20,21,50};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr1));
