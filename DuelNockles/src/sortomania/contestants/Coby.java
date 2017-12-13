@@ -13,7 +13,7 @@ public class Coby extends Contestant {
 	
 	public static void main(String args[]) {
 		Coby test = new Coby();
-		int[] arr = {1,2,3,4,5,6,7,8,9,10};
+		int[] arr = {4,6,1,2,8,9,5,3,7};
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
 		System.out.println("And the sorted array is: ");
 		for(int i = 0; i < arr.length;i++) {
@@ -23,7 +23,7 @@ public class Coby extends Contestant {
 	
 	@Override
 	public Color getColor() {
-		return new Color(200,200,200);
+		return new Color(10,50,200);
 	}
 
 	@Override
@@ -39,14 +39,14 @@ public class Coby extends Contestant {
 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
-		sort(strings);
+//		sort(strings);
 		return bsearch(toFind,strings,0,strings.length-1);
 	}
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
-		return 0;
-		
+		sort(mostlySorted);
+		return getMedian(mostlySorted);
 	}
 
 	@Override
@@ -56,12 +56,12 @@ public class Coby extends Contestant {
 			sort(grid[i]);
 			medians[i] = (int) getMedian(grid[i]);
 		}
+		sort(medians);
 		return getMedian(medians);
 	}
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -73,14 +73,12 @@ public class Coby extends Contestant {
 	 		merge(low, middle, high);
 		 }
 	 }
-	 
 	 public void sort(int[] values) {
 	        this.numbers = values;
 	        number = values.length;
 	        this.helper = new int[number];
 	        mergesort(0, number - 1);
 	 }
-	 
 	 private void merge(int low, int middle, int high) {
 		 for (int i = low; i <= high; i++) {
 			 helper[i] = numbers[i];
