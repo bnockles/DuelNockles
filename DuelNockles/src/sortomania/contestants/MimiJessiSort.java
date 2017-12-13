@@ -10,10 +10,14 @@ public class MimiJessiSort extends Contestant{
 		MimiJessiSort test = new MimiJessiSort();
 		
 		//capital I for comparables 
-		Integer[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
-		Integer toFind = 12;
-		System.out.println("The median is: " + test.sortAndSearch(arr, toFind));
+		String[] arr = {"asd","klk","hiui"};
+		String toFind = "klk";
+		System.out.println("The median is: " + test.sortAndGetResultingIndexOf(arr, toFind));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
+		//Integer[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		//Integer toFind = 12;
+		//System.out.println("The median is: " + test.sortAndSearch(arr, toFind));
+		//System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
 	}
 
 	@Override
