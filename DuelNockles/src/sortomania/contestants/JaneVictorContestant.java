@@ -6,27 +6,6 @@ import java.util.Arrays;
 import sortomania.Contestant;
 
 public class JaneVictorContestant extends Contestant{
-	public static void main(String[] args) {
-		JaneVictorContestant test= new JaneVictorContestant();
-		int[] arr = {4, 5,6, 7,8, 12, 34, 35, 8, 40, 56, 61, 8, 68};
-		int[] c = {1,4,23,5,5};
-		int[] d = {5,75,3,45,3};
-		int[] e = {3,7,343,334,32};
-		int[] f = {453,634,1652,2432,43};
-		int[] g = {24,234,35,24,24};
-		int[][] s = {c, d, e, f, g};
-		System.out.println("The median is: " + test.mostlySortAndGetMedian(arr));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
-		String[] strs = {"Hod","hHon","hdasklha", "h!NAON", "JOPAas", "jovn", "noxnw", "h","Gjs", "gasda","Klad","ksagdjka"};
-		System.out.println("The index is " + test.sortAndGetResultingIndexOf(strs, "h"));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(strs));
-		System.out.println("The meidan is " + test.sortMultiDim(s));
-		for(int i = 0; i < s.length; i++) {
-			System.out.println("And the sorted array is: \n" + Arrays.toString(s[i]));
-			System.out.println("The median is: " + test.mostlySortAndGetMedian(s[i]));
-		}
-		
-	}
 
 	@Override
 	public Color getColor() {
