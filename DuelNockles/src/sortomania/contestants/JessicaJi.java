@@ -11,15 +11,15 @@ public class JessicaJi extends Contestant {
 		JessicaJi test = new JessicaJi();
 		int[] arr = {4, 7, 10, 2, 8, 12, 100, 34, 42, 23, 40, 56, 31, 8};
 		String[] arr2 = {"Jessica", "Ji", "Bob", "Sam", "Amanda", "Panda"};
-		int[][] arr3 = { {1,2,5,7} , {7,5,9,0} };
+		int[][] arr3 = { {1,2,5,5,7} , {7,5,9,5,0} };
 	//	System.out.println("The median is: " + test.sortAndGetMedian(arr));
 	//	System.out.println("And the sorted array is: \n" + Arrays.toString(insertionSort(arr)));
 	//	System.out.println("And the sorted array is: \n" + Arrays.toString(mergeSort(arr, 0, arr.length - 1)));
 		System.out.println("The sorted string array is: \n" + Arrays.toString(mergeSortComparable(arr2)));
 	//	System.out.println("The sorted string array is: \n" + Arrays.toString(insertionSortString(arr2)));
-	//	System.out.println("The sorted 2D array is: \n" + Arrays.deepToString(sortMultiInt(arr3)));
+		System.out.println("The sorted 2D array is: \n" + Arrays.deepToString(sortMultiInt(arr3)));
 	//	System.out.println("The index of the sorted string array is: \n" + Integer.toString(test.sortAndGetResultingIndexOf(arr2,"Ji")));
-	//	System.out.println("The sorted 2D array's median is: \n" + Double.toString( test.sortMultiDim(arr3)));
+		System.out.println("The sorted 2D array's median is: \n" + Double.toString( test.sortMultiDim(arr3)));
 	}
 	public static int[] insertionSort(int[] arr) {
         for (int i=1; i<arr.length; i++)
@@ -179,7 +179,7 @@ public class JessicaJi extends Contestant {
 	}
 	public double medianMulti(int[][] grid) //median of median so each array gets median and divide by median
 	{
-	    int[] list = new int[grid.length * grid[0].length];
+	 /*   int[] list = new int[grid.length * grid[0].length];
 
 	    int listPos = 0;
 	    for (int i = 0; i < grid.length; i++) 
@@ -188,9 +188,17 @@ public class JessicaJi extends Contestant {
 	      {
 	        list[listPos++] = grid[i][j];
 	      }
-	    }
-	    
-	    return (getMedian(grid[0]) + getMedian(grid[1])) / grid.length;
+	    }*/
+		double sum = 0;
+	
+		for(int i = 0; i < grid.length; i++) {
+	
+			sum += getMedian(grid[i]); //each row
+		}
+		
+		return (double)sum/grid.length;
+		
+	 //   return (getMedian(grid[0]) + getMedian(grid[1])) / grid.length;
 	 //   return getMedian(list);
 	  
 	  
