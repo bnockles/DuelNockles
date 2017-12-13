@@ -14,9 +14,9 @@ public class FahadDavidSorter extends Contestant {
 	//recursive merge sort
 	 public static void main (String[] args){
 		 FahadDavidSorter test = new FahadDavidSorter();
-		 Comparable[] arr = {4,6,2,4,5,5};
-		 System.out.println(test.sortAndSearch(arr, 6));
-		 System.out.println(Arrays.toString(arr));
+		 int[] arr = {42,6,7,33,4,55,5};
+		 System.out.println(test.sortAndGetMedian(arr));
+			 System.out.println(Arrays.toString(arr));
 	   }
 	
 	public Color getColor() {
@@ -28,7 +28,7 @@ public class FahadDavidSorter extends Contestant {
 	}
 
 	public double sortAndGetMedian(int[] random) {
-		radixSort(random);
+		insertionSort(random);
 		if(random.length %2 == 1) {
 			return random[(random.length-1)/2];
 		}
@@ -68,6 +68,7 @@ public class FahadDavidSorter extends Contestant {
 		for(int i = 0; i < grid.length; i++) {
 			temp[i] = sortAndGetMedian(grid[i]);
 		}
+		insertionSortD(temp);
 		if(temp.length %2 == 1) {
 			return temp[(temp.length-1)/2];
 		}
@@ -88,32 +89,23 @@ public class FahadDavidSorter extends Contestant {
 		}
 		return -1;
 	}
-
-	 public static void radixSort(int[] a) {
-	        int i, m = a[0], exp = 1, n = a.length;
-	        int[] b = new int[10];
-	        for (i = 1; i < n; i++)
-	            if (a[i] > m)
-	                m = a[i];
-	        
-	        while (m / exp > 0)
-	        {
-	            int[] bucket = new int[10];
-	 
-	            for (i = 0; i < n; i++)
-	                bucket[(a[i] / exp) % 10]++;
-	            for (i = 1; i < 10; i++)
-	                bucket[i] += bucket[i - 1];
-	            for (i = n - 1; i >= 0; i--)
-	                b[--bucket[(a[i] / exp) % 10]] = a[i];
-	            for (i = 0; i < n; i++)
-	                a[i] = b[i];
-	            exp *= 10;        
-	        }
-	 } 
 	 
 	 public static int[] insertionSort(int[] input){
 	        int temp;
+	        for (int i = 1; i < input.length; i++) {
+	            for(int j = i ; j > 0 ; j--){
+	                if(input[j] < input[j-1]){
+	                    temp = input[j];
+	                    input[j] = input[j-1];
+	                    input[j-1] = temp;
+	                }
+	            }
+	        }
+	        return input;
+	}
+	 
+	 public static double[] insertionSortD(double[] input){
+	        double temp;
 	        for (int i = 1; i < input.length; i++) {
 	            for(int j = i ; j > 0 ; j--){
 	                if(input[j] < input[j-1]){
