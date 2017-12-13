@@ -6,7 +6,7 @@ import sortomania.Contestant;
 
 public class DoubleJasons extends Contestant{
 	
-	private int[] ISSeq = {1,2,3, 7, 21, 48, 112, 336, 861, 1968, 4592};
+	private int[] ISSeq = {1,3,7,21,48,112,336,861,1968,4592};
 	private static String[] names = {"Tashia","Fidela","Carley","Starla","Maisie","Elijah","Pearl","Jacquie","Zelma","Tama","Hannelore","Shaniqua","Isa","Emily","Desiree","Garnet","Lauri","Erna","Denese","Renato","Britney","Numbers","Randa","Jewel","Vincenzo","Arianna","Johnathon","Charlette","Rae","Jerald"};
 	
 	public DoubleJasons() {
@@ -43,25 +43,7 @@ public class DoubleJasons extends Contestant{
 							holder = arr[i];
 							arr[i] = arr[i+gap];
 							arr[i+gap] = holder;
-							
-							if( i - gap >= 0)
-							{
-								for(int secondCheck = 0; secondCheck< arr[i].length()-1; secondCheck++)
-								{
-									char1 = arr[i-gap].substring(secondCheck, secondCheck+1);
-									char2 = arr[i].substring(secondCheck, secondCheck+1);
-									if( char1.compareTo(char2) > 0)
-									{
-										holder = arr[i-gap];
-										arr[i-gap] = arr[i];
-										arr[i] = holder;
-										break;
-									}
-									if(char1.compareTo(char2) < 0)break;
-								}
-							}
-							
-							
+							checkPreviousIndices(i,gap,arr);
 							break;
 						}
 						if(char1.compareTo(char2) < 0)break;
@@ -106,6 +88,25 @@ public class DoubleJasons extends Contestant{
 		System.out.print(arr);
 	}
 
+	private void checkPreviousIndices(int index, int gap, String[] arr) {
+		while(index - gap > 0) {
+			for(int secondCheck = 0; secondCheck< arr[index].length()-1; secondCheck++)
+			{
+				String char1 = arr[index-gap].substring(secondCheck, secondCheck+1);
+				String char2 = arr[index].substring(secondCheck, secondCheck+1);
+				if(char1.compareTo(char2) > 0)
+				{
+					String holder = arr[index-gap];
+					arr[index-gap] = arr[index];
+					arr[index] = holder;
+					index -= gap;
+					break;
+				}
+				if(char1.compareTo(char2) < 0)break;
+			}
+		}
+	}
+	
 	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub
