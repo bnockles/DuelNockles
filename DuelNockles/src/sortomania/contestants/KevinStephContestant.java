@@ -12,14 +12,14 @@ public class KevinStephContestant extends Contestant {
 	}
     
 	public static void main(String[] args) {
-		KevinStephContestant test = new KevinStephContestant();
+		//KevinStephContestant test = new KevinStephContestant();
 		//int[] arr = {4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8};
 		//Comparable[] arr = {4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8};
-		//String[] arr = {"d", "a", "h", "f", "g", "e", "s", "d"};
-		int[][] arr = {{73,35,1}, {5,89,30}};
-		//System.out.println("The index is: " + sortMultiDim(arr));
-		System.out.println("The median is: " + test.sortMultiDim(arr));
-		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr));
+		//Comparable[] arr = {"d", "a", "h", "f", "g", "e", "s", "d"};
+		//int[][] arr = {{73,35,1}, {5,89,30}, {69,23,100}};
+		//System.out.println("The index is: " + test.sortAndSearch(arr, "s"));
+		//System.out.println("The median is: " + test.sortAndSearch(arr, 25));
+		//System.out.println("And the sorted array is: \n" + Arrays.toString(arr));
 		//System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr));
 	}
 
@@ -156,6 +156,8 @@ public class KevinStephContestant extends Contestant {
 	        for (int a = 0; a < arr.length; a++) {
 	        	if (arr[a] == toFind) {
 	        		found = a;
+	        	}else {
+	        		found = -1;
 	        	}
 	        }
 			return found;
