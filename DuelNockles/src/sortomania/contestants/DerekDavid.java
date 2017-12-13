@@ -33,10 +33,7 @@ public class DerekDavid extends Contestant {
 		
 		//TASK 1
 		System.out.println("The median is: " + test.sortAndGetMedian(arr));
-		System.out.println("And the sorted array is: \n"+Arrays.toString(heapSort(arr)));
-		
-		System.nanoTime();
-		
+		System.out.println("And the sorted array is: \n"+Arrays.toString(heapSort(arr)));	
 		
 		//TASK 2
 		System.out.println("Your String is at index:"+test.sortAndGetResultingIndexOf(arrStr, c));
