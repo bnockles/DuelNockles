@@ -205,7 +205,6 @@ public class VincentNRaymond extends Contestant {
 	  }
 		return getMedian(medianHolder);
 	}
-
 	private double getMedian(double[] sortedArray) {
 		if (sortedArray.length % 2 == 1) {
 			return sortedArray[(sortedArray.length - 1) / 2];
@@ -213,11 +212,57 @@ public class VincentNRaymond extends Contestant {
 			return ((sortedArray[sortedArray.length / 2]) + (sortedArray[(sortedArray.length / 2) - 1])) / 2;
 		}
 	}
+	
+	public static void sortCom(Comparable[] a) {
+		quicksortCom(a, 0, a.length-1);
+    }
+	
+    private static void quicksortCom(Comparable[] a, int low, int high) {
+        if(low >= high) {
+        	return;
+        }
+        int part = partitionA(a, low, high);
+        quicksortCom(a, low, part-1);
+        quicksortCom(a, part+1, high);
+    }
+    
+    private static int partitionA(Comparable[] a, int low, int high) {
+        int i = low + 1;
+        int j = high;
+
+        while(i <= j) {
+            if(a[i].compareTo(a[low]) <= 0) { 
+                i++; 
+            }
+            else if(a[j].compareTo(a[low]) > 0) { 
+                j--;
+            }
+            else if(j < i) {
+                break;
+            }
+            else {
+            	 exchange(a, i, j);
+            }
+               
+        }
+        exchange(a, low, j);
+        return j;
+    }
+
+    private static void exchange(Object[] a, int i, int j) {
+        Object tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+    
 
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		sortCom(arr);
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i].equals(toFind)) return i;
+		}
+		return -1;
 	}
 
 }
