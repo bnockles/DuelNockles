@@ -7,7 +7,7 @@ public class CarsonSort extends Contestant{
 
 	public static void main(String a[]){
 		CarsonSort test = new CarsonSort();
-		int[][] input = {{4,2,5,1,3}, {3,7,6,4,7}, {2,5,3,1,6}, {4,8,1,2,6}, {4,23,5,23,12}};
+		int[][] input = {{10,2,5,1,6}, {3,7,6,4,7,10}, {2,5,3,1,6}, {4,8,1,2,6}, {4,23,5,23,12}};
 		System.out.println(test.sortMultiDim(input));
 
 		for(int i = 0; i < input.length; i ++) {
@@ -88,10 +88,25 @@ public class CarsonSort extends Contestant{
 	}
 
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		for (int i=0; i<arr.length;i++)
+		{
+			for (int j=i+1 ; j<arr.length; j++)
+			{
+				if (arr[j].compareTo(arr[i])<0)
+				{
+					Comparable k = arr[i];
+					arr[i] = arr[j];
+					arr[j] = k;
+				}
+			}
+		}
+		for(int l = 0; l < arr.length; l++) {
+			if(toFind.equals(arr[l])) {
+				return l;
+			}
+		}
+		return -1;
 	}
-
 	public static void quickSort(int[] intArr, int lowerIndex, int higherIndex) {
 		if (intArr == null || intArr.length == 0) {
 			return;
@@ -132,11 +147,6 @@ public class CarsonSort extends Contestant{
 
 	private static void swap(int[] arr, int i, int j) {
 		int temp = arr[i];
-		arr[i] = arr[j];
-		arr[j] = temp;
-	}
-	private static void swap(String[] arr, int i, int j) {
-		String temp = arr[i];
 		arr[i] = arr[j];
 		arr[j] = temp;
 	}
