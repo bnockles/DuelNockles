@@ -32,7 +32,7 @@ public class DataSets {
 
 
 	public DataSets() {
-		int l = 10000+(int)(Math.random()*1000);
+		int l = 10000;
 
 		Runner.screen.displayMessage("Preparing data for test 1...");
 		task1DataSets = new int[reps][];
@@ -40,6 +40,7 @@ public class DataSets {
 		task1Median = new double[reps];
 		for(int i = 0; i < task1DataSets.length; i++){
 			task1DataSets[i] = randomIntsArr(l);
+			l = 10000+(int)(Math.random()*1000);
 			int[] copy = new int[l];
 			for(int j = 0; j < copy.length; j++){
 				copy[j] = task1DataSets[i][j];
@@ -55,6 +56,7 @@ public class DataSets {
 		task2Key = new String[reps];
 		task2Index = new int[reps];
 		for(int i = 0; i < task2DataSets.length; i++){
+			l = 10000+(int)(Math.random()*1000);
 			task2DataSets[i] = randomStringArr(l, 5);
 			String[] copy = new String[l];
 			for(int j = 0; j < copy.length; j++){
@@ -72,6 +74,7 @@ public class DataSets {
 		task3DataSetsSorted = new int[reps][];
 		task3Median = new double[reps];
 		for(int i = 0; i < task3DataSets.length; i++){
+			l = 10000+(int)(Math.random()*1000);
 			task3DataSets[i] = randomIntsArr(l);
 			//this one is mostly sorted, so sort it first before copying
 			Arrays.sort(task3DataSets[i]);
@@ -88,8 +91,9 @@ public class DataSets {
 		task4DataSets = new int[reps][][];
 		task4DataSetsSorted  = new int[reps][][];//2D arrays
 		task4Median = new double[reps];
-		int lw = 500+(int)(Math.random() * 50);
+		int lw = 500;
 		for(int i = 0; i < task4DataSets.length; i++){
+			lw = 500+(int)(Math.random() * 50);
 			task4DataSets[i] = randomIntsArr1(lw);
 			int[][] copy = new int[lw][lw];
 			double[] medians = new double[lw];
@@ -115,6 +119,7 @@ public class DataSets {
 		task5Index = new int[reps];
 		task5Key = new Generic[reps];
 		for(int i = 0; i < task5DataSets.length; i++){
+			l = 10000+(int)(Math.random() * 1000);
 			task5DataSets[i] = randomGeneric(l);
 			Generic[] copy = new Generic[l];
 			for(int j = 0; j < copy.length; j++){
