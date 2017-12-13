@@ -144,6 +144,7 @@ public class AlexAndErik extends Contestant {
 	}
 	
 	public static Comparable[] mergeSortComparable(Comparable[] names) {
+		int comparableLength = names.length;
         if (names.length > 1) {
         	Comparable[] left = new Comparable[names.length / 2];
         	Comparable[] right = new Comparable[names.length - names.length / 2];
