@@ -7,55 +7,55 @@ import sortomania.Contestant;
 
 public class DerekDavid extends Contestant {
 
-	public static void main(String[] args) {
+	//public static void main(String[] args) {
 
-		// TASK 1 ARRAY
-		DerekDavid test = new DerekDavid();
-		int[] arr = { 4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8 };
-
-		// TASK 2 ARRAY
-		String[] arrStr = { "ansioa", "paalqc", "lwyux", "c" };
-
-		// TASK 3 ARRAY
-		int[] array = new int[100]; // Almost sorted Array of 100
-		array[0] = (int) (Math.random() * 10) + 1;
-		for (int i = 1; i < array.length; i++) {
-			array[i] = array[i - 1] + (int) (Math.random() * 12) - 2;
-		}
-
-		// TASK 4 ARRAY
-
-		int[][] grid = { { 5, 8, 2, 10 }, { 11, 2, 30, 4 }, { 11, 2, 3, 40 }, { 1, 2, 42, 42 } };
-
-		// TASK 1
-
-		System.out.println("TASK 1");
-		System.out.println("The median is: " + test.sortAndGetMedian(arr));
-		System.out.println("And the sorted array is: \n" + Arrays.toString(heapSort(arr)));
-
-		System.out.println("\n");
-		// TASK 2
-		System.out.println("TASK 2");
-		System.out.println("Your String is at index:" + test.sortAndGetResultingIndexOf(arrStr, "c"));
-
-		System.out.println("\n");
-		System.out.println("TASK 3");
-		// TASK 3
-		System.out.println("The median of the mostly sorted array is: " + test.mostlySortAndGetMedian(array));
-		System.out.println("The mostly sorted array \n" + Arrays.toString(insertionSort(array)));
-
-		// TASK 4
-		System.out.println("\n");
-		System.out.println("TASK 4");
-		System.out.println("The median of the 2D array is: " + test.sortMultiDim(grid));
-		System.out.println("The 2D sorted array is: \n" + Arrays.deepToString(grid));
+//		// TASK 1 ARRAY
+//		DerekDavid test = new DerekDavid();
+//		int[] arr = { 4, 7, 10, 2, 18, 12, 34, 42, 23, 40, 56, 31, 8 };
+//
+//		// TASK 2 ARRAY
+//		String[] arrStr = { "ansioa", "paalqc", "lwyux", "c" };
+//
+//		// TASK 3 ARRAY
+//		int[] array = new int[100]; // Almost sorted Array of 100
+//		array[0] = (int) (Math.random() * 10) + 1;
+//		for (int i = 1; i < array.length; i++) {
+//			array[i] = array[i - 1] + (int) (Math.random() * 12) - 2;
+//		}
+//
+//		// TASK 4 ARRAY
+//
+//		int[][] grid = { { 5, 8, 2, 10 }, { 11, 2, 30, 4 }, { 11, 2, 3, 40 }, { 1, 2, 42, 42 } };
+//
+//		// TASK 1
+//
+//		System.out.println("TASK 1");
+//		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+//		System.out.println("And the sorted array is: \n" + Arrays.toString(heapSort(arr)));
+//
+//		System.out.println("\n");
+//		// TASK 2
+//		System.out.println("TASK 2");
+//		System.out.println("Your String is at index:" + test.sortAndGetResultingIndexOf(arrStr, "c"));
+//
+//		System.out.println("\n");
+//		System.out.println("TASK 3");
+//		// TASK 3
+//		System.out.println("The median of the mostly sorted array is: " + test.mostlySortAndGetMedian(array));
+//		System.out.println("The mostly sorted array \n" + Arrays.toString(insertionSort(array)));
+//
+//		// TASK 4
+//		System.out.println("\n");
+//		System.out.println("TASK 4");
+//		System.out.println("The median of the 2D array is: " + test.sortMultiDim(grid));
+//		System.out.println("The 2D sorted array is: \n" + Arrays.deepToString(grid));
 
 		// TASK 5
-		System.out.println("\n");
-		System.out.println("TASK 5");
-		Comparable[] test1 = { "asd", "qweo", "qpwqe", "dfghj", "c", "2" };
-		System.out.println("The position of toFind is: " + test.sortAndSearch(test1, "2"));
-	}
+		//System.out.println("\n");
+		//System.out.println("TASK 5");
+		//Comparable[] test1 = { "asd", "qweo", "qpwqe", "dfghj", "ppc", "2" };
+		//System.out.println("The position of toFind is: " + test.sortAndSearch(test1, "2"));
+	//}
 
 	@Override
 	public Color getColor() {
