@@ -351,10 +351,29 @@ public class JasonDavid extends Contestant {
 		      
 		 }
 	}
+	public static int compareBinarySearch(Comparable[] arr, Comparable x) {
+        int low = 0;
+        int high = arr.length - 1;
+        int mid;
+
+        while (low <= high) {
+            mid = (low + high) / 2;
+
+            if (arr[mid].compareTo(x) < 0) {
+                low = mid + 1;
+            } else if (arr[mid].compareTo(x) > 0) {
+                high = mid - 1;
+            } else {
+                return mid;
+            }
+        }
+
+        return -1;
+    }
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
-		// TODO Auto-generated method stub
-		return 0;
+		compareQuickSort(arr, 0, arr.length-1);
+		return compareBinarySearch(arr, toFind);
 	}
 	// :)
 }
