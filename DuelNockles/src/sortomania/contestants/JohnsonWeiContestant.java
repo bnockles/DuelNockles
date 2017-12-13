@@ -8,8 +8,13 @@ public class JohnsonWeiContestant extends Contestant {
 	
 	public static void main(String[] args) {
 		int[] nums = {15,10,24,3,4,5,6,7};
+		int[][] multi = {{12,23,5,9},{3,2,6,5}};
+		Comparable[] items = {"a", "c", "d", "e", "g", "h", "f", "x", "y", "p", "o"};
 		JohnsonWeiContestant test = new JohnsonWeiContestant();
-		System.out.println(test.sortAndGetMedian(nums));
+		long startTime = System.nanoTime();
+		System.out.println(test.sortAndSearch(items, "h"));
+		long endTime = System.nanoTime();
+		System.out.println((endTime - startTime));
 	}
 
 	@Override
@@ -37,6 +42,7 @@ public class JohnsonWeiContestant extends Contestant {
 		}else return random[last/2];
 		//COMPLETED WITH TEST
 	}
+	
 	public double sortAndGetMedian(double[] random) {
 		int last = random.length -1;
 		int max = random.length;
@@ -68,12 +74,10 @@ public class JohnsonWeiContestant extends Contestant {
             	double temp = array[i];
 				array[i] = array[j];
 				array[j] = temp;
-                //move index to next position on both sides
                 i++;
                 j--;
             }
         }
-        // call quickSort() method recursively
         if (lowerIndex < j)
             quickSort(array,lowerIndex, j);
         if (i < higherIndex)
@@ -100,12 +104,10 @@ public class JohnsonWeiContestant extends Contestant {
             	int temp = array[i];
 				array[i] = array[j];
 				array[j] = temp;
-                //move index to next position on both sides
                 i++;
                 j--;
             }
         }
-        // call quickSort() method recursively
         if (lowerIndex < j)
             quickSort(array,lowerIndex, j);
         if (i < higherIndex)
@@ -124,7 +126,7 @@ public class JohnsonWeiContestant extends Contestant {
             while (array[i].compareTo(pivot) < 0) {
                 i++;
             }
-            while (array[i].compareTo(pivot) > 0) {
+            while (array[j].compareTo(pivot) > 0) {
                 j--;
             }
             if (i <= j) {
@@ -137,11 +139,9 @@ public class JohnsonWeiContestant extends Contestant {
         }
         
         if (lowerIndex < j)
-            quickSort(array,lowerIndex, j);
+            quickSort(array, lowerIndex, j);
         if (i < higherIndex)
-            quickSort(array,i, higherIndex);
-        
-        
+            quickSort(array, i, higherIndex);
     }
 	
 
