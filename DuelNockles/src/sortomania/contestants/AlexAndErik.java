@@ -183,7 +183,7 @@ public class AlexAndErik extends Contestant {
 		}
 	}	
 
-//CODE FOR MERGESORT COMPLETE	
+//CODE FOR MERGESORT COMPLEE	
 	   public void mergeSort(int inputArr[]) {
         this.array = inputArr;
         this.length = inputArr.length;
