@@ -8,7 +8,17 @@ import java.awt.Color;
 import sortomania.Contestant;
 
 public class AliceDanielSort extends Contestant{
-	private static int size_threshold = 16;
+	//private static int size_threshold = 16;
+	
+	public AliceDanielSort() {
+		
+		AliceDanielSort test = new AliceDanielSort();
+		int[] arr = {4, 7,10, 2,18,12, 34, 42, 23, 40, 56, 31, 8};
+		System.out.println("The median is: " + test.sortAndGetMedian(arr));
+		System.out.println("And the sorted array is: \n" + arr);
+
+	}
+	
 
 	@Override
 	public Color getColor() {
@@ -105,7 +115,6 @@ public class AliceDanielSort extends Contestant{
 		}
 		return -1;
 		
-		
 	}
 	
 	
@@ -124,7 +133,7 @@ public class AliceDanielSort extends Contestant{
   
   private static void introsort_loop (int[] a, int lo, int hi, int depth_limit)
   {
-    while (hi-lo > size_threshold)
+    while (hi-lo > (a.length -1))
 	  {
 	    if (depth_limit == 0)
 		{
