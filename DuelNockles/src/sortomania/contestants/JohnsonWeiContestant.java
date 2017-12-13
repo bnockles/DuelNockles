@@ -37,6 +37,50 @@ public class JohnsonWeiContestant extends Contestant {
 		}else return random[last/2];
 		//COMPLETED WITH TEST
 	}
+	public double sortAndGetMedian(double[] random) {
+		int last = random.length -1;
+		int max = random.length;
+		long startTime = System.nanoTime();
+		quickSort(random, 0, last);
+		long endTime = System.nanoTime();
+		System.out.println((endTime - startTime) / 1000000.0);
+		if(max % 2 == 0) {
+			return (double)(random[max/2] + random[(max/2)-1]) / 2;
+		}else return random[last/2];
+		//COMPLETED WITH TEST
+	}
+	
+	private void quickSort(double[] array, int lowerIndex, int higherIndex) {
+		int i = lowerIndex;
+        int j = higherIndex;
+        
+        double pivot = array[lowerIndex+(higherIndex-lowerIndex)/2];
+        
+        while (i <= j) {
+            
+            while (array[i] < pivot) {
+                i++;
+            }
+            while (array[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+            	double temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+                //move index to next position on both sides
+                i++;
+                j--;
+            }
+        }
+        // call quickSort() method recursively
+        if (lowerIndex < j)
+            quickSort(array,lowerIndex, j);
+        if (i < higherIndex)
+            quickSort(array,i, higherIndex);
+        
+        
+    }
 	
 	private void quickSort(int[] array, int lowerIndex, int higherIndex) {
 		int i = lowerIndex;
