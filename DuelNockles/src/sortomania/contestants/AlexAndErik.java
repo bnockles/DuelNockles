@@ -63,11 +63,11 @@ public class AlexAndErik extends Contestant {
 		System.out.println("And the sorted array is: \n" + Arrays.deepToString(arr6));
 		
 		String[] arr7 = {"z","b","1","a","f","p","m","q","t"};
-		System.out.println("Searching for b at position: " + test.sortAndSearch(arr7, "b"));
+		System.out.println("Searching for 5 at position: " + test.sortAndSearch(arr7, "5"));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr7));
 		
 		String[] arr8 = {"z","b","1","a","f","p","m","q","t"};
-		System.out.println("Searching for b at position: " + test.sortAndGetResultingIndexOf(arr8, "b"));
+		System.out.println("Searching for z at position: " + test.sortAndGetResultingIndexOf(arr8, "z"));
 		System.out.println("And the sorted array is: \n" + Arrays.toString(arr8));
 	}
 
@@ -141,8 +141,9 @@ public class AlexAndErik extends Contestant {
 				return i;
 			}
 		}
-		mergeSortComparable(arr);
-		return binarySearchComparable(mergeSortComparable(arr),toFind);
+		return -1;
+		//mergeSortComparable(arr);
+		//return binarySearchComparable(mergeSortComparable(arr),toFind);
 	}
 	
 	public static Comparable[] mergeSortComparable(Comparable[] names) {
