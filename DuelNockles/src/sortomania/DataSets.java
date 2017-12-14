@@ -27,11 +27,13 @@ public class DataSets {
 	private int[] task5Index;
 	private Generic[] task5Key;
 
-	public static final int reps = 100;
+	public static final int startingReps = 15;
+	private int reps = 15;
 	public static final int tasks = 5;
 
 
-	public DataSets() {
+	public DataSets(int multiplier) {
+		reps = reps * multiplier; 
 		int l = 10000;
 
 		Runner.screen.displayMessage("Preparing data for test 1...");

@@ -59,7 +59,7 @@ public final class Pair {
 
 	public void damageOpponentOf(Contestant c) {
 		Contestant target = c == c1 ? c2 : c1;
-		target.damage(100.0/(DataSets.tasks * DataSets.reps));
+		target.damage(100.0/(DataSets.tasks * DataSets.startingReps*Runner.screen.getRound()));
 	}
 	
 	

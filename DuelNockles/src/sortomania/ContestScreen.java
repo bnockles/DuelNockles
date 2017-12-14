@@ -36,6 +36,10 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 	private int pairsFinished;
 	private int round;
 
+	public int getRound(){ 
+		return round;
+	}
+	
 	public ContestScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -199,7 +203,7 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 	private void newRound() {
 		keepRunning = true;
 		round++;
-		DataSets ds = new DataSets();
+		DataSets ds = new DataSets(round);
 		pairsCompeting = 0;
 		pairsFinished = 0;
 
@@ -240,7 +244,8 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 		int xb = 380;
 		int y = 50;
 		int deltaY = 172;
-		for(int i = 0; i < participants.size() - 1; i++){
+		int i = 0;
+		while(i < participants.size() - 1){
 			Contestant c1 = participants.get(i);
 			Contestant c2 = participants.get(++i);
 			c1.move(xa, y);
@@ -251,7 +256,14 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 				xa+=650;
 				xb+=650;
 			}
+			i++;
 		}
+		while(i < participants.size()){
+			Contestant c = participants.get(i);
+			c.move(getWidth()-140, getHeight()-20);
+			i++;
+		}
+		
 	}
 
 	private void removeLosers() {

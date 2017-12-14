@@ -118,7 +118,7 @@ public class JustinSunny extends Contestant {
 	
 	public String getSpriteName() {
 		// TODO Auto-generated method stub
-		return "RYU";
+		return RYU;
 	}
 
 	//Works

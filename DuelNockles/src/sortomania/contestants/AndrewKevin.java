@@ -15,7 +15,7 @@ public class AndrewKevin extends Contestant{
 	@Override
 	public String getSpriteName() {
 		// TODO Auto-generated method stub
-		return "CHUN_LI";
+		return CHUN_LI;
 	}
 	private int array[];
     private int length;

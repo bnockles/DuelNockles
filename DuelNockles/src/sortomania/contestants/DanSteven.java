@@ -17,7 +17,7 @@ public class DanSteven extends Contestant{
 	}
 	@Override
 	public String getSpriteName() {
-		return "CHUN_LI";
+		return CHUN_LI;
 	}
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind)

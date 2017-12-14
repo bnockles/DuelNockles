@@ -16,6 +16,7 @@ import ui.Component;
 
 public abstract class Contestant extends Component implements Runnable{
 
+	String string;
 	int contestantNumber;
 	String title;
 	String status;
@@ -59,6 +60,7 @@ public abstract class Contestant extends Component implements Runnable{
 
 	public Contestant() {
 		super(0, 0, 310, 170);
+		this.string = this.getClass().toString().replaceAll("class sortomania.contestants.", "");
 		recordedTimes = new long[5][15];
 		bestAverages = new double[5];
 		currentScore = 100;
@@ -175,7 +177,7 @@ public abstract class Contestant extends Component implements Runnable{
 	}
 
 	public String toString(){
-		return title;
+		return string;
 	}
 
 	/**
@@ -234,7 +236,7 @@ public abstract class Contestant extends Component implements Runnable{
 		g.setStroke(new BasicStroke(2));
 		g.drawRect(5, 5, 35, 35);
 		g.setStroke(new BasicStroke(1));
-		g.drawString(title+": "+this+", Score: "+points, 45, 20);
+		g.drawString(title+": "+string+", Score: "+points, 45, 20);
 		g.drawString(status, 45, 35);
 		if(currentScore <25){
 			g.setColor(Color.red);
