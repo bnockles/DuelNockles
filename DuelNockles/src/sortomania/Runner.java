@@ -82,10 +82,10 @@ public class Runner extends GUIApplication{
 //		arr = addContestant(arr[0],arr[1],participants, new LordAchillesContestant());
 //		arr = addContestant(arr[0],arr[1],participants, new DoubleJasons());
 //		arr = addContestant(arr[0],arr[1],participants, new TheoDevinBeepBoop());
-//		arr = addContestant(arr[0],arr[1],participants, new AbidAbedContestant());//fast but creates a recursive error somewhere
-//		arr = addContestant(arr[0],arr[1],participants, new AnnieJoannaSort());
-//		arr = addContestant(arr[0],arr[1],participants, new MarkWilliam());
-//		arr = addContestant(arr[0],arr[1],participants, new KevinStephContestant());
+		arr = addContestant(arr[0],arr[1],participants, new AbidAbedContestant());//fast but creates a recursive error somewhere
+		arr = addContestant(arr[0],arr[1],participants, new AnnieJoannaSort());
+		arr = addContestant(arr[0],arr[1],participants, new MarkWilliam());
+		arr = addContestant(arr[0],arr[1],participants, new KevinStephContestant());
 //		arr = addContestant(arr[0],arr[1],participants, new JessicaJi());//cannot complete task 4
 //		arr = addContestant(arr[0],arr[1],participants, new EthanDavidContestant());//gets stuck on task 2
 		//ALL OF THE ABOVE STUDENTS SUBMITTED 9-10 BY THE DEADLINE

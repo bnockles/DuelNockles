@@ -26,9 +26,6 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
-import guiTeacher.GUIApplication;
-import guiTeacher.Utilities;
-import guiTeacher.interfaces.Clickable;
 
 public class Button extends TextLabel implements Clickable{
 

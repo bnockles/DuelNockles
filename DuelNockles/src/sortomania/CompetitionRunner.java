@@ -99,29 +99,41 @@ public class CompetitionRunner implements Runnable {
 			c.beginTask(task.getNumber());
 			long time = System.nanoTime();
 			long errorPenalty = 0;
+			String errorName = "";
 			int penalty = pair.getWinner() == null ? 1000 : 0;
 			try{
 				task.task(i);
 			}catch(ArrayIndexOutOfBoundsException e){
 				errorPenalty = 100000000;
-				c.penalize("ArrayIndexOutOfBoundsException!",penalty);
-				c.successfulSort(false, i);
-				c.successfulFind(false, i);
+				errorName = "ArrayIndexOutOfBoundsException!";
+//				c.penalize("ArrayIndexOutOfBoundsException!",penalty);
+//				c.successfulSort(false, i);
+//				c.successfulFind(false, i);
 			}catch(NullPointerException npe){
 				errorPenalty = 100000000;
-				c.penalize("NullPointerException!",penalty);
-				c.successfulSort(false, i);
-				c.successfulFind(false, i);
+				errorName = "NullPointerException!";
+//				c.penalize("NullPointerException!",penalty);
+//				c.successfulSort(false, i);
+//				c.successfulFind(false, i);
 			}catch(StackOverflowError soe){
 				errorPenalty = 100000000;
-				c.penalize("Stack Overflow Error!",penalty);
-				c.successfulSort(false, i);
-				c.successfulFind(false, i);
+				errorName = "Stack Overflow Error!";
+//				c.penalize("Stack Overflow Error!",penalty);
+//				c.successfulSort(false, i);
+//				c.successfulFind(false, i);
 			}catch(Exception e){
 				errorPenalty = 100000000;
-				c.penalize("Unknown Error!",penalty);
-				c.successfulSort(false, i);
-				c.successfulFind(false, i);
+				errorName = e.toString();
+//				c.penalize("Unknown Error!",penalty);
+//				c.successfulSort(false, i);
+//				c.successfulFind(false, i);
+			}finally{
+				if(errorPenalty > 0){
+					System.out.println("Error: "+c+":"+errorName);
+					c.penalize(errorName,penalty);
+					c.successfulSort(false, i);
+					c.successfulFind(false, i);
+				}
 			}
 			long finishTime = System.nanoTime();
 			c.addTime(task.getNumber(), i, finishTime-time+errorPenalty);

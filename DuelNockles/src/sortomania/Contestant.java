@@ -16,20 +16,24 @@ import ui.Component;
 
 public abstract class Contestant extends Component implements Runnable{
 
-	String string;
-	int contestantNumber;
-	String title;
-	String status;
-	int currentTask;
-	int points;
-	double currentScore;
-	boolean wonLastRound;
-	int correctSorts;
-	int totalSorts;
-	int correctMedians;
-	int totalMedians;
-	long[][] recordedTimes;
-	double[] bestAverages;
+	private String string;
+	private int contestantNumber;
+	private String title;
+	private String status;
+	private int currentTask;
+	private int points;
+	private double currentScore;
+	private boolean wonLastRound;
+	private int correctSorts;
+	private int totalSorts;
+	private int correctMedians;
+	private int totalMedians;
+	private long[][] recordedTimes;
+	private double[] bestAverages;
+	private long currentTaskTime;
+	private boolean showTime;
+	private String recentError;
+	private long errorTime;
 
 	private boolean attacking;
 	private boolean hit;
@@ -61,10 +65,12 @@ public abstract class Contestant extends Component implements Runnable{
 	public Contestant() {
 		super(0, 0, 310, 170);
 		this.string = this.getClass().toString().replaceAll("class sortomania.contestants.", "");
+		currentTaskTime = System.currentTimeMillis();
 		recordedTimes = new long[5][15];
 		bestAverages = new double[5];
 		currentScore = 100;
 		wonLastRound = true;
+		showTime = false;
 		status = "";
 		frame = new ArrayList<BufferedImage>();
 		attackFrame = new ArrayList<BufferedImage>();
@@ -236,7 +242,9 @@ public abstract class Contestant extends Component implements Runnable{
 		g.setStroke(new BasicStroke(2));
 		g.drawRect(5, 5, 35, 35);
 		g.setStroke(new BasicStroke(1));
-		g.drawString(title+": "+string+", Score: "+points, 45, 20);
+		String time = showTime ? ", Current Task: "+((int)(100*(System.currentTimeMillis()-currentTaskTime))/100000.0):"";
+				
+		g.drawString(string+", Score: "+points+time, 45, 20);
 		g.drawString(status, 45, 35);
 		if(currentScore <25){
 			g.setColor(Color.red);
@@ -250,6 +258,14 @@ public abstract class Contestant extends Component implements Runnable{
 			g.setColor(new Color(198,237,255));
 		}
 		g.fillRect(0, 45, (int)((currentScore/100.0)*(getWidth()-2)), 18);
+		
+		long timeSinceError = System.currentTimeMillis()-errorTime;
+		if(timeSinceError < 1000){
+			System.out.println("Drawing error text");
+			g.setColor(new Color(0,0,0,(int)(255.0*(1-timeSinceError/1000.0))));
+			g.drawString(recentError, 5, 58);
+		}
+		
 		g.setColor(Color.BLACK);
 		g.drawRect(0, 45, getWidth()-2, 18);
 		g.drawString("Correct Sorts: "+correctSorts+"/"+totalSorts, textMargin, topMargin+15);
@@ -359,13 +375,6 @@ public abstract class Contestant extends Component implements Runnable{
 			times = this.times;
 		}
 
-
-		if(currentFrame == attackFrame.size()-1){
-			frame = this.frame;
-			times = this.times;
-			currentFrame = frame.size() -1;
-			attacking = false;
-		}
 		
 		//finally after all adjustments have been made, make sure index is not out of bounds
 		if(currentFrame >= frame.size()){
@@ -395,13 +404,15 @@ public abstract class Contestant extends Component implements Runnable{
 	 * @param i
 	 */
 	public final void beginTask(int i) {
+		showTime = true;
 		currentTask = i;
-		status = "Task "+i+"... ";
+		currentTaskTime = System.currentTimeMillis();
+//		status = "Task "+i+"... ";
 	}
 
 	public final void successfulSort(boolean b, int trial) {
 		String report = (b)?"sorted "+trial+"! ":"failed "+trial+"! ";
-		status += report;
+		status = "Task "+currentTask+"... "+report;
 		totalSorts += 1;
 		if(b){
 			correctSorts+=1;
@@ -432,6 +443,7 @@ public abstract class Contestant extends Component implements Runnable{
 
 	public final void markVictorious(boolean b) {
 		wonLastRound = b;
+		showTime = false;
 		String report = (b)?"Victory! ":"Defeat! ";
 		if (b){
 			points += 1;	
@@ -443,6 +455,8 @@ public abstract class Contestant extends Component implements Runnable{
 
 	public final void penalize(String string, int time) {
 		hit = true;
+		recentError = string;
+		errorTime = System.currentTimeMillis();
 		if(time > 0){
 			try {
 				Thread.sleep(time);
