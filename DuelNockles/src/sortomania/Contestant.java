@@ -253,9 +253,9 @@ public abstract class Contestant extends Component implements Runnable{
 		}else if(currentScore < 70){
 			g.setColor(new Color(190,255,200));
 		}else if(currentScore < 90){
-			g.setColor(new Color(148,255,231));
+			g.setColor(Color.green);
 		}else {
-			g.setColor(new Color(198,237,255));
+			g.setColor(Color.green);
 		}
 		g.fillRect(0, 45, (int)((currentScore/100.0)*(getWidth()-2)), 18);
 		

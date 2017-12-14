@@ -157,7 +157,7 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 
 	private void saveCSV() {
 		CSV csv = new CSV(participants,runnersUp);
-		DateFormat df = new SimpleDateFormat("MMdd-hh:mm:ss");
+		DateFormat df = new SimpleDateFormat("MMdd-hh mm ss");
 		csv.writeCsvFile(df.format(new Date())+" "+Runner.fileNote+".csv");
 	}
 

@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import sortomania.contestants.NabeelAmanatSort;
+
 public class CSV {
 
     //Delimiter used in CSV file
@@ -16,6 +18,21 @@ private static final String COMMA_DELIMITER = ",";
 private static final String NEW_LINE_SEPARATOR = "\n";
 
 	private ArrayList<Contestant> students; 
+	
+	public static void main(String[] args) {
+		ArrayList<Contestant> participants = new ArrayList<Contestant>();
+		participants.add(new NabeelAmanatSort());
+		CSV csv = new CSV(participants);
+		csv.writeCsvFile("Testing.csv");
+		
+	}
+	
+	public CSV(ArrayList<Contestant> participants) {
+		this.students = new ArrayList<Contestant>();
+		students.addAll(participants);
+		
+		
+	}
 	
 	public CSV(ArrayList<Contestant> participants, ArrayList<Contestant> runnersUp) {
 		this.students = new ArrayList<Contestant>();

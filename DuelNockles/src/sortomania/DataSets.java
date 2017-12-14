@@ -27,8 +27,8 @@ public class DataSets {
 	private int[] task5Index;
 	private Generic[] task5Key;
 
-	public static final int startingReps = 15;
-	private int reps = 15;
+	public static final int startingReps = 50;
+	private int reps = 50;
 	public static final int tasks = 5;
 
 

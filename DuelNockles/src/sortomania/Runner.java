@@ -7,7 +7,7 @@ import ui.GUIApplication;
 
 public class Runner extends GUIApplication{
 
-	public static String fileNote = "Sample";
+	public static String fileNote = "Finals";
 	
 	static ContestScreen screen;
 	private int initY;
@@ -54,21 +54,21 @@ public class Runner extends GUIApplication{
 		int y = initY; 
 		int[] arr = {x,y};
 		//PERIOD 4-5
-//		arr = addContestant(arr[0],arr[1],participants, new SamJenny());
-//		arr = addContestant(arr[0],arr[1],participants, new MimiJessiSort());
-//		arr = addContestant(arr[0],arr[1],participants, new AlexAndErik());
-//		arr = addContestant(arr[0],arr[1],participants, new SidBen());
-//		arr = addContestant(arr[0],arr[1],participants, new TylerCarsonSort());
-//		arr = addContestant(arr[0],arr[1],participants, new YonathanDavid());
-//		arr = addContestant(arr[0],arr[1],participants, new NabeelAmanatSort());
-//		arr = addContestant(arr[0],arr[1],participants, new JasonDavid());
-//		arr = addContestant(arr[0],arr[1],participants, new JaneVictorContestant());
-//		arr = addContestant(arr[0],arr[1],participants, new ZhehaoRemington());
-//		arr = addContestant(arr[0],arr[1],participants, new DanSteven());
-//		arr = addContestant(arr[0],arr[1],participants, new GarrettRicky());
-//		arr = addContestant(arr[0],arr[1],participants, new AndrewKevin());
-//		arr = addContestant(arr[0],arr[1],participants, new FahadDavidSorter());
-//		arr = addContestant(arr[0],arr[1],participants, new JustinSunny());
+		arr = addContestant(arr[0],arr[1],participants, new SamJenny());
+		arr = addContestant(arr[0],arr[1],participants, new MimiJessiSort());
+		arr = addContestant(arr[0],arr[1],participants, new AlexAndErik());
+		arr = addContestant(arr[0],arr[1],participants, new SidBen());
+		arr = addContestant(arr[0],arr[1],participants, new TylerCarsonSort());
+		arr = addContestant(arr[0],arr[1],participants, new YonathanDavid());
+		arr = addContestant(arr[0],arr[1],participants, new NabeelAmanatSort());
+		arr = addContestant(arr[0],arr[1],participants, new JasonDavid());
+		arr = addContestant(arr[0],arr[1],participants, new JaneVictorContestant());
+		arr = addContestant(arr[0],arr[1],participants, new ZhehaoRemington());
+		arr = addContestant(arr[0],arr[1],participants, new DanSteven());
+		arr = addContestant(arr[0],arr[1],participants, new GarrettRicky());
+		arr = addContestant(arr[0],arr[1],participants, new AndrewKevin());
+		arr = addContestant(arr[0],arr[1],participants, new FahadDavidSorter());
+		arr = addContestant(arr[0],arr[1],participants, new JustinSunny());
 		//ALL OF THE ABOVE STUDENTS SUBMITTED BY THE DEADLINE
 //		
 //		arr = addContestant(arr[0],arr[1],participants, new DerekDavid());//caught on task 2
@@ -82,10 +82,10 @@ public class Runner extends GUIApplication{
 //		arr = addContestant(arr[0],arr[1],participants, new LordAchillesContestant());
 //		arr = addContestant(arr[0],arr[1],participants, new DoubleJasons());
 //		arr = addContestant(arr[0],arr[1],participants, new TheoDevinBeepBoop());
-		arr = addContestant(arr[0],arr[1],participants, new AbidAbedContestant());//fast but creates a recursive error somewhere
-		arr = addContestant(arr[0],arr[1],participants, new AnnieJoannaSort());
-		arr = addContestant(arr[0],arr[1],participants, new MarkWilliam());
-		arr = addContestant(arr[0],arr[1],participants, new KevinStephContestant());
+//		arr = addContestant(arr[0],arr[1],participants, new AbidAbedContestant());//fast but creates a recursive error somewhere
+//		arr = addContestant(arr[0],arr[1],participants, new AnnieJoannaSort());
+//		arr = addContestant(arr[0],arr[1],participants, new MarkWilliam());
+//		arr = addContestant(arr[0],arr[1],participants, new KevinStephContestant());
 //		arr = addContestant(arr[0],arr[1],participants, new JessicaJi());//cannot complete task 4
 //		arr = addContestant(arr[0],arr[1],participants, new EthanDavidContestant());//gets stuck on task 2
 		//ALL OF THE ABOVE STUDENTS SUBMITTED 9-10 BY THE DEADLINE
