@@ -261,7 +261,6 @@ public abstract class Contestant extends Component implements Runnable{
 		
 		long timeSinceError = System.currentTimeMillis()-errorTime;
 		if(timeSinceError < 1000){
-			System.out.println("Drawing error text");
 			g.setColor(new Color(0,0,0,(int)(255.0*(1-timeSinceError/1000.0))));
 			g.drawString(recentError, 5, 58);
 		}

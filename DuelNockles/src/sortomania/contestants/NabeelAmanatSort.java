@@ -87,7 +87,7 @@ public class NabeelAmanatSort extends Contestant {
             while (arr[i] < pivot) {
                 i++;
             }
-           
+
             while (arr[j] > pivot) {
                 j--;
             }
