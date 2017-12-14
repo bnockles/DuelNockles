@@ -1,6 +1,7 @@
 package sortomania.contestants;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import sortomania.Contestant;
 
@@ -75,7 +76,7 @@ public class Sisiame extends Contestant {
 	public void quickSort(int[] arr) {
 		
 		int pivot = arr[(int)(Math.random() * arr.length)];
-		int[] temp = new int[arr.length];
+		ArrayList<Integer> temp = arr.toList();
 		int idx = 0;
 		
 		for(int i = 0; i < arr.length; i++) {
