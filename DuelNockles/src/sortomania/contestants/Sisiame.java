@@ -88,7 +88,7 @@ public class Sisiame extends Contestant {
 	
 	public int[] quicksort(int[] arr) {
 		
-		if(arr.length > 9) {
+		if(arr.length > 43) {
 		
 			ArrayList<Integer> list = intArrayToArrayList(arr);
 					
@@ -214,7 +214,7 @@ public class Sisiame extends Contestant {
 	
 	public Comparable[] quicksort(Comparable[] arr) {
 		
-		if(arr.length > 9) {
+		if(arr.length > 43) {
 		
 			ArrayList<Comparable> list = comparableArrayToArrayList(arr);
 					
@@ -334,7 +334,7 @@ public class Sisiame extends Contestant {
 	
 	public String[] quicksort(String[] arr) {
 		
-		if(arr.length > 9) {
+		if(arr.length > 43) {
 		
 			ArrayList<String> list = stringArrayToArrayList(arr);
 					
