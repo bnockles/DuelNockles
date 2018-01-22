@@ -24,21 +24,24 @@ public class Sisiame extends Contestant {
 	@Override
 	public double sortAndGetMedian(int[] random) {
 		
-		return median(quicksort(random));
+		random = quicksort(random);
+		return median(random);
 		
 	}
 
 	@Override
 	public int sortAndGetResultingIndexOf(String[] strings, String toFind) {
 		
-		return binarySearch(quicksort(strings), 0, strings.length, toFind);
+		strings = quicksort(strings);
+		return binarySearch(strings, 0, strings.length, toFind);
 		
 	}
 
 	@Override
 	public double mostlySortAndGetMedian(int[] mostlySorted) {
 		
-		return median(insertionSort(mostlySorted));
+		mostlySorted = insertionSort(mostlySorted);
+		return median(mostlySorted);
 		
 	}
 
@@ -59,11 +62,12 @@ public class Sisiame extends Contestant {
 	@Override
 	public int sortAndSearch(Comparable[] arr, Comparable toFind) {
 		
-		return binarySearch(quicksort(arr), 0, arr.length, toFind);
+		arr = quicksort(arr);
+		return binarySearch(arr, 0, arr.length, toFind);
 		
 	}
 	
-///////////////////////////////Integerss/////////////////////////////////////
+///////////////////////////////Integers/////////////////////////////////////
 	public int[] insertionSort(int[] arr) {
 		
 		int temp;
