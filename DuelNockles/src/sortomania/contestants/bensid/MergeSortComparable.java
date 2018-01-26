@@ -1,4 +1,4 @@
-package bensid;
+package sortomania.contestants.bensid;
 
 public class MergeSortComparable {
 	/* Java program for Merge Sort */

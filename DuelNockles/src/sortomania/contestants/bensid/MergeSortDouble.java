@@ -1,19 +1,19 @@
-package bensid;
+package sortomania.contestants.bensid;
 
-public class MergeSortString {
+public class MergeSortDouble {
 	/* Java program for Merge Sort */
 	    // Merges two subarrays of arr[].
 	    // First subarray is arr[l..m]
 	    // Second subarray is arr[m+1..r]
-	    void merge(String arr[], int l, int m, int r)
+	    void merge(double arr[], int l, int m, int r)
 	    {
 	        // Find sizes of two subarrays to be merged
 	        int n1 = m - l + 1;
 	        int n2 = r - m;
 	 
 	        /* Create temp arrays */
-	        String L[] = new String [n1];
-	        String R[] = new String [n2];
+	        double L[] = new double [n1];
+	        double R[] = new double [n2];
 	 
 	        /*Copy data to temp arrays*/
 	        for (int i=0; i<n1; ++i)
@@ -31,7 +31,7 @@ public class MergeSortString {
 	        int k = l;
 	        while (i < n1 && j < n2)
 	        {
-	            if (L[i].compareTo(R[j]) <= 0) //<= R[j])
+	            if (L[i] <= R[j])
 	            {
 	                arr[k] = L[i];
 	                i++;
@@ -63,7 +63,7 @@ public class MergeSortString {
 	 
 	    // Main function that sorts arr[l..r] using
 	    // merge()
-	    public void sort(String arr[], int l, int r)
+	    public void sort(double arr[], int l, int r)
 	    {
 	        if (l < r)
 	        {
@@ -80,7 +80,7 @@ public class MergeSortString {
 	    }
 	 
 	    /* A utility function to print array of size n */
-	    public static void printArray(String arr[])
+	    public static void printArray(double arr[])
 	    {
 	        int n = arr.length;
 	        for (int i=0; i<n; ++i)
@@ -91,17 +91,16 @@ public class MergeSortString {
 	    // Driver method
 	    public static void main(String args[])
 	    {
-	        String arr[] = {"asd", "trt", "tre", "uty", "abc"};
+	        double arr[] = {1.2, 1.1, 1.3, 5., 6., 0.7};
 	 
 	        System.out.println("Given Array");
 	        printArray(arr);
 	 
-	        MergeSortString ob = new MergeSortString();
+	        MergeSortDouble ob = new MergeSortDouble();
 	        ob.sort(arr, 0, arr.length-1);
 	 
 	        System.out.println("\nSorted array");
 	        printArray(arr);
 	    }
 	
-    
 }
