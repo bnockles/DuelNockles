@@ -8,7 +8,7 @@ The following instructions describe the simplest steps to implementing the compe
       - sort a randomized int array of length 10,000 and return the median
       - sort a String array of length 10,000 (random Strings) and return the index of a given String in the array
       - sort a int arry of length 10,000 that is already mostly sorted and return the median
-      - sort a 2D int arr of 1,000 x 1,000: sort each array in the 2D array, sort the medians of every row in the 2D array, return the median of the medians
+      - sort a 2D int arr of 1,000 x 1,000: sort each array in the 2D array, sort each row according to its median, return the median of the medians
       - sort a Comparable array of length 10,000 and return the index of a given Comparable in the array
       
 2. Post the abstract class 'Contestant' and instruct students to extend the class, writing a body for all SEVEN methods. (Two methods are for the purposes of the GUI: one returns the team Color (from java.awt.Color) and another returns the String describing the location of the sprite sheet. In the Contestant class, there are eight choices that are pre-loaded with the GUI: KEN, RYU, CHUN_LI, DEE_JAY, BLANKA, E_HONDA, FEI_LONG, and CAMMY.) 
