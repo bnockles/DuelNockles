@@ -97,6 +97,15 @@ public abstract class Contestant extends Component implements Runnable{
 	public abstract Color getColor();
 
 
+	/**
+	 * Sprite sheets are found in the "resources" source folder. To load new ones, add a sprite sheet to the folder and 
+	 * identify a row of images that you wish to import. Each Contestant has three image sets: resting, hitting, 
+	 * and hurting. For a "row" you must identify the x-, y- coordinate of the first image of the set, the width 
+	 * and height (in pixels) of each image in the set (each image must be uniform width and height) and the number 
+	 * of images in the set. Therefore, for each set, you have 5 numbers. Altogether, this makes 15 numbers. 
+	 * These numbers populate the array that defines the Sprite in the addFrames method of the Contestant class.
+	 * @param spriteName
+	 */
 	private void addFrames(String spriteName) {
 		int[] values = new int[15];
 		if(spriteName.equals(KEN)){

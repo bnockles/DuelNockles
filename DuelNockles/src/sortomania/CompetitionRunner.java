@@ -4,11 +4,17 @@ import java.util.Arrays;
 
 import javax.swing.plaf.SliderUI;
 
+/**
+ * A CompetitionRunner is created for each Contestant. 
+ * It runs the sorts in the order they are required and applies the effects of sorting corretly or incorrectly
+ * @author bnockles
+ *
+ */
 public class CompetitionRunner implements Runnable {
 
-	Contestant c;
-	DataSets ds;
-	Pair pair;
+	Contestant c;//the Contestant that this runner belongs to (e.g. the contestant currently performing the sorts)
+	DataSets ds;//all of the data that is to be sorted for the current round
+	Pair pair;//a Pair is two contestants who are sorting head-to-head. This field is used for inflicting damage after a successful sort
 
 	public CompetitionRunner(Contestant c, DataSets ds, Pair pair) {
 		this.c= c;
@@ -17,6 +23,15 @@ public class CompetitionRunner implements Runnable {
 
 	}
 
+	/**
+	 * runs each task in sequence (a task is a sorting task and a number that is merely nominal, 
+	 * i.e. "Task 1", "Task 2", etc) Each task is paired with a method in the CompetitionRunner 
+	 * class. The method (suitable named test1, test2, etc...) grab the necessary data from ds
+	 *  (the instance of DataSets) and pass it to c (the Contestant currently performing the task) 
+	 *  You will have to create a corresponding abstract method in the Contestant class for your 
+	 *  students to implement. You can use the utility methods in DataSets to verify if the sort
+	 *   was performed correctly, then call afterEffects to apply the effects of a correct/incorrect sort.
+	 */
 	@Override
 	public void run() {
 		int trials = ds.getTotalTrials();

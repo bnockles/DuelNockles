@@ -52,10 +52,10 @@ public abstract class Runner extends GUIApplication{
 
 
 	
-	public abstract void populate(ArrayList<Contestant> participants);
+	public abstract void populate();
 
 
-	protected void addContestant(ArrayList<Contestant> participants, Contestant c) {
+	protected void addContestant(Contestant c) {
 
 		c.setX(x);
 		c.setY(y);
@@ -74,13 +74,13 @@ public abstract class Runner extends GUIApplication{
 
 	@Override
 	public void initScreen() {
-		ArrayList<Contestant> participants = new ArrayList<Contestant>();
+		participants = new ArrayList<Contestant>();
 		x = 40;
 		y = initY;
 		arr = new int[2];
 		arr[0] = x;
 		arr[1] = y;
-		populate(participants);
+		populate();
 		randomize(participants);
 		screen = new ContestScreen(getWidth(), getHeight());
 		screen.setparticipants(participants);

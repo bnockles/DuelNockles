@@ -3,6 +3,13 @@ package sortomania;
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ * 
+ * @author bnockles
+ *The data for each task is created in the DataSets class. At runtime, Sort-o-mania constructs all of the data that will be used by the contestants (both sorted and unsorted arrays) 
+ *DataSets is also full of utility methods for identifying the median, comparing two arrays, etc. To make your own sorting task, you had best create the necessary data in DataSets as well as a method to compare whether the contestant's sorted array matches the desired result..
+ */
+
 public class DataSets {
 
 	private int[][] task1DataSets;//random
