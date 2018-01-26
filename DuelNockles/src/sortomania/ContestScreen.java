@@ -1,8 +1,10 @@
 package sortomania;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.IOException;
@@ -35,11 +37,12 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 	private int pairsCompeting;
 	private int pairsFinished;
 	private int round;
+	private boolean paired;//draw a vertical line only after participants have been paired up
 
 	public int getRound(){ 
 		return round;
 	}
-	
+
 	public ContestScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -61,16 +64,16 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 		runnersUp = new ArrayList<Contestant>();
 		message = new TextLabel(5, 20, getWidth()-10, 40, "");
 		callIt = new Button(20, 10, 190, 45, "Call It", new Action() {
-			
+
 			@Override
 			public void act() {
 				System.out.println("Call It Pressed");
 				keepRunning = false;
-				
+
 			}
 		});
-		
-//		InputStream stream = ClassLoader.getSystemClassLoader().getResourceAsStream("alphbeta.ttf");
+
+		//		InputStream stream = ClassLoader.getSystemClassLoader().getResourceAsStream("alphbeta.ttf");
 		InputStream stream = ClassLoader.getSystemClassLoader().getResourceAsStream("Pixel NES.otf");
 		try {
 			Font font = Font.createFont(Font.TRUETYPE_FONT, stream).deriveFont(20f);
@@ -83,17 +86,25 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 
-		
-		
+
+
+
 		message.setCustomAlign(0);
 		viewObjects.add(message);
 		viewObjects.add(callIt);
 	}
 
-	
+
+	public void update(Graphics2D g){
+		super.update(g);
+		if(paired){
+			g.setColor(Color.black);
+			g.setStroke(new BasicStroke(3));
+			g.drawLine(694, 80, 694, 1800);
+		}
+	}
 
 	public boolean isKeepRunning() {
 		return keepRunning;
@@ -121,7 +132,7 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 				champ.move((getWidth()-champ.getWidth())/2, 90);
 				displayMessage("The champion is "+champ);
 				displayRunnersUp();
-				
+
 			}else{
 				for(Contestant c: participants){
 					c.setHP(100.0);
@@ -150,7 +161,7 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 			}
 
 		});
-
+		paired = false;
 		displayAll();
 		saveCSV();
 	}
@@ -197,7 +208,7 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 				x+= c.getWidth()+10;
 			}
 		}
-		
+
 	}
 
 	private void newRound() {
@@ -213,6 +224,7 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 			displayMessage(s);
 			try {
 				Thread.sleep(1000);
+				paired = true;
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -263,7 +275,7 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 			c.move(getWidth()-140, getHeight()-20);
 			i++;
 		}
-		
+
 	}
 
 	private void removeLosers() {
@@ -299,6 +311,6 @@ public class ContestScreen extends ClickableScreen implements Runnable{
 		}
 	}
 
-	
+
 
 }

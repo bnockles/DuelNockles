@@ -75,11 +75,11 @@ public class Main extends Runner {
 	public void populate() {
 
 		//PERIOD 4-5
-//		addContestant(new SamJenny());
-//		addContestant(new MimiJessiSort());
-//		addContestant(new AlexAndErik());
+		addContestant(new SamJenny());
+		addContestant(new MimiJessiSort());
+		addContestant(new AlexAndErik());
 //		addContestant(new SidBen());
-//		addContestant(new TylerCarsonSort());
+		addContestant(new TylerCarsonSort());
 //		addContestant(new YonathanDavid());
 //		addContestant(new NabeelAmanatSort());
 //		addContestant(new JasonDavid());
